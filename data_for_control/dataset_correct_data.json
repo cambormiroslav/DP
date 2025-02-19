@@ -1,0 +1,32 @@
+{"1000-receipt.jpg" : 
+    {
+        "company" : "GREEN FIELD",
+        "address" : "5305 E PACIFIC COAST HWY Long Beach, CA 90804",
+		"phone_number" : "(562) 597-0906",
+        "server" : "Francis",
+        "station" : 3,
+        "order_number" : 69923,
+        "table": "B11",
+        "guests": 2,
+        "goods" : {
+            "Coffee" : {
+                "amount" : 1,
+                "price" : 3.00
+            },
+            "Lunch" : {
+                "amount" : 2,
+                "price" : 45.90
+            },
+            "Coke" : {
+                "amount" : 1,
+                "price" : 3.00
+            }
+        },
+        "sub_total" : 51.90,
+        "tax" : 4.68,
+        "total" : 56.58,
+        "date": "5/26/2016",
+		"time": "12:53:10 PM",
+		"count_of_data": 22
+    }
+}

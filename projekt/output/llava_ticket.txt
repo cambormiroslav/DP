@@ -1,0 +1,1 @@
+0.045454545454545456;1;12;18;{'phone_number': '567-567-1234', 'date': '2023-04-28', 'time': '14:40'};['company', 'server', 'station', 'order_number', 'table', 'guests', 'Coffee', 'Lunch', 'Coke', 'subtotal', 'tax', 'total']
