@@ -73,6 +73,6 @@ if __name__ == "__main__":
 
     #print(send_image_request_all(get_image_in_base64(dir_path + "1000-receipt.jpg"), pattern))
 
-    correctness, correct_data, incorect_data, not_found_data, dict_of_incorect, array_not_found = functions.check_the_data(json.loads(send_image_request(get_image_in_base64(dir_path + "1000-receipt.jpg"), pattern)), "1000-receipt.jpg", correct_data_path)
-    print(correctness, correct_data, incorect_data, not_found_data, dict_of_incorect, array_not_found)
-    functions.save_to_file(model, "ticket", [correctness, correct_data, incorect_data, not_found_data], dict_of_incorect, array_not_found)
+    correctness, correct_data, incorect_data, not_found_data, good_not_found, dict_of_incorect, array_not_found, array_good_not_found = functions.check_the_data(send_image_request(get_image_in_base64(dir_path + "1000-receipt.jpg"), pattern), "1000-receipt.jpg", correct_data_path)
+    print(correctness, correct_data, incorect_data, not_found_data, good_not_found, dict_of_incorect, array_not_found, array_good_not_found)
+    functions.save_to_file(model, "ticket", [correctness, correct_data, incorect_data, not_found_data, good_not_found], dict_of_incorect, array_not_found, array_good_not_found)

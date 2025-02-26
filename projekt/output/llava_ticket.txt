@@ -1,1 +1,1 @@
-0.045454545454545456;1;12;18;{'phone_number': '567-567-1234', 'date': '2023-04-28', 'time': '14:40'};['company', 'server', 'station', 'order_number', 'table', 'guests', 'Coffee', 'Lunch', 'Coke', 'subtotal', 'tax', 'total']
+0.13636363636363635;3;8;2;3;{'phone_number': '(55) 555-5555', 'server': 'nick', 'order_number': 989, 'subtotal': 8.0, 'tax': 0.75, 'total': 9.75, 'date': '2023-04-16', 'time': '12:00 pm'};['station', 'table'];['Coffee', 'Lunch', 'Coke']

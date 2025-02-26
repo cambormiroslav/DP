@@ -42,6 +42,6 @@ if __name__ == "__main__":
     print(array_of_outputs[2], len(array_of_outputs), array_of_diffs[2])
     print(get_avg_time_run(array_of_diffs)) """
 
-    correctness, correct_data, incorect_data, not_found_data, dict_of_incorect, array_not_found = functions.check_the_data(json.loads(send_image_request(dir_path + "1000-receipt.jpg", pattern)), "1000-receipt.jpg", correct_data_path)
+    correctness, correct_data, incorect_data, not_found_data, dict_of_incorect, array_not_found = functions.check_the_data(send_image_request(dir_path + "1000-receipt.jpg", pattern), "1000-receipt.jpg", correct_data_path)
     print(correctness, correct_data, incorect_data, not_found_data, dict_of_incorect, array_not_found)
     functions.save_to_file("gemini", "ticket", [correctness, correct_data, incorect_data, not_found_data], dict_of_incorect, array_not_found)

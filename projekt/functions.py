@@ -9,20 +9,24 @@ def get_avg_time_run(array_of_diffs):
     return sum_time / len(array_of_diffs)
 
 def check_the_data(dict_model, name_of_file, path_to_correct_data):
-    print(dict_model)
-    print(name_of_file)
-
     correct_data_counted = 0
     incorrect_data_counted = 0
     not_in_dict_counted = 0
+    goods_not_counted = 0
 
     dict_incorrect = {}
     array_not_found = []
+    array_goods_not = []
 
     with open(path_to_correct_data, 'r') as file:
         data = json.load(file)[name_of_file]
         
         count_of_data = data["count_of_data"]
+
+        try:
+            dict_model = json.loads(dict_model)
+        except:
+            return (0, 0, 0, count_of_data, 0, {}, [], [])
 
         try:
             company_data = dict_model["company"].lower()
@@ -169,9 +173,8 @@ def check_the_data(dict_model, name_of_file, path_to_correct_data):
                     array_not_found += ["price"]
             else:
                 print(f"{good} Incorrect Or Not In File")
-                incorrect_data_counted += 3
-                not_in_dict_counted += 3
-                array_not_found += [good]
+                goods_not_counted += 1
+                array_goods_not += [good]
         
         try:
             subtotal_data = float(dict_model["sub_total"])
@@ -245,15 +248,16 @@ def check_the_data(dict_model, name_of_file, path_to_correct_data):
 
         correctness = correct_data_counted / count_of_data
 
-        return (correctness, correct_data_counted, incorrect_data_counted, not_in_dict_counted, dict_incorrect, array_not_found)
+        return (correctness, correct_data_counted, incorrect_data_counted, not_in_dict_counted, goods_not_counted, dict_incorrect, array_not_found, array_goods_not)
     
-def save_to_file(model, type_of_data, values, incorrect_data, not_found_data):
+def save_to_file(model, type_of_data, values, incorrect_data, not_found_data, good_not_found):
     output_file_path = f"./output/{model}_{type_of_data}.txt"
 
     correctness = values[0]
     correct_data_counted = values[1]
     incorrect_data_counted = values[2]
     not_data_found_counted = values[3]
+    good_not_found_counted = values[4]
     
     with open(output_file_path, "+a") as file:
-        file.write(f"{correctness};{correct_data_counted};{incorrect_data_counted};{not_data_found_counted};{incorrect_data};{not_found_data}\n")
+        file.write(f"{correctness};{correct_data_counted};{incorrect_data_counted};{not_data_found_counted};{good_not_found_counted};{incorrect_data};{not_found_data};{good_not_found}\n")
