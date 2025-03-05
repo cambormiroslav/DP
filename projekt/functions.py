@@ -258,6 +258,7 @@ def save_to_file(model, type_of_data, values, incorrect_data, not_found_data, go
     incorrect_data_counted = values[2]
     not_data_found_counted = values[3]
     good_not_found_counted = values[4]
+    time_diff = values[5]
     
     with open(output_file_path, "+a") as file:
-        file.write(f"{correctness};{correct_data_counted};{incorrect_data_counted};{not_data_found_counted};{good_not_found_counted};{incorrect_data};{not_found_data};{good_not_found}\n")
+        file.write(f"{correctness};{correct_data_counted};{incorrect_data_counted};{not_data_found_counted};{good_not_found_counted};{time_diff};{incorrect_data};{not_found_data};{good_not_found}\n")

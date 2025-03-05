@@ -10,6 +10,10 @@ Mezi hlavní komunikační moduly patří skripty openai.py, gemini.py a ollama_
 
 Tento modul obsahuje všechny funkce, které by se opakovali v hlavních modulech. Mezi ně patří kontrolní funkce, která srovnává data oproti správným datům. Po srovnání testovacích dat se spočte přesnost, počet správných i špatných výskytů dat a nenalezených dat. Špatná data se navratí také jako JSON a nenalezená data (klíče) jako pole. Následně je v tomto souboru i funkce na spočtení průměrného trvání než je k dostání výsledek z jednotlivých modelů.
 
+## Modul generate_tabs_graphs
+
+Tento modul bude zajišťovat generování tabulek a grafů pro výsledný dokument.
+
 ## Multimodální modely
 
 ### Velké

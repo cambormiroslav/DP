@@ -43,7 +43,7 @@
         "goods" : {
             "Coffee" : {
                 "amount" : 2,
-                "price" : 2.95
+                "price" : 5.9
             },
 			"Chicken Parmesan" : {
                 "amount" : 1,
@@ -470,5 +470,1161 @@
         "tax" : 0.73,
         "total" : 9.58,
 		"count_of_data": 13
-    }      
+    },
+    "1014-receipt.jpg" : 
+    {
+        "company" : "Loaded Cafe",
+        "address" : "15700 Bellflower Blvd BellFlower, CA 90706",
+		"server" : "Nathalie",
+		"table": "34/1",
+		"guests": 2,
+		"date": "Feb23' 19",
+		"time": "10:23AM",
+        "goods" : {
+            "Enchi Omelete SHREDDED BEEF" : {
+                "amount" : 2,
+                "price" : 25.98
+            },
+            "Open Food SHREDDED BEEG" : {
+                "amount" : 1,
+                "price" : 3.19
+            },
+            "Open Food" : {
+                "amount" : 1,
+                "price" : 3.19
+            },
+            "Hashbrowns Side" : {
+                "amount" : 2,
+                "price" : 2.99
+            },
+            "Coffee Hot" : {
+                "amount" : 1,
+                "price" : 2.99
+            },
+            "Diet Coke" : {
+                "amount" : 1,
+                "price" : 2.99
+            }
+        },
+        "sub_total" : 44.32,
+        "tax" : 4.21,
+        "total" : 48.53,
+		"count_of_data": 28
+    },
+    "1015-receipt.jpg" : 
+    {
+        "company" : "HAMMOCKS TRADING COMPANY",
+        "address" : "7285 Roswell Road Sandy Springs, Georgia 30328",
+		"phone_number" : "770-395-9592",
+		"table": "40",
+		"server" : "Shannon",
+		"order_number" : "155091",
+		"date": "3/10/2017",
+		"time": "6:23 pm",
+        "goods" : {
+            "Coke" : {
+                "amount" : 1,
+                "price" : 2.5
+            },
+            "Shrimp Entree" : {
+                "amount" : 1,
+                "price" : 21.0
+            },
+            "BBQ & Blue Chz chips" : {
+                "amount" : 1,
+                "price" : 6.0
+            },
+            "Discount:BBQ & Blue Chz" : {
+                "amount" : 1,
+                "price" : -6.0
+            },
+            "Sprite" : {
+                "amount" : 1,
+                "price" : 2.5
+            },
+            "Lobster Roll" : {
+                "amount" : 1,
+                "price" : 21.0
+            }
+        },
+        "sub_total" : 47.00,
+        "tax" : 3.29,
+        "total" : 50.29,
+		"count_of_data": 29
+    },
+    "1016-receipt.jpg" : 
+    {
+        "company" : "Chef Wang",
+        "address" : "1902 Jericho Turnpike New Hyde Park NY 11040",
+		"phone_number" : "516.354.2858",
+		"fax_number" : "516.776.0587",
+		"order_number" : "1022",
+		"server" : "lily",
+		"guests": 2,
+		"date": "02/02/19",
+		"time": "02:14 PM - 03:03 PM",
+        "goods" : {
+            "Scallion Pancake" : {
+                "amount" : 1,
+                "price" : 5.25
+            },
+            "Little Juicy Pork Burns" : {
+                "amount" : 1,
+                "price" : 9.95
+            },
+            "Beef w Bak Choy (L)" : {
+                "amount" : 1,
+                "price" : 8.75
+            },
+            "Hunan Beef (L)" : {
+                "amount" : 1,
+                "price" : 8.75
+            }
+        },
+        "sub_total" : 32.7,
+        "tax" : 2.82,
+        "total" : 35.52,
+		"count_of_data": 24
+    },
+    "1017-receipt.jpg" : 
+    {
+        "company" : "UMIX",
+        "address" : "4327 N. Expressway 77/83 Brownsville, TX 78521",
+		"phone_number" : ["956-350-8686", "956-543-5089"],
+		"order_number" : "215406",
+		"station" : 1,
+		"server" : "KRIST",
+		"date": "4/24/2016",
+		"time": "6:30:31 PM",
+        "goods" : {
+            "PARIS" : {
+                "amount" : 1,
+                "price" : 5.25
+            },
+            "LE CLASSIQUE" : {
+                "amount" : 1,
+                "price" : 4.95
+            }
+        },
+        "sub_total" : 10.2,
+        "tax" : 0.84,
+        "total" : 11.04,
+		"count_of_data": 17
+    },
+    "1018-receipt.jpg" : 
+    {
+        "company" : "IN-N-OUT BURGER SANTA CLARA",
+		"order_number" : "12",
+		"server" : "KEVIN DU",
+		"date": "2012-04-27",
+		"time": "12:48 PM",
+        "goods" : {
+            "HAMB" : {
+                "amount" : 1,
+                "price" : 2.0
+            }
+        },
+        "sub_total" : 2.0,
+        "tax" : 0.17,
+        "total" : 2.17,
+		"count_of_data": 11
+    },
+    "1019-receipt.jpg" : 
+    {
+        "company" : "Grotto Pizzeria & Tavern",
+        "address" : "2441 Van Horn Trenton, MI 48183",
+		"phone_number" : "(734) 692-4300",
+		"server" : "Trinity",
+		"station" : 2,
+		"order_number" : "22037",
+		"table": "11",
+		"guests": 2,
+        "goods" : {
+            "Ultra" : {
+                "amount" : 1,
+                "price" : 2.5
+            },
+            "Bells Draft" : {
+                "amount" : 1,
+                "price" : 5.0
+            },
+            "Cheese Bread" : {
+                "amount" : 1,
+                "price" : 6.0
+            },
+            "APPS OUT FIRST" : {
+                "amount" : 1,
+                "price" : 0.0
+            },
+            "Caprese" : {
+                "amount" : 1,
+                "price" : 7.0
+            },
+            "SALAD OUT FIRST" : {
+                "amount" : 1,
+                "price" : 0.0
+            },
+            "Reg Carnivore (s) Pepper Rings (s)" : {
+                "amount" : 1,
+                "price" : 12.5
+            },
+            "Reg Margherita" : {
+                "amount" : 1,
+                "price" : 10.0
+            }
+        },
+        "sub_total" : 43.0,
+        "tax" : 2.58,
+        "total" : 45.58,
+		"date": "5/12/2017",
+		"time": "7:48:12 PM",
+		"count_of_data": 37
+    },
+    "1020-receipt.jpg" : 
+    {
+        "company" : "Deccan Spice",
+        "address" : "771 Newark Avenue Jersey City Local, NJ 07306",
+		"phone_number" : "(201) 604-1772",
+		"server" : "Com",
+		"station" : 6,
+		"order_number" : "80110",
+		"table": "2",
+		"guests": 6,
+        "goods" : {
+            "Dal Fry" : {
+                "amount" : 1,
+                "price" : 10.99
+            },
+            "Paneer Butter Masala" : {
+                "amount" : 1,
+                "price" : 12.99
+            },
+            "rice" : {
+                "amount" : 3,
+                "price" : 5.97
+            },
+            "Deccan Special Biryani" : {
+                "amount" : 1,
+                "price" : 14.99
+            }
+        },
+        "sub_total" : 35.95,
+        "tax" : 2.98,
+        "total" : 38.93,
+		"date": "7/26/2019",
+		"time": "10:56:49 PM",
+		"count_of_data": 25
+    },
+    "1021-receipt.jpg" : 
+    {
+        "company" : "HAWWI ETHIOPIAN RESTAU",
+        "address" : "1125 QUEEN ST ALEXANDRIA, VA 22314",
+		"phone_number" : "7037179740",
+		"table": "2",
+		"server" : "Mosa",
+		"date": "13-Jul-2018",
+		"time": "8:53:47P",
+		"order_number" : "000016",
+		"guests": 1,
+        "goods" : {
+            "26.Fish Goulash" : {
+                "amount" : 1,
+                "price" : 19.95
+            },
+            "30.Dullet" : {
+                "amount" : 1,
+                "price" : 20.95
+            },
+            "34. Vegetarian Dish" : {
+                "amount" : 1,
+                "price" : 21.95
+            }
+        },
+        "sub_total" : 62.85,
+        "tax" : 6.91,
+        "total" : 69.76,
+		"count_of_data": 21
+    },
+    "1022-receipt.jpg" : 
+    {
+        "company" : "Moonstar Restaurant",
+        "address" : "383 Gellert Blvd., Daly City, CA 94015",
+		"phone_number" : "(650) 992-2888",
+		"table": "332",		
+		"order_number" : "2406",
+		"guests": 1,
+        "goods" : {
+            "WEEKDAY DINNER" : {
+                "amount" : 1,
+                "price" : 29.88
+            }
+        },
+        "sub_total" : 29.88,
+        "tax" : 3.01,
+        "total" : 32.89,
+		"date": "10/29/2018",
+		"time": "19:51",
+		"count_of_data": 14
+    },
+    "1023-receipt.jpg" : 
+    {
+        "company" : "Thai Gusto Restaurant",
+        "address" : "2011 Hewitt Ave Everett WA 98201",
+		"phone_number" : "425-252-3525",
+		"fax_number" : "425-252-3525",
+		"table": "4",
+		"date": "6/16/2017",
+		"time": "12:36 PM",
+		"server" : "PRACH",
+        "goods" : {
+            "Chang" : {
+                "amount" : 2,
+                "price" : 7.0
+            },
+			"#L14 Garlic Delight" : {
+                "amount" : 1,
+                "price" : 10.24
+            },
+			"#L28 Red Curry" : {
+                "amount" : 1,
+                "price" : 10.24
+            }
+        },
+        "sub_total" : 27.48,
+        "tax" : 2.67,
+        "total" : 30.15,
+		"count_of_data": 20
+    },
+    "1024-receipt.jpg" : 
+    {
+        "company" : "New Asia Buffet",
+        "address" : "14727.5 Rinaldi St. San Fernando, CA 91340",
+		"phone_number" : "(818)898-0880",
+		"date": "ov-15-06-N",
+		"time": "5:17PM",
+		"order_number" : "84",
+		"server" : "2",
+		"table": "D4",
+		"guests": 1,
+        "goods" : {
+            "Weeken Dinner" : {
+                "amount" : 2,
+                "price" : 27.96
+            },
+			"Coke" : {
+                "amount" : 2,
+                "price" : 3.16
+            }
+        },
+        "sub_total" : 31.12,
+        "tax" : 2.8,
+        "total" : 33.92,
+		"count_of_data": 18
+    },
+    "1025-receipt.jpg" : 
+    {
+        "company" : "McDonald's Restaurant #3100",
+        "address" : "1617 N EASTERN AVENUE LOS ANGELES, CW 80DE3-1053",
+		"phone_number" : "323 264 7300",
+		"date": "02/07/2019",
+		"time": "03:08 PM",
+		"order_number" : "97",
+        "goods" : {
+            "Dbl Qtr Cheese" : {
+                "amount" : 1,
+                "price" : 5.99
+            },
+			"ADD Leaf Lettuce" : {
+                "amount" : 1,
+                "price" : 0.25
+            },
+			"ADD Mac Sauce" : {
+                "amount" : 1,
+                "price" : 0.4
+            }
+        },
+        "sub_total" : 6.64,
+        "tax" : 0.63,
+        "total" : 7.27,
+		"count_of_data": 18
+    },
+    "1026-receipt.jpg" : 
+    {
+        "company" : "CHRIS'S HAMBURGERS",
+        "address" : "7701 ATLANTIC AVE. CUDAHY CA. 90201",
+		"phone_number" : "(323)562-4125",
+		"date": "07/22/2018 SUN",
+        "goods" : {
+            "TAXABLE T1" : {
+                "amount" : 11,
+                "price" : 47.43
+            }
+        },
+        "sub_total" : 47.43,
+        "tax" : 4.39,
+        "total" : 51.82,
+		"order_number" : "00154",
+		"time": "19:24",
+		"count_of_data": 12
+    },
+    "1027-receipt.jpg" : 
+    {
+        "company" : "Longboards",
+        "address" : "92-161 Waipahe Place Kapolei, HI 96707",
+		"phone_number" : "(808) 679-4700",
+		"server" : "Elijah J",
+		"order_number" : "24016",
+		"table": "44/0",
+		"date": "01/11/2019",
+		"time": "12:46 PM",
+        "goods" : {
+            "Green Salad" : {
+                "amount" : 1,
+                "price" : 8.0
+            },
+			"Wagyu Cheeseburger" : {
+                "amount" : 1,
+                "price" : 19.0
+            },
+			"Garlic Fries" : {
+                "amount" : 1,
+                "price" : 2.0
+            },
+			"Drink of the Day" : {
+                "amount" : 1,
+                "price" : 9.75
+            },
+			"Tea" : {
+                "amount" : 1,
+                "price" : 4.0
+            },
+			"Ohana Discount Breakfast" : {
+                "amount" : 1,
+                "price" : -3.3
+            }
+        },
+        "sub_total" : 42.75,
+        "tax" : 1.86,
+        "total" : 41.31,
+		"count_of_data": 29
+    },
+    "1028-receipt.jpg" : 
+    {
+        "company" : "DOUGLAS BURGERS #15",
+        "address" : "11325 Washington Blvd Whitter, Calif 90605",
+		"phone_number" : "(562) 699-7484",
+		"order_number" : "20018",
+		"date": "2/09/19",
+		"time": "5:30pm",
+        "goods" : {
+            "BURGER COMBO" : {
+                "amount" : 1,
+                "price" : 9.99
+            },
+			"*american ch*" : {
+                "amount" : 1,
+                "price" : 0.7
+            },
+			"**add bacon**" : {
+                "amount" : 2,
+                "price" : 3.98
+            },
+			"SUB ZUCCHINI" : {
+                "amount" : 1,
+                "price" : 2.49
+            },
+			"Burger (1/4)" : {
+                "amount" : 1,
+                "price" : 5.99
+            },
+			"**add avocado**" : {
+                "amount" : 1,
+                "price" : 1.99
+            },
+			"MAKE SPECIAL" : {
+                "amount" : 1,
+                "price" : 3.0
+            },
+			"* onions rings *" : {
+                "amount" : 1,
+                "price" : 2.49
+            },
+			"SERV. CHARGE(2%)" : {
+                "amount" : 1,
+                "price" : 0.61
+            }
+        },
+        "sub_total" : 31.24,
+        "tax" : 2.97,
+        "total" : 34.21,
+		"count_of_data": 36
+    },
+    "1029-receipt.jpg" : 
+    {
+        "company" : "RINCON MEXICANO",
+        "address" : "99 BROADWAY SOMERVILLE, MA 02145",
+		"phone_number" : "6179661387",
+		"order_number" : "45",
+		"server" : "LORENZO REYES",
+		"date": "09-May-2017",
+		"time": "7:19:46P",
+        "goods" : {
+            "Arroz" : {
+                "amount" : 2,
+                "price" : 3.0
+            },
+			"Taco De Pescado" : {
+                "amount" : 2,
+                "price" : 7.0
+            },
+			"Taco Tuesday Pollo" : {
+                "amount" : 3,
+                "price" : 3.0
+            },
+			"Taco D Carne Asada" : {
+                "amount" : 1,
+                "price" : 2.99
+            },
+			"Taco D Chorizo" : {
+                "amount" : 1,
+                "price" : 2.99
+            },
+			"Taco Tuesday Pastor" : {
+                "amount" : 1,
+                "price" : 1.0
+            },
+			"Horchata" : {
+                "amount" : 1,
+                "price" : 2.99
+            },
+			"Taco D Cochinita" : {
+                "amount" : 1,
+                "price" : 2.99
+            },
+			"Taco D Carnitas" : {
+                "amount" : 1,
+                "price" : 2.99
+            }
+        },
+        "sub_total" : 28.95,
+        "tax" : 2.03,
+        "total" : 30.98,
+		"count_of_data": 37
+    },
+    "1030-receipt.jpg" : 
+    {
+        "company" : "VILLA D'ESTE RESTAURANT",
+        "address" : "186 Jericho Tpke florai park, NY 11001",
+		"phone_number" : "(516) 354-1355",
+		"server" : "Jerry",
+		"station" : 6,
+		"table": "3",
+		"guests": 2,
+        "goods" : {
+            "Coffee" : {
+                "amount" : 1,
+                "price" : 3.5
+            },
+			"Glass House Wine" : {
+                "amount" : 1,
+                "price" : 9.95
+            },
+			"Jumbo Coctail Shrimp" : {
+                "amount" : 1,
+                "price" : 12.95
+            },
+			"Escargot Bourguigonne" : {
+                "amount" : 1,
+                "price" : 10.95
+            },
+			"Veal Zingaria" : {
+                "amount" : 1,
+                "price" : 23.95
+            },
+			"Duckling ala Arancio" : {
+                "amount" : 1,
+                "price" : 25.95
+            }
+        },
+        "sub_total" : 87.25,
+        "tax" : 7.53,
+        "total" : 94.78,
+		"order_number" : "7",
+		"date": "12/8/2017",
+		"time": "4:44:05 PM",
+		"count_of_data": 31
+    },
+    "1031-receipt.jpg" : 
+    {
+        "company" : "Laurel Tavern Hermosa Beach",
+        "address" : "1220 Hermosa Beach Hermosa Beach, CA 90254",
+		"date": "01/12/19",
+		"time": "1:23 PM",
+		"server" : "Sophie",
+		"table": "501",
+		"order_number" : "1388",
+        "goods" : {
+            "BTL BEER" : {
+                "amount" : 1,
+                "price" : 5.0
+            },
+			"BRUSSELS SPROUTS" : {
+                "amount" : 1,
+                "price" : 8.0
+            },
+			"CANTONESE TENDERS" : {
+                "amount" : 1,
+                "price" : 11.0
+            },
+			"GRILLED CHEESE" : {
+                "amount" : 1,
+                "price" : 12.0
+            },
+			"$ ADD GARLIC FRIES" : {
+                "amount" : 1,
+                "price" : 4.5
+            }
+        },
+        "sub_total" : 40.5,
+        "tax" : 3.85,
+        "total" : 44.35,
+		"count_of_data": 25
+    },
+    "1032-receipt.jpg" : 
+    {
+        "company" : "WINGS & THINGS",
+        "address" : "1717 DUTCH BRDY ELMONT, NY 11003",
+		"phone_number" : "516-341-7075",
+		"order_number" : "168",
+        "goods" : {
+            "MAC&CHZ - SMALL" : {
+                "amount" : 1,
+                "price" : 1.19
+            },
+			"COLL GRN - SMALL" : {
+                "amount" : 1,
+                "price" : 1.19
+            },
+			"1 CORN BREAD" : {
+                "amount" : 1,
+                "price" : 0.62
+            },
+			"5 WINGS" : {
+                "amount" : 1,
+                "price" : 5.75
+            }
+        },
+        "tax" : 0.75,
+        "total" : 9.5,
+		"date": "04 MAR.19",
+		"time": "20:14",
+		"count_of_data": 20
+    },
+    "1033-receipt.jpg" : 
+    {
+        "address" : "8030 Renaissance Parkway Durham, NC 27713",
+		"phone_number" : "(984) 329-2900",
+		"server" : "ANASTASHIA",
+		"table": "57/1",
+		"guests": 2,
+		"date": "05/18/2019",
+		"time": "12:25 PM",
+		"order_number" : "80001",
+        "goods" : {
+            "Taco Salad" : {
+                "amount" : 1,
+                "price" : 15.49
+            },
+			"Add Chicken Fajita" : {
+                "amount" : 1,
+                "price" : 8.99
+            },
+			"Pechuga de Pollo" : {
+                "amount" : 1,
+                "price" : 18.99
+            }
+        },
+        "sub_total" : 43.47,
+        "tax" : 3.26,
+		"total" : 46.73,
+		"company" : "Uncle Julio",
+		"count_of_data": 21
+    },
+    "1034-receipt.jpg" : 
+    {
+		"company" : "la Source",
+        "address" : "39 Mue Alain Charlier 75015 PARIS",
+		"order_number" : "0002",
+		"date": "02/08/2015",
+        "goods" : {
+            "PERRIER" : {
+                "amount" : 1,
+                "price" : 5.8
+            },
+			"COCA-COLA" : {
+                "amount" : 1,
+                "price" : 5.8
+            },
+			"JUS ORANGE" : {
+                "amount" : 1,
+                "price" : 5.4
+            }
+        },
+        "sub_total" : 15.45,
+        "tax" : 1.55,
+		"total" : 17.0,
+		"phone_number" : "01.48.28.44.81",
+		"count_of_data": 17
+    },
+    "1035-receipt.jpg" : 
+    {
+		"company" : "Argonaut Diner2000",
+        "address" : "1084 Yonkers Avenue  Yonkers, NY 10704",
+		"phone_number" : "(914) 237-5055",
+        "goods" : {
+            "Coffee" : {
+                "amount" : 1,
+                "price" : 1.45
+            },
+			"Tea" : {
+                "amount" : 1,
+                "price" : 1.45
+            },
+			"Waffle" : {
+                "amount" : 1,
+                "price" : 5.5
+            },
+			"Old Fashion French Toast" : {
+                "amount" : 1,
+                "price" : 4.5
+            },
+			"Side Home Fries" : {
+                "amount" : 1,
+                "price" : 2.95
+            },
+			"Banana" : {
+                "amount" : 1,
+                "price" : 2.95
+            },
+			"Whipped Cream" : {
+                "amount" : 1,
+                "price" : 2.5
+            },
+			"W/ 2 EGGS" : {
+                "amount" : 1,
+                "price" : 2.95
+            }
+        },
+        "sub_total" : 24.25,
+        "tax" : 2.13,
+		"total" : 26.38,
+		"server" : "MIKE",
+		"table": "9",
+		"guests": 1,
+		"time": "11:01 AM",
+		"count_of_data": 34
+    },
+    "1036-receipt.jpg" : 
+    {
+		"company" : "Pappadeaux Seafood Kitchen",
+        "address" : "1304 Copeland Rd, Arlington, TX 76011",
+		"phone_number" : "(817) 543-0544",
+		"order_number" : "0035",
+		"table": "72",
+		"guests": 3,
+		"server" : "SARAH H",
+		"date": "11/18/17",
+		"time": "12:11",
+        "goods" : {
+            "Lump Crab & Spinach Dip" : {
+                "amount" : 1,
+                "price" : 15.95
+            },
+			"Cajun Combo" : {
+                "amount" : 1,
+                "price" : 18.95
+            },
+			"Lunch Shrimp & Andouille" : {
+                "amount" : 1,
+                "price" : 13.95
+            }
+        },
+        "sub_total" : 48.85,
+        "tax" : 3.91,
+		"total" : 52.76,
+		"count_of_data": 21
+    },
+    "1037-receipt.jpg" : 
+    {
+		"company" : "Panda Express",
+        "address" : "Store #1291 Everett, WA",
+		"phone_number" : "(425)710-0278",
+		"date": "03/16/2013",
+		"time": "3:41:24 PM",
+		"order_number" : "177437",
+		"server" : "Tameka J",
+        "goods" : {
+            "PARTY PK 18-22" : {
+                "amount" : 1,
+                "price" : 139.00
+            },
+			"PEPPERCORN SHRIMP" : {
+                "amount" : 1,
+                "price" : 12.0
+            }
+		},
+        "sub_total" : 151.0,
+        "tax" : 13.89,
+		"total" : 164.89,
+		"count_of_data": 16
+    },
+    "1038-receipt.jpg" : 
+    {
+		"company" : "Yogurtland",
+        "address" : "12502 North Kendall Drive Miami, FL 33186",
+		"phone_number" : "(305) 279-3478",
+		"date": "Sep07'18",
+		"time": "9:28PM",
+		"order_number" : "1082",
+		"server" : "melanie",
+		"total" : 17.8,
+		"count_of_data": 8
+    },
+    "1039-receipt.jpg" : 
+    {
+		"company" : "CARL'S JR 1100375",
+		"phone_number" : "(916) 962-3415",
+        "address" : "8105 MADISON AVE FAIR OAKS, CA",
+		"date": "12/19/2016",
+		"time": "7:42:42 PM",
+		"order_number" : "3100 / 3625",
+        "goods" : {
+            "Santa Fe Ckn" : {
+                "amount" : 2,
+                "price" : 11.38
+            },
+			"E Green Chile" : {
+                "amount" : 1,
+                "price" : 0.7
+            }
+		},
+        "sub_total" : 12.08,
+        "tax" : 0.97,
+		"total" : 13.05,
+		"count_of_data": 15
+    },
+    "1040-receipt.jpg" : 
+    {
+		"company" : "SUKHOTHAI SUSHI + ASIAN FUSION",
+		"address" : "11735 SW 147 AVE UNIT 36 MIAMI, FL 33196",
+		"phone_number" : "7865774888",
+		"order_number" : "0003",
+		"server" : "Sergio",
+		"date": "19-Apr-2019",
+		"time": "2:02:26P",
+        "goods" : {
+            "Chicken Fried Rice And Egg Lunch" : {
+                "amount" : 1,
+                "price" : 7.99
+            },
+			"California Tropic And Miso Lunch" : {
+                "amount" : 1,
+                "price" : 7.99
+            },
+			"Add Two Tostones" : {
+                "amount" : 1,
+                "price" : 1.0
+            },
+			"Sprite" : {
+                "amount" : 1,
+                "price" : 2.5
+            },
+			"Perrier Sparkling Water" : {
+                "amount" : 1,
+                "price" : 3.5
+            }
+		},
+        "sub_total" : 22.98,
+        "tax" : 1.61,
+		"total" : 28.04,
+		"count_of_data": 25
+    },
+    "1041-receipt.jpg" : 
+    {
+		"company" : "la Source",
+        "address" : "39 Mue Alain Charlier 75015 PARIS",
+		"order_number" : "0002",
+		"date": "02/08/2015",
+        "goods" : {
+            "PERRIER" : {
+                "amount" : 1,
+                "price" : 5.8
+            },
+			"COCA-COLA" : {
+                "amount" : 1,
+                "price" : 5.8
+            },
+			"JUS ORANGE" : {
+                "amount" : 1,
+                "price" : 5.4
+            }
+        },
+        "sub_total" : 15.45,
+        "tax" : 1.55,
+		"total" : 17.0,
+		"phone_number" : "01.48.28.44.81",
+		"count_of_data": 17
+    },
+    "1042-receipt.jpg" : 
+    {
+        "address" : "FAIRVIEW, NJ 07022",
+		"phone_number" : "(201) 840-8428",
+		"order_number" : "832869",
+		"date": "02/11/19",
+		"table": "23",
+		"guests": 1,
+		"time": "07:46pm",
+		"server" : "DANIELA",
+        "goods" : {
+            "Guaca Chicharron" : {
+                "amount" : 1,
+                "price" : 13.95
+            },
+			"EMPANADA" : {
+                "amount" : 2,
+                "price" : 3.0
+            },
+			"PARGO FRITO" : {
+                "amount" : 1,
+                "price" : 19.95
+            },
+			"MAR Y CHICKEN" : {
+                "amount" : 1,
+                "price" : 17.0
+            },
+			"SALMON A LA PLANCHA" : {
+                "amount" : 1,
+                "price" : 16.0
+			}
+		},
+        "sub_total" : 69.9,
+        "tax" : 3.44,
+		"total" : 55.39,
+		"count_of_data": 26
+    },
+    "1043-receipt.jpg" : 
+    {
+		"company" : "BK SOUL FOOD & CATERING",
+        "address" : "11318 YONKERS AVE YONKERS, NY 10704",
+		"phone_number" : "914-237-5083",		
+		"date": "June 23, 2019",
+		"time": "2:33 PM",
+		"order_number" : "1019",
+		"server" : "Admin",			
+        "goods" : {
+            "WINGS (5)" : {
+                "amount" : 1,
+                "price" : 12.5
+            },
+			"SIDE (SM)" : {
+                "amount" : 3,
+                "price" : 12.0
+            }
+        },
+        "sub_total" : 24.5,
+        "tax" : 2.17,
+		"total" : 26.67,
+		"count_of_data": 16
+    },
+    "1044-receipt.jpg" : 
+    {
+		"company" : "CHURCH'S CHICKEN #4717",
+        "address" : "7635 WINNETKA CANOGA PARK CA",
+		"phone_number" : "818 576 0490",
+		"order_number" : "253",				
+        "goods" : {
+            "9PC LT" : {
+                "amount" : 1,
+                "price" : 9.99
+            }
+        },
+        "sub_total" : 9.99,
+        "tax" : 0.95,
+		"total" : 10.94,
+		"server" : "LISBETH",	
+		"date": "MAY.21'19",
+		"time": "20:57",
+		"count_of_data": 13
+    },
+    "1045-receipt.jpg" : 
+    {
+		"company" : "YUM'S RESTAURANT",
+        "address" : "12635 Laurel Bowe Rd Laurel MD 20708",
+		"phone_number" : "(301)776-5002",
+		"date": "6/24/2018",
+		"time": "04 19 PM",
+		"order_number" : "347",
+		"server" : "Yums",		
+        "goods" : {
+            "Steak Cheese Egg Rolls (2)" : {
+                "amount" : 1,
+                "price" : 4.49
+            },
+			"Wings w French Fries" : {
+                "amount" : 8,
+                "price" : 14.4
+            },
+			"Homemade Hall Hall" : {
+                "amount" : 1,
+                "price" : 1.89
+            }
+        },
+        "sub_total" : 20.78,
+        "tax" : 1.25,
+		"total" : 22.03,
+		"count_of_data": 19
+    },
+    "1046-receipt.jpg" : 
+    {
+		"company" : "Araxi Burger Aventura",
+        "address" : "17861 BISCAYNE BLVD Aventura, FL 33160",
+		"server" : "Valerie P",
+		"order_number" : "33",
+		"date": "03/17/19",
+		"time": "5:39 PM",
+		"table": "12",		
+        "goods" : {
+            "Vanilla Bean" : {
+                "amount" : 2,
+                "price" : 12.0
+            },
+			"Classic Burger 4oz" : {
+                "amount" : 1,
+                "price" : 8.0
+            },
+			"Route 66 Burger 8oz" : {
+                "amount" : 1,
+                "price" : 14.0
+            },
+			"10% (10.00%)" : {
+                "amount" : 1,
+                "price" : -3.4
+            }
+        },
+        "sub_total" : 30.6,
+        "tax" : 2.14,
+		"total" : 38.86,
+		"count_of_data": 22
+    },
+    "1047-receipt.jpg" : 
+    {
+		"company" : "730 Tavern Kitchen & Patio",
+        "address" : "730 Mass Ave Cambridge, MA 02139-3308",
+		"phone_number" : "617-868-8800",
+		"server" : "Megan",
+		"table": "3/1",
+		"guests": 2,
+		"date": "09/23/2017",
+		"time": "9:40 PM",
+		"order_number" : "30062",
+        "goods" : {
+            "Manhattan" : {
+                "amount" : 3,
+                "price" : 48.0
+            },
+			"Grey Goose" : {
+                "amount" : 3,
+                "price" : 28.5
+            },
+			"Rocks" : {
+                "amount" : 3,
+                "price" : 3.0
+            }
+        },
+        "sub_total" : 79.5,
+        "tax" : 5.57,
+		"total" : 85.07,
+		"count_of_data": 21
+    },
+    "1048-receipt.jpg" : 
+    {
+		"company" : "Daily Grill",
+        "address" : "2501 Colorado Ave Santa Monica, CA 90404",
+		"server" : "Dana",
+		"table": "54/1",
+		"guests": 2,
+		"date": "11/01/2018",
+		"time": "7:30 PM",
+		"order_number" : "20027",
+        "goods" : {
+            "Coke" : {
+                "amount" : 1,
+                "price" : 3.65
+            },
+			"Short Rib" : {
+                "amount" : 1,
+                "price" : 27.95
+            },
+			"Diet Coke" : {
+                "amount" : 1,
+                "price" : 3.65
+            },
+			"Crispy Naked Wings" : {
+                "amount" : 1,
+                "price" : 11.95
+            },
+			"Rib Eye Steak" : {
+                "amount" : 1,
+                "price" : 35.75
+            }
+        },
+        "sub_total" : 82.95,
+        "tax" : 8.5,
+		"total" : 91.45,
+		"count_of_data": 26
+    },
+    "1049-receipt.jpg" : 
+    {
+		"company" : "KICKIN KAJUN KAPOLEI Ka Makana Ali'i",
+        "address" : "91-5431 Kapolei Parkway, Suite 426 Kapolei, HI 96707",
+		"phone_number" : "(808) 628-4771",
+		"server" : "Chenay B",
+		"table": "Table 2",
+		"date": "7/18/19",
+		"time": "5:47 PM",
+        "goods" : {
+            "Margarita" : {
+                "amount" : 1,
+                "price" : 6.0
+            },
+			"Add Tequila" : {
+                "amount" : 1,
+                "price" : 4.0
+            },
+			"Strawberry Daiquiri" : {
+                "amount" : 1,
+                "price" : 6.0
+            },
+			"Add Vodca" : {
+                "amount" : 1,
+                "price" : 4.0
+            },
+			"Snow Combo" : {
+                "amount" : 1,
+                "price" : 54.0
+            },
+			"Kickin Sauce" : {
+                "amount" : 1,
+                "price" : 0.0
+            },
+			"Mild" : {
+                "amount" : 1,
+                "price" : 0.0
+            }
+        },
+        "sub_total" : 74.0,
+        "tax" : 3.49,
+		"total" : 77.49,
+		"count_of_data": 31
+    }
 }

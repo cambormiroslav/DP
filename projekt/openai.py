@@ -1,8 +1,7 @@
 import base64
 import requests
 import os
-import time
-import json
+import datetime
 
 import functions
 
@@ -41,29 +40,44 @@ def send_image_request(image_path, text_request):
     }
     return requests.post("https://api.openai.com/v1/chat/completions", headers=headers, json=payload).json()["choices"][0]["message"]["content"].replace("Here's the extracted information in JSON format:\n\n", "").replace("```json\n", "").replace("\n```", "")
 
-def get_the_data_from_img_in_dir(dir_path):
+def load_and_measure(dir_path, number_of_tickets):
     i = 0
-    array_of_outputs = []
-    array_of_diffs = []
     for file in os.listdir(dir_path):
-        start_time = time.time()
+        start_datetime = datetime.datetime.now()
         response = send_image_request(dir_path + file, pattern)
-        end_time = time.time()
-        diff_time = end_time - start_time
-        array_of_outputs += [response]
-        array_of_diffs += [diff_time]
-        i += 1
-        print(i)
+        end_datetime = datetime.datetime.now()
 
-    return (array_of_outputs, array_of_diffs)
+        data_tuple = functions.check_the_data(response, file, correct_data_path)
+        correctness = data_tuple[0]
+        correct_data = data_tuple[1]
+        incorect_data = data_tuple[2]
+        not_found_data = data_tuple[3]
+        good_not_found = data_tuple[4]
+        dict_of_incorect = data_tuple[5]
+        array_not_found = data_tuple[6]
+        array_good_not_found = data_tuple[7]
+        diff_datetime = end_datetime - start_datetime
+        diff_datetime_seconds = diff_datetime.total_seconds()
+
+        functions.save_to_file("chatgpt", "ticket", [correctness, correct_data, 
+                                                 incorect_data, not_found_data, 
+                                                 good_not_found, diff_datetime_seconds], 
+                                                 dict_of_incorect, array_not_found, 
+                                                 array_good_not_found)
+        print(correctness, correct_data, incorect_data, not_found_data, 
+              good_not_found, diff_datetime_seconds, dict_of_incorect,
+              array_not_found, array_good_not_found)
+        i += 1
+        print("Receipt: ", i)
+
+        if i == number_of_tickets:
+            break
 
 if __name__ == "__main__":
     dir_path = "../dataset/large-receipt-image-dataset-SRD/"
     
-    """ array_of_outputs, array_of_diffs = get_the_data_from_img_in_dir(dir_path)
-    print(array_of_outputs[2], len(array_of_outputs), array_of_diffs[2])
-    print(functions.get_avg_time_run(array_of_diffs)) """
+    load_and_measure(dir_path, 3)
 
-    correctness, correct_data, incorect_data, not_found_data, dict_of_incorect, array_not_found = functions.check_the_data(send_image_request(dir_path + "1000-receipt.jpg", pattern), "1000-receipt.jpg", correct_data_path)
+    """ correctness, correct_data, incorect_data, not_found_data, dict_of_incorect, array_not_found = functions.check_the_data(send_image_request(dir_path + "1000-receipt.jpg", pattern), "1000-receipt.jpg", correct_data_path)
     print(correctness, correct_data, incorect_data, not_found_data, dict_of_incorect, array_not_found)
-    functions.save_to_file("openai", "ticket", [correctness, correct_data, incorect_data, not_found_data], dict_of_incorect, array_not_found)
+    functions.save_to_file("openai", "ticket", [correctness, correct_data, incorect_data, not_found_data], dict_of_incorect, array_not_found) """
