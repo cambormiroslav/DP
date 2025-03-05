@@ -14,15 +14,26 @@ model = "llava"
 #model = "minicpm-v"
 #model  = "knoopx/mobile-vlm:3b-fp16"
 
+"""
+* Transform the input image to base64.
 
+Input: Path to input image
+Output: Base64 image
+"""
 def get_image_in_base64(path_to_image):
     with open(path_to_image, "rb") as image_file:
         image_base64 = base64.b64encode(image_file.read()).decode("utf-8")
     
     return image_base64
 
+"""
+* Send request to the model
+
+Input: (Image in base64, Text pattern for model)
+Output: Response as text
+"""
 def send_image_request(image_base64, text_request):
-    url_llava = "http://localhost:11434/api/generate"
+    url = "http://localhost:11434/api/generate"
     payload = {
         "model" : model,
         "prompt" : text_request,
@@ -30,24 +41,22 @@ def send_image_request(image_base64, text_request):
         "images" : [image_base64]
     }
 
-    response = requests.post(url_llava, data=json.dumps(payload))
+    response = requests.post(url, data=json.dumps(payload))
 
     return response.json()["response"].replace("```json\n", "").replace("\n```", "")
 
-def send_image_request_all(image_base64, text_request):
-    url_llava = "http://localhost:11434/api/generate"
-    payload = {
-        "model" : model,
-        "prompt" : text_request,
-        "stream" : False,
-        "images" : [image_base64]
-    }
+"""
+* Load the specified number of images from directory path.
+* Measure the time of run between request and response of model is seconds.
+* Call reformat the image as base64.
+* Call method that send request to model.
+* Call check of data got from model as response.
+* Call saving of got data from checking data for future data processing.
 
-    response = requests.post(url_llava, data=json.dumps(payload))
-
-    return response.json()
-
-def load_and_measure(dir_path, number_of_tickets):
+Input: (Path to directory with input images, count of input images)
+Output: None (but call save to file)
+"""
+def load_and_measure(dir_path, count_of_images):
     i = 0
     for file in os.listdir(dir_path):
         start_datetime = datetime.datetime.now()
@@ -78,7 +87,7 @@ def load_and_measure(dir_path, number_of_tickets):
         i += 1
         print("Receipt: ", i)
 
-        if i == number_of_tickets:
+        if i == count_of_images:
             break
     
 if __name__ == "__main__":

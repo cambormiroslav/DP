@@ -1,13 +1,16 @@
 import json
 
-def get_avg_time_run(array_of_diffs):
-    sum_time = 0
+"""
+* Check the response characteristics.
+* Check corectness of data.
+* I not corrected output is: (0, 0, 0, count_of_correct_data, 0, {}, [], []).
 
-    for diff in array_of_diffs:
-        sum_time += diff
-    
-    return sum_time / len(array_of_diffs)
-
+Input: (Dictionary model as string, Name of comparing img, Path to correct data file)
+Output: (Correctness, Count of correct data, Count of incorrect data, 
+        Not founded data in response (main keys), Not founded number of goods,
+        Dictionary of incorrect data, Array of not founded data (only keys),
+        Array of not founded names goods)
+"""
 def check_the_data(dict_model, name_of_file, path_to_correct_data):
     correct_data_counted = 0
     incorrect_data_counted = 0
@@ -249,7 +252,13 @@ def check_the_data(dict_model, name_of_file, path_to_correct_data):
         correctness = correct_data_counted / count_of_data
 
         return (correctness, correct_data_counted, incorrect_data_counted, not_in_dict_counted, goods_not_counted, dict_incorrect, array_not_found, array_goods_not)
-    
+"""
+* Save the characteristics of model response to the file.
+
+Input: (model name, type of data, charakteristics of data and time of run, incorrect data dict, 
+        not founded data array, not founded goods)
+Output: None
+"""  
 def save_to_file(model, type_of_data, values, incorrect_data, not_found_data, good_not_found):
     output_file_path = f"./output/{model}_{type_of_data}.txt"
 

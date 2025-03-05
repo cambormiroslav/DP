@@ -8,6 +8,12 @@ api_key = os.environ["GEMINI_API_KEY"]
 pattern = "Get me the list of goods from picture. Show the address, date, time and name of company. When you find the phone number show it too. When you find you find the table number, the information about guest or order number show it too. Show me the output as JSON. The company name put in key company, the address of company in key address, phone number in key phone_number, server name in key server, station number in key station, order number in key order_number, table info in key table, number of guests in key guests, subtotal price to key sub_total, tax in key tax, total cost in key total, date in key date, time in key time. Every good name will be as key of the JSON in key goods and value of the good will be the another JSON with amount of goods in key amount and the cost of the good in key price."
 correct_data_path = "../data_for_control/dataset_correct_data.json"
 
+"""
+* Send request to the model
+
+Input: (Image in base64, Text pattern for model)
+Output: Response as text
+"""
 def send_image_request(image_path, text_request):
     myfile = genai.upload_file(image_path)
     genai.configure(api_key=api_key)
@@ -18,6 +24,16 @@ def send_image_request(image_path, text_request):
         )
     return result.text.replace("```json\n", "").replace("\n```", "")
 
+"""
+* Load the specified number of images from directory path.
+* Measure the time of run between request and response of model is seconds.
+* Call method that send request to model.
+* Call check of data got from model as response.
+* Call saving of got data from checking data for future data processing.
+
+Input: (Path to directory with input images, count of input images)
+Output: None (but call save to file)
+"""
 def load_and_measure(dir_path, number_of_tickets):
     i = 0
     for file in os.listdir(dir_path):
