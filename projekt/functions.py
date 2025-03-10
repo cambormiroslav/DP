@@ -102,7 +102,7 @@ def check_the_data(dict_model, name_of_file, path_to_correct_data):
             array_not_found += ["station"]
         
         try:
-            order_number_data = int(dict_model["order_number"])
+            order_number_data = dict_model["order_number"]
             if data["order_number"] == order_number_data:
                 print("Order Number Correct")
                 correct_data_counted += 1
@@ -111,7 +111,7 @@ def check_the_data(dict_model, name_of_file, path_to_correct_data):
                 incorrect_data_counted += 1
                 dict_incorrect["order_number"] = order_number_data
         except:
-            print("Order NUmber Not In Dict")
+            print("Order Number Not In Dict")
             not_in_dict_counted += 1
             array_not_found += ["order_number"]
         
@@ -143,42 +143,48 @@ def check_the_data(dict_model, name_of_file, path_to_correct_data):
             not_in_dict_counted += 1
             array_not_found += ["guests"]
 
-        for good in data["goods"]:
-            if (good in dict_model["goods"]):
-                correct_data_counted += 1
-                print("Good Correct")
-                try:
-                    amount_data = int(dict_model["goods"][good]["amount"])
-                    if data["goods"][good]["amount"] == amount_data:
-                        print("Amount Correct")
-                        correct_data_counted += 1
-                    else:
-                        print("Amount Incorrect")
-                        incorrect_data_counted += 1
-                        dict_incorrect["amount"] = amount_data
-                except:
-                    print("Amount Not In Dict")
-                    not_in_dict_counted += 1
-                    array_not_found += ["amount"]
+        try:
+            for good in data["goods"]:
+                if (good in dict_model["goods"]):
+                    correct_data_counted += 1
+                    print("Good Correct")
+                    try:
+                        amount_data = int(dict_model["goods"][good]["amount"])
+                        if data["goods"][good]["amount"] == amount_data:
+                            print("Amount Correct")
+                            correct_data_counted += 1
+                        else:
+                            print("Amount Incorrect")
+                            incorrect_data_counted += 1
+                            dict_incorrect["amount"] = amount_data
+                    except:
+                        print("Amount Not In Dict")
+                        not_in_dict_counted += 1
+                        array_not_found += ["amount"]
                 
-                try:
-                    price_data = float(dict_model["goods"][good]["price"])
-                    if data["goods"][good]["price"] == price_data:
-                        print("Price Correct")
-                        correct_data_counted += 1
-                    else:
-                        print("Price Incorrect")
-                        incorrect_data_counted += 1
-                        dict_incorrect["price"] = price_data
-                except:
-                    print("Price Not In Dict")
-                    not_in_dict_counted += 1
-                    array_not_found += ["price"]
-            else:
-                print(f"{good} Incorrect Or Not In File")
-                goods_not_counted += 1
+                    try:
+                        price_data = float(dict_model["goods"][good]["price"])
+                        if data["goods"][good]["price"] == price_data:
+                            print("Price Correct")
+                            correct_data_counted += 1
+                        else:
+                            print("Price Incorrect")
+                            incorrect_data_counted += 1
+                            dict_incorrect["price"] = price_data
+                    except:
+                        print("Price Not In Dict")
+                        not_in_dict_counted += 1
+                        array_not_found += ["price"]
+                else:
+                    print(f"{good} Incorrect Or Not In File")
+                    goods_not_counted += 1
+                    array_goods_not += [good]
+        except:
+            goods_not_counted = len(data["goods"])
+            for good in data["goods"]:
                 array_goods_not += [good]
-        
+                print(f"{good} Incorrect Or Not In File")
+
         try:
             subtotal_data = float(dict_model["sub_total"])
             if data["sub_total"] == subtotal_data:

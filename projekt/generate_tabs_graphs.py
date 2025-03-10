@@ -1,4 +1,5 @@
 import os
+import matplotlib.pyplot as plt
 
 output_dir = "./output/"
 
@@ -13,41 +14,57 @@ time_run_dict = {}
 def generate_tab():
     pass
 
-def generate_boxplot(labels, values):
-    pass
+def generate_boxplot(tick_labels, values, y_label):
+    colors = ['peachpuff', 'orange', 'tomato']
+
+    fig, ax = plt.subplots()
+    ax.set_ylabel(y_label)
+    bplot = ax.boxplot(values, patch_artist=True)
+
+    for patch, color in zip(bplot['boxes'], colors):
+        patch.set_facecolor(color)
+
+    plt.show()
 
 def generate_graph(type_of_data):
-    labels = []
+    tick_labels = []
     values = []
+    y_label = ""
 
     if type_of_data == "correctness":
         for key in correctness_dict:
-            labels += [key]
+            tick_labels += [key]
             values += [correctness_dict[key]]
+            y_label = "Správnost výsledku"
     elif type_of_data == "correct_data":
         for key in correct_data_count_dict:
-            labels += [key]
+            tick_labels += [key]
             values += [correct_data_count_dict[key]]
+            y_label = "Počty správných dat"
     elif type_of_data == "incorrect_data":
         for key in incorrect_data_count_dict:
-            labels += [key]
+            tick_labels += [key]
             values += [incorrect_data_count_dict[key]]
+            y_label = "Počty špatnných dat"
     elif type_of_data == "not_found":
         for key in not_finded_main_count_key_dict:
-            labels += [key]
+            tick_labels += [key]
             values += [not_finded_main_count_key_dict[key]]
+            y_label = "Počty nenalezených dat"
     elif type_of_data == "goods_not_found":
         for key in goods_not_finded_count_dict:
-            labels += [key]
+            tick_labels += [key]
             values += [goods_not_finded_count_dict[key]]
+            y_label = "Počty nenalezených zboží"
     elif type_of_data == "time_of_run":
         for key in time_run_dict:
-            labels += [key]
+            tick_labels += [key]
             values += [time_run_dict[key]]
+            y_label = "Délka běhu [s]"
     else:
         print("Not found type of data.")
         return
-    generate_boxplot(labels, values)
+    generate_boxplot(tick_labels, values, y_label)
 
 
 def load_all_data():
@@ -83,3 +100,5 @@ def load_all_data():
 
 if __name__ == "__main__":
     load_all_data()
+
+    generate_graph("correctness")

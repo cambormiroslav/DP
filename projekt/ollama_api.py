@@ -93,7 +93,10 @@ def load_and_measure(dir_path, count_of_images):
 if __name__ == "__main__":
     dir_path = "../dataset/large-receipt-image-dataset-SRD/"
 
-    load_and_measure(dir_path, 2)
+    load_and_measure(dir_path, 10)
+    
+    model = "bakllava"
+    load_and_measure(dir_path, 10)
 
     #print(send_image_request_all(get_image_in_base64(dir_path + "1000-receipt.jpg"), pattern))
 
