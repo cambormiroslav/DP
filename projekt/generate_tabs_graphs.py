@@ -1,5 +1,6 @@
 import os
 import matplotlib.pyplot as plt
+import pandas as pd
 
 output_dir = "./output/"
 
@@ -14,17 +15,20 @@ time_run_dict = {}
 def generate_tab():
     pass
 
-def generate_boxplot(tick_labels, values, y_label):
-    colors = ['peachpuff', 'orange', 'tomato']
+def generate_boxplot(tick_labels, values, y_label, type_data):
+    colors = ['blue', 'green', 'red', 'purple', 'brown',
+              'pink', 'gray', 'olive', 'cyan', 'maroon',
+              'gold', 'lime']
 
     fig, ax = plt.subplots()
     ax.set_ylabel(y_label)
+    ax.set_xticklabels(tick_labels)
     bplot = ax.boxplot(values, patch_artist=True)
 
     for patch, color in zip(bplot['boxes'], colors):
         patch.set_facecolor(color)
 
-    plt.show()
+    plt.savefig(f"./graphs/{type_data}.png")
 
 def generate_graph(type_of_data):
     tick_labels = []
@@ -64,7 +68,8 @@ def generate_graph(type_of_data):
     else:
         print("Not found type of data.")
         return
-    generate_boxplot(tick_labels, values, y_label)
+    
+    generate_boxplot(tick_labels, values, y_label, type_of_data)
 
 
 def load_all_data():
