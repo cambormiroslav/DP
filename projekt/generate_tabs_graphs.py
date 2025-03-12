@@ -11,10 +11,6 @@ not_finded_main_count_key_dict = {}
 goods_not_finded_count_dict = {}
 time_run_dict = {}
 
-
-def generate_tab():
-    pass
-
 def generate_boxplot(tick_labels, values, y_label, type_data):
     colors = ['blue', 'green', 'red', 'purple', 'brown',
               'pink', 'gray', 'olive', 'cyan', 'maroon',

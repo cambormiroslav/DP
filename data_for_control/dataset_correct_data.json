@@ -1626,5 +1626,776 @@
         "tax" : 3.49,
 		"total" : 77.49,
 		"count_of_data": 31
+    },
+    "1050-receipt.jpg" : 
+    {
+		"company" : "HOLLYWOOD CAFE & SPORTS BAR",
+        "address" : "AM Dining Rm",
+		"date": "09/08/2017",
+		"time": "12:45:41 PM",
+		"order_number" : "332114",
+		"table": "42",
+		"server" : "346",
+		"guests": 1,
+        "goods" : {
+            "SODA" : {
+                "amount" : 1,
+                "price" : 2.49
+            },
+			"CHEESE STEAK" : {
+                "amount" : 1,
+                "price" : 10.49
+            },
+			"+AMERICAN CHS" : {
+                "amount" : 1,
+                "price" : 1.0
+            },
+			"+FRD ONION" : {
+                "amount" : 1,
+                "price" : 0.75
+            },
+			"Chix Cheesesteak" : {
+                "amount" : 1,
+                "price" : 10.49
+            }
+        },
+        "sub_total" : 25.22,
+        "tax" : 1.74,
+		"total" : 26.96,
+		"count_of_data": 26
+    },
+    "1051-receipt.jpg" : 
+    {
+		"company" : "GENERAL POOR'S",
+        "address" : "45 MAIN STREET HACKENSACK, NJ 07601",
+		"phone_number" : "(201)487-5882",
+		"order_number" : "555149",
+		"guests": 0,
+		"date": "04/10/16",
+		"time": "12:30pm",
+		"server" : "VERONIQUE",
+        "goods" : {
+            "BONELESS WINGS SPEC" : {
+                "amount" : 1,
+                "price" : 10.0
+            }
+        },
+        "sub_total" : 10.0,
+        "tax" : 0.70,
+		"total" : 10.70,
+		"count_of_data": 14
+    },
+    "1052-receipt.jpg" : 
+    {
+		"company" : "Nancy's",
+        "address" : "255-41 Jericho Turnpike Floral Park, NY 11001",
+		"phone_number" : "718.343-4616",
+		"server" : "Tom",
+		"order_number" : "1075",
+		"guests": 2,
+		"table": "34-1",
+		"date": "09/24/2016",
+		"time": "8:22PM",
+        "goods" : {
+            "gl Imp White" : {
+                "amount" : 1,
+                "price" : 7.75
+            },
+			"Blue Moon Tap" : {
+                "amount" : 1,
+                "price" : 6.0
+            },
+			"Mozzarella&Tomato" : {
+                "amount" : 1,
+                "price" : 9.95
+            },
+			"Pork Quesadilla" : {
+                "amount" : 1,
+                "price" : 9.95
+            },
+			"Fren Onion Soup" : {
+                "amount" : 1,
+                "price" : 5.95
+            },
+			"Pork Chop" : {
+                "amount" : 1,
+                "price" : 21.95
+            },
+			"Hanger Sizzle" : {
+                "amount" : 1,
+                "price" : 24.95
+            }
+        },
+        "sub_total" : 86.5,
+        "tax" : 7.68,
+		"total" : 94.18,
+		"count_of_data": 33
+    },
+    "1053-receipt.jpg" : 
+    {
+		"company" : "Primo Family Restaurant",
+		"date": "5/3/19",
+		"time": "8:14 PM",
+		"server" : "DARWIN D.",
+		"table": "10",
+		"order_number" : "137",
+        "goods" : {
+            "Prem Glass" : {
+                "amount" : 3,
+                "price" : 22.5
+            },
+			"MED Veggie" : {
+                "amount" : 1,
+                "price" : 27.0
+            }
+        },
+        "sub_total" : 49.5,
+        "tax" : 2.97,
+		"total" : 52.47,
+		"count_of_data": 15
+    },
+    "1054-receipt.jpg" : 
+    {
+		"company" : "BIG JO'S",
+		"address" : "1955 BROADWAY SANTA MONICA, CA 90404",
+		"phone_number" : "(310) 828-3191",
+		"date": "Jan 25, 2018",
+		"time": "11:47 AM",
+        "goods" : {
+            "HB Regular Price" : {
+                "amount" : 1,
+                "price" : 4.0
+            },
+			"French Fries" : {
+                "amount" : 2,
+                "price" : 5.0
+            },
+			"Turkey Burger Combo" : {
+                "amount" : 1,
+                "price" : 8.85
+            },
+			"HB Combo, Grilled Onion" : {
+                "amount" : 1,
+                "price" : 8.35
+            },
+			"CB Combo" : {
+                "amount" : 2,
+                "price" : 15.7
+            },
+			"CB Regular Price, Grilled Onion" : {
+                "amount" : 1,
+                "price" : 5.0
+            },
+			"Chill Fries" : {
+                "amount" : 1,
+                "price" : 4.35
+            }
+        },
+        "sub_total" : 51.25,
+        "tax" : 5.25,
+		"total" : 56.5,
+		"count_of_data": 29
+    },
+    "1055-receipt.jpg" : 
+    {
+		"company" : "WINGS & THINGS",
+		"address" : "519 FULTON AVE. HEMPSTEAD NY",
+		"phone_number" : "516-483-0936",
+		"order_number" : "195",
+        "goods" : {
+            "#7 2PC R&B MEAL ICED TEA SUB CORNBREAD" : {
+                "amount" : 1,
+                "price" : 5.99
+            },
+			"#3 3WING MEAL SIERRA" : {
+                "amount" : 1,
+                "price" : 6.99
+            },
+			"SUB FIXN MAC&CHZ" : {
+                "amount" : 2,
+                "price" : 0.0
+            },
+			"#3 3WING MEAL ICED TEA" : {
+                "amount" : 2,
+                "price" : 13.98
+            },
+			"SUB FIXN SP RICE" : {
+                "amount" : 1,
+                "price" : 0.0
+            },
+			"COLL GRN - SMALL" : {
+                "amount" : 1,
+                "price" : 1.19
+            }
+        },
+        "tax" : 2.43,
+		"total" : 30.58,
+		"count_of_data": 24
+    },
+    "1056-receipt.jpg" : 
+    {
+		"company" : "ZOCA RESTAURANT",
+		"address" : "98 GARFIELD PARKWAY BETHANY BEACH, DE 19930",
+		"phone_number" : "(320) 616-2120",
+		"order_number" : "5033",
+		"server" : "Madi B",
+		"table": "31/2",
+		"date": "7/30/19",
+		"time": "7:53 pM",
+		"guests": 5,
+        "goods" : {
+            "Flying Dog Numero Uno BTL" : {
+                "amount" : 1,
+                "price" : 8.0
+            },
+			"House Recipe" : {
+                "amount" : 1,
+                "price" : 12.0
+            },
+			"Sandia Margarita" : {
+                "amount" : 2,
+                "price" : 26.0
+            },
+			"Totem Honey Bee" : {
+                "amount" : 1,
+                "price" : 11.0
+            },
+			"Queso Fresco Guacamole" : {
+                "amount" : 1,
+                "price" : 12.0
+            },
+			"Queso Fundido Mexican Street Corn Dip" : {
+                "amount" : 1,
+                "price" : 0.0
+            },
+			"Salsa De Molcajete" : {
+                "amount" : 1,
+                "price" : 8.0
+            },
+			"Taquitos Carne Asada" : {
+                "amount" : 2,
+                "price" : 30.0
+            },
+			"Taquitos Baja California Shrimp" : {
+                "amount" : 1,
+                "price" : 14.0
+            },
+			"Mole Enchilada" : {
+                "amount" : 1,
+                "price" : 19.0
+            },
+			"Quesadilla Chicken" : {
+                "amount" : 1,
+                "price" : 12.0
+            }
+        },
+		"sub_total" : 152.00,
+        "tax" : 0.00,
+		"total" : 152.0,
+		"count_of_data": 45
+    },
+    "1057-receipt.jpg" : 
+    {
+		"company" : "CAFE PARISIEN LARCHMONT LLC",
+		"address" : "242 N LARCHMONT BLVD LOS ANGELES, CA 90004",
+		"phone_number" : "(310) 815-8222",
+		"server" : "Kimberly L.",
+		"order_number" : "YWG5",
+		"date": "Jan 24, 2019",
+		"time": "10:29 AM",
+		"table": "36",
+        "goods" : {
+            "CROISSANT AUX RAISINS" : {
+                "amount" : 1,
+                "price" : 4.0
+            },
+			"Cappucino" : {
+                "amount" : 1,
+                "price" : 4.75
+            }
+        },
+		"sub_total" : 8.75,
+        "tax" : 0.83,
+		"total" : 9.58,
+		"count_of_data": 17
+    },
+    "1058-receipt.jpg" : 
+    {
+		"company" : "Caldera",
+		"address" : "590 Clover Lane Ashland, OR",
+		"phone_number" : "(541) 482-HOPS",
+		"server" : "Hope",
+		"guests": 2,
+		"date": "12/28/2017",
+		"time": "7:06 PM",
+		"order_number" : "20071",
+        "goods" : {
+            "Glass Imp Stout" : {
+                "amount" : 1,
+                "price" : 5.0
+            },
+			"Ashland Amber" : {
+                "amount" : 1,
+                "price" : 4.75
+            },
+			"Butter Noodles" : {
+                "amount" : 1,
+                "price" : 7.0
+            },
+			"Oatmeal Stout" : {
+                "amount" : 1,
+                "price" : 4.75
+            },
+			"Mahi Mahi TACO" : {
+                "amount" : 1,
+                "price" : 15.0
+            }
+        },
+		"sub_total" : 36.5,
+        "tax" : 1.1,
+		"total" : 37.6,
+		"count_of_data": 26
+    },
+    "1059-receipt.jpg" : 
+    {
+		"company" : "LANDFALL RESTAURANT",
+		"order_number" : "0084",
+		"table": "31",
+		"guests": 3,
+		"server" : "DWYER M",
+		"date": "06/10/17",
+		"time": "11:47a",
+        "goods" : {
+            "CUP CHOWDER" : {
+                "amount" : 1,
+                "price" : 6.0
+            }
+        },
+		"sub_total" : 6.0,
+        "tax" : 0.4,
+		"total" : 7.55,
+		"phone_number" : "508-548-1758",
+		"count_of_data": 14
+    },
+    "1060-receipt.jpg" : 
+    {
+		"company" : "1660 India Street",
+		"server" : "Jake",
+		"table": "24/1",
+		"guests": 2,
+		"date": "12/17/2017",
+		"time": "6:29 PM",
+		"order_number" : "20018",
+        "goods" : {
+            "Gl Karma Cab Sauv" : {
+                "amount" : 1,
+                "price" : 12.0
+            },
+			"Gl Douglass Green SB" : {
+                "amount" : 1,
+                "price" : 11.0
+            },
+			"PKLI Green Curry Scallops" : {
+                "amount" : 1,
+                "price" : 27.95
+            },
+			"PKLI Piri Piri Chicken" : {
+                "amount" : 1,
+                "price" : 23.75
+            }
+        },
+		"sub_total" : 74.7,
+        "tax" : 6.0,
+		"total" : 83.5,
+		"count_of_data": 22
+    },
+    "1061-receipt.jpg" : 
+    {
+		"company" : "Chili's Grill & Bar",
+		"address" : "Puente Hills #26 17588 Castleton St City of Industry,CA 91748",
+		"server" : "Jose S",
+		"table": "33/1",
+		"guests": 2,
+		"date": "09/15/2018",
+		"time": "1:25 PM",
+		"order_number" : "2060012",
+        "goods" : {
+            "TRIPLE DIPPER" : {
+                "amount" : 1,
+                "price" : 12.19
+            },
+			"CHICKEN WAFFLES4" : {
+                "amount" : 1,
+                "price" : 11.89
+            }
+        },
+		"sub_total" : 24.08,
+        "tax" : 2.29,
+		"total" : 26.37,
+		"count_of_data": 17
+    },
+    "1062-receipt.jpg" : 
+    {
+		"company" : "MARIANACCI'S RESTAURANT",
+		"table": "403",
+		"order_number" : "39",
+		"server" : "Roger",
+		"guests": 4,
+		"date": "FEB 18/17",
+		"time": "8:19PM",
+        "goods" : {
+            "PREM WHITE" : {
+                "amount" : 1,
+                "price" : 10.75
+            },
+			"PREM RED" : {
+                "amount" : 1,
+                "price" : 10.75
+            },
+			"DIET SDA" : {
+                "amount" : 2,
+                "price" : 7.5
+            },
+			"7 UP" : {
+                "amount" : 2,
+                "price" : 6.5
+            },
+			"VONG RIPIENE" : {
+                "amount" : 1,
+                "price" : 9.75
+            },
+			"Chicken Parm" : {
+                "amount" : 1,
+                "price" : 21.75
+            },
+			"SCAMPI MILAN" : {
+                "amount" : 1,
+                "price" : 25.75
+            },
+			"LING VONG" : {
+                "amount" : 1,
+                "price" : 22.75
+            },
+			"1/2 PASTA SP" : {
+                "amount" : 1,
+                "price" : 16.75
+            }
+        },
+		"sub_total" : 132.25,
+        "tax" : 9.76,
+		"total" : 142.01,
+		"count_of_data": 37
+    },
+    "1063-receipt.jpg" : 
+    {
+		"company" : "Primo Family Restaurant",
+		"date": "5/3/19",
+		"time": "8:14 PM",
+		"server" : "DARWIN D.",
+		"table": "10",
+		"order_number" : "137",
+        "goods" : {
+            "Prem Glass" : {
+                "amount" : 3,
+                "price" : 22.5
+            },
+			"MED Veggie" : {
+                "amount" : 1,
+                "price" : 27.0
+            }
+        },
+		"sub_total" : 49.5,
+        "tax" : 2.97,
+		"total" : 52.47,
+		"count_of_data": 15
+    },
+    "1064-receipt.jpg" : 
+    {
+		"company" : "IN-N-OUT BURGER ESCONDIDO",
+		"date": "2013-08-10",
+		"time": "3:04 PM",
+		"server" : "ADAM EL",
+		"order_number" : "25",
+        "goods" : {
+            "DblDbl" : {
+                "amount" : 1,
+                "price" : 3.3
+            },
+			"3X3" : {
+                "amount" : 1,
+                "price" : 4.35
+            },
+			"FF" : {
+                "amount" : 1,
+                "price" : 1.6
+            },
+			"FF Animal" : {
+                "amount" : 1,
+                "price" : 3.5
+            },
+			"Lg Coke" : {
+                "amount" : 1,
+                "price" : 1.7
+            },
+			"Med Coke" : {
+                "amount" : 1,
+                "price" : 1.5
+            },
+			"** C Shk" : {
+                "amount" : 1,
+                "price" : 2.05
+            }
+        },
+		"sub_total" : 18.0,
+        "tax" : 1.44,
+		"total" : 19.44,
+		"count_of_data": 29
+    },
+    "1065-receipt.jpg" : 
+    {
+		"company" : "Taco Maria",
+		"address" : "3313 Hyland Ave. Ste C21 Costa Mesa, CA 92626",
+		"phone_number" : "714 538 8444",
+		"order_number" : "118888",
+		"server" : "Jesa R",
+		"table": "Bar 7",
+		"date": "1/23/18",
+		"time": "12:16 PM",
+        "goods" : {
+            "Chicken" : {
+                "amount" : 1,
+                "price" : 15.0
+            },
+			"Pescado" : {
+                "amount" : 1,
+                "price" : 18.0
+            },
+			"Arrachera solo" : {
+                "amount" : 1,
+                "price" : 9.5
+            }
+        },
+		"sub_total" : 42.5,
+        "tax" : 3.29,
+		"total" : 45.79,
+		"count_of_data": 20
+    },
+    "1066-receipt.jpg" : 
+    {
+		"company" : "RISTORANTE BELLAGIO (CO)",
+		"phone_number" : "031/951888",
+		"date": "14/07/2019",
+		"time": "16:23",
+        "goods" : {
+            "COPERTO" : {
+                "amount" : 4,
+                "price" : 12.0
+            },
+			"ACQUA NAT" : {
+                "amount" : 2,
+                "price" : 8.0
+            },
+			"SALMERINO PIASTRA" : {
+                "amount" : 1,
+                "price" : 18.0
+            },
+			"TRENETTE AL PESTO" : {
+                "amount" : 1,
+                "price" : 13.0
+            },
+			"SPAGHETTI POM. BASILICO" : {
+                "amount" : 1,
+                "price" : 10.0
+            },
+			"FETTUCCINE RAGU'" : {
+                "amount" : 1,
+                "price" : 15.0
+            },
+			"PATATINE FRITTE" : {
+                "amount" : 1,
+                "price" : 6.0
+            }
+        },
+		"total" : 82.00,
+		"count_of_data": 26
+    },
+    "1067-receipt.jpg" : 
+    {
+		"company" : "Anjappar Chettinad Artesia",
+		"address" : "18128 Pioneer Blvd Artesia, Ca 90701",
+		"phone_number" : "(562) 991-1801",
+		"order_number" : "004-864",
+		"table": "C16",
+		"server" : "Deepthi R",
+        "goods" : {
+            "Ghee Dosa" : {
+                "amount" : 1,
+                "price" : 7.95
+            },
+			"Anjappar Mutton Meals" : {
+                "amount" : 1,
+                "price" : 14.95
+            },
+			"Kaldosa" : {
+                "amount" : 1,
+                "price" : 6.95
+            },
+			"Plain Dosa" : {
+                "amount" : 1,
+                "price" : 6.95
+            }
+        },
+		"sub_total" : 36.8,
+        "tax" : 3.5,
+		"total" : 40.3,
+		"count_of_data": 21
+    },
+    "1068-receipt.jpg" : 
+    {
+		"company" : "Cafe Eugene",
+		"address" : "1175 Solano Avenue Albany CA 94706",
+		"phone_number" : "510-647-9999",
+		"table": "Table 10",
+		"date": "4/10/16",
+		"time": "9:08 AM",
+        "goods" : {
+            "Pork" : {
+                "amount" : 1,
+                "price" : 17.0
+            },
+			"Pancakes" : {
+                "amount" : 1,
+                "price" : 12.0
+            },
+			"Side Bacon" : {
+                "amount" : 1,
+                "price" : 4.0
+            },
+			"Regular" : {
+                "amount" : 2,
+                "price" : 6.0
+            }
+        },
+		"sub_total" : 39.0,
+        "tax" : 3.9,
+		"total" : 42.9,
+		"count_of_data": 21
+    },
+    "1069-receipt.jpg" : 
+    {
+		"company" : "River Village Family Restaurant",
+		"address" : "22825 Huron River Dr Rockwood,MI 48173",
+		"phone_number" : "(734)236-4033",
+		"server" : "Jasmine G",
+		"order_number" : "7",
+		"date": "08/12/19",
+		"time": "8:02 AM",
+        "goods" : {
+            "Apple French Toast" : {
+                "amount" : 1,
+                "price" : 7.99
+            },
+			"Coffee" : {
+                "amount" : 1,
+                "price" : 2.29
+            }
+        },
+		"sub_total" : 10.28,
+        "tax" : 0.62,
+		"total" : 10.9,
+		"count_of_data": 16
+    },
+    "1070-receipt.jpg" : 
+    {
+		"company" : "Mr. M's Hot Wings & Things Inc",
+		"address" : "886 N. Garfield Ave Montebello, CA 90640",
+		"phone_number" : "(323) 477-1345",
+		"server" : "Jose",
+		"station" : 8,
+		"table": "1",
+		"guests": 1,
+        "goods" : {
+            "Ribeye Steak Lunch 10" : {
+                "amount" : 1,
+                "price" : 10.0
+            }
+        },
+		"sub_total" : 10.0,
+        "tax" : 0.95,
+		"total" : 10.95,
+		"order_number" : "32",
+		"date": "6/28/2019",
+		"time": "2:16:34 PM",
+		"count_of_data": 16
+    },
+    "1071-receipt.jpg" : 
+    {
+		"company" : "Trinity Restaurant",
+		"address" : "190 Jericho Tpke Floral Park NY 11001",
+		"phone_number" : "(516) 358-5584",
+		"order_number" : "217510",
+		"date": "02/18/17",
+		"time": "10:20 PM",
+		"table": "15",
+		"server" : "Kelly Bowe",
+        "goods" : {
+            "Quesadilla" : {
+                "amount" : 1,
+                "price" : 11.0
+            },
+			"Pot Roast" : {
+                "amount" : 1,
+                "price" : 18.0
+            },
+			"Fish An Chips" : {
+                "amount" : 1,
+                "price" : 16.0
+            },
+			"Side Salad" : {
+                "amount" : 1,
+                "price" : 4.0
+            },
+			"Dft Shock top" : {
+                "amount" : 1,
+                "price" : 5.5
+            },
+			"Dft Guiness" : {
+                "amount" : 1,
+                "price" : 15.0
+            }
+        },
+		"sub_total" : 69.5,
+        "tax" : 6.0,
+		"total" : 75.5,
+		"count_of_data": 29
+    },
+    "1072-receipt.jpg" : 
+    {
+		"company" : "OHANA HAWAIIAN BBQ",
+		"address" : "4469 SLAUSON AVE Maywood, CA 90270",
+		"phone_number" : "(323) 771-9888",
+		"server" : "karla",
+		"station" : 3,
+		"order_number" : "65193",
+        "goods" : {
+            "1/2 AND 1/2 COMBO FRIED SHRIMP SHORT RIB" : {
+                "amount" : 1,
+                "price" : 8.45
+            },
+			"1/2 AND 1/2 COMBO BBQ BEEF FRIED SHRIMP" : {
+                "amount" : 1,
+                "price" : 7.95
+            },
+			"FOUNTAIN MEDIUM" : {
+                "amount" : 2,
+                "price" : 3.5
+            }
+        },
+		"sub_total" : 19.9,
+        "tax" : 1.79,
+		"total" : 21.69,
+		"date": "6/1/2013",
+		"time": "7:44:18 PM",
+		"count_of_data": 20
     }
 }
