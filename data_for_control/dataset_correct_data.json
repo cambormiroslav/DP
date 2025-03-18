@@ -2397,5 +2397,1007 @@
 		"date": "6/1/2013",
 		"time": "7:44:18 PM",
 		"count_of_data": 20
+    },
+    "1073-receipt.jpg" : 
+    {
+		"company" : "Subway#44969-0",
+		"phone_number" : "626-585-9999",
+		"address" : "625 S Fair Oaks Ave Pasadena, CA, 91105",
+		"server" : "41",
+		"date": "5/1/2019",
+		"time": "2:25:37 pm",
+		"order_number" : "1/A-297424",
+        "goods" : {
+            "#SMS $11.99 Any 2 FtLong" : {
+                "amount" : 1,
+                "price" : 11.99
+            },
+			"12\" -Steak & Chse Sub" : {
+                "amount" : 1,
+                "price" : 0.0
+            },
+			"12\" -B.M.T. Sub" : {
+                "amount" : 2,
+                "price" : 0.0
+            }
+        },
+		"sub_total" : 11.99,
+        "tax" : 1.23,
+		"total" : 13.22,
+		"count_of_data": 19
+    },
+    "1074-receipt.jpg" : 
+    {
+		"company" : "Lin Buffet",
+		"address" : "2988 N. Expressway Brownsville,TX",
+		"phone_number" : "(956)544-6600",
+		"date": "Feb 24, 2019",
+		"time": "03:22PM",
+		"server" : "Kenya Judith",
+		"guests": 1,
+		"order_number" : "0270",
+        "goods" : {
+            "Weekend Buffet" : {
+                "amount" : 2,
+                "price" : 27.18
+            },
+			"Drink" : {
+                "amount" : 2,
+                "price" : 3.98
+            }
+        },
+		"sub_total" : 31.16,
+        "tax" : 2.57,
+		"total" : 33.73,
+		"count_of_data": 17
+    },
+    "1075-receipt.jpg" :
+    {
+		"company" : "SmokeBoxBBQ",
+		"address" : "2361 Whitney Ave Hamden, CT 06518",
+		"phone_number" : "203 909 6545",
+		"order_number" : "39",
+		"date": "5/22/2014",
+		"time": "2:02:00 PM",
+		"guests": 1,
+        "goods" : {
+            "FXN DIET BIRCH" : {
+                "amount" : 1,
+                "price" : 1.5
+            },
+			"FULL BOX" : {
+                "amount" : 1,
+                "price" : 12.0
+            }
+        },
+		"sub_total" : 13.5,
+        "tax" : 0.86,
+		"server" : "T#0000074",
+		"total" : 14.36,
+		"count_of_data": 17
+    },
+    "1076-receipt.jpg" :
+    {
+		"company" : "Paradise Restaurant",
+		"address" : "889 W. 190th Street Los Angeles, CA 90248",
+		"phone_number" : "310-324-4800",
+		"table": "31",
+		"guests": 1,
+		"server" : "Kael",
+		"date": "7/21/2018",
+		"time": "10:03:14 PM",
+		"order_number" : "0375509",
+		"sub_total" : 20.0,
+        "tax" : 2.18,
+		"total" : 25.78,
+		"count_of_data": 12
+    },
+    "1077-receipt.jpg" :
+    {
+		"company" : "NAANCHING",
+		"address" : "103 MONTGOMERY ST JERSEY CITY, NJ 07302",
+		"phone_number" : "2019840709",
+		"order_number" : "19",
+		"server" : "Kiran",
+		"date": "24-Mar-2019",
+		"time": "7:14:55P",
+        "goods" : {
+            "Chicken Lollipop" : {
+                "amount" : 1,
+                "price" : 9.0
+            },
+			"Thai Fried Rice" : {
+                "amount" : 1,
+                "price" : 12.0
+            },
+			"Chicken Tikka Masala" : {
+                "amount" : 1,
+                "price" : 16.0
+            },
+			"Naan" : {
+                "amount" : 1,
+                "price" : 3.0
+            },
+			"Vegetable Biryani" : {
+                "amount" : 1,
+                "price" : 12.0
+            },
+			"Mango Lassi" : {
+                "amount" : 1,
+                "price" : 4.0
+            }
+        },
+		"sub_total" : 56.0,
+        "tax" : 3.71,
+		"total" : 69.79,
+		"count_of_data": 28
+    },
+    "1078-receipt.jpg" :
+    {
+		"company" : "Tay Ho Oakland",
+		"order_number" : "142750",
+        "table": "Table - 7",
+		"date": "2/19/19",
+		"time": "1:20 PM",
+        "goods" : {
+            "19-D.B.B.V. - Special Combo Pho" : {
+                "amount" : 1,
+                "price" : 12.95
+            }
+        },
+		"sub_total" : 12.95,
+        "tax" : 1.23,
+		"total" : 14.18,
+		"count_of_data": 11
+    },
+    "1079-receipt.jpg" :
+    {
+		"company" : "FALMOUTH RAW BAR",
+        "address" : "56 Scranton Ave. Falmouth, MA 02540",
+        "phone_number" : "(508) 548-7729",
+		"order_number" : "5738/1",
+		"date": "07/02/18-A",
+		"time": "6:28pm",
+        "guests": 5,
+        "server" : "Abby",
+        "table": "33",
+        "goods" : {
+            "6 Oysters" : {
+                "amount" : 1,
+                "price" : 19.0
+            },
+            "Fish and Chips" : {
+                "amount" : 1,
+                "price" : 22.0
+            },
+            "MONSTAH roll" : {
+                "amount" : 3,
+                "price" : 114.0
+            },
+            "Chicken Wings" : {
+                "amount" : 1,
+                "price" : 12.0
+            },
+            "*Patron" : {
+                "amount" : 3,
+                "price" : 28.5
+            },
+            "*Sparkling Wine" : {
+                "amount" : 2,
+                "price" : 22.0
+            },
+            "*Open Liquor" : {
+                "amount" : 1,
+                "price" : 6.0
+            }
+        },
+		"sub_total" : 219.81,
+        "tax" : 15.38,
+		"total" : 235.19,
+		"count_of_data": 33
+    },
+    "1080-receipt.jpg" :
+    {
+		"company" : "Newark Buffet",
+        "address" : "35201 Newark Blvd. #W Newark CA 94560",
+        "phone_number" : "510-818-1136",
+        "date": "06/29/2019",
+		"time": "05:25 PM",
+		"server" : "Tim-11",
+        "guests": 1,
+        "table": "B11",
+        "goods" : {
+            "WEEKEND DINNER BUFFET" : {
+                "amount" : 2,
+                "price" : 39.98
+            },
+            "WEEKEND DINNER KIDS (3-5Y)" : {
+                "amount" : 1,
+                "price" : 7.99
+            },
+            "WEEKEND DINNER KIDS (6-10Y)" : {
+                "amount" : 1,
+                "price" : 10.0
+            },
+            "SODA DRINK" : {
+                "amount" : 4,
+                "price" : 7.96
+            },
+            "WEEKEND SENIOR DINNER" : {
+                "amount" : 1,
+                "price" : 18.09
+            }
+        },
+		"sub_total" : 84.02,
+        "tax" : 8.2,
+		"total" : 92.22,
+		"count_of_data": 26
+    },
+    "1081-receipt.jpg" :
+    {
+		"company" : "BRASAS RESTAURANT",
+        "address" : "6011 W ROOSEVELT RD CICERO, IL 60804",
+        "phone_number" : "7087127173",
+		"server" : "Tany",
+        "date": "02-Mar-2019",
+		"time": "12:53:48P",
+        "goods" : {
+            "Chicken Torta" : {
+                "amount" : 1,
+                "price" : 6.5
+            },
+            "Horchata" : {
+                "amount" : 1,
+                "price" : 0.0
+            },
+            "MD" : {
+                "amount" : 1,
+                "price" : 2.0
+            },
+            "Custom Item" : {
+                "amount" : 1,
+                "price" : 0.5
+            }
+        },
+		"sub_total" : 9.0,
+        "tax" : 0.97,
+		"total" : 9.97,
+		"order_number" : "T237TH0Q0T7RC",
+		"count_of_data": 22
+    },
+    "1082-receipt.jpg" :
+    {
+		"company" : "SURATI FARSAN MART",
+        "address" : "11814 186TH STREET ARTESIA, CA 90701",
+        "phone_number" : "562-860-2310",
+		"server" : "Daksh D",
+        "date": "Aug08'19",
+		"time": "07:33PM",
+		"guests": 0,
+        "goods" : {
+            "Chole Samosa *** TO GO ***" : {
+                "amount" : 1,
+                "price" : 5.99
+            }
+        },
+		"sub_total" : 5.99,
+        "tax" : 0.57,
+		"total" : 6.56,
+		"count_of_data": 13
+    },
+    "1083-receipt.jpg" :
+    {
+		"company" : "King Taco # 30",
+        "goods" : {
+            "SOPE ASADA" : {
+                "amount" : 1,
+                "price" : 3.1
+            },
+			"TACO ASADA" : {
+                "amount" : 1,
+                "price" : 1.59
+            },
+			"TACO PASTOR" : {
+                "amount" : 1,
+                "price" : 1.59
+            },
+			"QUESADILLA ASADA" : {
+                "amount" : 1,
+                "price" : 4.89
+            },
+			"ORDEN CHIPS" : {
+                "amount" : 1,
+                "price" : 1.5
+            }
+        },
+		"sub_total" : 12.67,
+        "tax" : 1.11,
+		"total" : 13.78,
+		"date": "3/17/17",
+		"time": "11:24pm",
+		"server" : "CYNTHIA",
+		"order_number" : "10368",
+		"count_of_data": 23
+    },
+    "1084-receipt.jpg" :
+    {
+		"company" : "Trattoria Saporito",
+        "address" : "328 WashingtonStreet Hoboken, NJ 07030",
+        "phone_number" : "201-533-1801",
+		"table": "4",
+		"order_number" : "27273",
+        "date": "7/1/2018",
+		"time": "5:53:48 PM",
+		"server" : "Gastone",
+		"station" : 1,
+        "goods" : {
+            "STUFFED ARTICHOKE*" : {
+                "amount" : 1,
+                "price" : 18.0
+            },
+            "BK FETT AL PORCINI *" : {
+                "amount" : 1,
+                "price" : 36.0
+            },
+            "COSTOLETTE/ALLA/PAP*" : {
+                "amount" : 1,
+                "price" : 42.0
+            },
+            "BROCCOLI RABE W/ GA*" : {
+                "amount" : 1,
+                "price" : 10.5
+            },
+            "ESPRESSO*" : {
+                "amount" : 1,
+                "price" : 3.75
+            },
+            "DBLD ESPRESSO*" : {
+                "amount" : 1,
+                "price" : 7.5
+            }
+        },
+		"sub_total" : 117.75,
+        "tax" : 8.24,
+		"total" : 125.99,
+		"count_of_data": 30
+    },
+    "1085-receipt.jpg" :
+    {
+		"company" : "Pita Pita - Lombard",
+        "address" : "211 E Roosevelt Rd Lombard, IL 60148",
+		"order_number" : "78",
+		"server" : "Mohammad H.",
+        "date": "5/4/2017",
+		"time": "4:10 PM",
+        "goods" : {
+            "Mixed Meat Lunch" : {
+                "amount" : 20,
+                "price" : 180.0
+            },
+            "Reg 12pc Falafel" : {
+                "amount" : 2,
+                "price" : 13.0
+            },
+            "Miscelanceous" : {
+                "amount" : 1,
+                "price" : 20.0
+            }
+        },
+		"sub_total" : 213.0,
+        "tax" : 15.92,
+		"total" : 228.92,
+		"count_of_data": 18
+    },
+    "1086-receipt.jpg" :
+    {
+		"company" : "Calagero's",
+        "address" : "919 Franklin Ave. Garden City, NY 11530",
+		"phone_number" : "516-2942922",
+		"table": "2",
+		"order_number" : "137017",
+		"server" : "Manager 2",
+        "date": "4/20/2018",
+		"time": "8:29 PM",
+		"guests": 4,
+        "goods" : {
+            "Shrimp Scampi" : {
+                "amount" : 1,
+                "price" : 27.0
+            },
+            "Chicken Milanese" : {
+                "amount" : 2,
+                "price" : 46.0
+            },
+            "Veal Milanese" : {
+                "amount" : 1,
+                "price" : 27.0
+            },
+            "Grey Goose" : {
+                "amount" : 3,
+                "price" : 30.0
+            },
+            "Pineapple Juice" : {
+                "amount" : 1,
+                "price" : 3.0
+            },
+            "Belvedere" : {
+                "amount" : 1,
+                "price" : 12.0
+            },
+            "Becks Non Alcoholic" : {
+                "amount" : 1,
+                "price" : 6.0
+            },
+            "Corona" : {
+                "amount" : 1,
+                "price" : 6.0
+            },
+            "Comp Item" : {
+                "amount" : 1,
+                "price" : 12.0
+            }
+        },
+		"sub_total" : 145.0,
+        "tax" : 12.51,
+		"total" : 157.51,
+		"count_of_data": 39
+    },
+    "1087-receipt.jpg" :
+    {
+		"company" : "#Noches De Colombia",
+        "address" : "204 JERICHO TURNPIKE MINEOLA, NY 11501",
+		"phone_number" : "(516)747-0861",
+		"order_number" : "500592",
+		"guests": 0,
+		"date": "07/09/19",
+		"time": "09:22am",
+		"server" : "Emely",
+        "goods" : {
+            "Chicharron" : {
+                "amount" : 1,
+                "price" : 6.0
+            },
+            "Maduros" : {
+                "amount" : 2,
+                "price" : 3.95
+            }
+        },
+		"sub_total" : 9.95,
+        "tax" : 0.86,
+		"total" : 10.81,
+		"count_of_data": 17
+    },
+    "1088-receipt.jpg" :
+    {
+		"company" : "MOOYAH Burgers Fries & Shakes #199",
+        "address" : "6121 NW Cache Rd Lawton, OK 73505",
+		"phone_number" : "580-699-5200",
+		"table": "Q#1",
+		"order_number" : "39416",
+		"server" : "Petra",
+		"date": "3/22/2014",
+		"time": "11:44 AM",
+		"guests": 1,
+        "goods" : {
+            "Little MOO Shake" : {
+                "amount" : 1,
+                "price" : 2.99
+            },
+            "MOOYAH Burger" : {
+                "amount" : 1,
+                "price" : 4.99
+            },
+            "MOOYAH American Cheese" : {
+                "amount" : 1,
+                "price" : 0.7
+            },
+            ">MOOYAH Sauce" : {
+                "amount" : 3,
+                "price" : 0.0
+            },
+            ">Lettuce" : {
+                "amount" : 1,
+                "price" : 0.0
+            },
+            ">Pickles" : {
+                "amount" : 1,
+                "price" : 0.0
+            },
+            ">Fried Onion Strings" : {
+                "amount" : 1,
+                "price" : 0.0
+            },
+            "Regular Fries" : {
+                "amount" : 1,
+                "price" : 3.29
+            }
+        },
+		"sub_total" : 11.97,
+        "tax" : 1.06,
+		"total" : 13.03,
+		"count_of_data": 36
+    },
+    "1089-receipt.jpg" :
+    {
+		"company" : "Firepoint Grill",
+        "address" : "3739 West Chester Pike Newtown Square, PA 19013",
+		"phone_number" : "484-428-3093",
+		"server" : "Will",
+		"table": "53/1",
+		"guests": 2,
+		"date": "12/07/2016",
+		"time": "6:53 PM",
+		"order_number" : "90024",
+        "goods" : {
+            "Makers Mark" : {
+                "amount" : 2,
+                "price" : 23.0
+            },
+            "Side Caesar" : {
+                "amount" : 1,
+                "price" : 6.0
+            },
+            "Chicken & Rib Combo" : {
+                "amount" : 1,
+                "price" : 29.0
+            },
+            "Woodford Reserve" : {
+                "amount" : 2,
+                "price" : 24.0
+            },
+            "Frisee Salad" : {
+                "amount" : 1,
+                "price" : 10.0
+            },
+            "Poached Shrimp Cocktail" : {
+                "amount" : 1,
+                "price" : 17.5
+            },
+            "NY Stip 8oz" : {
+                "amount" : 1,
+                "price" : 28.0
+            }
+		},
+		"sub_total" : 137.5,
+        "tax" : 5.43,
+		"total" : 142.93,
+		"count_of_data": 33
+    },
+    "1090-receipt.jpg" :
+    {
+		"company" : "FIVE GUYS",
+        "address" : "2640 Reynolds Ranch Pkwy - Ste 140 Lodi, CA 95240",
+		"phone_number" : "(209) 333-9750",
+		"date": "5/25/2017",
+		"time": "1:00:17 PM",
+		"order_number" : "AAAP2F9WAEBP",
+		"server" : "Robert C",
+        "goods" : {
+            "Little Hamburger" : {
+                "amount" : 1,
+                "price" : 5.19
+            },
+            "Large Fry" : {
+                "amount" : 2,
+                "price" : 11.58
+            },
+            "Large Soda" : {
+                "amount" : 1,
+                "price" : 2.99
+            },
+            "Cheeseburger" : {
+                "amount" : 1,
+                "price" : 7.89
+            },
+            "Regular Soda" : {
+                "amount" : 1,
+                "price" : 2.7
+            }
+		},
+		"sub_total" : 30.31,
+        "tax" : 2.35,
+		"total" : 32.66,
+		"count_of_data": 25
+    },
+    "1091-receipt.jpg" :
+    {
+		"company" : "CITY TASTE",
+        "address" : "930 WAYNE AVE. #100 SILVER SPRING, MD 20910",
+		"phone_number" : "301-585-1111",
+		"date": "05-11-2018",
+		"time": "8:03PM",
+		"order_number" : "90",
+		"server" : "BOSS",
+		"table": "A06",
+		"guests": 2,
+        "goods" : {
+            "Philadelphia Roll" : {
+                "amount" : 1,
+                "price" : 4.85
+            },
+            "13. Shrimp Tempura Roll" : {
+                "amount" : 1,
+                "price" : 4.25
+            },
+            "Rich/Famous Roll" : {
+                "amount" : 1,
+                "price" : 4.85
+            },
+            "16. Spicy Salmon Roll" : {
+                "amount" : 1,
+                "price" : 4.25
+            },
+            "Veg/Tofu Pad Thai Spicy" : {
+                "amount" : 1,
+                "price" : 8.95
+            }
+		},
+		"sub_total" : 27.15,
+        "tax" : 1.63,
+		"total" : 28.78,
+		"count_of_data": 27
+    },
+    "1092-receipt.jpg" :
+    {
+		"company" : "Kaiseki",
+        "address" : "7 West Merrick Rd. Valley Steam, NY 11580",
+		"phone_number" : "(516)561-3556",
+		"date": "07/28/18",
+		"time": "03:42 PM",
+		"order_number" : "20",
+		"table": "A3",
+		"server" : "MANDY",
+		"guests": 2,
+        "goods" : {
+            "Sushi Dinner" : {
+                "amount" : 1,
+                "price" : 18.95
+            },
+            "Lady Gaga" : {
+                "amount" : 1,
+                "price" : 13.95
+            },
+            "Ginger Ale" : {
+                "amount" : 1,
+                "price" : 2.0
+            },
+            "Fried Cheese Cake" : {
+                "amount" : 1,
+                "price" : 4.95
+            }
+		},
+		"sub_total" : 39.85,
+        "tax" : 3.45,
+		"total" : 43.3,
+		"count_of_data": 24
+    },
+    "1093-receipt.jpg" :
+    {
+		"company" : "POPEYE'S",
+		"phone_number" : "201-885-2085",
+		"date": "JUN 24 2018",
+		"time": "20:49:53",
+		"server" : "8325",
+        "goods" : {
+            "#5 5 WING COMBO" : {
+                "amount" : 1,
+                "price" : 9.99
+            },
+            "#6 3 TENDER ML" : {
+                "amount" : 2,
+                "price" : 17.38
+            },
+            "#11/ POP SHRMP/COMBO" : {
+                "amount" : 1,
+                "price" : 8.49
+            }
+		},
+        "tax" : 2.37,
+		"total" : 38.23,
+		"count_of_data": 16
+    },
+    "1094-receipt.jpg" :
+    {
+		"company" : "Pokeatery CV",
+		"address" : "18911 Lake Chabot Road Castro Valley, CA 94546",
+		"date": "December 29, 2018",
+		"time": "2:01 PM",
+		"server" : "Ramelle",
+		"order_number" : "3zCW",
+        "goods" : {
+            "Poke Box" : {
+                "amount" : 1,
+                "price" : 13.5
+            }
+		},
+		"sub_total" : 13.5,
+        "tax" : 1.25,
+		"total" : 16.23,
+		"count_of_data": 12
+    },
+    "1095-receipt.jpg" :
+    {
+		"company" : "Golden Coin",
+		"address" : "94-450 Ukee St Waipahu, HI 96797",
+		"phone_number" : "(808) 848-0802",
+		"server" : "Charito",
+		"station" : 1,
+		"order_number" : "6879",
+        "goods" : {
+            "Plt Lunch 2 Choices" : {
+                "amount" : 1,
+                "price" : 9.79
+            }
+		},
+		"sub_total" : 9.79,
+        "tax" : 0.46,
+		"total" : 10.25,
+		"count_of_data": 12
+    },
+    "1096-receipt.jpg" :
+    {
+		"address" : "223 N. Citrus Ave Covina, CA 91723",
+		"phone_number" : "(626) 339-9496",
+		"order_number" : "208774",
+		"table": "BAR9",
+		"server" : "Ryan",
+		"date": "09/25/18",
+		"time": "08:44pm",
+        "goods" : {
+            "Bohemia" : {
+                "amount" : 2,
+                "price" : 16.0
+            },
+            "Albondigas" : {
+                "amount" : 1,
+                "price" : 9.95
+            },
+            "Mole" : {
+                "amount" : 1,
+                "price" : 16.95
+            }
+		},
+		"sub_total" : 42.9,
+        "tax" : 4.08,
+		"total" : 46.98,
+		"count_of_data": 19
+    },
+    "1097-receipt.jpg" :
+    {
+		"company" : "EL POLLO LOCO",
+		"address" : "7519 S. ATLANTIC AVE. CUDAHY ,CA 90201",
+		"phone_number" : "323-560-0758",
+		"server" : "LIDIA H",
+		"order_number" : "1924",
+		"date": "Jun28'17",
+		"time": "05:36P",
+		"guests": 0,
+        "goods" : {
+            "Burrito Cmb" : {
+                "amount" : 1,
+                "price" : 8.28
+            },
+            "Bur-BRC" : {
+                "amount" : 2,
+                "price" : 3.78
+            }
+		},
+		"sub_total" : 12.06,
+        "tax" : 1.06,
+		"total" : 13.12,
+		"count_of_data": 17
+    },
+    "1098-receipt.jpg" :
+    {
+		"company" : "Nick's Tuscan Grill",
+		"address" : "149 Mineola Blvd Mineola NY 11501",
+		"phone_number" : "516-747-2545",
+		"server" : "Victor V",
+		"table": "12/1",
+		"guests": 2,
+		"date": "Mar18'18",
+		"time": "10:54AM",
+        "goods" : {
+            "Open Food" : {
+                "amount" : 1,
+                "price" : 22.0
+            },
+            "Ossobuco" : {
+                "amount" : 1,
+                "price" : 28.0
+            },
+            "Diet Coke" : {
+                "amount" : 1,
+                "price" : 2.5
+            },
+            "G 14 Hands Cab" : {
+                "amount" : 1,
+                "price" : 10.0
+            }
+		},
+		"sub_total" : 62.5,
+        "tax" : 5.39,
+		"total" : 67.89,
+		"count_of_data": 23
+    },
+    "1099-receipt.jpg" :
+    {
+		"company" : "Mexican Restaurant & Bar",
+		"address" : "25 West San Fernando St. San Jose, CA 95113",
+		"phone_number" : "(408) 283-9595",
+		"server" : "Pablo",
+		"table": "40/1",
+		"guests": 3,
+		"date": "12/29/2017",
+		"time": "1:17 PM",
+		"order_number" : "30001",
+        "goods" : {
+            "Coffee" : {
+                "amount" : 1,
+                "price" : 3.25
+            },
+            "Enmoladas with Meat pollo" : {
+                "amount" : 1,
+                "price" : 14.95
+            },
+            "Chicken Tenders" : {
+                "amount" : 1,
+                "price" : 5.95
+            },
+            "Flautas Chicken" : {
+                "amount" : 1,
+                "price" : 9.95
+            },
+            "Coloradito" : {
+                "amount" : 1,
+                "price" : 15.95
+            }
+		},
+		"sub_total" : 50.05,
+        "tax" : 5.46,
+		"total" : 55.51,
+		"count_of_data": 27
+    },
+    "1100-receipt.jpg" :
+    {
+		"company" : "Mc Donald's",
+		"address" : "16725 Stony Plain Rd Edmonton AB T5P 4A9",
+		"phone_number" : "780-414-8362",
+		"date": "03/10/2018",
+		"time": "07:39:12 PM",
+        "goods" : {
+            "Delivery" : {
+                "amount" : 1,
+                "price" : 0.0
+            },
+            "10 McNuggets EVM" : {
+                "amount" : 1,
+                "price" : 10.29
+            },
+            "L Coke" : {
+                "amount" : 1,
+                "price" : 0.4
+            },
+            "HM GrChs S-Fry Yog" : {
+                "amount" : 1,
+                "price" : 3.99
+            },
+            "6 Cookies" : {
+                "amount" : 1,
+                "price" : 2.89
+            },
+            "Baked Apple Pie" : {
+                "amount" : 1,
+                "price" : 1.19
+            },
+            "L French Fries" : {
+                "amount" : 1,
+                "price" : 3.29
+            },
+            "L Iced Tea" : {
+                "amount" : 1,
+                "price" : 2.99
+            },
+            "Barbeque Sauce" : {
+                "amount" : 2,
+                "price" : 0.0
+            },
+            "M French Fries" : {
+                "amount" : 1,
+                "price" : 0.0
+            },
+            "Snoopy" : {
+                "amount" : 1,
+                "price" : 0.0
+            },
+            "HM Apple Juice" : {
+                "amount" : 1,
+                "price" : 0.0
+            }
+		},
+		"sub_total" : 25.04,
+        "tax" : 1.11,
+		"total" : 26.15,
+		"count_of_data": 44
+    },
+    "1101-receipt.jpg" :
+    {
+		"company" : "KAZ RAMEN",
+		"address" : "22413 BARTON ROAD GRAND TERRACE, CA 92313",
+		"phone_number" : "9094229532",
+		"order_number" : "T4G1",
+		"server" : "Mickey",
+		"date": "04-Nov-2018",
+		"time": "9:07:13P",
+		"guests": 1,
+        "goods" : {
+            "Tonkotsu" : {
+                "amount" : 1,
+                "price" : 9.5
+            },
+            "Tofu" : {
+                "amount" : 1,
+                "price" : 0.0
+            },
+            "Egg" : {
+                "amount" : 1,
+                "price" : 1.3
+            },
+            "Corn" : {
+                "amount" : 1,
+                "price" : 0.5
+            },
+            "Bamboo shoots" : {
+                "amount" : 1,
+                "price" : 1.0
+            },
+            "Naruto" : {
+                "amount" : 1,
+                "price" : 0.75
+            },
+            "Spicy" : {
+                "amount" : 1,
+                "price" : 0.0
+            }
+		},
+		"sub_total" : 13.05,
+        "tax" : 1.01,
+		"total" : 14.06,
+		"count_of_data": 32
+    },
+    "1102-receipt.jpg" :
+    {
+		"company" : "OM INDIAN FOOD",
+		"address" : "204 Spring St New York, NY 10012",
+		"phone_number" : "(646) 756-4000",
+		"fax_number" : "(646) 657-0514",
+		"table": "T1",
+		"order_number" : "2",
+		"guests": 2,
+		"server" : "Manoj",
+		"date": "4/15/16",
+		"time": "12:03:14 PM",
+        "goods" : {
+            "Vegetable Biryani" : {
+                "amount" : 1,
+                "price" : 12.95
+            },
+            "Malai Kofta" : {
+                "amount" : 1,
+                "price" : 12.95
+            },
+            "Onion Naan" : {
+                "amount" : 1,
+                "price" : 3.95
+            },
+            "LUNCH DISCOUNT 50% OFF" : {
+                "amount" : 1,
+                "price" : -14.93
+            }
+		},
+		"sub_total" : 29.85,
+        "tax" : 1.32,
+		"total" : 16.24,
+		"count_of_data": 25
     }
 }

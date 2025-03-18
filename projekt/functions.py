@@ -255,6 +255,21 @@ def check_the_data(dict_model, name_of_file, path_to_correct_data):
             not_in_dict_counted += 1
             array_not_found += ["time"]
 
+        if "fax_number" in data:
+            try:
+                fax_number_data = dict_model["fax_number"].lower()
+                if fax_number_data == data["fax_number"].lower():
+                    print("Fax Number Correct")
+                    correct_data_counted += 1
+                else:
+                    print("Fax Number Incorrect")
+                    incorrect_data_counted += 1
+                    dict_incorrect["fax_number"] = time_data
+            except:
+                print("Fax Number Not In Dict")
+                not_in_dict_counted += 1
+                array_not_found += ["fax_number"]
+
         correctness = correct_data_counted / count_of_data
 
         return (correctness, correct_data_counted, incorrect_data_counted, not_in_dict_counted, goods_not_counted, dict_incorrect, array_not_found, array_goods_not)

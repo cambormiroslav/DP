@@ -34,8 +34,8 @@ def send_image_request(image_path, text_request):
 Input: (Path to directory with input images, count of input images)
 Output: None (but call save to file)
 """
-def load_and_measure(dir_path, number_of_tickets):
-    i = 0
+def load_and_measure(dir_path, first_ticket, latest_ticket):
+    i = first_ticket - 1
     for file in os.listdir(dir_path):
         start_datetime = datetime.datetime.now()
         response = send_image_request(dir_path + file, pattern)
@@ -64,7 +64,7 @@ def load_and_measure(dir_path, number_of_tickets):
         i += 1
         print("Receipt: ", i)
 
-        if i == number_of_tickets:
+        if i == latest_ticket:
             break
 
 if __name__ == "__main__":

@@ -56,8 +56,8 @@ def send_image_request(image_base64, text_request):
 Input: (Path to directory with input images, count of input images)
 Output: None (but call save to file)
 """
-def load_and_measure(dir_path, count_of_images):
-    i = 0
+def load_and_measure(dir_path, first_ticket, latest_ticket):
+    i = first_ticket - 1
     for file in os.listdir(dir_path):
         start_datetime = datetime.datetime.now()
         base_64_image = get_image_in_base64(dir_path + file)
@@ -87,16 +87,16 @@ def load_and_measure(dir_path, count_of_images):
         i += 1
         print("Receipt: ", i)
 
-        if i == count_of_images:
+        if i == latest_ticket:
             break
     
 if __name__ == "__main__":
     dir_path = "../dataset/large-receipt-image-dataset-SRD/"
 
-    load_and_measure(dir_path, 10)
+    load_and_measure(dir_path, 1, 10)
     
     model = "bakllava"
-    load_and_measure(dir_path, 10)
+    load_and_measure(dir_path, 1, 10)
 
     #print(send_image_request_all(get_image_in_base64(dir_path + "1000-receipt.jpg"), pattern))
 
