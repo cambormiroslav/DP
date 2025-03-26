@@ -41,9 +41,10 @@ def check_the_data(dict_model, name_of_file, path_to_correct_data):
                 incorrect_data_counted += 1
                 dict_incorrect["company"] = company_data
         except:
-            print("Company Not In Dict")
-            not_in_dict_counted += 1
-            array_not_found += ["company"]
+            if "company" in data:
+                print("Company Not In Dict")
+                not_in_dict_counted += 1
+                array_not_found += ["company"]
         
         try:
             address_data = data["address"].lower()
@@ -55,9 +56,10 @@ def check_the_data(dict_model, name_of_file, path_to_correct_data):
                 incorrect_data_counted += 1
                 dict_incorrect["address"] = address_data
         except:
-            print("Address Not In Dict")
-            not_in_dict_counted += 1
-            array_not_found += ["address"]
+            if "address" in data:
+                print("Address Not In Dict")
+                not_in_dict_counted += 1
+                array_not_found += ["address"]
         
         try:
             phone_number_data = dict_model["phone_number"]
@@ -69,9 +71,10 @@ def check_the_data(dict_model, name_of_file, path_to_correct_data):
                 incorrect_data_counted += 1
                 dict_incorrect["phone_number"] = phone_number_data
         except:
-            print("Phone Number Not In Dict")
-            not_in_dict_counted += 1
-            array_not_found += ["phone_number"]
+            if "phone_number" in data:
+                print("Phone Number Not In Dict")
+                not_in_dict_counted += 1
+                array_not_found += ["phone_number"]
         
         try:
             server_data = dict_model["server"].lower()
@@ -83,9 +86,10 @@ def check_the_data(dict_model, name_of_file, path_to_correct_data):
                 incorrect_data_counted += 1
                 dict_incorrect["server"] = server_data
         except:
-            print("Server Not In Dict")
-            not_in_dict_counted += 1
-            array_not_found += ["server"]
+            if "server" in data:
+                print("Server Not In Dict")
+                not_in_dict_counted += 1
+                array_not_found += ["server"]
 
         try:
             station_data = int(dict_model["station"])
@@ -97,9 +101,10 @@ def check_the_data(dict_model, name_of_file, path_to_correct_data):
                 incorrect_data_counted += 1
                 dict_incorrect["station"] = station_data
         except:
-            print("Station Not In Dict")
-            not_in_dict_counted += 1
-            array_not_found += ["station"]
+            if "station" in data:
+                print("Station Not In Dict")
+                not_in_dict_counted += 1
+                array_not_found += ["station"]
         
         try:
             order_number_data = dict_model["order_number"]
@@ -111,9 +116,10 @@ def check_the_data(dict_model, name_of_file, path_to_correct_data):
                 incorrect_data_counted += 1
                 dict_incorrect["order_number"] = order_number_data
         except:
-            print("Order Number Not In Dict")
-            not_in_dict_counted += 1
-            array_not_found += ["order_number"]
+            if "order_number" in data:
+                print("Order Number Not In Dict")
+                not_in_dict_counted += 1
+                array_not_found += ["order_number"]
         
         try:
             table_data = dict_model["table"].lower()
@@ -125,9 +131,10 @@ def check_the_data(dict_model, name_of_file, path_to_correct_data):
                 incorrect_data_counted += 1
                 dict_incorrect["table"] = table_data
         except:
-            print("Table Not In Dict")
-            not_in_dict_counted += 1
-            array_not_found += ["table"]
+            if "table" in data:
+                print("Table Not In Dict")
+                not_in_dict_counted += 1
+                array_not_found += ["table"]
         
         try:
             guests_data = int(dict_model["guests"])
@@ -139,9 +146,10 @@ def check_the_data(dict_model, name_of_file, path_to_correct_data):
                 incorrect_data_counted += 1
                 dict_incorrect["guests"] = guests_data
         except:
-            print("Guests Not In Dict")
-            not_in_dict_counted += 1
-            array_not_found += ["guests"]
+            if "guests" in data:
+                print("Guests Not In Dict")
+                not_in_dict_counted += 1
+                array_not_found += ["guests"]
 
         try:
             for good in data["goods"]:
@@ -158,9 +166,10 @@ def check_the_data(dict_model, name_of_file, path_to_correct_data):
                             incorrect_data_counted += 1
                             dict_incorrect["amount"] = amount_data
                     except:
-                        print("Amount Not In Dict")
-                        not_in_dict_counted += 1
-                        array_not_found += ["amount"]
+                        if "amount" in data["goods"][good]:
+                            print("Amount Not In Dict")
+                            not_in_dict_counted += 1
+                            array_not_found += ["amount"]
                 
                     try:
                         price_data = float(dict_model["goods"][good]["price"])
@@ -172,18 +181,23 @@ def check_the_data(dict_model, name_of_file, path_to_correct_data):
                             incorrect_data_counted += 1
                             dict_incorrect["price"] = price_data
                     except:
-                        print("Price Not In Dict")
-                        not_in_dict_counted += 1
-                        array_not_found += ["price"]
+                        if "price" in data["goods"][good]:
+                            print("Price Not In Dict")
+                            not_in_dict_counted += 1
+                            array_not_found += ["price"]
                 else:
                     print(f"{good} Incorrect Or Not In File")
                     goods_not_counted += 1
                     array_goods_not += [good]
         except:
-            goods_not_counted = len(data["goods"])
-            for good in data["goods"]:
-                array_goods_not += [good]
-                print(f"{good} Incorrect Or Not In File")
+            try:
+                goods_not_counted = len(data["goods"])
+                for good in data["goods"]:
+                    array_goods_not += [good]
+                    print(f"{good} Incorrect Or Not In File")
+            except:
+                goods_not_counted = 0
+            
 
         try:
             subtotal_data = float(dict_model["sub_total"])
@@ -193,11 +207,12 @@ def check_the_data(dict_model, name_of_file, path_to_correct_data):
             else:
                 print("SubTotal Incorrect")
                 incorrect_data_counted += 1
-                dict_incorrect["subtotal"] = subtotal_data
+                dict_incorrect["sub_total"] = subtotal_data
         except:
-            print("Subtotal Not In Dict")
-            not_in_dict_counted += 1
-            array_not_found += ["subtotal"]
+            if "sub_total" in data:
+                print("Subtotal Not In Dict")
+                not_in_dict_counted += 1
+                array_not_found += ["sub_total"]
         
         try:
             tax_data = float(dict_model["tax"])
@@ -209,9 +224,10 @@ def check_the_data(dict_model, name_of_file, path_to_correct_data):
                 incorrect_data_counted += 1
                 dict_incorrect["tax"] = tax_data
         except:
-            print("Tax Not In Dict")
-            not_in_dict_counted += 1
-            array_not_found += ["tax"]
+            if "tax" in data:
+                print("Tax Not In Dict")
+                not_in_dict_counted += 1
+                array_not_found += ["tax"]
         
         try:
             total_data = float(dict_model["total"])
@@ -223,9 +239,10 @@ def check_the_data(dict_model, name_of_file, path_to_correct_data):
                 incorrect_data_counted += 1
                 dict_incorrect["total"] = total_data
         except:
-            print("Total Not In Dict")
-            not_in_dict_counted += 1
-            array_not_found += ["total"]
+            if "total" in data:
+                print("Total Not In Dict")
+                not_in_dict_counted += 1
+                array_not_found += ["total"]
 
         try:
             date_data = dict_model["date"]
@@ -237,9 +254,10 @@ def check_the_data(dict_model, name_of_file, path_to_correct_data):
                 incorrect_data_counted += 1
                 dict_incorrect["date"] = date_data
         except:
-            print("Date Not In Dict")
-            not_in_dict_counted += 1
-            array_not_found += ["date"]
+            if "date" in data:
+                print("Date Not In Dict")
+                not_in_dict_counted += 1
+                array_not_found += ["date"]
         
         try:
             time_data = dict_model["time"].lower()
@@ -251,9 +269,10 @@ def check_the_data(dict_model, name_of_file, path_to_correct_data):
                 incorrect_data_counted += 1
                 dict_incorrect["time"] = time_data
         except:
-            print("Time Not In Dict")
-            not_in_dict_counted += 1
-            array_not_found += ["time"]
+            if "time" in data:
+                print("Time Not In Dict")
+                not_in_dict_counted += 1
+                array_not_found += ["time"]
 
         if "fax_number" in data:
             try:
