@@ -6,7 +6,7 @@ import datetime
 
 import functions
 
-pattern = "Get me the list of goods from picture. Show the address, date, time and name of company. When you find the phone number show it too. When you find you find the table number, the information about guest or order number show it too. Show me the output as JSON. The company name put in key company, the address of company in key address, phone number in key phone_number, server name in key server, station number in key station, order number in key order_number, table info in key table, number of guests in key guests, subtotal price to key sub_total, tax in key tax, total cost in key total, date in key date, time in key time. Every good name will be as key of the JSON in key goods and value of the good will be the another JSON with amount of goods in key amount and the cost of the good in key price."
+pattern = "Get me the list of goods from picture. Show the address, date, time and name of company. When you find the phone number show it too. When you find you find the table number, the information about guest or order number show it too. Show me the output as JSON. The company name put in key company, the address of company in key address, phone number in key phone_number, fax number in key fax_number, server name in key server, station number in key station, order number in key order_number, table info in key table, number of guests in key guests, subtotal price to key sub_total, tax in key tax, total cost in key total, date in key date, time in key time. Every good name will be as key of the JSON in key goods and value of the good will be the another JSON with amount of goods in key amount and the cost of the good in key price."
 correct_data_path = "../data_for_control/dataset_correct_data.json"
 
 model = "llava"
@@ -58,7 +58,9 @@ Output: None (but call save to file)
 """
 def load_and_measure(dir_path, first_ticket, latest_ticket):
     i = first_ticket - 1
-    for file in os.listdir(dir_path):
+    array_of_images = os.listdir(dir_path)
+    while(True):
+        file = array_of_images[i]
         start_datetime = datetime.datetime.now()
         base_64_image = get_image_in_base64(dir_path + file)
         response = send_image_request(base_64_image, pattern)
@@ -93,16 +95,16 @@ def load_and_measure(dir_path, first_ticket, latest_ticket):
 if __name__ == "__main__":
     dir_path = "../dataset/large-receipt-image-dataset-SRD/"
 
-    load_and_measure(dir_path, 37, 103)
+    #load_and_measure(dir_path, 61, 103)
     
     model = "bakllava"
-    load_and_measure(dir_path, 1, 103)
+    #load_and_measure(dir_path, 1, 103)
 
     model = "minicpm-v"
-    load_and_measure(dir_path, 1, 103)
+    load_and_measure(dir_path, 1, 50)
 
     model = "knoopx/mobile-vlm:3b-fp16"
-    load_and_measure(dir_path, 1, 103)
+    #load_and_measure(dir_path, 1, 50)
 
     #print(send_image_request_all(get_image_in_base64(dir_path + "1000-receipt.jpg"), pattern))
 
