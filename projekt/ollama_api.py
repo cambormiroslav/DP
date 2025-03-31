@@ -78,7 +78,14 @@ def load_and_measure(dir_path, first_ticket, latest_ticket):
         diff_datetime = end_datetime - start_datetime
         diff_datetime_seconds = diff_datetime.total_seconds()
 
-        functions.save_to_file(model, "ticket", [correctness, correct_data, 
+        if model != "knoopx/mobile-vlm:3b-fp16":
+            functions.save_to_file(model, "ticket", [correctness, correct_data, 
+                                                 incorect_data, not_found_data, 
+                                                 good_not_found, diff_datetime_seconds], 
+                                                 dict_of_incorect, array_not_found, 
+                                                 array_good_not_found)
+        else:
+            functions.save_to_file("knoopx-mobile-vlm-3b-fp16", "ticket", [correctness, correct_data, 
                                                  incorect_data, not_found_data, 
                                                  good_not_found, diff_datetime_seconds], 
                                                  dict_of_incorect, array_not_found, 
@@ -95,16 +102,16 @@ def load_and_measure(dir_path, first_ticket, latest_ticket):
 if __name__ == "__main__":
     dir_path = "../dataset/large-receipt-image-dataset-SRD/"
 
-    #load_and_measure(dir_path, 61, 103)
+    load_and_measure(dir_path, 1, 103)
     
     model = "bakllava"
-    #load_and_measure(dir_path, 1, 103)
+    load_and_measure(dir_path, 1, 103)
 
     model = "minicpm-v"
-    load_and_measure(dir_path, 1, 50)
+    load_and_measure(dir_path, 1, 103)
 
     model = "knoopx/mobile-vlm:3b-fp16"
-    #load_and_measure(dir_path, 1, 50)
+    load_and_measure(dir_path, 17, 30)
 
     #print(send_image_request_all(get_image_in_base64(dir_path + "1000-receipt.jpg"), pattern))
 
