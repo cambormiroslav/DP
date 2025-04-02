@@ -8,6 +8,8 @@ api_key = os.environ["GEMINI_API_KEY"]
 pattern = "Get me the list of goods from picture. Show the address, date, time and name of company. When you find the phone number show it too. When you find you find the table number, the information about guest or order number show it too. Show me the output as JSON. The company name put in key company, the address of company in key address, phone number in key phone_number, server name in key server, station number in key station, order number in key order_number, table info in key table, number of guests in key guests, subtotal price to key sub_total, tax in key tax, total cost in key total, date in key date, time in key time. Every good name will be as key of the JSON in key goods and value of the good will be the another JSON with amount of goods in key amount and the cost of the good in key price."
 correct_data_path = "../data_for_control/dataset_correct_data.json"
 
+model = "gemini-1.5-flash"
+
 """
 * Send request to the model
 
@@ -18,7 +20,7 @@ def send_image_request(image_path, text_request):
     myfile = genai.upload_file(image_path)
     genai.configure(api_key=api_key)
 
-    model = genai.GenerativeModel("gemini-1.5-flash")
+    model = genai.GenerativeModel(model)
     result = model.generate_content(
         [myfile, "\n\n", text_request]
         )
@@ -36,7 +38,9 @@ Output: None (but call save to file)
 """
 def load_and_measure(dir_path, first_ticket, latest_ticket):
     i = first_ticket - 1
-    for file in os.listdir(dir_path):
+    array_of_images = os.listdir(dir_path)
+    while(True):
+        file = array_of_images[i]
         start_datetime = datetime.datetime.now()
         response = send_image_request(dir_path + file, pattern)
         end_datetime = datetime.datetime.now()
@@ -53,7 +57,7 @@ def load_and_measure(dir_path, first_ticket, latest_ticket):
         diff_datetime = end_datetime - start_datetime
         diff_datetime_seconds = diff_datetime.total_seconds()
 
-        functions.save_to_file("gemini", "ticket", [correctness, correct_data, 
+        functions.save_to_file(model, "ticket", [correctness, correct_data, 
                                                  incorect_data, not_found_data, 
                                                  good_not_found, diff_datetime_seconds], 
                                                  dict_of_incorect, array_not_found, 

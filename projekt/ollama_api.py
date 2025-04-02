@@ -78,14 +78,26 @@ def load_and_measure(dir_path, first_ticket, latest_ticket):
         diff_datetime = end_datetime - start_datetime
         diff_datetime_seconds = diff_datetime.total_seconds()
 
-        if model != "knoopx/mobile-vlm:3b-fp16":
-            functions.save_to_file(model, "ticket", [correctness, correct_data, 
+        if model == "knoopx/mobile-vlm:3b-fp16":
+            functions.save_to_file("knoopx-mobile-vlm-3b-fp16", "ticket", [correctness, correct_data, 
+                                                 incorect_data, not_found_data, 
+                                                 good_not_found, diff_datetime_seconds], 
+                                                 dict_of_incorect, array_not_found, 
+                                                 array_good_not_found)
+        elif model == "llava:13b":
+            functions.save_to_file("llava-13b", "ticket", [correctness, correct_data, 
+                                                 incorect_data, not_found_data, 
+                                                 good_not_found, diff_datetime_seconds], 
+                                                 dict_of_incorect, array_not_found, 
+                                                 array_good_not_found)
+        elif model == "llava:34b":
+            functions.save_to_file("llava-34b", "ticket", [correctness, correct_data, 
                                                  incorect_data, not_found_data, 
                                                  good_not_found, diff_datetime_seconds], 
                                                  dict_of_incorect, array_not_found, 
                                                  array_good_not_found)
         else:
-            functions.save_to_file("knoopx-mobile-vlm-3b-fp16", "ticket", [correctness, correct_data, 
+            functions.save_to_file(model, "ticket", [correctness, correct_data, 
                                                  incorect_data, not_found_data, 
                                                  good_not_found, diff_datetime_seconds], 
                                                  dict_of_incorect, array_not_found, 
@@ -111,7 +123,13 @@ if __name__ == "__main__":
     load_and_measure(dir_path, 1, 103)
 
     model = "knoopx/mobile-vlm:3b-fp16"
-    load_and_measure(dir_path, 17, 30)
+    load_and_measure(dir_path, 1, 103)
+
+    model = "llava:13b"
+    load_and_measure(dir_path, 1, 103)
+
+    model = "llava:34b"
+    load_and_measure(dir_path, 1, 103)
 
     #print(send_image_request_all(get_image_in_base64(dir_path + "1000-receipt.jpg"), pattern))
 
