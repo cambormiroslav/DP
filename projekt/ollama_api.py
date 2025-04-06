@@ -131,7 +131,7 @@ if __name__ == "__main__":
     model = "llava:34b"
     load_and_measure(dir_path, 1, 103)
 
-    #print(send_image_request_all(get_image_in_base64(dir_path + "1000-receipt.jpg"), pattern))
+    #print(send_image_request(get_image_in_base64(dir_path + "1000-receipt.jpg"), pattern))
 
     """ data_tuple = functions.check_the_data(send_image_request(get_image_in_base64(dir_path + "1000-receipt.jpg"), pattern), "1000-receipt.jpg", correct_data_path)
     correctness = data_tuple[0]
