@@ -11,6 +11,10 @@ ocr_method = True
 if ocr_method:
     pattern = "Get me the list of goods from picture. Show the address, date, time and name of company. When you find the phone number show it too. When you find you find the table number, the information about guest or order number show it too. Show me the output as JSON. The company name put in key company, the address of company in key address, phone number in key phone_number, fax number in key fax_number, server name in key server, station number in key station, order number in key order_number, table info in key table, number of guests in key guests, subtotal price to key sub_total, tax in key tax, total cost in key total, date in key date, time in key time. Every good name will be as key of the JSON in key goods and value of the good will be the another JSON with amount of goods in key amount and the cost of the good in key price."
     correct_data_path = "../data_for_control/dataset_correct_data.json"
+else:
+    pattern = "What type of the animal is in the photography and breed of this animal? Return it as JSON type of animal put in the key type and animal breed in key breed."
+    correct_data_path = "../data_for_control/dataset_images_correct_data.json"
+
 
 model = "llava"
 #model = "bakllava"
@@ -127,6 +131,8 @@ def load_and_measure(dir_path, first_ticket, latest_file):
 if __name__ == "__main__":
     if ocr_method:
         dir_path = "../dataset/large-receipt-image-dataset-SRD/"
+    else:
+        dir_path = "../dataset/images_dataset/"
 
     load_and_measure(dir_path, 1, 103)
     #print(send_image_request(get_image_in_base64(dir_path + "1000-receipt.jpg"), pattern))
