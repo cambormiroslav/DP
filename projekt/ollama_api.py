@@ -66,7 +66,7 @@ def load_and_measure(dir_path, first_ticket, latest_ticket):
         response = send_image_request(base_64_image, pattern)
         end_datetime = datetime.datetime.now()
 
-        data_tuple = functions.check_the_data(response, file, correct_data_path)
+        data_tuple = functions.check_the_data_ocr(response, file, correct_data_path)
         correctness = data_tuple[0]
         correct_data = data_tuple[1]
         incorect_data = data_tuple[2]
@@ -79,25 +79,25 @@ def load_and_measure(dir_path, first_ticket, latest_ticket):
         diff_datetime_seconds = diff_datetime.total_seconds()
 
         if model == "knoopx/mobile-vlm:3b-fp16":
-            functions.save_to_file("knoopx-mobile-vlm-3b-fp16", "ticket", [correctness, correct_data, 
+            functions.save_to_file_ocr("knoopx-mobile-vlm-3b-fp16", "ticket", [correctness, correct_data, 
                                                  incorect_data, not_found_data, 
                                                  good_not_found, diff_datetime_seconds], 
                                                  dict_of_incorect, array_not_found, 
                                                  array_good_not_found)
         elif model == "llava:13b":
-            functions.save_to_file("llava-13b", "ticket", [correctness, correct_data, 
+            functions.save_to_file_ocr("llava-13b", "ticket", [correctness, correct_data, 
                                                  incorect_data, not_found_data, 
                                                  good_not_found, diff_datetime_seconds], 
                                                  dict_of_incorect, array_not_found, 
                                                  array_good_not_found)
         elif model == "llava:34b":
-            functions.save_to_file("llava-34b", "ticket", [correctness, correct_data, 
+            functions.save_to_file_ocr("llava-34b", "ticket", [correctness, correct_data, 
                                                  incorect_data, not_found_data, 
                                                  good_not_found, diff_datetime_seconds], 
                                                  dict_of_incorect, array_not_found, 
                                                  array_good_not_found)
         else:
-            functions.save_to_file(model, "ticket", [correctness, correct_data, 
+            functions.save_to_file_ocr(model, "ticket", [correctness, correct_data, 
                                                  incorect_data, not_found_data, 
                                                  good_not_found, diff_datetime_seconds], 
                                                  dict_of_incorect, array_not_found, 

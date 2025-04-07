@@ -11,7 +11,7 @@ Output: (Correctness, Count of correct data, Count of incorrect data,
         Dictionary of incorrect data, Array of not founded data (only keys),
         Array of not founded names goods)
 """
-def check_the_data(dict_model, name_of_file, path_to_correct_data):
+def check_the_data_ocr(dict_model, name_of_file, path_to_correct_data):
     correct_data_counted = 0
     incorrect_data_counted = 0
     not_in_dict_counted = 0
@@ -299,7 +299,7 @@ Input: (model name, type of data, charakteristics of data and time of run, incor
         not founded data array, not founded goods)
 Output: None
 """  
-def save_to_file(model, type_of_data, values, incorrect_data, not_found_data, good_not_found):
+def save_to_file_ocr(model, type_of_data, values, incorrect_data, not_found_data, good_not_found):
     output_file_path = f"./output/{model}_{type_of_data}.txt"
 
     correctness = values[0]

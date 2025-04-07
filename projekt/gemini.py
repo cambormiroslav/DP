@@ -47,7 +47,7 @@ def load_and_measure(dir_path, first_ticket, latest_ticket):
         response = send_image_request(dir_path + file, pattern)
         end_datetime = datetime.datetime.now()
 
-        data_tuple = functions.check_the_data(response, file, correct_data_path)
+        data_tuple = functions.check_the_data_ocr(response, file, correct_data_path)
         correctness = data_tuple[0]
         correct_data = data_tuple[1]
         incorect_data = data_tuple[2]
@@ -59,7 +59,7 @@ def load_and_measure(dir_path, first_ticket, latest_ticket):
         diff_datetime = end_datetime - start_datetime
         diff_datetime_seconds = diff_datetime.total_seconds()
 
-        functions.save_to_file(model_text, "ticket", [correctness, correct_data, 
+        functions.save_to_file_ocr(model_text, "ticket", [correctness, correct_data, 
                                                  incorect_data, not_found_data, 
                                                  good_not_found, diff_datetime_seconds], 
                                                  dict_of_incorect, array_not_found, 
