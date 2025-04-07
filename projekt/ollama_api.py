@@ -115,33 +115,24 @@ if __name__ == "__main__":
     dir_path = "../dataset/large-receipt-image-dataset-SRD/"
 
     load_and_measure(dir_path, 1, 103)
+    #print(send_image_request(get_image_in_base64(dir_path + "1000-receipt.jpg"), pattern))
     
     model = "bakllava"
     load_and_measure(dir_path, 1, 103)
+    #print(send_image_request(get_image_in_base64(dir_path + "1000-receipt.jpg"), pattern))
 
     model = "minicpm-v"
     load_and_measure(dir_path, 1, 103)
+    #print(send_image_request(get_image_in_base64(dir_path + "1000-receipt.jpg"), pattern))
 
     model = "knoopx/mobile-vlm:3b-fp16"
     load_and_measure(dir_path, 1, 103)
+    #print(send_image_request(get_image_in_base64(dir_path + "1000-receipt.jpg"), pattern))
 
     model = "llava:13b"
     load_and_measure(dir_path, 1, 103)
+    #print(send_image_request(get_image_in_base64(dir_path + "1000-receipt.jpg"), pattern))
 
     model = "llava:34b"
     load_and_measure(dir_path, 1, 103)
-
     #print(send_image_request(get_image_in_base64(dir_path + "1000-receipt.jpg"), pattern))
-
-    """ data_tuple = functions.check_the_data(send_image_request(get_image_in_base64(dir_path + "1000-receipt.jpg"), pattern), "1000-receipt.jpg", correct_data_path)
-    correctness = data_tuple[0]
-    correct_data = data_tuple[1]
-    incorect_data = data_tuple[2]
-    not_found_data = data_tuple[3]
-    good_not_found = data_tuple[4]
-    dict_of_incorect = data_tuple[5]
-    array_not_found = data_tuple[6]
-    array_good_not_found = data_tuple[7]
-    #correctness, correct_data, incorect_data, not_found_data, good_not_found, dict_of_incorect, array_not_found, array_good_not_found = functions.check_the_data(send_image_request(get_image_in_base64(dir_path + "1000-receipt.jpg"), pattern), "1000-receipt.jpg", correct_data_path)
-    print(correctness, correct_data, incorect_data, not_found_data, good_not_found, dict_of_incorect, array_not_found, array_good_not_found, 0)
-    functions.save_to_file(model, "ticket", [correctness, correct_data, incorect_data, not_found_data, good_not_found, 0], dict_of_incorect, array_not_found, array_good_not_found) """

@@ -104,7 +104,3 @@ if __name__ == "__main__":
 
     model = "gpt-4o"
     load_and_measure(dir_path, 1, 103)
-
-    """ correctness, correct_data, incorect_data, not_found_data, dict_of_incorect, array_not_found = functions.check_the_data(send_image_request(dir_path + "1000-receipt.jpg", pattern), "1000-receipt.jpg", correct_data_path)
-    print(correctness, correct_data, incorect_data, not_found_data, dict_of_incorect, array_not_found)
-    functions.save_to_file("openai", "ticket", [correctness, correct_data, incorect_data, not_found_data], dict_of_incorect, array_not_found) """

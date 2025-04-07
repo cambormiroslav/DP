@@ -78,19 +78,19 @@ def load_and_measure(dir_path, first_ticket, latest_ticket):
 if __name__ == "__main__":
     dir_path = "../dataset/large-receipt-image-dataset-SRD/"
 
-    #load_and_measure(dir_path, 1, 103)
+    load_and_measure(dir_path, 1, 103)
 
     model_text = "gemini-1.5-pro"
     model_is_pro = True
-    #load_and_measure(dir_path, 1, 103)
+    load_and_measure(dir_path, 1, 103)
 
     model_text = "gemini-2.0-flash"
     model_is_pro = False
-    #load_and_measure(dir_path, 1, 103)
+    load_and_measure(dir_path, 1, 103)
 
     model_text = "gemini-2.0-flash-lite"
     model_is_pro = False
-    #load_and_measure(dir_path, 1, 103)
+    load_and_measure(dir_path, 1, 103)
 
     model_text = "gemini-2.5-pro-preview-03-25"
     model_is_pro = True

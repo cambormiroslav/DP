@@ -34,6 +34,19 @@ def generate_boxplot(tick_labels, values, y_label, type_data):
     plt.subplots_adjust(bottom=0.45)
     plt.savefig(f"./graphs/{type_data}.png")
 
+def generate_bar(models, values):
+    colors = ['blue', 'green', 'red', 'purple', 'brown',
+              'pink', 'gray', 'olive', 'cyan', 'maroon',
+              'gold', 'lime']
+
+    plt.figure()
+    plt.bar(models, values, color = colors)
+    plt.ylabel("Nenavráceno jako JSON [%]")
+    plt.xticks(rotation=90)
+    plt.margins(0.1)
+    plt.subplots_adjust(bottom=0.45)
+    plt.savefig(f"./graphs/not_json.png")
+
 def generate_graph(type_of_data):
     tick_labels = []
     values = []
@@ -75,6 +88,16 @@ def generate_graph(type_of_data):
     
     generate_boxplot(tick_labels, values, y_label, type_of_data)
 
+def generate_graph_not_in_json():
+    names = []
+    values = []
+
+    for key in not_found_json_dict:
+        names += [key]
+        values += [float(not_found_json_dict[key]) / 103]
+    
+    generate_bar(names, values)
+
 
 def load_all_data():
     for file in os.listdir(output_dir):
@@ -106,6 +129,13 @@ def load_all_data():
                 not_finded_main_count_key_array += [int(array_of_values[3]) / count_of_all_data]
                 goods_not_finded_count_array += [(int(array_of_values[4]) * 3) / count_of_all_data]
                 time_run_array += [float(array_of_values[5])]
+
+                if correct_data == 0 and incorect_data == 0 and not_finded > 0 and goods_not_finded == 0:
+                    if model in not_found_json_dict:
+                        not_found_json_dict[model] =  not_found_json_dict[model] + 1   
+                    else:
+                        not_found_json_dict[model] = 1
+                        
         
         correctness_dict[model] = correctness_array
         correct_data_count_dict[model] = correct_data_count_array
@@ -117,8 +147,10 @@ def load_all_data():
 if __name__ == "__main__":
     load_all_data()
 
-    generate_graph("correctness")
-    generate_graph("incorrect_data")
-    generate_graph("not_found")
-    generate_graph("goods_not_found")
-    generate_graph("time_of_run")
+    #generate_graph("correctness")
+    #generate_graph("incorrect_data")
+    #generate_graph("not_found")
+    #generate_graph("goods_not_found")
+    #generate_graph("time_of_run")
+
+    generate_graph_not_in_json()

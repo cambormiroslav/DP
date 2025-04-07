@@ -1,0 +1,247 @@
+{
+    "01.jpg" :
+    {
+        "type" : "dog",
+        "breed": [
+            "Pit Bull Terrier",
+            "American Pit Bull Terrier",
+            "American Pit Bull",
+            "Pit Bull",
+            "PitBull Terrier",
+            "PitBull",
+            "American PitBull",
+            "Terrier"
+        ]
+    },
+    "02.jpg" :
+    {
+        "type" : "dog",
+        "breed": [
+            "Basset Hound",
+            "Basset"
+        ]
+    },
+    "03.jpg" :
+    {
+        "type" : "dog",
+        "breed": [
+            "Beagle"
+        ]
+    },
+    "04.jpg" :
+    {
+        "type" : "cat",
+        "breed": [
+            "Bengal"
+        ]
+    },
+    "05.jpg" :
+    {
+        "type" : "cat",
+        "breed": [
+            "Birman"
+        ]
+    },
+    "06.jpg" :
+    {
+        "type" : "cat",
+        "breed": [
+            "Bombay"
+        ]
+    },
+    "07.jpg" :
+    {
+        "type" : "dog",
+        "breed": [
+            "Boxer"
+        ]
+    },
+    "08.jpg" :
+    {
+        "type" : "cat",
+        "breed": [
+            "British Shorthair"
+        ]
+    },
+    "09.jpg" :
+    {
+        "type" : "cat",
+        "breed": [
+            "Egyptian Mau"
+        ]
+    },
+    "10.jpg" :
+    {
+        "type" : "dog",
+        "breed": [
+            "English Cocker Spaniel",
+            "English Cocker",
+            "Cocker",
+            "Cocker Spaniel",
+            "Spaniel"
+        ]
+    },
+    "11.jpg" :
+    {
+        "type" : "dog",
+        "breed": [
+            "English Setter",
+            "Setter"
+        ]
+    },
+    "12.jpg" :
+    {
+        "type" : "dog",
+        "breed": [
+            "German Shorthaired"
+        ]
+    },
+    "13.jpg" :
+    {
+        "type" : "dog",
+        "breed": [
+            "Great Pyrenees"
+        ]
+    },
+    "14.jpg" :
+    {
+        "type" : "dog",
+        "breed": [
+            "Havanese"
+        ]
+    },
+    "15.jpg" :
+    {
+        "type" : "dog",
+        "breed": [
+            "Chihuahua"
+        ]
+    },
+    "16.jpg" :
+    {
+        "type" : "dog",
+        "breed": [
+            "Japanese Chin",
+            "Chin"
+        ]
+    },
+    "17.jpg" :
+    {
+        "type" : "dog",
+        "breed": [
+            "Kees Hond",
+            "Keeshond"
+        ]
+    },
+    "18.jpg" :
+    {
+        "type" : "dog",
+        "breed": [
+            "Leonberger",
+            "Leon Berger"
+        ]
+    },
+    "19.jpg" :
+    {
+        "type" : "cat",
+        "breed": [
+            "Maine Coon",
+            "Mainecoon"
+        ]
+    },
+    "20.jpg" :
+    {
+        "type" : "dog",
+        "breed": [
+            "Newfoundland"
+        ]
+    },
+    "21.jpg" :
+    {
+        "type" : "dog",
+        "breed": [
+            "Pomeranian"
+        ]
+    },
+    "22.jpg" :
+    {
+        "type" : "dog",
+        "breed": [
+            "Pug"
+        ]
+    },
+    "23.jpg" :
+    {
+        "type" : "cat",
+        "breed": [
+            "Ragdoll"
+        ]
+    },
+    "24.jpg" :
+    {
+        "type" : "cat",
+        "breed": [
+            "Russian Blue"
+        ]
+    },
+    "25.jpg" :
+    {
+        "type" : "dog",
+        "breed": [
+            "Saint Bernard",
+            "Bernard"
+        ]
+    },
+    "26.jpg" :
+    {
+        "type" : "dog",
+        "breed": [
+            "Samoyed"
+        ]
+    },
+    "27.jpg" :
+    {
+        "type" : "dog",
+        "breed": [
+            "Scottish Terrier",
+            "Terrier"
+        ]
+    },
+    "28.jpg" :
+    {
+        "type" : "dog",
+        "breed": [
+            "Shiba Inu"
+        ]
+    },
+    "29.jpg" :
+    {
+        "type" : "cat",
+        "breed": [
+            "Siamese"
+        ]
+    },
+    "30.jpg" :
+    {
+        "type" : "cat",
+        "breed": [
+            "Sphynx"
+        ]
+    },
+    "31.jpg" :
+    {
+        "type" : "dog",
+        "breed": [
+            "Wheaten Terrier",
+            "Terrier"
+        ]
+    },
+    "32.jpg" :
+    {
+        "type" : "dog",
+        "breed": [
+            "Yorkshire Terrier",
+            "Terrier"
+        ]
+    }
+}
