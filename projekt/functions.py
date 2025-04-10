@@ -7,6 +7,70 @@ import json
 
 Input: (Dictionary model as string, Name of comparing img, Path to correct data file)
 Output: (Correctness, Count of correct data, Count of incorrect data, 
+        Not founded data in response (main keys),
+        Dictionary of incorrect data, Array of not founded data (only keys))
+"""
+def check_the_data_object(dict_model, name_of_file, path_to_correct_data):
+    correct_data_counted = 0
+    incorrect_data_counted = 0
+    not_in_dict_counted = 0
+
+    dict_incorrect = {}
+    array_not_found = []
+
+    with open(path_to_correct_data, 'r') as file:
+        data = json.load(file)[name_of_file]
+        
+        count_of_data = 2
+
+        try:
+            dict_model = json.loads(dict_model)
+        except:
+            return (0, 0, 0, count_of_data, {}, [], [])
+        
+        try:
+            type_data = dict_model["type"].lower()
+            if data["type"].lower() == type_data:
+                print("type Correct")
+                correct_data_counted += 1
+            else:
+                print("type Incorrect")
+                incorrect_data_counted += 1
+                dict_incorrect["type"] = type_data
+        except:
+            if "type" in data:
+                print("type Not In Dict")
+                not_in_dict_counted += 1
+                array_not_found += ["type"]
+
+        try:
+            breed_data = dict_model["breed"].lower()
+            if data["breed"].lower() == breed_data:
+                print("breed Correct")
+                correct_data_counted += 1
+            else:
+                print("breed Incorrect")
+                incorrect_data_counted += 1
+                dict_incorrect["breed"] = breed_data
+        except:
+            if "breed" in data:
+                print("breed Not In Dict")
+                not_in_dict_counted += 1
+                array_not_found += ["breed"]
+
+        correctness = correct_data_counted / count_of_data
+
+        return (correctness, correct_data_counted, incorrect_data_counted, not_in_dict_counted, dict_incorrect, array_not_found)
+        
+        
+
+"""
+* Check the response characteristics.
+* Check corectness of data.
+* I not corrected output is: (0, 0, 0, count_of_correct_data, 0, {}, [], []).
+
+Input: (Dictionary model as string, Name of comparing img, Path to correct data file)
+Output: (Correctness, Count of correct data, Count of incorrect data, 
         Not founded data in response (main keys), Not founded number of goods,
         Dictionary of incorrect data, Array of not founded data (only keys),
         Array of not founded names goods)
@@ -311,3 +375,22 @@ def save_to_file_ocr(model, type_of_data, values, incorrect_data, not_found_data
     
     with open(output_file_path, "+a") as file:
         file.write(f"{correctness};{correct_data_counted};{incorrect_data_counted};{not_data_found_counted};{good_not_found_counted};{time_diff};{incorrect_data};{not_found_data};{good_not_found}\n")
+
+"""
+* Save the characteristics of model response to the file.
+
+Input: (model name, type of data, charakteristics of data and time of run, incorrect data dict, 
+        not founded data array, not founded goods)
+Output: None
+"""  
+def save_to_file_object(model, type_of_data, values, incorrect_data, not_found_data):
+    output_file_path = f"./output_objects/{model}_{type_of_data}.txt"
+
+    correctness = values[0]
+    correct_data_counted = values[1]
+    incorrect_data_counted = values[2]
+    not_data_found_counted = values[3]
+    time_diff = values[4]
+    
+    with open(output_file_path, "+a") as file:
+        file.write(f"{correctness};{correct_data_counted};{incorrect_data_counted};{not_data_found_counted};{time_diff};{incorrect_data};{not_found_data}\n")

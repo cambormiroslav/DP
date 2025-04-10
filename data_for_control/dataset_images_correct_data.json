@@ -3,245 +3,245 @@
     {
         "type" : "dog",
         "breed": [
-            "Pit Bull Terrier",
-            "American Pit Bull Terrier",
-            "American Pit Bull",
-            "Pit Bull",
-            "PitBull Terrier",
-            "PitBull",
-            "American PitBull",
-            "Terrier"
+            "pit bull terrier",
+            "american pit bull terrier",
+            "american pit bull",
+            "pit bull",
+            "pitbull terrier",
+            "pitbull",
+            "american pitbull",
+            "terrier"
         ]
     },
     "02.jpg" :
     {
         "type" : "dog",
         "breed": [
-            "Basset Hound",
-            "Basset"
+            "basset hound",
+            "basset"
         ]
     },
     "03.jpg" :
     {
         "type" : "dog",
         "breed": [
-            "Beagle"
+            "beagle"
         ]
     },
     "04.jpg" :
     {
         "type" : "cat",
         "breed": [
-            "Bengal"
+            "bengal"
         ]
     },
     "05.jpg" :
     {
         "type" : "cat",
         "breed": [
-            "Birman"
+            "birman"
         ]
     },
     "06.jpg" :
     {
         "type" : "cat",
         "breed": [
-            "Bombay"
+            "bombay"
         ]
     },
     "07.jpg" :
     {
         "type" : "dog",
         "breed": [
-            "Boxer"
+            "boxer"
         ]
     },
     "08.jpg" :
     {
         "type" : "cat",
         "breed": [
-            "British Shorthair"
+            "british shorthair"
         ]
     },
     "09.jpg" :
     {
         "type" : "cat",
         "breed": [
-            "Egyptian Mau"
+            "egyptian mau"
         ]
     },
     "10.jpg" :
     {
         "type" : "dog",
         "breed": [
-            "English Cocker Spaniel",
-            "English Cocker",
-            "Cocker",
-            "Cocker Spaniel",
-            "Spaniel"
+            "english cocker spaniel",
+            "english cocker",
+            "cocker",
+            "cocker spaniel",
+            "spaniel"
         ]
     },
     "11.jpg" :
     {
         "type" : "dog",
         "breed": [
-            "English Setter",
-            "Setter"
+            "english setter",
+            "setter"
         ]
     },
     "12.jpg" :
     {
         "type" : "dog",
         "breed": [
-            "German Shorthaired"
+            "german shorthaired"
         ]
     },
     "13.jpg" :
     {
         "type" : "dog",
         "breed": [
-            "Great Pyrenees"
+            "great pyrenees"
         ]
     },
     "14.jpg" :
     {
         "type" : "dog",
         "breed": [
-            "Havanese"
+            "havanese"
         ]
     },
     "15.jpg" :
     {
         "type" : "dog",
         "breed": [
-            "Chihuahua"
+            "chihuahua"
         ]
     },
     "16.jpg" :
     {
         "type" : "dog",
         "breed": [
-            "Japanese Chin",
-            "Chin"
+            "japanese chin",
+            "chin"
         ]
     },
     "17.jpg" :
     {
         "type" : "dog",
         "breed": [
-            "Kees Hond",
-            "Keeshond"
+            "kees hond",
+            "keeshond"
         ]
     },
     "18.jpg" :
     {
         "type" : "dog",
         "breed": [
-            "Leonberger",
-            "Leon Berger"
+            "leonberger",
+            "leon berger"
         ]
     },
     "19.jpg" :
     {
         "type" : "cat",
         "breed": [
-            "Maine Coon",
-            "Mainecoon"
+            "maine coon",
+            "mainecoon"
         ]
     },
     "20.jpg" :
     {
         "type" : "dog",
         "breed": [
-            "Newfoundland"
+            "newfoundland"
         ]
     },
     "21.jpg" :
     {
         "type" : "dog",
         "breed": [
-            "Pomeranian"
+            "pomeranian"
         ]
     },
     "22.jpg" :
     {
         "type" : "dog",
         "breed": [
-            "Pug"
+            "pug"
         ]
     },
     "23.jpg" :
     {
         "type" : "cat",
         "breed": [
-            "Ragdoll"
+            "ragdoll"
         ]
     },
     "24.jpg" :
     {
         "type" : "cat",
         "breed": [
-            "Russian Blue"
+            "russian blue"
         ]
     },
     "25.jpg" :
     {
         "type" : "dog",
         "breed": [
-            "Saint Bernard",
-            "Bernard"
+            "saint bernard",
+            "bernard"
         ]
     },
     "26.jpg" :
     {
         "type" : "dog",
         "breed": [
-            "Samoyed"
+            "samoyed"
         ]
     },
     "27.jpg" :
     {
         "type" : "dog",
         "breed": [
-            "Scottish Terrier",
-            "Terrier"
+            "scottish terrier",
+            "terrier"
         ]
     },
     "28.jpg" :
     {
         "type" : "dog",
         "breed": [
-            "Shiba Inu"
+            "shiba inu"
         ]
     },
     "29.jpg" :
     {
         "type" : "cat",
         "breed": [
-            "Siamese"
+            "siamese"
         ]
     },
     "30.jpg" :
     {
         "type" : "cat",
         "breed": [
-            "Sphynx"
+            "sphynx"
         ]
     },
     "31.jpg" :
     {
         "type" : "dog",
         "breed": [
-            "Wheaten Terrier",
-            "Terrier"
+            "wheaten terrier",
+            "terrier"
         ]
     },
     "32.jpg" :
     {
         "type" : "dog",
         "breed": [
-            "Yorkshire Terrier",
-            "Terrier"
+            "yorkshire terrier",
+            "terrier"
         ]
     }
 }
