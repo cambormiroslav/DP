@@ -139,15 +139,26 @@ def load_and_measure(dir_path, first_ticket, latest_file):
                 functions.save_to_file_object("gemma3-27b", "animals", [correctness, correct_data,
                                                                     incorect_data, not_found_data, diff_datetime_seconds],
                                                                     dict_of_incorect, array_not_found)
-        elif model == "llama3.2-vision:11b":
+        elif model == "gemma3:12b":
             if ocr_method:
-                functions.save_to_file_ocr("llama3.2-vision-11b", "ticket", [correctness, correct_data, 
+                functions.save_to_file_ocr("gemma3-12b", "ticket", [correctness, correct_data, 
                                                                    incorect_data, not_found_data, 
                                                                    good_not_found, diff_datetime_seconds], 
                                                                    dict_of_incorect, array_not_found, 
                                                                    array_good_not_found)
             else:
-                functions.save_to_file_object("llama3.2-vision-11b", "animals", [correctness, correct_data,
+                functions.save_to_file_object("gemma3-12b", "animals", [correctness, correct_data,
+                                                                    incorect_data, not_found_data, diff_datetime_seconds],
+                                                                    dict_of_incorect, array_not_found)
+        elif model == "gemma3:4b":
+            if ocr_method:
+                functions.save_to_file_ocr("gemma3-4b", "ticket", [correctness, correct_data, 
+                                                                   incorect_data, not_found_data, 
+                                                                   good_not_found, diff_datetime_seconds], 
+                                                                   dict_of_incorect, array_not_found, 
+                                                                   array_good_not_found)
+            else:
+                functions.save_to_file_object("gemma3-4b", "animals", [correctness, correct_data,
                                                                     incorect_data, not_found_data, diff_datetime_seconds],
                                                                     dict_of_incorect, array_not_found)
         else:
@@ -190,39 +201,36 @@ if __name__ == "__main__":
     #print(send_image_request(get_image_in_base64(dir_path + "1000-receipt.jpg"), pattern))
     
     model = "bakllava"
-    #load_and_measure(dir_path, 1, 103)
+    load_and_measure(dir_path, 1, 103)
     #print(send_image_request(get_image_in_base64(dir_path + "1000-receipt.jpg"), pattern))
 
     model = "minicpm-v"
-    #load_and_measure(dir_path, 1, 103)
+    load_and_measure(dir_path, 1, 103)
     #print(send_image_request(get_image_in_base64(dir_path + "1000-receipt.jpg"), pattern))
 
     model = "knoopx/mobile-vlm:3b-fp16"
-    #load_and_measure(dir_path, 1, 103)
+    load_and_measure(dir_path, 1, 103)
     #print(send_image_request(get_image_in_base64(dir_path + "1000-receipt.jpg"), pattern))
 
     model = "llava:13b"
-    #load_and_measure(dir_path, 1, 103)
+    load_and_measure(dir_path, 1, 103)
     #print(send_image_request(get_image_in_base64(dir_path + "1000-receipt.jpg"), pattern))
 
     model = "llava:34b"
-    #load_and_measure(dir_path, 1, 103)
+    load_and_measure(dir_path, 1, 103)
     #print(send_image_request(get_image_in_base64(dir_path + "1000-receipt.jpg"), pattern))
 
     model = "gemma3:27b"
-    #load_and_measure(dir_path, 21, 103)
+    load_and_measure(dir_path, 21, 103)
 
     model = "granite3.2-vision"
-    #load_and_measure(dir_path, 21, 103)
+    load_and_measure(dir_path, 21, 103)
 
     model = "mistral-small3.1"
-    #load_and_measure(dir_path, 67, 103)
+    load_and_measure(dir_path, 67, 103)
 
     model = "gemma3:12b"
     load_and_measure(dir_path, 1, 103)
 
     model = "gemma3:4b"
-    load_and_measure(dir_path, 1, 103)
-
-    model = "gemma3:1b"
     load_and_measure(dir_path, 1, 103)
