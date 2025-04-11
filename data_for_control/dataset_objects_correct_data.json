@@ -1,0 +1,414 @@
+{
+    "1.png" :
+    {
+        "type" : "frog"
+    },
+    "2.png" :
+    {
+        "type" : "truck"
+    },
+    "3.png" :
+    {
+        "type" : "truck"
+    },
+    "4.png" :
+    {
+        "type" : "deer"
+    },
+    "5.png" :
+    {
+        "type" : "automobile"
+    },
+    "6.png" :
+    {
+        "type" : "automobile"
+    },
+    "7.png" :
+    {
+        "type" : "bird"
+    },
+    "8.png" :
+    {
+        "type" : "horse"
+    },
+    "9.png" :
+    {
+        "type" : "ship"
+    },
+    "10.png" :
+    {
+        "type" : "cat"
+    },
+    "11.png" :
+    {
+        "type" : "deer"
+    },
+    "12.png" :
+    {
+        "type" : "horse"
+    },
+    "13.png" :
+    {
+        "type" : "horse"
+    },
+    "14.png" :
+    {
+        "type" : "bird"
+    },
+    "15.png" :
+    {
+        "type" : "truck"
+    },
+    "16.png" :
+    {
+        "type" : "truck"
+    },
+    "17.png" :
+    {
+        "type" : "truck"
+    },
+    "18.png" :
+    {
+        "type" : "cat"
+    },
+    "19.png" :
+    {
+        "type" : "bird"
+    },
+    "20.png" :
+    {
+        "type" : "frog"
+    },
+    "21.png" :
+    {
+        "type" : "deer"
+    },
+    "22.png" :
+    {
+        "type" : "cat"
+    },
+    "23.png" :
+    {
+        "type" : "frog"
+    },
+    "24.png" :
+    {
+        "type" : "frog"
+    },
+    "25.png" :
+    {
+        "type" : "bird"
+    },
+    "26.png" :
+    {
+        "type" : "frog"
+    },
+    "27.png" :
+    {
+        "type" : "cat"
+    },
+    "28.png" :
+    {
+        "type" : "dog"
+    },
+    "29.png" :
+    {
+        "type" : "deer"
+    },
+    "30.png" :
+    {
+        "type" : "airplane"
+    },
+    "31.png" :
+    {
+        "type" : "airplane"
+    },
+    "32.png" :
+    {
+        "type" : "truck"
+    },
+    "33.png" :
+    {
+        "type" : "automobile"
+    },
+    "34.png" :
+    {
+        "type" : "cat"
+    },
+    "35.png" :
+    {
+        "type" : "deer"
+    },
+    "36.png" :
+    {
+        "type" : "airplane"
+    },
+    "37.png" :
+    {
+        "type" : "cat"
+    },
+    "38.png" :
+    {
+        "type" : "horse"
+    },
+    "39.png" :
+    {
+        "type" : "cat"
+    },
+    "40.png" :
+    {
+        "type" : "cat"
+    },
+    "41.png" :
+    {
+        "type" : "dog"
+    },
+    "42.png" :
+    {
+        "type" : "bird"
+    },
+    "43.png" :
+    {
+        "type" : "bird"
+    },
+    "44.png" :
+    {
+        "type" : "horse"
+    },
+    "45.png" :
+    {
+        "type" : "automobile"
+    },
+    "46.png" :
+    {
+        "type" : "automobile"
+    },
+    "47.png" :
+    {
+        "type" : "automobile"
+    },
+    "48.png" :
+    {
+        "type" : "bird"
+    },
+    "49.png" :
+    {
+        "type" : "bird"
+    },
+    "50.png" :
+    {
+        "type" : "airplane"
+    },
+    "51.png" :
+    {
+        "type" : "truck"
+    },
+    "52.png" :
+    {
+        "type" : "dog"
+    },
+    "53.png" :
+    {
+        "type" : "horse"
+    },
+    "54.png" :
+    {
+        "type" : "truck"
+    },
+    "55.png" :
+    {
+        "type" : "bird"
+    },
+    "56.png" :
+    {
+        "type" : "bird"
+    },
+    "57.png" :
+    {
+        "type" : "dog"
+    },
+    "58.png" :
+    {
+        "type" : "bird"
+    },
+    "59.png" :
+    {
+        "type" : "deer"
+    },
+    "60.png" :
+    {
+        "type" : "cat"
+    },
+    "61.png" :
+    {
+        "type" : "automobile"
+    },
+    "62.png" :
+    {
+        "type" : "automobile"
+    },
+    "63.png" :
+    {
+        "type" : "ship"
+    },
+    "64.png" :
+    {
+        "type" : "bird"
+    },
+    "65.png" :
+    {
+        "type" : "automobile"
+    },
+    "66.png" :
+    {
+        "type" : "automobile"
+    },
+    "67.png" :
+    {
+        "type" : "deer"
+    },
+    "68.png" :
+    {
+        "type" : "truck"
+    },
+    "69.png" :
+    {
+        "type" : "horse"
+    },
+    "70.png" :
+    {
+        "type" : "ship"
+    },
+    "71.png" :
+    {
+        "type" : "dog"
+    },
+    "72.png" :
+    {
+        "type" : "truck"
+    },
+    "73.png" :
+    {
+        "type" : "frog"
+    },
+    "74.png" :
+    {
+        "type" : "horse"
+    },
+    "75.png" :
+    {
+        "type" : "cat"
+    },
+    "76.png" :
+    {
+        "type" : "automobile"
+    },
+    "77.png" :
+    {
+        "type" : "truck"
+    },
+    "78.png" :
+    {
+        "type" : "airplane"
+    },
+    "79.png" :
+    {
+        "type" : "cat"
+    },
+    "80.png" :
+    {
+        "type" : "automobile"
+    },
+    "81.png" :
+    {
+        "type" : "cat"
+    },
+    "82.png" :
+    {
+        "type" : "dog"
+    },
+    "83.png" :
+    {
+        "type" : "deer"
+    },
+    "84.png" :
+    {
+        "type" : "dog"
+    },
+    "85.png" :
+    {
+        "type" : "horse"
+    },
+    "86.png" :
+    {
+        "type" : "horse"
+    },
+    "87.png" :
+    {
+        "type" : "deer"
+    },
+    "88.png" :
+    {
+        "type" : "horse"
+    },
+    "89.png" :
+    {
+        "type" : "truck"
+    },
+    "90.png" :
+    {
+        "type" : "deer"
+    },
+    "91.png" :
+    {
+        "type" : "bird"
+    },
+    "92.png" :
+    {
+        "type" : "cat"
+    },
+    "93.png" :
+    {
+        "type" : "ship"
+    },
+    "94.png" :
+    {
+        "type" : "airplane"
+    },
+    "95.png" :
+    {
+        "type" : "automobile"
+    },
+    "96.png" :
+    {
+        "type" : "frog"
+    },
+    "97.png" :
+    {
+        "type" : "automobile"
+    },
+    "98.png" :
+    {
+        "type" : "automobile"
+    },
+    "99.png" :
+    {
+        "type" : "deer"
+    },
+    "100.png" :
+    {
+        "type" : "automobile"
+    },
+    "101.png" :
+    {
+        "type" : "ship"
+    },
+    "102.png" :
+    {
+        "type" : "cat"
+    },
+    "103.png" :
+    {
+        "type" : "truck"
+    }
+}
