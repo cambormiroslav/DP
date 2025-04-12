@@ -1,414 +1,414 @@
 {
     "1.png" :
     {
-        "type" : "frog"
+        "type" : ["frog", "toad"]
     },
     "2.png" :
     {
-        "type" : "truck"
+        "type" : ["truck", "lorry", "freighter"]
     },
     "3.png" :
     {
-        "type" : "truck"
+        "type" : ["truck", "lorry", "freighter"]
     },
     "4.png" :
     {
-        "type" : "deer"
+        "type" : ["deer", "hart", "buck", "stag", "elk"]
     },
     "5.png" :
     {
-        "type" : "automobile"
+        "type" : ["automobile", "vehicle", "coach", "car", "waggon", "carriage", "wain", "cart", "motorcar"]
     },
     "6.png" :
     {
-        "type" : "automobile"
+        "type" : ["automobile", "vehicle", "coach", "car", "waggon", "carriage", "wain", "cart", "motorcar"]
     },
     "7.png" :
     {
-        "type" : "bird"
+        "type" : ["bird"]
     },
     "8.png" :
     {
-        "type" : "horse"
+        "type" : ["horse"]
     },
     "9.png" :
     {
-        "type" : "ship"
+        "type" : ["ship", "boat", "craft", "spacecraft", "vessel"]
     },
     "10.png" :
     {
-        "type" : "cat"
+        "type" : ["cat", "wildcat","stunner", "puss", "feline"]
     },
     "11.png" :
     {
-        "type" : "deer"
+        "type" : ["deer", "hart", "buck", "stag", "elk"]
     },
     "12.png" :
     {
-        "type" : "horse"
+        "type" : ["horse"]
     },
     "13.png" :
     {
-        "type" : "horse"
+        "type" : ["horse"]
     },
     "14.png" :
     {
-        "type" : "bird"
+        "type" : ["bird"]
     },
     "15.png" :
     {
-        "type" : "truck"
+        "type" : ["truck", "lorry", "freighter"]
     },
     "16.png" :
     {
-        "type" : "truck"
+        "type" : ["truck", "lorry", "freighter"]
     },
     "17.png" :
     {
-        "type" : "truck"
+        "type" : ["truck", "lorry", "freighter"]
     },
     "18.png" :
     {
-        "type" : "cat"
+        "type" : ["cat", "wildcat","stunner", "puss", "feline"]
     },
     "19.png" :
     {
-        "type" : "bird"
+        "type" : ["bird"]
     },
     "20.png" :
     {
-        "type" : "frog"
+        "type" : ["frog", "toad"]
     },
     "21.png" :
     {
-        "type" : "deer"
+        "type" : ["deer", "hart", "buck", "stag", "elk"]
     },
     "22.png" :
     {
-        "type" : "cat"
+        "type" : ["cat", "wildcat","stunner", "puss", "feline"]
     },
     "23.png" :
     {
-        "type" : "frog"
+        "type" : ["frog", "toad"]
     },
     "24.png" :
     {
-        "type" : "frog"
+        "type" : ["frog", "toad"]
     },
     "25.png" :
     {
-        "type" : "bird"
+        "type" : ["bird"]
     },
     "26.png" :
     {
-        "type" : "frog"
+        "type" : ["frog", "toad"]
     },
     "27.png" :
     {
-        "type" : "cat"
+        "type" : ["cat", "wildcat","stunner", "puss", "feline"]
     },
     "28.png" :
     {
-        "type" : "dog"
+        "type" : ["dog"]
     },
     "29.png" :
     {
-        "type" : "deer"
+        "type" : ["deer", "hart", "buck", "stag", "elk"]
     },
     "30.png" :
     {
-        "type" : "airplane"
+        "type" : ["airplane", "plane", "craft", "aircraft", "aeroplane"]
     },
     "31.png" :
     {
-        "type" : "airplane"
+        "type" : ["airplane", "plane", "craft", "aircraft", "aeroplane"]
     },
     "32.png" :
     {
-        "type" : "truck"
+        "type" : ["truck", "lorry", "freighter"]
     },
     "33.png" :
     {
-        "type" : "automobile"
+        "type" : ["automobile", "vehicle", "coach", "car", "waggon", "carriage", "wain", "cart", "motorcar"]
     },
     "34.png" :
     {
-        "type" : "cat"
+        "type" : ["cat", "wildcat","stunner", "puss", "feline"]
     },
     "35.png" :
     {
-        "type" : "deer"
+        "type" : ["deer", "hart", "buck", "stag", "elk"]
     },
     "36.png" :
     {
-        "type" : "airplane"
+        "type" : ["airplane", "plane", "craft", "aircraft", "aeroplane"]
     },
     "37.png" :
     {
-        "type" : "cat"
+        "type" : ["cat", "wildcat","stunner", "puss", "feline"]
     },
     "38.png" :
     {
-        "type" : "horse"
+        "type" : ["horse"]
     },
     "39.png" :
     {
-        "type" : "cat"
+        "type" : ["cat", "wildcat","stunner", "puss", "feline"]
     },
     "40.png" :
     {
-        "type" : "cat"
+        "type" : ["cat", "wildcat","stunner", "puss", "feline"]
     },
     "41.png" :
     {
-        "type" : "dog"
+        "type" : ["dog"]
     },
     "42.png" :
     {
-        "type" : "bird"
+        "type" : ["bird"]
     },
     "43.png" :
     {
-        "type" : "bird"
+        "type" : ["bird"]
     },
     "44.png" :
     {
-        "type" : "horse"
+        "type" : ["horse"]
     },
     "45.png" :
     {
-        "type" : "automobile"
+        "type" : ["automobile", "vehicle", "coach", "car", "waggon", "carriage", "wain", "cart", "motorcar"]
     },
     "46.png" :
     {
-        "type" : "automobile"
+        "type" : ["automobile", "vehicle", "coach", "car", "waggon", "carriage", "wain", "cart", "motorcar"]
     },
     "47.png" :
     {
-        "type" : "automobile"
+        "type" : ["automobile", "vehicle", "coach", "car", "waggon", "carriage", "wain", "cart", "motorcar"]
     },
     "48.png" :
     {
-        "type" : "bird"
+        "type" : ["bird"]
     },
     "49.png" :
     {
-        "type" : "bird"
+        "type" : ["bird"]
     },
     "50.png" :
     {
-        "type" : "airplane"
+        "type" : ["airplane", "plane", "craft", "aircraft", "aeroplane"]
     },
     "51.png" :
     {
-        "type" : "truck"
+        "type" : ["truck", "lorry", "freighter"]
     },
     "52.png" :
     {
-        "type" : "dog"
+        "type" : ["dog"]
     },
     "53.png" :
     {
-        "type" : "horse"
+        "type" : ["horse"]
     },
     "54.png" :
     {
-        "type" : "truck"
+        "type" : ["truck", "lorry", "freighter"]
     },
     "55.png" :
     {
-        "type" : "bird"
+        "type" : ["bird"]
     },
     "56.png" :
     {
-        "type" : "bird"
+        "type" : ["bird"]
     },
     "57.png" :
     {
-        "type" : "dog"
+        "type" : ["dog"]
     },
     "58.png" :
     {
-        "type" : "bird"
+        "type" : ["bird"]
     },
     "59.png" :
     {
-        "type" : "deer"
+        "type" : ["deer", "hart", "buck", "stag", "elk"]
     },
     "60.png" :
     {
-        "type" : "cat"
+        "type" : ["cat", "wildcat","stunner", "puss", "feline"]
     },
     "61.png" :
     {
-        "type" : "automobile"
+        "type" : ["automobile", "vehicle", "coach", "car", "waggon", "carriage", "wain", "cart", "motorcar"]
     },
     "62.png" :
     {
-        "type" : "automobile"
+        "type" : ["automobile", "vehicle", "coach", "car", "waggon", "carriage", "wain", "cart", "motorcar"]
     },
     "63.png" :
     {
-        "type" : "ship"
+        "type" : ["ship", "boat", "craft", "spacecraft", "vessel"]
     },
     "64.png" :
     {
-        "type" : "bird"
+        "type" : ["bird"]
     },
     "65.png" :
     {
-        "type" : "automobile"
+        "type" : ["automobile", "vehicle", "coach", "car", "waggon", "carriage", "wain", "cart", "motorcar"]
     },
     "66.png" :
     {
-        "type" : "automobile"
+        "type" : ["automobile", "vehicle", "coach", "car", "waggon", "carriage", "wain", "cart", "motorcar"]
     },
     "67.png" :
     {
-        "type" : "deer"
+        "type" : ["deer", "hart", "buck", "stag", "elk"]
     },
     "68.png" :
     {
-        "type" : "truck"
+        "type" : ["truck", "lorry", "freighter"]
     },
     "69.png" :
     {
-        "type" : "horse"
+        "type" : ["horse"]
     },
     "70.png" :
     {
-        "type" : "ship"
+        "type" : ["ship", "boat", "craft", "spacecraft", "vessel"]
     },
     "71.png" :
     {
-        "type" : "dog"
+        "type" : ["dog"]
     },
     "72.png" :
     {
-        "type" : "truck"
+        "type" : ["truck", "lorry", "freighter"]
     },
     "73.png" :
     {
-        "type" : "frog"
+        "type" : ["frog", "toad"]
     },
     "74.png" :
     {
-        "type" : "horse"
+        "type" : ["horse"]
     },
     "75.png" :
     {
-        "type" : "cat"
+        "type" : ["cat", "wildcat","stunner", "puss", "feline"]
     },
     "76.png" :
     {
-        "type" : "automobile"
+        "type" : ["automobile", "vehicle", "coach", "car", "waggon", "carriage", "wain", "cart", "motorcar"]
     },
     "77.png" :
     {
-        "type" : "truck"
+        "type" : ["truck", "lorry", "freighter"]
     },
     "78.png" :
     {
-        "type" : "airplane"
+        "type" : ["airplane", "plane", "craft", "aircraft", "aeroplane"]
     },
     "79.png" :
     {
-        "type" : "cat"
+        "type" : ["cat", "wildcat","stunner", "puss", "feline"]
     },
     "80.png" :
     {
-        "type" : "automobile"
+        "type" : ["automobile", "vehicle", "coach", "car", "waggon", "carriage", "wain", "cart", "motorcar"]
     },
     "81.png" :
     {
-        "type" : "cat"
+        "type" : ["cat", "wildcat","stunner", "puss", "feline"]
     },
     "82.png" :
     {
-        "type" : "dog"
+        "type" : ["dog"]
     },
     "83.png" :
     {
-        "type" : "deer"
+        "type" : ["deer", "hart", "buck", "stag", "elk"]
     },
     "84.png" :
     {
-        "type" : "dog"
+        "type" : ["dog"]
     },
     "85.png" :
     {
-        "type" : "horse"
+        "type" : ["horse"]
     },
     "86.png" :
     {
-        "type" : "horse"
+        "type" : ["horse"]
     },
     "87.png" :
     {
-        "type" : "deer"
+        "type" : ["deer", "hart", "buck", "stag", "elk"]
     },
     "88.png" :
     {
-        "type" : "horse"
+        "type" : ["horse"]
     },
     "89.png" :
     {
-        "type" : "truck"
+        "type" : ["truck", "lorry", "freighter"]
     },
     "90.png" :
     {
-        "type" : "deer"
+        "type" : ["deer", "hart", "buck", "stag", "elk"]
     },
     "91.png" :
     {
-        "type" : "bird"
+        "type" : ["bird"]
     },
     "92.png" :
     {
-        "type" : "cat"
+        "type" : ["cat", "wildcat","stunner", "puss", "feline"]
     },
     "93.png" :
     {
-        "type" : "ship"
+        "type" : ["ship", "boat", "craft", "spacecraft", "vessel"]
     },
     "94.png" :
     {
-        "type" : "airplane"
+        "type" : ["airplane", "plane", "craft", "aircraft", "aeroplane"]
     },
     "95.png" :
     {
-        "type" : "automobile"
+        "type" : ["automobile", "vehicle", "coach", "car", "waggon", "carriage", "wain", "cart", "motorcar"]
     },
     "96.png" :
     {
-        "type" : "frog"
+        "type" : ["frog", "toad"]
     },
     "97.png" :
     {
-        "type" : "automobile"
+        "type" : ["automobile", "vehicle", "coach", "car", "waggon", "carriage", "wain", "cart", "motorcar"]
     },
     "98.png" :
     {
-        "type" : "automobile"
+        "type" : ["automobile", "vehicle", "coach", "car", "waggon", "carriage", "wain", "cart", "motorcar"]
     },
     "99.png" :
     {
-        "type" : "deer"
+        "type" : ["deer", "hart", "buck", "stag", "elk"]
     },
     "100.png" :
     {
-        "type" : "automobile"
+        "type" : ["automobile", "vehicle", "coach", "car", "waggon", "carriage", "wain", "cart", "motorcar"]
     },
     "101.png" :
     {
-        "type" : "ship"
+        "type" : ["ship", "boat", "craft", "spacecraft", "vessel"]
     },
     "102.png" :
     {
-        "type" : "cat"
+        "type" : ["cat", "wildcat","stunner", "puss", "feline"]
     },
     "103.png" :
     {
-        "type" : "truck"
+        "type" : ["truck", "lorry", "freighter"]
     }
 }

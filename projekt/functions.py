@@ -21,7 +21,7 @@ def check_the_data_object(dict_model, name_of_file, path_to_correct_data):
     with open(path_to_correct_data, 'r') as file:
         data = json.load(file)[name_of_file]
         
-        count_of_data = 2
+        count_of_data = 1
 
         try:
             dict_model = json.loads(dict_model)
@@ -30,7 +30,7 @@ def check_the_data_object(dict_model, name_of_file, path_to_correct_data):
         
         try:
             type_data = dict_model["type"].lower()
-            if data["type"].lower() == type_data:
+            if type_data in data["type"]:
                 print("type Correct")
                 correct_data_counted += 1
             else:
@@ -42,21 +42,6 @@ def check_the_data_object(dict_model, name_of_file, path_to_correct_data):
                 print("type Not In Dict")
                 not_in_dict_counted += 1
                 array_not_found += ["type"]
-
-        try:
-            breed_data = dict_model["breed"].lower()
-            if data["breed"].lower() == breed_data:
-                print("breed Correct")
-                correct_data_counted += 1
-            else:
-                print("breed Incorrect")
-                incorrect_data_counted += 1
-                dict_incorrect["breed"] = breed_data
-        except:
-            if "breed" in data:
-                print("breed Not In Dict")
-                not_in_dict_counted += 1
-                array_not_found += ["breed"]
 
         correctness = correct_data_counted / count_of_data
 

@@ -10,10 +10,12 @@ ocr_method = False
 
 if ocr_method:
     pattern = "Get me the list of goods from picture. Show the address, date, time and name of company. When you find the phone number show it too. When you find you find the table number, the information about guest or order number show it too. Show me the output as JSON. The company name put in key company, the address of company in key address, phone number in key phone_number, fax number in key fax_number, server name in key server, station number in key station, order number in key order_number, table info in key table, number of guests in key guests, subtotal price to key sub_total, tax in key tax, total cost in key total, date in key date, time in key time. Every good name will be as key of the JSON in key goods and value of the good will be the another JSON with amount of goods in key amount and the cost of the good in key price."
+    type_of_data = "ticket"
     correct_data_path = "../data_for_control/dataset_correct_data.json"
 else:
-    pattern = "What type of the animal is in the photography and breed of this animal? Return it as JSON type of animal put in the key type and animal breed in key breed."
-    correct_data_path = "../data_for_control/dataset_images_correct_data.json"
+    pattern = "What type of objekt is on this image? Return it as JSON. Type of objekt put in the key type."
+    type_of_data = "objects"
+    correct_data_path = "../data_for_control/dataset_objects_correct_data.json"
 
 
 model = "llava"
@@ -97,79 +99,79 @@ def load_and_measure(dir_path, first_ticket, latest_file):
 
         if model == "knoopx/mobile-vlm:3b-fp16":
             if ocr_method:
-                functions.save_to_file_ocr("knoopx-mobile-vlm-3b-fp16", "ticket", [correctness, correct_data, 
+                functions.save_to_file_ocr("knoopx-mobile-vlm-3b-fp16", type_of_data, [correctness, correct_data, 
                                                                                    incorect_data, not_found_data, 
                                                                                    good_not_found, diff_datetime_seconds], 
                                                                                    dict_of_incorect, array_not_found, 
                                                                                    array_good_not_found)
             else:
-                functions.save_to_file_object("knoopx-mobile-vlm-3b-fp16", "animals", [correctness, correct_data, 
+                functions.save_to_file_object("knoopx-mobile-vlm-3b-fp16", type_of_data, [correctness, correct_data, 
                                                                                    incorect_data, not_found_data, diff_datetime_seconds], 
                                                                                    dict_of_incorect, array_not_found)
         elif model == "llava:13b":
             if ocr_method:
-                functions.save_to_file_ocr("llava-13b", "ticket", [correctness, correct_data, 
+                functions.save_to_file_ocr("llava-13b", type_of_data, [correctness, correct_data, 
                                                                    incorect_data, not_found_data, 
                                                                    good_not_found, diff_datetime_seconds], 
                                                                    dict_of_incorect, array_not_found,
                                                                    array_good_not_found)
             else:
-                functions.save_to_file_object("llava-13b", "animals", [correctness, correct_data,
+                functions.save_to_file_object("llava-13b", type_of_data, [correctness, correct_data,
                                                                     incorect_data, not_found_data, diff_datetime_seconds],
                                                                     dict_of_incorect, array_not_found)
         elif model == "llava:34b":
             if ocr_method:
-                functions.save_to_file_ocr("llava-34b", "ticket", [correctness, correct_data, 
+                functions.save_to_file_ocr("llava-34b", type_of_data, [correctness, correct_data, 
                                                                    incorect_data, not_found_data, 
                                                                    good_not_found, diff_datetime_seconds], 
                                                                    dict_of_incorect, array_not_found, 
                                                                    array_good_not_found)
             else:
-                functions.save_to_file_object("llava-34b", "animals", [correctness, correct_data,
+                functions.save_to_file_object("llava-34b", type_of_data, [correctness, correct_data,
                                                                     incorect_data, not_found_data, diff_datetime_seconds],
                                                                     dict_of_incorect, array_not_found)
         elif model == "gemma3:27b":
             if ocr_method:
-                functions.save_to_file_ocr("gemma3-27b", "ticket", [correctness, correct_data, 
+                functions.save_to_file_ocr("gemma3-27b", type_of_data, [correctness, correct_data, 
                                                                    incorect_data, not_found_data, 
                                                                    good_not_found, diff_datetime_seconds], 
                                                                    dict_of_incorect, array_not_found, 
                                                                    array_good_not_found)
             else:
-                functions.save_to_file_object("gemma3-27b", "animals", [correctness, correct_data,
+                functions.save_to_file_object("gemma3-27b", type_of_data, [correctness, correct_data,
                                                                     incorect_data, not_found_data, diff_datetime_seconds],
                                                                     dict_of_incorect, array_not_found)
         elif model == "gemma3:12b":
             if ocr_method:
-                functions.save_to_file_ocr("gemma3-12b", "ticket", [correctness, correct_data, 
+                functions.save_to_file_ocr("gemma3-12b", type_of_data, [correctness, correct_data, 
                                                                    incorect_data, not_found_data, 
                                                                    good_not_found, diff_datetime_seconds], 
                                                                    dict_of_incorect, array_not_found, 
                                                                    array_good_not_found)
             else:
-                functions.save_to_file_object("gemma3-12b", "animals", [correctness, correct_data,
+                functions.save_to_file_object("gemma3-12b", type_of_data, [correctness, correct_data,
                                                                     incorect_data, not_found_data, diff_datetime_seconds],
                                                                     dict_of_incorect, array_not_found)
         elif model == "gemma3:4b":
             if ocr_method:
-                functions.save_to_file_ocr("gemma3-4b", "ticket", [correctness, correct_data, 
+                functions.save_to_file_ocr("gemma3-4b", type_of_data, [correctness, correct_data, 
                                                                    incorect_data, not_found_data, 
                                                                    good_not_found, diff_datetime_seconds], 
                                                                    dict_of_incorect, array_not_found, 
                                                                    array_good_not_found)
             else:
-                functions.save_to_file_object("gemma3-4b", "animals", [correctness, correct_data,
+                functions.save_to_file_object("gemma3-4b", type_of_data, [correctness, correct_data,
                                                                     incorect_data, not_found_data, diff_datetime_seconds],
                                                                     dict_of_incorect, array_not_found)
         else:
             if ocr_method:
-                functions.save_to_file_ocr(model, "ticket", [correctness, correct_data, 
+                functions.save_to_file_ocr(model, type_of_data, [correctness, correct_data, 
                                                              incorect_data, not_found_data, 
                                                              good_not_found, diff_datetime_seconds], 
                                                              dict_of_incorect, array_not_found,
                                                              array_good_not_found)
             else:
-                functions.save_to_file_object(model, "animals", [correctness, correct_data,
+                functions.save_to_file_object(model, type_of_data, [correctness, correct_data,
                                                                     incorect_data, not_found_data, diff_datetime_seconds],
                                                                     dict_of_incorect, array_not_found)
         if ocr_method:
@@ -194,56 +196,42 @@ if __name__ == "__main__":
     if ocr_method:
         dir_path = "../dataset/large-receipt-image-dataset-SRD/"
     else:
-        dir_path = "../dataset/images_dataset/"
+        dir_path = "../dataset/objects/"
 
-    #load_and_measure(dir_path, 1, 103)
-    #load_and_measure(dir_path, 1, 32)
+    load_and_measure(dir_path, 1, 103)
     #print(send_image_request(get_image_in_base64(dir_path + "1000-receipt.jpg"), pattern))
     
     model = "bakllava"
-    #load_and_measure(dir_path, 1, 103)
-    #load_and_measure(dir_path, 1, 32)
+    load_and_measure(dir_path, 1, 103)
     #print(send_image_request(get_image_in_base64(dir_path + "1000-receipt.jpg"), pattern))
 
     model = "minicpm-v"
-    #load_and_measure(dir_path, 1, 103)
-    #load_and_measure(dir_path, 1, 32)
+    load_and_measure(dir_path, 1, 103)
     #print(send_image_request(get_image_in_base64(dir_path + "1000-receipt.jpg"), pattern))
 
     model = "knoopx/mobile-vlm:3b-fp16"
-    #load_and_measure(dir_path, 1, 103)
-    #load_and_measure(dir_path, 1, 32)
+    load_and_measure(dir_path, 1, 103)
     #print(send_image_request(get_image_in_base64(dir_path + "1000-receipt.jpg"), pattern))
 
     model = "llava:13b"
-    #load_and_measure(dir_path, 1, 103)
-    #load_and_measure(dir_path, 1, 32)
+    load_and_measure(dir_path, 1, 103)
     #print(send_image_request(get_image_in_base64(dir_path + "1000-receipt.jpg"), pattern))
 
     model = "llava:34b"
-    #load_and_measure(dir_path, 1, 103)
-    #load_and_measure(dir_path, 1, 32)
+    load_and_measure(dir_path, 1, 103)
     #print(send_image_request(get_image_in_base64(dir_path + "1000-receipt.jpg"), pattern))
 
     model = "gemma3:27b"
-    #load_and_measure(dir_path, 1, 103)
-    #load_and_measure(dir_path, 1, 32)
-
-    base_64_image = get_image_in_base64("C:/Users/mirac/Downloads/cifar-10/train/1.png")
-    print(send_image_request(base_64_image, "What type of objekt is on this image? Return it as JSON. Type of objekt put in the key type."))
+    load_and_measure(dir_path, 1, 103)
 
     model = "granite3.2-vision"
-    #load_and_measure(dir_path, 1, 103)
-    #load_and_measure(dir_path, 1, 32)
+    load_and_measure(dir_path, 1, 103)
 
     model = "mistral-small3.1"
-    #load_and_measure(dir_path, 1, 103)
-    #load_and_measure(dir_path, 1, 32)
+    load_and_measure(dir_path, 1, 103)
 
     model = "gemma3:12b"
-    #load_and_measure(dir_path, 1, 103)
-    #load_and_measure(dir_path, 1, 32)
+    load_and_measure(dir_path, 1, 103)
 
     model = "gemma3:4b"
-    #load_and_measure(dir_path, 1, 103)
-    #load_and_measure(dir_path, 1, 32)
+    load_and_measure(dir_path, 1, 103)
