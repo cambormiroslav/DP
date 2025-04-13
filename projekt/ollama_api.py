@@ -222,10 +222,10 @@ if __name__ == "__main__":
     #print(send_image_request(get_image_in_base64(dir_path + "1000-receipt.jpg"), pattern))
 
     model = "gemma3:27b"
-    #load_and_measure(dir_path, 1, 103)
+    load_and_measure(dir_path, 1, 103)
 
     model = "granite3.2-vision"
-    load_and_measure(dir_path, 89, 103)
+    load_and_measure(dir_path, 1, 103)
 
     model = "mistral-small3.1"
     load_and_measure(dir_path, 1, 103)
