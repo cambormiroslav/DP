@@ -147,10 +147,10 @@ def load_all_data():
 if __name__ == "__main__":
     load_all_data()
 
-    #generate_graph("correctness")
-    #generate_graph("incorrect_data")
-    #generate_graph("not_found")
-    #generate_graph("goods_not_found")
-    #generate_graph("time_of_run")
+    generate_graph("correctness")
+    generate_graph("incorrect_data")
+    generate_graph("not_found")
+    generate_graph("goods_not_found")
+    generate_graph("time_of_run")
 
     generate_graph_not_in_json()
