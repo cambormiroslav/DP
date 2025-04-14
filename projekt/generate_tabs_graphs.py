@@ -2,7 +2,12 @@ import os
 import matplotlib.pyplot as plt
 import pandas as pd
 
-output_dir = "./output/"
+type_of_dataset = "objects"
+
+if type_of_dataset == "ticket":
+    output_dir = "./output/"
+else:
+    output_dir = "./output_objects/"
 
 correctness_dict = {}
 correct_data_count_dict = {}
@@ -32,7 +37,7 @@ def generate_boxplot(tick_labels, values, y_label, type_data):
 
     plt.margins(0.1)
     plt.subplots_adjust(bottom=0.45)
-    plt.savefig(f"./graphs/{type_data}.png")
+    plt.savefig(f"./graphs/{type_data}_{type_of_dataset}.png")
 
 def generate_bar(models, values):
     colors = ['blue', 'green', 'red', 'purple', 'brown',
@@ -45,7 +50,7 @@ def generate_bar(models, values):
     plt.xticks(rotation=90)
     plt.margins(0.1)
     plt.subplots_adjust(bottom=0.45)
-    plt.savefig(f"./graphs/not_json.png")
+    plt.savefig(f"./graphs/not_json_{type_of_dataset}.png")
 
 def generate_graph(type_of_data):
     tick_labels = []
