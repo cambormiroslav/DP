@@ -7,7 +7,7 @@ import functions
 
 api_key = os.environ["GEMINI_API_KEY"]
 
-ocr_method = True
+ocr_method = False
 
 if ocr_method:
     pattern = "Get me the list of goods from picture. Show the address, date, time and name of company. When you find the phone number show it too. When you find you find the table number, the information about guest or order number show it too. Show me the output as JSON. The company name put in key company, the address of company in key address, phone number in key phone_number, server name in key server, station number in key station, order number in key order_number, table info in key table, number of guests in key guests, subtotal price to key sub_total, tax in key tax, total cost in key total, date in key date, time in key time. Every good name will be as key of the JSON in key goods and value of the good will be the another JSON with amount of goods in key amount and the cost of the good in key price."
@@ -107,7 +107,11 @@ def load_and_measure(dir_path, first_ticket, latest_file):
         if i == latest_file:
             break
 
-        if model_is_pro:
+        if model_is_pro and ocr_method:
+            time.sleep(15.0)
+        if model_is_pro and not ocr_method:
+            time.sleep(30.0)
+        if ocr_method == False and model_is_pro == False:
             time.sleep(15.0)
 
 if __name__ == "__main__":
@@ -128,8 +132,4 @@ if __name__ == "__main__":
 
     model_text = "gemini-2.0-flash-lite"
     model_is_pro = False
-    load_and_measure(dir_path, 1, 103)
-
-    model_text = "gemini-2.5-pro-preview-03-25"
-    model_is_pro = True
     load_and_measure(dir_path, 1, 103)
