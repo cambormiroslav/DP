@@ -1,6 +1,6 @@
 import os
 import matplotlib.pyplot as plt
-import pandas as pd
+import json
 
 type_of_dataset = "objects"
 
@@ -125,21 +125,34 @@ def load_all_data():
                 correct_data = int(array_of_values[1])
                 incorect_data = int(array_of_values[2])
                 not_finded = int(array_of_values[3])
-                goods_not_finded = int(array_of_values[4])
-
-                count_of_all_data = get_count_of_all_data(correct_data, incorect_data, not_finded, goods_not_finded)
+                if type_of_dataset == "ticket":
+                    goods_not_finded = int(array_of_values[4])
+                    count_of_all_data = get_count_of_all_data(correct_data, incorect_data, not_finded, goods_not_finded)
+                else:
+                    count_of_all_data = get_count_of_all_data(correct_data, incorect_data, not_finded, 0)
+                
                 correctness_array += [float(array_of_values[0])]
-                correct_data_count_array += [int(array_of_values[1])]
-                incorrect_data_count_array += [int(array_of_values[2]) / count_of_all_data]
-                not_finded_main_count_key_array += [int(array_of_values[3]) / count_of_all_data]
-                goods_not_finded_count_array += [(int(array_of_values[4]) * 3) / count_of_all_data]
-                time_run_array += [float(array_of_values[5])]
+                correct_data_count_array += [correct_data]
+                incorrect_data_count_array += [incorect_data / count_of_all_data]
+                not_finded_main_count_key_array += [not_finded / count_of_all_data]
+                if type_of_dataset == "ticket":
+                    goods_not_finded_count_array += [(goods_not_finded * 3) / count_of_all_data]
+                    time_run_array += [float(array_of_values[5])]
+                else:
+                    time_run_array += [float(array_of_values[4])]
 
-                if correct_data == 0 and incorect_data == 0 and not_finded > 0 and goods_not_finded == 0:
-                    if model in not_found_json_dict:
-                        not_found_json_dict[model] =  not_found_json_dict[model] + 1   
-                    else:
-                        not_found_json_dict[model] = 1
+                if type_of_dataset == "ticket":
+                    if correct_data == 0 and incorect_data == 0 and not_finded > 0 and goods_not_finded == 0:
+                        if model in not_found_json_dict:
+                            not_found_json_dict[model] =  not_found_json_dict[model] + 1
+                        else:
+                            not_found_json_dict[model] = 1
+                else:
+                    if correct_data == 0 and incorect_data == 0 and not_finded > 0 and array_of_values[5] == "{}" and array_of_values[6] == "[]":
+                        if model in not_found_json_dict:
+                            not_found_json_dict[model] =  not_found_json_dict[model] + 1
+                        else:
+                            not_found_json_dict[model] = 1
                         
         
         correctness_dict[model] = correctness_array
@@ -155,7 +168,8 @@ if __name__ == "__main__":
     generate_graph("correctness")
     generate_graph("incorrect_data")
     generate_graph("not_found")
-    generate_graph("goods_not_found")
+    if type_of_dataset == "ticket":
+        generate_graph("goods_not_found")
     generate_graph("time_of_run")
 
     generate_graph_not_in_json()
