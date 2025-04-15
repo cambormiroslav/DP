@@ -1,8 +1,8 @@
 import os
 import matplotlib.pyplot as plt
 
-type_of_dataset = "ticket"
-#type_of_dataset = "objects"
+#type_of_dataset = "ticket"
+type_of_dataset = "objects"
 
 if type_of_dataset == "ticket":
     output_dir = "./output/"
@@ -61,7 +61,7 @@ def generate_graph(type_of_data):
         for key in correctness_dict:
             tick_labels += [key]
             values += [correctness_dict[key]]
-        y_label = "Správnost výsledku [%]"
+        y_label = "Správnost výsledku"
     elif type_of_data == "correct_data":
         for key in correct_data_count_dict:
             tick_labels += [key]
@@ -71,17 +71,17 @@ def generate_graph(type_of_data):
         for key in incorrect_data_count_dict:
             tick_labels += [key]
             values += [incorrect_data_count_dict[key]]
-        y_label = "Poměr špatnných dat [%]"
+        y_label = "Poměr špatnných dat"
     elif type_of_data == "not_found":
         for key in not_finded_main_count_key_dict:
             tick_labels += [key]
             values += [not_finded_main_count_key_dict[key]]
-        y_label = "Poměr nenalezených dat [%]"
+        y_label = "Poměr nenalezených dat"
     elif type_of_data == "goods_not_found":
         for key in goods_not_finded_count_dict:
             tick_labels += [key]
             values += [goods_not_finded_count_dict[key]]
-        y_label = "Poměr nenalezených zboží [%]"
+        y_label = "Poměr nenalezených zboží"
     elif type_of_data == "time_of_run":
         for key in time_run_dict:
             tick_labels += [key]
