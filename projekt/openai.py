@@ -7,7 +7,7 @@ import functions
 
 api_key = os.environ["OPENAI_API_KEY"]
 
-ocr_method = False
+ocr_method = True
 
 if ocr_method:
     pattern = "Get me the list of goods from picture. Show the address, date, time and name of company. When you find the phone number show it too. When you find the fax number show it too as fax_number. When you find you find the table number, the information about guest or order number show it too. Show me the output as JSON. The company name put in key company, the address of company in key address, phone number in key phone_number, server name in key server, station number in key station, order number in key order_number, table info in key table, number of guests in key guests, subtotal price to key sub_total, tax in key tax, total cost in key total, date in key date, time in key time. Every good name will be as key of the JSON in key goods and value of the good will be the another JSON with amount of goods in key amount and the cost of the good in key price."
@@ -133,10 +133,19 @@ if __name__ == "__main__":
     else:
         dir_path = "../dataset/objects/"
     
-    #load_and_measure(dir_path, 103, 103)
+    #load_and_measure(dir_path, 1, 103)
 
     model = "gpt-4.5-preview"
-    load_and_measure(dir_path, 5, 103)
+    #load_and_measure(dir_path, 1, 103)
 
     model = "gpt-4o"
+    #load_and_measure(dir_path, 1, 103)
+
+    model = "gpt-4.1"
+    load_and_measure(dir_path, 1, 103)
+
+    model = "gpt-4.1-mini"
+    load_and_measure(dir_path, 1, 103)
+
+    model = "gpt-4.1-nano"
     load_and_measure(dir_path, 1, 103)
