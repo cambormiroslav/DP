@@ -1,8 +1,8 @@
 import os
 import matplotlib.pyplot as plt
 
-type_of_dataset = "ticket"
-#type_of_dataset = "objects"
+#type_of_dataset = "ticket"
+type_of_dataset = "objects"
 
 if type_of_dataset == "ticket":
     output_dir = "./output/"
@@ -107,6 +107,8 @@ def generate_graph_not_in_json():
 def load_all_data():
     for file in os.listdir(output_dir):
         model = file.split("_")[0]
+        if model == "llava":
+            model = "llava-7b"
         path_to_data = output_dir + file
 
         correctness_array = []
