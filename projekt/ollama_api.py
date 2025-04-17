@@ -6,14 +6,21 @@ import datetime
 
 import functions
 
-ocr_method = False
+ocr_method = True
+is_mistral = True
 
 if ocr_method:
-    pattern = "Get me the list of goods from picture. Show the address, date, time and name of company. When you find the phone number show it too. When you find you find the table number, the information about guest or order number show it too. Show me the output as JSON. The company name put in key company, the address of company in key address, phone number in key phone_number, fax number in key fax_number, server name in key server, station number in key station, order number in key order_number, table info in key table, number of guests in key guests, subtotal price to key sub_total, tax in key tax, total cost in key total, date in key date, time in key time. Every good name will be as key of the JSON in key goods and value of the good will be the another JSON with amount of goods in key amount and the cost of the good in key price."
+    if is_mistral:
+        pattern = "Get me the list of goods from picture. Show the address, date, time and name of company. When you find the phone number show it too. When you find you find the table number, the information about guest or order number show it too. Show me the output as JSON. The company name put in key company, the address of company in key address, phone number in key phone_number, fax number in key fax_number, server name in key server, station number in key station, order number in key order_number, table info in key table, number of guests in key guests, subtotal price to key sub_total, tax in key tax, total cost in key total, date in key date, time in key time. Every good name will be as key of the JSON in key goods and value of the good will be the another JSON with amount of goods in key amount and the cost of the good in key price. Return it as only JSON."
+    else:
+        pattern = "Get me the list of goods from picture. Show the address, date, time and name of company. When you find the phone number show it too. When you find you find the table number, the information about guest or order number show it too. Show me the output as JSON. The company name put in key company, the address of company in key address, phone number in key phone_number, fax number in key fax_number, server name in key server, station number in key station, order number in key order_number, table info in key table, number of guests in key guests, subtotal price to key sub_total, tax in key tax, total cost in key total, date in key date, time in key time. Every good name will be as key of the JSON in key goods and value of the good will be the another JSON with amount of goods in key amount and the cost of the good in key price."
     type_of_data = "ticket"
     correct_data_path = "../data_for_control/dataset_correct_data.json"
 else:
-    pattern = "What type of objekt is on this image? Return it as JSON. Type of objekt put in the key type."
+    if is_mistral:
+        pattern = "What type of objekt is on this image? Return it as only JSON. Type of objekt put in the key type."
+    else:
+        pattern = "What type of objekt is on this image? Return it as JSON. Type of objekt put in the key type."
     type_of_data = "objects"
     correct_data_path = "../data_for_control/dataset_objects_correct_data.json"
 
@@ -198,40 +205,34 @@ if __name__ == "__main__":
     else:
         dir_path = "../dataset/objects/"
 
-    load_and_measure(dir_path, 1, 103)
-    #print(send_image_request(get_image_in_base64(dir_path + "1000-receipt.jpg"), pattern))
+    #load_and_measure(dir_path, 1, 103)
     
     model = "bakllava"
-    load_and_measure(dir_path, 1, 103)
-    #print(send_image_request(get_image_in_base64(dir_path + "1000-receipt.jpg"), pattern))
+    #load_and_measure(dir_path, 1, 103)
 
     model = "minicpm-v"
-    load_and_measure(dir_path, 1, 103)
-    #print(send_image_request(get_image_in_base64(dir_path + "1000-receipt.jpg"), pattern))
+    #load_and_measure(dir_path, 1, 103)
 
     model = "knoopx/mobile-vlm:3b-fp16"
-    load_and_measure(dir_path, 1, 103)
-    #print(send_image_request(get_image_in_base64(dir_path + "1000-receipt.jpg"), pattern))
+    #load_and_measure(dir_path, 1, 103)
 
     model = "llava:13b"
-    load_and_measure(dir_path, 1, 103)
-    #print(send_image_request(get_image_in_base64(dir_path + "1000-receipt.jpg"), pattern))
+    #load_and_measure(dir_path, 1, 103)
 
     model = "llava:34b"
-    load_and_measure(dir_path, 1, 103)
-    #print(send_image_request(get_image_in_base64(dir_path + "1000-receipt.jpg"), pattern))
+    #load_and_measure(dir_path, 1, 103)
 
     model = "gemma3:27b"
-    load_and_measure(dir_path, 1, 103)
+    #load_and_measure(dir_path, 1, 103)
 
     model = "granite3.2-vision"
-    load_and_measure(dir_path, 1, 103)
-
-    model = "mistral-small3.1"
-    load_and_measure(dir_path, 1, 103)
+    #load_and_measure(dir_path, 1, 103)
 
     model = "gemma3:12b"
-    load_and_measure(dir_path, 1, 103)
+    #load_and_measure(dir_path, 1, 103)
 
     model = "gemma3:4b"
-    load_and_measure(dir_path, 1, 103)
+    #load_and_measure(dir_path, 1, 103)
+
+    model = "mistral-small3.1"
+    load_and_measure(dir_path, 75, 103)
