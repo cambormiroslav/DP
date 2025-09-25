@@ -8,7 +8,7 @@ Mezi hlavní komunikační moduly patří skripty `openai.py`, `gemini.py` a `ol
 
 ## Modul functions
 
-Tento modul obsahuje všechny funkce, které by se opakovali v hlavních modulech. Mezi ně patří kontrolní funkce, která srovnává data oproti správným datům. Po srovnání testovacích dat se spočte přesnost, počet správných i špatných výskytů dat a nenalezených dat. Špatná data se navratí také jako JSON (klíč je jméno nenalezeného data a hodnota je zkoumaná hodnota) a nenalezená data (klíče) jako pole. Dále lze tu najít funkce pro ukládání dat do souboru (jednotlivých naměřených metrik). Tyto data jsou ukládány do adresáře `output` a `output_objects`
+Tento modul obsahuje všechny funkce, které by se opakovali v hlavních modulech. Mezi ně patří kontrolní funkce, která srovnává data oproti správným datům. Po srovnání testovacích dat se spočte přesnost, počet správných i špatných výskytů dat a nenalezených dat. Špatná data se navratí také jako JSON (klíč je jméno nenalezeného data a hodnota je zkoumaná hodnota) a nenalezená data (klíče) jako pole. Dále lze tu najít funkce pro ukládání dat do souboru (jednotlivých naměřených metrik). Tyto data jsou ukládána do adresáře `output` a `output_objects`
 
 ## Modul generate_graphs
 
