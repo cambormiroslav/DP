@@ -20,12 +20,14 @@ def extract_receipt_data(image_path):
             "address": None, "phone_number": None, "server": None,
             "order_number": None, "table": None, "guests": None,
             "station": None, "date": None, "time": None, "sub_total": None, 
-            "tax": None, "total": None, "goods": {}
+            "tax": None, "total": None, "fax_number": None, "goods": {}
         }
 
         
         patterns = {
             'phone': re.compile(r'(\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4})'),
+            'fax': re.compile(r'(Fax)\s*[:.\s]*(\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4})', re.IGNORECASE),
+            'fax2': re.compile(r'(\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4})\s*\(Fax\)', re.IGNORECASE),
             'date': re.compile(r'(\d{1,4}[-/]\d{1,2}[-/]\d{1,4})'),
             'time': re.compile(r'(\d{1,2}:\d{2}(?::\d{2})?\s*(?:AM|PM)?)', re.IGNORECASE),
             'server': re.compile(r'(Server|Cashier|SvrCk|User|Empl|Serv|Employee|Server #)[:\s]+([\w\s\.]+?)\b', re.IGNORECASE),
@@ -64,6 +66,8 @@ def extract_receipt_data(image_path):
             elif not receipt_data['table'] and (m := patterns['table'].search(line)): receipt_data['table'] = m.group(2).strip()
             elif not receipt_data['station'] and (m := patterns['station'].search(line)): receipt_data['station'] = m.group(2).strip()
             elif not receipt_data['guests'] and (m := patterns['guests'].search(line)): receipt_data['guests'] = int(m.group(2))
+            elif not receipt_data['fax_number'] and (m := patterns['fax'].search(line)): receipt_data['fax_number'] = m.group(2).strip()
+            elif not receipt_data['fax_number'] and (m := patterns['fax2'].search(line)): receipt_data['fax_number'] = m.group(1).strip()
             elif not receipt_data['phone_number'] and (m := patterns['phone'].search(line)): receipt_data['phone_number'] = m.group(1)
             elif not receipt_data['address'] and re.search(r'\d+\s+[A-Za-z]', line): receipt_data['address'] = line
 
