@@ -16,11 +16,11 @@ def extract_receipt_data(image_path):
         
         receipt_data = {
             "source_file": os.path.basename(image_path),
-            "restaurant_name": lines[0],
-            "address": None, "phone_number": None, "server_name": None,
-            "order_number": None, "table_number": None, "guest_count": None,
-            "station": None, "date": None, "time": None, "subtotal": None, 
-            "tax": None, "total": None, "items": []
+            "company": lines[0],
+            "address": None, "phone_number": None, "server": None,
+            "order_number": None, "table": None, "guests": None,
+            "station": None, "date": None, "time": None, "sub_total": None, 
+            "tax": None, "total": None, "goods": {}
         }
 
         
@@ -51,19 +51,19 @@ def extract_receipt_data(image_path):
                 quantity = int(item_match.group(1)) if item_match.group(1) else 1
                 name = item_match.group(2).strip()
                 price = float(item_match.group(3).replace(',', ''))
-                receipt_data['items'].append({"quantity": quantity, "item_name": name, "item_price": price})
+                receipt_data['goods'][name] = {"amount": quantity, "price": price}
                 continue
             
             if not receipt_data['total'] and (m := patterns['total'].search(line)): receipt_data['total'] = float(m.group(2).replace(',', ''))
-            elif not receipt_data['subtotal'] and (m := patterns['subtotal'].search(line)): receipt_data['subtotal'] = float(m.group(2).replace(',', ''))
+            elif not receipt_data['sub_total'] and (m := patterns['subtotal'].search(line)): receipt_data['sub_total'] = float(m.group(2).replace(',', ''))
             elif not receipt_data['tax'] and (m := patterns['tax'].search(line)): receipt_data['tax'] = float(m.group(2).replace(',', ''))
             elif not receipt_data['date'] and (m := patterns['date'].search(line)): receipt_data['date'] = m.group(1)
             elif not receipt_data['time'] and (m := patterns['time'].search(line)): receipt_data['time'] = m.group(1)
-            elif not receipt_data['server_name'] and (m := patterns['server'].search(line)): receipt_data['server_name'] = m.group(2).strip()
+            elif not receipt_data['server'] and (m := patterns['server'].search(line)): receipt_data['server'] = m.group(2).strip()
             elif not receipt_data['order_number'] and (m := patterns['order'].search(line)): receipt_data['order_number'] = m.group(2).strip()
-            elif not receipt_data['table_number'] and (m := patterns['table'].search(line)): receipt_data['table_number'] = m.group(2).strip()
+            elif not receipt_data['table'] and (m := patterns['table'].search(line)): receipt_data['table'] = m.group(2).strip()
             elif not receipt_data['station'] and (m := patterns['station'].search(line)): receipt_data['station'] = m.group(2).strip()
-            elif not receipt_data['guest_count'] and (m := patterns['guests'].search(line)): receipt_data['guest_count'] = int(m.group(2))
+            elif not receipt_data['guests'] and (m := patterns['guests'].search(line)): receipt_data['guests'] = int(m.group(2))
             elif not receipt_data['phone_number'] and (m := patterns['phone'].search(line)): receipt_data['phone_number'] = m.group(1)
             elif not receipt_data['address'] and re.search(r'\d+\s+[A-Za-z]', line): receipt_data['address'] = line
 
