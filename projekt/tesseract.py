@@ -5,6 +5,10 @@ import json
 import datetime
 from PIL import Image
 
+import functions
+
+correct_data_path = "../data_for_control/dataset_correct_data.json"
+
 def extract_receipt_data(image_path):
     try:
         text = pytesseract.image_to_string(Image.open(image_path), lang='eng')
@@ -78,6 +82,7 @@ def extract_receipt_data(image_path):
 
 def test_ocr(path):
     json_output = extract_receipt_data(path)
+    
     print(json.dumps(json_output, indent=4))
 
 def load_and_measure(dir_path, first_ticket, latest_file):
@@ -86,8 +91,18 @@ def load_and_measure(dir_path, first_ticket, latest_file):
     while(True):
         file = array_of_images[i]
         start_datetime = datetime.datetime.now()
-        test_ocr(os.path.join(dir_path, file))
+        response = extract_receipt_data(os.path.join(dir_path, file))
         end_datetime = datetime.datetime.now()
+
+        data_tuple = functions.check_the_data_ocr(response, file, correct_data_path, False)
+        correctness = data_tuple[0]
+        correct_data = data_tuple[1]
+        incorect_data = data_tuple[2]
+        not_found_data = data_tuple[3]
+        good_not_found = data_tuple[4]
+        dict_of_incorect = data_tuple[5]
+        array_not_found = data_tuple[6]
+        array_good_not_found = data_tuple[7]
 
         diff_datetime = end_datetime - start_datetime
         diff_datetime_seconds = diff_datetime.total_seconds()

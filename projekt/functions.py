@@ -60,7 +60,7 @@ Output: (Correctness, Count of correct data, Count of incorrect data,
         Dictionary of incorrect data, Array of not founded data (only keys),
         Array of not founded names goods)
 """
-def check_the_data_ocr(dict_model, name_of_file, path_to_correct_data):
+def check_the_data_ocr(dict_model, name_of_file, path_to_correct_data, load_json):
     correct_data_counted = 0
     incorrect_data_counted = 0
     not_in_dict_counted = 0
@@ -75,10 +75,11 @@ def check_the_data_ocr(dict_model, name_of_file, path_to_correct_data):
         
         count_of_data = data["count_of_data"]
 
-        try:
-            dict_model = json.loads(dict_model)
-        except:
-            return (0, 0, 0, count_of_data, 0, {}, [], [])
+        if load_json:
+            try:
+                dict_model = json.loads(dict_model)
+            except:
+                return (0, 0, 0, count_of_data, 0, {}, [], [])
 
         try:
             company_data = dict_model["company"].lower()
