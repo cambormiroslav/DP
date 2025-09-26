@@ -18,8 +18,8 @@ def extract_receipt_data(image_path):
             "restaurant_name": lines[0],
             "address": None, "phone_number": None, "server_name": None,
             "order_number": None, "table_number": None, "guest_count": None,
-            "date": None, "time": None, "subtotal": None, "tax": None,
-            "total": None, "items": []
+            "station": None, "date": None, "time": None, "subtotal": None, 
+            "tax": None, "total": None, "items": []
         }
 
         
@@ -31,6 +31,7 @@ def extract_receipt_data(image_path):
             'order': re.compile(r'(Order|Check|Check#|Order #|Order#|ORDER#|Chk|Ticket|ORDER|Check No|Bill|Ord|ORD|Trans #|Your Order)[\s#:]+([\w-]+)', re.IGNORECASE),
             'table': re.compile(r'(Table|Tbl|TABLE|Tab|Tb#|Table No|Table #|TAB#)\s*#?([\w\s/]+)', re.IGNORECASE),
             'guests': re.compile(r'(Guests|Party|#Party|Gst|Guest|Cust|No. of Guest)[:\s]+(\d+)', re.IGNORECASE),
+            'station': re.compile(r'(Station|Stat|STAT)[:\s]+(\w+)', re.IGNORECASE),
             'subtotal': re.compile(r'(Subtotal|Sub Total|SubTotal|SUB TOTAL|SUBTOTAL|Sub/Ttl|Sub-total|Items|town/MA tax|FOOD|Food|Net Total|NET TOTAL|Amount)\s*[:\s]*\$?([\d,]+\.\d{2})', re.IGNORECASE),
             'tax': re.compile(r'(Tax|Sales Tax|SALES TAX|Tax 1|TAX|State Tax|STATE TAX|StateTax|Taxes|TAXES|TXTL|Total Taxes|TAX A|Castro Valley Sales Tax)\s*\d*\s*[:\s]*\$?([\d,]+\.\d{2})', re.IGNORECASE),
             'total': re.compile(r'(Total|Take-Out Total|Balance|Balance Due|TOTAL|TOTAL DUE|Total Due|Amount Due|AmountDue|AMOUNT DUE|Grand Total|GRAND TOTAL|\*DRV THRU|TOTL|TOTAL EURO|Amt Due|AMT DUE|PAYMENT|Payment|TO-GO|Order Total|Total D1-4)\s*[:\s]*\$?([\d,]+\.\d{2})', re.IGNORECASE),
@@ -60,6 +61,7 @@ def extract_receipt_data(image_path):
             elif not receipt_data['server_name'] and (m := patterns['server'].search(line)): receipt_data['server_name'] = m.group(2).strip()
             elif not receipt_data['order_number'] and (m := patterns['order'].search(line)): receipt_data['order_number'] = m.group(2).strip()
             elif not receipt_data['table_number'] and (m := patterns['table'].search(line)): receipt_data['table_number'] = m.group(2).strip()
+            elif not receipt_data['station'] and (m := patterns['station'].search(line)): receipt_data['station'] = m.group(2).strip()
             elif not receipt_data['guest_count'] and (m := patterns['guests'].search(line)): receipt_data['guest_count'] = int(m.group(2))
             elif not receipt_data['phone_number'] and (m := patterns['phone'].search(line)): receipt_data['phone_number'] = m.group(1)
             elif not receipt_data['address'] and re.search(r'\d+\s+[A-Za-z]', line): receipt_data['address'] = line
