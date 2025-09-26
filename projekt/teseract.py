@@ -29,13 +29,13 @@ def extract_receipt_data(image_path):
             'phone': re.compile(r'(\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4})'),
             'date': re.compile(r'(\d{1,4}[-/]\d{1,2}[-/]\d{1,4})'),
             'time': re.compile(r'(\d{1,2}:\d{2}(?::\d{2})?\s*(?:AM|PM)?)', re.IGNORECASE),
-            'server': re.compile(r'(Server|Cashier|SvrCk)[:\s]+([\w\s\.]+?)\b', re.IGNORECASE),
-            'order': re.compile(r'(Order|Check|Order #)[\s#:]+([\w-]+)', re.IGNORECASE),
-            'table': re.compile(r'(Table|Tbl)\s*#?([\w\s/]+)', re.IGNORECASE),
-            'guests': re.compile(r'(Guests|Party)[:\s]+(\d+)', re.IGNORECASE),
-            'subtotal': re.compile(r'(Subtotal|Sub Total)\s*[:\s]*\$?([\d,]+\.\d{2})', re.IGNORECASE),
-            'tax': re.compile(r'(Tax|Sales Tax)\s*\d*\s*[:\s]*\$?([\d,]+\.\d{2})', re.IGNORECASE),
-            'total': re.compile(r'(Total|Balance|Balance Due)\s*[:\s]*\$?([\d,]+\.\d{2})', re.IGNORECASE),
+            'server': re.compile(r'(Server|Cashier|SvrCk|User|Empl|Serv|Employee|Server #)[:\s]+([\w\s\.]+?)\b', re.IGNORECASE),
+            'order': re.compile(r'(Order|Check|Check#|Order #|Order#|ORDER#|Chk|Ticket|ORDER|Check No|Bill|Ord|ORD|Trans #|Your Order)[\s#:]+([\w-]+)', re.IGNORECASE),
+            'table': re.compile(r'(Table|Tbl|TABLE|Tab|Tb#|Table No|Table #|TAB#)\s*#?([\w\s/]+)', re.IGNORECASE),
+            'guests': re.compile(r'(Guests|Party|#Party|Gst|Guest|Cust|No. of Guest)[:\s]+(\d+)', re.IGNORECASE),
+            'subtotal': re.compile(r'(Subtotal|Sub Total|SubTotal|SUB TOTAL|SUBTOTAL|Sub/Ttl|Sub-total|Items|town/MA tax|FOOD|Food|Net Total|NET TOTAL|Amount)\s*[:\s]*\$?([\d,]+\.\d{2})', re.IGNORECASE),
+            'tax': re.compile(r'(Tax|Sales Tax|SALES TAX|Tax 1|TAX|State Tax|STATE TAX|StateTax|Taxes|TAXES|TXTL|Total Taxes|TAX A|Castro Valley Sales Tax)\s*\d*\s*[:\s]*\$?([\d,]+\.\d{2})', re.IGNORECASE),
+            'total': re.compile(r'(Total|Take-Out Total|Balance|Balance Due|TOTAL|TOTAL DUE|Total Due|Amount Due|AmountDue|AMOUNT DUE|Grand Total|GRAND TOTAL|\*DRV THRU|TOTL|TOTAL EURO|Amt Due|AMT DUE|PAYMENT|Payment|TO-GO|Order Total|Total D1-4)\s*[:\s]*\$?([\d,]+\.\d{2})', re.IGNORECASE),
             'item': re.compile(r'^(?:(\d+)\s+)?(.*?)\s+\$?([\d,]+\.\d{2})$')
         }
         
