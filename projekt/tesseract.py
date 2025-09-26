@@ -1,6 +1,7 @@
 import re
 import pytesseract
 import os
+import json
 import datetime
 from PIL import Image
 
@@ -73,7 +74,7 @@ def extract_receipt_data(image_path):
 
 def test_ocr(path):
     json_output = extract_receipt_data(path)
-    print(json_output)
+    print(json.dumps(json_output, indent=4))
 
 def load_and_measure(dir_path, first_ticket, latest_file):
     i = first_ticket - 1
@@ -81,7 +82,7 @@ def load_and_measure(dir_path, first_ticket, latest_file):
     while(True):
         file = array_of_images[i]
         start_datetime = datetime.datetime.now()
-        test_ocr(dir_path + file)
+        test_ocr(os.path.join(dir_path, file))
         end_datetime = datetime.datetime.now()
 
         diff_datetime = end_datetime - start_datetime
@@ -91,7 +92,7 @@ def load_and_measure(dir_path, first_ticket, latest_file):
 
         print("Receipt: ", i)
 
-        if i == latest_file:
+        if i >= latest_file:
             break
 
 if __name__ == "__main__":
