@@ -1,7 +1,5 @@
 import re
 import pytesseract
-import cv2
-import json
 import os
 import datetime
 from PIL import Image
