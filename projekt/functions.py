@@ -1,4 +1,5 @@
 import json
+import codecs
 
 """
 * Check the response characteristics.
@@ -359,7 +360,7 @@ def save_to_file_ocr(model, type_of_data, values, incorrect_data, not_found_data
     good_not_found_counted = values[4]
     time_diff = values[5]
     
-    with open(output_file_path, "+a") as file:
+    with codecs.open(output_file_path, "+a", "utf-8") as file:
         file.write(f"{correctness};{correct_data_counted};{incorrect_data_counted};{not_data_found_counted};{good_not_found_counted};{time_diff};{incorrect_data};{not_found_data};{good_not_found}\n")
 
 """

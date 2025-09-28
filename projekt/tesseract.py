@@ -107,6 +107,12 @@ def load_and_measure(dir_path, first_ticket, latest_file):
         diff_datetime = end_datetime - start_datetime
         diff_datetime_seconds = diff_datetime.total_seconds()
 
+        functions.save_to_file_ocr("tesseract-5_3_0", "ticket", [correctness, correct_data, 
+                                                                                   incorect_data, not_found_data, 
+                                                                                   good_not_found, diff_datetime_seconds], 
+                                                                                   dict_of_incorect, array_not_found, 
+                                                                                   array_good_not_found)
+
         i += 1
 
         print("Receipt: ", i)
