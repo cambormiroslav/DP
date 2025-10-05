@@ -6,6 +6,8 @@ import random
 import matplotlib.pyplot as plt
 import cv2
 
+import functions
+
 correct_data_path = "../data_for_control/dataset_objects_correct_data.json"
 type_of_data = "objects"
 test_images_dir_path = "../dataset/yolo_dataset/test/"
@@ -46,18 +48,39 @@ def train_yolo(model_specification, dataset_yaml, count_of_epochs, model_train_d
 
     return model
 
-def load_and_measure(model):
+def check_data(data, file_name):
+    array_of_types = data[file_name]
+    tuple_data_output = (0, 0, 0, 1, {}, [], [])
+    for type_object in array_of_types:
+        tuple_data = functions.check_the_data_object({"type" : type_object}, file_name, correct_data_path, False)
+        if(tuple_data[3] != 1):
+            tuple_data_output = tuple_data
+
+    return tuple_data_output
+
+
+def load_and_measure(model, model_name):
     arrays_of_test_files = get_array_of_test_names_and_paths()
     for index in range(len(arrays_of_test_files[0])):
         start_datetime = datetime.datetime.now()
-        print(test_img(arrays_of_test_files[1][index], model, arrays_of_test_files[0][index]))
+        response = test_img(arrays_of_test_files[1][index], model, arrays_of_test_files[0][index])
         end_datetime = datetime.datetime.now()
 
         diff_datetime = end_datetime - start_datetime
         diff_datetime_seconds = diff_datetime.total_seconds()
 
-        print("Receipt: ", arrays_of_test_files[0][index])
+        
+        data_tuple = check_data(response, arrays_of_test_files[0][index])
+        correctness = data_tuple[0]
+        correct_data = data_tuple[1]
+        incorect_data = data_tuple[2]
+        not_found_data = data_tuple[3]
+        dict_of_incorect = data_tuple[4]
+        array_not_found = data_tuple[5]
+        functions.save_to_file_object(model_name, type_of_data, [correctness, correct_data, incorect_data,
+                                                                 not_found_data, diff_datetime_seconds],
+                                                                 dict_of_incorect, array_not_found)
 
 if __name__ == "__main__":
-    model = train_yolo("yolo12n.pt", dataset_yaml, 50,"./output/yolo12n/") #600
-    load_and_measure(model)
+    model = train_yolo("yolo12n.pt", dataset_yaml, 100,"./output_objects/yolo12n/") #600
+    load_and_measure(model, "yolo12n")
