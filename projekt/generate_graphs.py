@@ -1,8 +1,8 @@
 import os
 import matplotlib.pyplot as plt
 
-type_of_dataset = "ticket"
-#type_of_dataset = "objects"
+#type_of_dataset = "ticket"
+type_of_dataset = "objects"
 
 if type_of_dataset == "ticket":
     output_dir = "./output/"
@@ -16,6 +16,8 @@ not_finded_main_count_key_dict = {}
 goods_not_finded_count_dict = {}
 time_run_dict = {}
 not_found_json_dict = {}
+precision_sum_dict = {}
+recall_sum_dict = {}
 
 def get_count_of_all_data(correct_data, incorect_data, not_finded, goods_not_finded):
     count_of_all_data = correct_data + incorect_data + not_finded + 3 * goods_not_finded
@@ -39,18 +41,23 @@ def generate_boxplot(tick_labels, values, y_label, type_data):
     plt.subplots_adjust(bottom=0.45)
     plt.savefig(f"./graphs/{type_data}_{type_of_dataset}.png")
 
-def generate_bar(models, values):
+def generate_bar(models, values, type_of_data):
     colors = ['blue', 'green', 'red', 'purple', 'brown',
               'pink', 'gray', 'olive', 'cyan', 'maroon',
               'gold', 'lime']
 
     plt.figure()
     plt.bar(models, values, color = colors)
-    plt.ylabel("Nenavráceno jako JSON")
+    if type_of_data == "not_json":
+        plt.ylabel("Nenavráceno jako JSON")
+    elif type_of_data == "precision":
+        plt.ylabel("Precision")
+    else:
+        plt.ylabel("Recall")
     plt.xticks(rotation=90)
     plt.margins(0.1)
     plt.subplots_adjust(bottom=0.45)
-    plt.savefig(f"./graphs/not_json_{type_of_dataset}.png")
+    plt.savefig(f"./graphs/{type_of_data}_{type_of_dataset}.png")
 
 def generate_graph(type_of_data):
     tick_labels = []
@@ -93,15 +100,15 @@ def generate_graph(type_of_data):
     
     generate_boxplot(tick_labels, values, y_label, type_of_data)
 
-def generate_graph_not_in_json():
+def generate_bar_graph_from_data(dict_data, type_of_data):
     names = []
     values = []
 
-    for key in not_found_json_dict:
+    for key in dict_data:
         names += [key]
-        values += [float(not_found_json_dict[key]) / 103]
+        values += [float(dict_data[key]) / 103]
     
-    generate_bar(names, values)
+    generate_bar(names, values, type_of_data)
 
 
 def load_all_data():
@@ -117,6 +124,8 @@ def load_all_data():
         not_finded_main_count_key_array = []
         goods_not_finded_count_array = []
         time_run_array = []
+        precision_sum = 0.0
+        recall_sum = 0.0
 
         with open(path_to_data, "r") as file:
             lines = file.readlines()
@@ -137,6 +146,12 @@ def load_all_data():
                 correct_data_count_array += [correct_data]
                 incorrect_data_count_array += [incorect_data / count_of_all_data]
                 not_finded_main_count_key_array += [not_finded / count_of_all_data]
+
+                if (correct_data + incorect_data) != 0:
+                    precision_sum += (correct_data / (correct_data + incorect_data))
+                if (correct_data + not_finded) != 0:
+                    recall_sum += (correct_data / (correct_data + not_finded))
+
                 if type_of_dataset == "ticket":
                     goods_not_finded_count_array += [(goods_not_finded * 3) / count_of_all_data]
                     time_run_array += [float(array_of_values[5])]
@@ -163,15 +178,21 @@ def load_all_data():
         not_finded_main_count_key_dict[model] = not_finded_main_count_key_array
         goods_not_finded_count_dict[model] = goods_not_finded_count_array
         time_run_dict[model] = time_run_array
+        precision_sum_dict[model] = precision_sum
+        recall_sum_dict[model] = recall_sum
+        
 
 if __name__ == "__main__":
     load_all_data()
 
-    """ generate_graph("correctness")
-    generate_graph("incorrect_data")
-    generate_graph("not_found")
-    if type_of_dataset == "ticket":
+    """if type_of_dataset == "ticket":
+        generate_graph("correctness")
+        generate_graph("incorrect_data")
+        generate_graph("not_found")
         generate_graph("goods_not_found")
-    generate_graph("time_of_run") """
+    generate_graph("time_of_run")"""
 
-    generate_graph_not_in_json()
+    if type_of_dataset == "objects":
+        #generate_bar_graph_from_data(not_found_json_dict, "not_json")
+        generate_bar_graph_from_data(precision_sum_dict, "precision")
+        generate_bar_graph_from_data(recall_sum_dict, "recall")
