@@ -5,6 +5,8 @@ import os
 import random
 import matplotlib.pyplot as plt
 import cv2
+import subprocess
+import json
 
 import functions
 
@@ -13,6 +15,30 @@ type_of_data = "objects"
 test_images_dir_path = "../dataset/yolo_dataset/test/"
 labels_dir_path = "../dataset/yolo_dataset/labels/"
 dataset_yaml = "../dataset/yolo_dataset/data.yaml"
+
+def get_amd_gpu_stats():
+    """
+    Get GPU and VRAM usage by rocm-smi
+    Input: None
+    Return: (gpu_usage_in_percents, vram_usage_in_percents).
+    """
+    try:
+        # run command in commandline
+        command = ["rocm-smi", "--showuse", "--showmeminfo", "vram", "--json"]
+        result = subprocess.run(command, capture_output=True, text=True, check=True)
+        
+        data = json.loads(result.stdout)
+        
+        # get information about GPU equipment
+        for card_id, stats in data.items():
+            if card_id.startswith('card'):
+                gpu_use = float(stats.get('GPU use (%)', 0.0))
+                vram_used_mb = float(stats.get('VRAM used (MB)', 0.0))
+                return gpu_use, vram_used_mb
+                
+    except (FileNotFoundError, subprocess.CalledProcessError, json.JSONDecodeError, KeyError) as e:
+        return None, None
+    return None, None
 
 def test_img(img_path, model, file_name):
     image = cv2.imread(img_path)
