@@ -382,3 +382,18 @@ def save_to_file_object(model, type_of_data, values, incorrect_data, not_found_d
     
     with open(output_file_path, "+a") as file:
         file.write(f"{correctness};{correct_data_counted};{incorrect_data_counted};{not_data_found_counted};{time_diff};{incorrect_data};{not_found_data}\n")
+
+"""
+* Save the CPU and GPU measurement to the file.
+
+Input: (model name, are test or train data, CPU usage, RAM usage, GPU usage, VRAM usage)
+Output: None
+"""  
+def save_to_file_cpu_gpu(model, is_test, cpu_usage, ram_usage, gpu_usage, vram_usage):
+    if is_test:
+        output_file_path = f"./test_measurement/{model}.txt"
+    else:
+        output_file_path = f"./train_measurement/{model}.txt"
+    
+    with open(output_file_path, "+a") as file:
+        file.write(f"{cpu_usage};{ram_usage};{gpu_usage};{vram_usage}\n")
