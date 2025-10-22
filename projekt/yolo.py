@@ -7,6 +7,7 @@ import matplotlib.pyplot as plt
 import cv2
 import subprocess
 import json
+import psutil
 
 import functions
 
@@ -41,6 +42,21 @@ def get_amd_gpu_stats():
     return None, None
 
 def test_img(img_path, model, file_name):
+    #get process id
+    pid = os.getpid()
+    process = psutil.Process(pid)
+    #memory before test model
+    mem_before = process.memory_info().rss / (1024 * 1024)
+    #get vram usage before test
+    _, vram_before = get_amd_gpu_stats()
+    if vram_before is None:
+        print("Nepodařilo se získat data z AMD GPU. Ujistěte se, že ROCm a rocm-smi jsou správně nainstalovány.")
+        gpu_is_available = False
+    else:
+        gpu_is_available = True
+    
+    start_datetime = datetime.datetime.now()
+
     image = cv2.imread(img_path)
     img_rgb = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
     
@@ -55,6 +71,21 @@ def test_img(img_path, model, file_name):
         className = firstResult.names[classId]
         class_names_array += [className]
     
+    #get cpu and ram usage
+    cpu_usage = process.cpu_percent(interval=None)
+    mem_after = process.memory_info().rss / (1024 * 1024)
+    ram_usage = mem_after - mem_before
+
+    end_datetime = datetime.datetime.now()
+
+    #get gpu stats
+    if gpu_is_available:
+        gpu_usage, vram_after = get_amd_gpu_stats()
+
+    #time of test
+    diff_datetime = end_datetime - start_datetime
+    diff_datetime_seconds = diff_datetime.total_seconds()
+
     return {file_name: class_names_array}
 
 def get_array_of_test_names_and_paths():
@@ -70,7 +101,39 @@ def train_yolo(model_specification, dataset_yaml, count_of_epochs, model_train_d
     model = YOLO(model_specification)
     if not os.path.exists(model_train_dir):
         os.mkdir(model_train_dir)
+
+    #get process id
+    pid = os.getpid()
+    process = psutil.Process(pid)
+    #memory before train model
+    mem_before = process.memory_info().rss / (1024 * 1024)
+    #get vram usage before train
+    _, vram_before = get_amd_gpu_stats()
+    if vram_before is None:
+        print("Nepodařilo se získat data z AMD GPU. Ujistěte se, že ROCm a rocm-smi jsou správně nainstalovány.")
+        gpu_is_available = False
+    else:
+        gpu_is_available = True
+    
+    start_datetime = datetime.datetime.now()
+
+    #train model
     model.train(data=dataset_yaml, epochs=count_of_epochs, imgsz=32, project = model_train_dir)
+
+    #get cpu and ram usage
+    cpu_usage = process.cpu_percent(interval=None)
+    mem_after = process.memory_info().rss / (1024 * 1024)
+    ram_usage = mem_after - mem_before
+
+    end_datetime = datetime.datetime.now()
+
+    #get gpu stats
+    if gpu_is_available:
+        gpu_usage, vram_after = get_amd_gpu_stats()
+
+    #time of train
+    diff_datetime = end_datetime - start_datetime
+    diff_datetime_seconds = diff_datetime.total_seconds()
 
     return model
 
