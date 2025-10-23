@@ -54,8 +54,6 @@ def test_img(img_path, model, file_name):
         gpu_is_available = False
     else:
         gpu_is_available = True
-    
-    start_datetime = datetime.datetime.now()
 
     image = cv2.imread(img_path)
     img_rgb = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
@@ -76,15 +74,11 @@ def test_img(img_path, model, file_name):
     mem_after = process.memory_info().rss / (1024 * 1024)
     ram_usage = mem_after - mem_before
 
-    end_datetime = datetime.datetime.now()
-
     #get gpu stats
     if gpu_is_available:
-        gpu_usage, vram_after = get_amd_gpu_stats()
+        gpu_usage, vram_usage = get_amd_gpu_stats()
 
-    #time of test
-    diff_datetime = end_datetime - start_datetime
-    diff_datetime_seconds = diff_datetime.total_seconds()
+    functions.save_to_file_cpu_gpu(model, True, cpu_usage, ram_usage, gpu_usage, vram_usage)
 
     return {file_name: class_names_array}
 
