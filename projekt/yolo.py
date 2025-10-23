@@ -78,7 +78,7 @@ def test_img(img_path, model, file_name):
     if gpu_is_available:
         gpu_usage, vram_usage = get_amd_gpu_stats()
 
-    functions.save_to_file_cpu_gpu(model, True, cpu_usage, ram_usage, gpu_usage, vram_usage)
+    functions.save_to_file_cpu_gpu(model, True, cpu_usage, ram_usage, gpu_usage, vram_usage, 0)
 
     return {file_name: class_names_array}
 
@@ -104,7 +104,7 @@ def train_yolo(model_specification, dataset_yaml, count_of_epochs, model_train_d
     #get vram usage before train
     _, vram_before = get_amd_gpu_stats()
     if vram_before is None:
-        print("Nepodařilo se získat data z AMD GPU. Ujistěte se, že ROCm a rocm-smi jsou správně nainstalovány.")
+        print("Nepodařilo se získat data z AMD GPU.")
         gpu_is_available = False
     else:
         gpu_is_available = True
@@ -123,11 +123,13 @@ def train_yolo(model_specification, dataset_yaml, count_of_epochs, model_train_d
 
     #get gpu stats
     if gpu_is_available:
-        gpu_usage, vram_after = get_amd_gpu_stats()
+        gpu_usage, vram_usage = get_amd_gpu_stats()
 
     #time of train
     diff_datetime = end_datetime - start_datetime
     diff_datetime_seconds = diff_datetime.total_seconds()
+
+    functions.save_to_file_cpu_gpu(model, True, cpu_usage, ram_usage, gpu_usage, vram_usage, diff_datetime_seconds)
 
     return model
 
