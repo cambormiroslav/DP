@@ -39,7 +39,7 @@ def test_img(img_path, model, model_name, file_name):
     mem_after = process.memory_info().rss / (1024 * 1024)
     ram_usage = mem_after - mem_before
 
-    functions.save_to_file_cpu_gpu(model_name, True, cpu_usage, ram_usage, 0, 0, 0)
+    functions.save_to_file_cpu_gpu(model_name, True, cpu_usage, ram_usage, 0)
 
     return {file_name: class_names_array}
 
@@ -80,7 +80,7 @@ def train_yolo(model_specification, dataset_yaml, count_of_epochs, model_train_d
     diff_datetime = end_datetime - start_datetime
     diff_datetime_seconds = diff_datetime.total_seconds()
 
-    functions.save_to_file_cpu_gpu(model_specification.replace(".pt", ""), False, cpu_usage, ram_usage, 0, 0, diff_datetime_seconds)
+    functions.save_to_file_cpu_gpu(model_specification.replace(".pt", ""), False, cpu_usage, ram_usage, diff_datetime_seconds)
 
     return model
 
