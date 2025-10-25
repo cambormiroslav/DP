@@ -4,6 +4,7 @@ import os
 import json
 import datetime
 from PIL import Image
+import psutil
 
 import functions
 
@@ -90,9 +91,22 @@ def load_and_measure(dir_path, first_ticket, latest_file):
     array_of_images = os.listdir(dir_path)
     while(True):
         file = array_of_images[i]
+
+        #get process id
+        pid = os.getpid()
+        process = psutil.Process(pid)
+        #cpu and memory before train model
+        process.cpu_percent(interval=None)
+        mem_before = process.memory_info().rss / (1024 * 1024)
         start_datetime = datetime.datetime.now()
+
         response = extract_receipt_data(os.path.join(dir_path, file))
+        
         end_datetime = datetime.datetime.now()
+        #get cpu and ram usage
+        cpu_usage = process.cpu_percent(interval=None)
+        mem_after = process.memory_info().rss / (1024 * 1024)
+        ram_usage = mem_after - mem_before
 
         data_tuple = functions.check_the_data_ocr(response, file, correct_data_path, False)
         correctness = data_tuple[0]
@@ -112,6 +126,7 @@ def load_and_measure(dir_path, first_ticket, latest_file):
                                                                                    good_not_found, diff_datetime_seconds], 
                                                                                    dict_of_incorect, array_not_found, 
                                                                                    array_good_not_found)
+        functions.save_to_file_cpu_gpu("tesseract-5_3_0", True, cpu_usage, ram_usage, diff_datetime_seconds)
 
         i += 1
 
