@@ -1,5 +1,41 @@
 import json
 import codecs
+import psutil
+import time
+
+monitor_data = {
+    "peak_rss_mb": 0.0,
+    "is_running": True
+}
+
+def monitor_memory(process):
+    monitor_data["peak_rss_mb"] = 0.0
+    
+    while monitor_data["is_running"]:
+        total_rss_bytes = 0
+        try:
+            #memory of main process
+            total_rss_bytes += process.memory_info().rss
+            
+            #memory of all children recursive
+            children = process.children(recursive=True)
+            for child in children:
+                #children ends quicker
+                try:
+                    total_rss_bytes += child.memory_info().rss
+                except psutil.NoSuchProcess:
+                    continue
+            
+            #to MB
+            current_rss_mb = total_rss_bytes / (1024 * 1024)
+            
+            if current_rss_mb > monitor_data["peak_rss_mb"]:
+                monitor_data["peak_rss_mb"] = current_rss_mb
+                
+        except psutil.NoSuchProcess:
+            break
+        
+        time.sleep(0.01)
 
 """
 * Check the response characteristics.
