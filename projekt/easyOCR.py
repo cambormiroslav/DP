@@ -4,12 +4,48 @@ import os
 import json
 import datetime
 import psutil
+import time
+import threading
 
 import functions
+
+monitor_data = {
+    "peak_rss_mb": 0.0,
+    "is_running": True
+}
 
 correct_data_path = "../data_for_control/dataset_correct_data.json"
 
 reader = easyocr.Reader(['en'], gpu=True)
+
+def monitor_memory(process):
+    monitor_data["peak_rss_mb"] = 0.0
+    
+    while monitor_data["is_running"]:
+        total_rss_bytes = 0
+        try:
+            #memory of main process
+            total_rss_bytes += process.memory_info().rss
+            
+            #memory of all children recursive
+            children = process.children(recursive=True)
+            for child in children:
+                #children ends quicker
+                try:
+                    total_rss_bytes += child.memory_info().rss
+                except psutil.NoSuchProcess:
+                    continue
+            
+            #to MB
+            current_rss_mb = total_rss_bytes / (1024 * 1024)
+            
+            if current_rss_mb > monitor_data["peak_rss_mb"]:
+                monitor_data["peak_rss_mb"] = current_rss_mb
+                
+        except psutil.NoSuchProcess:
+            break
+        
+        time.sleep(0.01)
 
 def extract_receipt_data(image_path):
     try:
@@ -98,18 +134,35 @@ def load_and_measure(dir_path, first_ticket, latest_file):
         #get process id
         pid = os.getpid()
         process = psutil.Process(pid)
-        #cpu and memory before train model
+        #cpu and memory before test model
         process.cpu_percent(interval=None)
         mem_before = process.memory_info().rss / (1024 * 1024)
+
+        monitor_data["is_running"] = True
+        monitor_thread = threading.Thread(
+            target=monitor_memory, 
+            args=(process,),
+            daemon=True #stops if main script stops
+        )
+        monitor_thread.start()
+
         start_datetime = datetime.datetime.now()
 
-        response = extract_receipt_data(os.path.join(dir_path, file))
+        try:
+            response = extract_receipt_data(os.path.join(dir_path, file))
+        finally:
+            # stop thread
+            monitor_data["is_running"] = False
+            monitor_thread.join(timeout=1.0)
         
         end_datetime = datetime.datetime.now()
         #get cpu and ram usage
-        cpu_usage = process.cpu_percent(interval=None)
         mem_after = process.memory_info().rss / (1024 * 1024)
-        ram_usage = mem_after - mem_before
+        peak_ram_mb = monitor_data["peak_rss_mb"]
+        cpu_usage = process.cpu_percent(interval=None)
+
+        peak_ram_mb = max(peak_ram_mb, mem_after) #maximum of peak RAM and final value of RAM
+        ram_usage = peak_ram_mb - mem_before
 
         data_tuple = functions.check_the_data_ocr(response, file, correct_data_path, False)
         correctness = data_tuple[0]
