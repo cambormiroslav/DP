@@ -16,7 +16,8 @@ def test_img(img_path, model, model_name, file_name):
     #get process id
     pid = os.getpid()
     process = psutil.Process(pid)
-    #memory before test model
+    #cpu and memory before test model
+    process.cpu_percent(interval=None)
     mem_before = process.memory_info().rss / (1024 * 1024)
 
     image = cv2.imread(img_path)
@@ -59,7 +60,8 @@ def train_yolo(model_specification, dataset_yaml, count_of_epochs, model_train_d
     #get process id
     pid = os.getpid()
     process = psutil.Process(pid)
-    #memory before train model
+    #cpu and memory before train model
+    process.cpu_percent(interval=None)
     mem_before = process.memory_info().rss / (1024 * 1024)
     
     start_datetime = datetime.datetime.now()
