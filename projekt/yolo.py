@@ -3,14 +3,50 @@ from ultralytics import YOLO
 import os
 import cv2
 import psutil
+import time
+import threading
 
 import functions
+
+monitor_data = {
+    "peak_rss_mb": 0.0,
+    "is_running": True
+}
 
 correct_data_path = "../data_for_control/dataset_objects_correct_data.json"
 type_of_data = "objects"
 test_images_dir_path = "../dataset/yolo_dataset/test/"
 labels_dir_path = "../dataset/yolo_dataset/labels/"
 dataset_yaml = "../dataset/yolo_dataset/data.yaml"
+
+def monitor_memory(process):
+    monitor_data["peak_rss_mb"] = 0.0
+    
+    while monitor_data["is_running"]:
+        total_rss_bytes = 0
+        try:
+            #memory of main process
+            total_rss_bytes += process.memory_info().rss
+            
+            #memory of all children recursive
+            children = process.children(recursive=True)
+            for child in children:
+                #children ends quicker
+                try:
+                    total_rss_bytes += child.memory_info().rss
+                except psutil.NoSuchProcess:
+                    continue
+            
+            #to MB
+            current_rss_mb = total_rss_bytes / (1024 * 1024)
+            
+            if current_rss_mb > monitor_data["peak_rss_mb"]:
+                monitor_data["peak_rss_mb"] = current_rss_mb
+                
+        except psutil.NoSuchProcess:
+            break
+        
+        time.sleep(0.01)
 
 def test_img(img_path, model, model_name, file_name):
     #get process id
@@ -20,26 +56,42 @@ def test_img(img_path, model, model_name, file_name):
     process.cpu_percent(interval=None)
     mem_before = process.memory_info().rss / (1024 * 1024)
 
-    image = cv2.imread(img_path)
-    img_rgb = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
-    
-    results = model.predict(img_rgb)
-    firstResult = results[0]
+    monitor_data["is_running"] = True
+    monitor_thread = threading.Thread(
+        target=monitor_memory, 
+        args=(process,),
+        daemon=True #stops if main script stops
+    )
+    monitor_thread.start()
 
-    boxes = firstResult.boxes
-    classes = boxes.cls.numpy().astype('uint')
-    class_names_array = []
-    for j in range(len(classes)):
-        classId = classes[j]
-        className = firstResult.names[classId]
-        class_names_array += [className]
+    try:
+        image = cv2.imread(img_path)
+        img_rgb = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
     
+        results = model.predict(img_rgb)
+        firstResult = results[0]
+
+        boxes = firstResult.boxes
+        classes = boxes.cls.numpy().astype('uint')
+        class_names_array = []
+        for j in range(len(classes)):
+            classId = classes[j]
+            className = firstResult.names[classId]
+            class_names_array += [className]
+    finally:
+        # 4. Zastavíme monitorovací vlákno
+        monitor_data["is_running"] = False
+        monitor_thread.join(timeout=1.0) # Počkáme max 1s
+
+    mem_after = process.memory_info().rss / (1024 * 1024)
+    peak_ram_mb = monitor_data["peak_rss_mb"]
     #get cpu and ram usage
     cpu_usage = process.cpu_percent(interval=None)
-    mem_after = process.memory_info().rss / (1024 * 1024)
-    ram_usage = mem_after - mem_before
+    
+    peak_ram_mb = max(peak_ram_mb, mem_after) #maximum of peak RAM and final value of RAM
+    ram_usage = peak_ram_mb - mem_before
 
-    functions.save_to_file_cpu_gpu(model_name, True, cpu_usage, ram_usage, 0)
+    functions.save_to_file_cpu_gpu(model_name, True, cpu_usage, ram_usage, 0) #this information is in other file there
 
     return {file_name: class_names_array}
 
