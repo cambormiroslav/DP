@@ -79,13 +79,13 @@ def test_img(img_path, model, model_name, file_name):
             className = firstResult.names[classId]
             class_names_array += [className]
     finally:
-        # 4. Zastavíme monitorovací vlákno
+        # stop thread
         monitor_data["is_running"] = False
         monitor_thread.join(timeout=1.0) # Počkáme max 1s
 
+    #get cpu and ram usage
     mem_after = process.memory_info().rss / (1024 * 1024)
     peak_ram_mb = monitor_data["peak_rss_mb"]
-    #get cpu and ram usage
     cpu_usage = process.cpu_percent(interval=None)
     
     peak_ram_mb = max(peak_ram_mb, mem_after) #maximum of peak RAM and final value of RAM
