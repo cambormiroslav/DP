@@ -1,12 +1,7 @@
 import datetime
-import xml.etree.ElementTree as ET
 from ultralytics import YOLO
 import os
-import random
-import matplotlib.pyplot as plt
 import cv2
-import subprocess
-import json
 import psutil
 
 import functions
@@ -17,43 +12,12 @@ test_images_dir_path = "../dataset/yolo_dataset/test/"
 labels_dir_path = "../dataset/yolo_dataset/labels/"
 dataset_yaml = "../dataset/yolo_dataset/data.yaml"
 
-def get_amd_gpu_stats():
-    """
-    Get GPU and VRAM usage by rocm-smi
-    Input: None
-    Return: (gpu_usage_in_percents, vram_usage_in_percents).
-    """
-    try:
-        # run command in commandline
-        command = ["rocm-smi", "--showuse", "--showmeminfo", "vram", "--json"]
-        result = subprocess.run(command, capture_output=True, text=True, check=True)
-        
-        data = json.loads(result.stdout)
-        
-        # get information about GPU equipment
-        for card_id, stats in data.items():
-            if card_id.startswith('card'):
-                gpu_use = float(stats.get('GPU use (%)', 0.0))
-                vram_used_mb = float(stats.get('VRAM used (MB)', 0.0))
-                return gpu_use, vram_used_mb
-                
-    except (FileNotFoundError, subprocess.CalledProcessError, json.JSONDecodeError, KeyError) as e:
-        return None, None
-    return None, None
-
-def test_img(img_path, model, file_name):
+def test_img(img_path, model, model_name, file_name):
     #get process id
     pid = os.getpid()
     process = psutil.Process(pid)
     #memory before test model
     mem_before = process.memory_info().rss / (1024 * 1024)
-    #get vram usage before test
-    _, vram_before = get_amd_gpu_stats()
-    if vram_before is None:
-        print("Nepodařilo se získat data z AMD GPU. Ujistěte se, že ROCm a rocm-smi jsou správně nainstalovány.")
-        gpu_is_available = False
-    else:
-        gpu_is_available = True
 
     image = cv2.imread(img_path)
     img_rgb = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
@@ -74,11 +38,7 @@ def test_img(img_path, model, file_name):
     mem_after = process.memory_info().rss / (1024 * 1024)
     ram_usage = mem_after - mem_before
 
-    #get gpu stats
-    if gpu_is_available:
-        gpu_usage, vram_usage = get_amd_gpu_stats()
-
-    functions.save_to_file_cpu_gpu(model, True, cpu_usage, ram_usage, gpu_usage, vram_usage, 0)
+    functions.save_to_file_cpu_gpu(model_name, True, cpu_usage, ram_usage, 0, 0, 0)
 
     return {file_name: class_names_array}
 
@@ -101,13 +61,6 @@ def train_yolo(model_specification, dataset_yaml, count_of_epochs, model_train_d
     process = psutil.Process(pid)
     #memory before train model
     mem_before = process.memory_info().rss / (1024 * 1024)
-    #get vram usage before train
-    _, vram_before = get_amd_gpu_stats()
-    if vram_before is None:
-        print("Nepodařilo se získat data z AMD GPU.")
-        gpu_is_available = False
-    else:
-        gpu_is_available = True
     
     start_datetime = datetime.datetime.now()
 
@@ -121,15 +74,11 @@ def train_yolo(model_specification, dataset_yaml, count_of_epochs, model_train_d
 
     end_datetime = datetime.datetime.now()
 
-    #get gpu stats
-    if gpu_is_available:
-        gpu_usage, vram_usage = get_amd_gpu_stats()
-
     #time of train
     diff_datetime = end_datetime - start_datetime
     diff_datetime_seconds = diff_datetime.total_seconds()
 
-    functions.save_to_file_cpu_gpu(model, True, cpu_usage, ram_usage, gpu_usage, vram_usage, diff_datetime_seconds)
+    functions.save_to_file_cpu_gpu(model_specification.replace(".pt", ""), False, cpu_usage, ram_usage, 0, 0, diff_datetime_seconds)
 
     return model
 
@@ -148,7 +97,7 @@ def load_and_measure(model, model_name):
     arrays_of_test_files = get_array_of_test_names_and_paths()
     for index in range(len(arrays_of_test_files[0])):
         start_datetime = datetime.datetime.now()
-        response = test_img(arrays_of_test_files[1][index], model, arrays_of_test_files[0][index])
+        response = test_img(arrays_of_test_files[1][index], model, model_name, arrays_of_test_files[0][index])
         end_datetime = datetime.datetime.now()
 
         diff_datetime = end_datetime - start_datetime
