@@ -425,11 +425,11 @@ def save_to_file_object(model, type_of_data, values, incorrect_data, not_found_d
 Input: (model name, are test or train data, CPU usage, RAM usage, GPU usage, VRAM usage)
 Output: None
 """  
-def save_to_file_cpu_gpu(model, is_test, cpu_usage, ram_usage, datetime_diff):
+def save_to_file_cpu_gpu(model, type_of_data, is_test, cpu_usage, ram_usage, datetime_diff):
     if is_test:
-        output_file_path = f"./test_measurement/{model}.txt"
+        output_file_path = f"./test_measurement/{model}_{type_of_data}.txt"
     else:
-        output_file_path = f"./train_measurement/{model}.txt"
+        output_file_path = f"./train_measurement/{model}_{type_of_data}.txt"
     
     with open(output_file_path, "+a") as file:
         if is_test:

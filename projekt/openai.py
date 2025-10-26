@@ -141,7 +141,7 @@ def load_and_measure(dir_path, first_ticket, latest_file):
             functions.save_to_file_object(model, type_of_data, [correctness, correct_data,
                                                                       incorect_data, not_found_data, diff_datetime_seconds],
                                                                       dict_of_incorect, array_not_found)
-        functions.save_to_file_cpu_gpu(model, True, cpu_usage, ram_usage, diff_datetime_seconds)
+        functions.save_to_file_cpu_gpu(model, type_of_data, True, cpu_usage, ram_usage, diff_datetime_seconds)
 
         if ocr_method:
             print(correctness, correct_data, incorect_data, not_found_data, 

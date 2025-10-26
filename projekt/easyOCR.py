@@ -148,7 +148,7 @@ def load_and_measure(dir_path, first_ticket, latest_file):
                                                               good_not_found, diff_datetime_seconds], 
                                                               dict_of_incorect, array_not_found, 
                                                               array_good_not_found)
-        functions.save_to_file_cpu_gpu("easyocr", True, cpu_usage, ram_usage, diff_datetime_seconds)
+        functions.save_to_file_cpu_gpu("easyocr", "ticket", True, cpu_usage, ram_usage, diff_datetime_seconds)
 
         i += 1
         

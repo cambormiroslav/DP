@@ -146,7 +146,7 @@ def load_and_measure(dir_path, first_ticket, latest_file):
                 functions.save_to_file_object("knoopx-mobile-vlm-3b-fp16", type_of_data, [correctness, correct_data, 
                                                                                    incorect_data, not_found_data, diff_datetime_seconds], 
                                                                                    dict_of_incorect, array_not_found)
-            functions.save_to_file_cpu_gpu("knoopx-mobile-vlm-3b-fp16", True, cpu_usage, ram_usage, diff_datetime_seconds)
+            functions.save_to_file_cpu_gpu("knoopx-mobile-vlm-3b-fp16", type_of_data, True, cpu_usage, ram_usage, diff_datetime_seconds)
         elif model == "llava:13b":
             if ocr_method:
                 functions.save_to_file_ocr("llava-13b", type_of_data, [correctness, correct_data, 
@@ -158,7 +158,7 @@ def load_and_measure(dir_path, first_ticket, latest_file):
                 functions.save_to_file_object("llava-13b", type_of_data, [correctness, correct_data,
                                                                     incorect_data, not_found_data, diff_datetime_seconds],
                                                                     dict_of_incorect, array_not_found)
-            functions.save_to_file_cpu_gpu("llava-13b", True, cpu_usage, ram_usage, diff_datetime_seconds)
+            functions.save_to_file_cpu_gpu("llava-13b", type_of_data, True, cpu_usage, ram_usage, diff_datetime_seconds)
         elif model == "llava:34b":
             if ocr_method:
                 functions.save_to_file_ocr("llava-34b", type_of_data, [correctness, correct_data, 
@@ -170,7 +170,7 @@ def load_and_measure(dir_path, first_ticket, latest_file):
                 functions.save_to_file_object("llava-34b", type_of_data, [correctness, correct_data,
                                                                     incorect_data, not_found_data, diff_datetime_seconds],
                                                                     dict_of_incorect, array_not_found)
-            functions.save_to_file_cpu_gpu("llava-34b", True, cpu_usage, ram_usage, diff_datetime_seconds)
+            functions.save_to_file_cpu_gpu("llava-34b", type_of_data, True, cpu_usage, ram_usage, diff_datetime_seconds)
         elif model == "gemma3:27b":
             if ocr_method:
                 functions.save_to_file_ocr("gemma3-27b", type_of_data, [correctness, correct_data, 
@@ -182,7 +182,7 @@ def load_and_measure(dir_path, first_ticket, latest_file):
                 functions.save_to_file_object("gemma3-27b", type_of_data, [correctness, correct_data,
                                                                     incorect_data, not_found_data, diff_datetime_seconds],
                                                                     dict_of_incorect, array_not_found)
-            functions.save_to_file_cpu_gpu("gemma3-27b", True, cpu_usage, ram_usage, diff_datetime_seconds)
+            functions.save_to_file_cpu_gpu("gemma3-27b", type_of_data, True, cpu_usage, ram_usage, diff_datetime_seconds)
         elif model == "gemma3:12b":
             if ocr_method:
                 functions.save_to_file_ocr("gemma3-12b", type_of_data, [correctness, correct_data, 
@@ -194,7 +194,7 @@ def load_and_measure(dir_path, first_ticket, latest_file):
                 functions.save_to_file_object("gemma3-12b", type_of_data, [correctness, correct_data,
                                                                     incorect_data, not_found_data, diff_datetime_seconds],
                                                                     dict_of_incorect, array_not_found)
-            functions.save_to_file_cpu_gpu("gemma3-12b", True, cpu_usage, ram_usage, diff_datetime_seconds)
+            functions.save_to_file_cpu_gpu("gemma3-12b", type_of_data, True, cpu_usage, ram_usage, diff_datetime_seconds)
         elif model == "gemma3:4b":
             if ocr_method:
                 functions.save_to_file_ocr("gemma3-4b", type_of_data, [correctness, correct_data, 
@@ -206,7 +206,7 @@ def load_and_measure(dir_path, first_ticket, latest_file):
                 functions.save_to_file_object("gemma3-4b", type_of_data, [correctness, correct_data,
                                                                     incorect_data, not_found_data, diff_datetime_seconds],
                                                                     dict_of_incorect, array_not_found)
-            functions.save_to_file_cpu_gpu("gemma3-4b", True, cpu_usage, ram_usage, diff_datetime_seconds)
+            functions.save_to_file_cpu_gpu("gemma3-4b", type_of_data, True, cpu_usage, ram_usage, diff_datetime_seconds)
         else:
             if ocr_method:
                 functions.save_to_file_ocr(model, type_of_data, [correctness, correct_data, 
@@ -218,7 +218,7 @@ def load_and_measure(dir_path, first_ticket, latest_file):
                 functions.save_to_file_object(model, type_of_data, [correctness, correct_data,
                                                                     incorect_data, not_found_data, diff_datetime_seconds],
                                                                     dict_of_incorect, array_not_found)
-            functions.save_to_file_cpu_gpu(model, True, cpu_usage, ram_usage, diff_datetime_seconds)
+            functions.save_to_file_cpu_gpu(model, type_of_data, True, cpu_usage, ram_usage, diff_datetime_seconds)
         
         if ocr_method:
             print(correctness, correct_data, incorect_data, not_found_data, 
