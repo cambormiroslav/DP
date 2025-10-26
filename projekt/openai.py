@@ -167,19 +167,25 @@ if __name__ == "__main__":
     else:
         dir_path = "../dataset/objects/"
     
-    #load_and_measure(dir_path, 1, 103)
-
-    model = "gpt-4.5-preview"
-    #load_and_measure(dir_path, 1, 103)
+    load_and_measure(dir_path, 1, 103)
 
     model = "gpt-4o"
-    #load_and_measure(dir_path, 1, 103)
+    load_and_measure(dir_path, 1, 103)
 
-    model = "gpt-4.1"
+    model = "gpt-4.1-nano"
     load_and_measure(dir_path, 1, 103)
 
     model = "gpt-4.1-mini"
     load_and_measure(dir_path, 1, 103)
 
-    model = "gpt-4.1-nano"
+    model = "gpt-4.1"
+    load_and_measure(dir_path, 1, 103)
+
+    model = "gpt-5-nano"
+    load_and_measure(dir_path, 1, 103)
+
+    model = "gpt-5-mini"
+    load_and_measure(dir_path, 1, 103)
+
+    model = "gpt-5"
     load_and_measure(dir_path, 1, 103)

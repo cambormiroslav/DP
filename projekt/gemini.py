@@ -20,7 +20,7 @@ else:
     type_of_data = "objects"
     correct_data_path = "../data_for_control/dataset_objects_correct_data.json"
 
-model_text = "gemini-1.5-flash"
+model_text = "gemini-2.0-flash-lite"
 model_is_pro = False
 
 """
@@ -152,17 +152,22 @@ if __name__ == "__main__":
         dir_path = "../dataset/large-receipt-image-dataset-SRD/"
     else:
         dir_path = "../dataset/objects/"
-
-    load_and_measure(dir_path, 1, 103)
-
-    model_text = "gemini-1.5-pro"
-    model_is_pro = True
+    
+    model_is_pro = False
     load_and_measure(dir_path, 1, 103)
 
     model_text = "gemini-2.0-flash"
     model_is_pro = False
     load_and_measure(dir_path, 1, 103)
 
-    model_text = "gemini-2.0-flash-lite"
+    model_text = "gemini-2.5-flash-lite"
+    model_is_pro = False
+    load_and_measure(dir_path, 1, 103)
+
+    model_text = "gemini-2.5-flash"
+    model_is_pro = False
+    load_and_measure(dir_path, 1, 103)
+
+    model_text = "gemini-2.5-pro"
     model_is_pro = False
     load_and_measure(dir_path, 1, 103)
