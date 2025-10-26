@@ -3,6 +3,8 @@ import json
 import base64
 import os
 import datetime
+import psutil
+import threading
 
 import functions
 
@@ -77,10 +79,39 @@ def load_and_measure(dir_path, first_ticket, latest_file):
     array_of_images = os.listdir(dir_path)
     while(True):
         file = array_of_images[i]
+        #get process id
+        pid = os.getpid()
+        process = psutil.Process(pid)
+        #cpu and memory before test model
+        process.cpu_percent(interval=None)
+        mem_before = process.memory_info().rss / (1024 * 1024)
+
+        functions.monitor_data["is_running"] = True
+        monitor_thread = threading.Thread(
+            target=functions.monitor_memory, 
+            args=(process,),
+            daemon=True #stops if main script stops
+        )
+        monitor_thread.start()
+
         start_datetime = datetime.datetime.now()
-        base_64_image = get_image_in_base64(dir_path + file)
-        response = send_image_request(base_64_image, pattern)
+
+        try:
+            base_64_image = get_image_in_base64(dir_path + file)
+            response = send_image_request(base_64_image, pattern)
+        finally:
+            # stop thread
+            functions.monitor_data["is_running"] = False
+            monitor_thread.join(timeout=1.0)
+        
         end_datetime = datetime.datetime.now()
+        #get cpu and ram usage
+        mem_after = process.memory_info().rss / (1024 * 1024)
+        peak_ram_mb = functions.monitor_data["peak_rss_mb"]
+        cpu_usage = process.cpu_percent(interval=None)
+
+        peak_ram_mb = max(peak_ram_mb, mem_after) #maximum of peak RAM and final value of RAM
+        ram_usage = peak_ram_mb - mem_before
 
         if ocr_method:
             data_tuple = functions.check_the_data_ocr(response, file, correct_data_path, True)
@@ -115,6 +146,7 @@ def load_and_measure(dir_path, first_ticket, latest_file):
                 functions.save_to_file_object("knoopx-mobile-vlm-3b-fp16", type_of_data, [correctness, correct_data, 
                                                                                    incorect_data, not_found_data, diff_datetime_seconds], 
                                                                                    dict_of_incorect, array_not_found)
+            functions.save_to_file_cpu_gpu("knoopx-mobile-vlm-3b-fp16", True, cpu_usage, ram_usage, diff_datetime_seconds)
         elif model == "llava:13b":
             if ocr_method:
                 functions.save_to_file_ocr("llava-13b", type_of_data, [correctness, correct_data, 
@@ -126,6 +158,7 @@ def load_and_measure(dir_path, first_ticket, latest_file):
                 functions.save_to_file_object("llava-13b", type_of_data, [correctness, correct_data,
                                                                     incorect_data, not_found_data, diff_datetime_seconds],
                                                                     dict_of_incorect, array_not_found)
+            functions.save_to_file_cpu_gpu("llava-13b", True, cpu_usage, ram_usage, diff_datetime_seconds)
         elif model == "llava:34b":
             if ocr_method:
                 functions.save_to_file_ocr("llava-34b", type_of_data, [correctness, correct_data, 
@@ -137,6 +170,7 @@ def load_and_measure(dir_path, first_ticket, latest_file):
                 functions.save_to_file_object("llava-34b", type_of_data, [correctness, correct_data,
                                                                     incorect_data, not_found_data, diff_datetime_seconds],
                                                                     dict_of_incorect, array_not_found)
+            functions.save_to_file_cpu_gpu("llava-34b", True, cpu_usage, ram_usage, diff_datetime_seconds)
         elif model == "gemma3:27b":
             if ocr_method:
                 functions.save_to_file_ocr("gemma3-27b", type_of_data, [correctness, correct_data, 
@@ -148,6 +182,7 @@ def load_and_measure(dir_path, first_ticket, latest_file):
                 functions.save_to_file_object("gemma3-27b", type_of_data, [correctness, correct_data,
                                                                     incorect_data, not_found_data, diff_datetime_seconds],
                                                                     dict_of_incorect, array_not_found)
+            functions.save_to_file_cpu_gpu("gemma3-27b", True, cpu_usage, ram_usage, diff_datetime_seconds)
         elif model == "gemma3:12b":
             if ocr_method:
                 functions.save_to_file_ocr("gemma3-12b", type_of_data, [correctness, correct_data, 
@@ -159,6 +194,7 @@ def load_and_measure(dir_path, first_ticket, latest_file):
                 functions.save_to_file_object("gemma3-12b", type_of_data, [correctness, correct_data,
                                                                     incorect_data, not_found_data, diff_datetime_seconds],
                                                                     dict_of_incorect, array_not_found)
+            functions.save_to_file_cpu_gpu("gemma3-12b", True, cpu_usage, ram_usage, diff_datetime_seconds)
         elif model == "gemma3:4b":
             if ocr_method:
                 functions.save_to_file_ocr("gemma3-4b", type_of_data, [correctness, correct_data, 
@@ -170,6 +206,7 @@ def load_and_measure(dir_path, first_ticket, latest_file):
                 functions.save_to_file_object("gemma3-4b", type_of_data, [correctness, correct_data,
                                                                     incorect_data, not_found_data, diff_datetime_seconds],
                                                                     dict_of_incorect, array_not_found)
+            functions.save_to_file_cpu_gpu("gemma3-4b", True, cpu_usage, ram_usage, diff_datetime_seconds)
         else:
             if ocr_method:
                 functions.save_to_file_ocr(model, type_of_data, [correctness, correct_data, 
@@ -181,6 +218,8 @@ def load_and_measure(dir_path, first_ticket, latest_file):
                 functions.save_to_file_object(model, type_of_data, [correctness, correct_data,
                                                                     incorect_data, not_found_data, diff_datetime_seconds],
                                                                     dict_of_incorect, array_not_found)
+            functions.save_to_file_cpu_gpu(model, True, cpu_usage, ram_usage, diff_datetime_seconds)
+        
         if ocr_method:
             print(correctness, correct_data, incorect_data, not_found_data, 
                   good_not_found, diff_datetime_seconds, dict_of_incorect,
