@@ -4,6 +4,7 @@ import base64
 import os
 import datetime
 import psutil
+import pynvml
 import threading
 
 import functions
@@ -82,18 +83,33 @@ def load_and_measure(dir_path, first_ticket, latest_file):
         #get process id
         pid = os.getpid()
         process = psutil.Process(pid)
-        #cpu and memory before test model
-        process.cpu_percent(interval=None)
-        mem_before = process.memory_info().rss / (1024 * 1024)
+        
+        #GPU init
+        gpu_handle = None
+        base_vram_mb = 0.0
+        try:
+            pynvml.nvmlInit()
+            gpu_handle = pynvml.nvmlDeviceGetHandleByIndex(0)
+            info = pynvml.nvmlDeviceGetMemoryInfo(gpu_handle)
+            base_vram_mb = info.used / (1024 * 1024)
+            gpu_is_available = True
+        except pynvml.NVMLError:
+            print("NVIDIA GPU not found.")
+            gpu_is_available = False
 
+        #init of thread
         functions.monitor_data["is_running"] = True
         monitor_thread = threading.Thread(
-            target=functions.monitor_memory, 
-            args=(process,),
+            target=functions.monitor_memory_gpu_vram, 
+            args=(process, gpu_handle),
             daemon=True #stops if main script stops
         )
         monitor_thread.start()
+        vram_after = 0.0
 
+        #cpu and memory before test model
+        process.cpu_percent(interval=None)
+        mem_before = process.memory_info().rss / (1024 * 1024)
         start_datetime = datetime.datetime.now()
 
         try:
@@ -103,6 +119,10 @@ def load_and_measure(dir_path, first_ticket, latest_file):
             # stop thread
             functions.monitor_data["is_running"] = False
             monitor_thread.join(timeout=1.0)
+            if gpu_is_available:
+                vram_info = pynvml.nvmlDeviceGetMemoryInfo(gpu_handle)
+                vram_after = vram_info.used / (1024 * 1024)
+                pynvml.nvmlShutdown() #shutdown nvml
         
         end_datetime = datetime.datetime.now()
         #get cpu and ram usage
@@ -112,6 +132,12 @@ def load_and_measure(dir_path, first_ticket, latest_file):
 
         peak_ram_mb = max(peak_ram_mb, mem_after) #maximum of peak RAM and final value of RAM
         ram_usage = peak_ram_mb - mem_before
+
+        #GPU VRAM usage
+        if gpu_is_available:
+            total_vram_mb = max(functions.monitor_data["peak_vram_mb"], vram_after) - base_vram_mb
+        else:
+            total_vram_mb = -1
 
         if ocr_method:
             data_tuple = functions.check_the_data_ocr(response, file, correct_data_path, True)
@@ -146,7 +172,9 @@ def load_and_measure(dir_path, first_ticket, latest_file):
                 functions.save_to_file_object("knoopx-mobile-vlm-3b-fp16", type_of_data, [correctness, correct_data, 
                                                                                    incorect_data, not_found_data, diff_datetime_seconds], 
                                                                                    dict_of_incorect, array_not_found)
-            functions.save_to_file_cpu_gpu("knoopx-mobile-vlm-3b-fp16", type_of_data, True, cpu_usage, ram_usage, diff_datetime_seconds)
+            functions.save_to_file_cpu_gpu("knoopx-mobile-vlm-3b-fp16", type_of_data, True, cpu_usage, functions.monitor_data["peak_cpu_percent"],
+                                       ram_usage, functions.monitor_data["peak_gpu_utilization"], total_vram_mb,
+                                       diff_datetime_seconds)
         elif model == "llava:13b":
             if ocr_method:
                 functions.save_to_file_ocr("llava-13b", type_of_data, [correctness, correct_data, 
@@ -158,7 +186,9 @@ def load_and_measure(dir_path, first_ticket, latest_file):
                 functions.save_to_file_object("llava-13b", type_of_data, [correctness, correct_data,
                                                                     incorect_data, not_found_data, diff_datetime_seconds],
                                                                     dict_of_incorect, array_not_found)
-            functions.save_to_file_cpu_gpu("llava-13b", type_of_data, True, cpu_usage, ram_usage, diff_datetime_seconds)
+            functions.save_to_file_cpu_gpu("llava-13b", type_of_data, True, cpu_usage, functions.monitor_data["peak_cpu_percent"],
+                                       ram_usage, functions.monitor_data["peak_gpu_utilization"], total_vram_mb,
+                                       diff_datetime_seconds)
         elif model == "llava:34b":
             if ocr_method:
                 functions.save_to_file_ocr("llava-34b", type_of_data, [correctness, correct_data, 
@@ -170,7 +200,9 @@ def load_and_measure(dir_path, first_ticket, latest_file):
                 functions.save_to_file_object("llava-34b", type_of_data, [correctness, correct_data,
                                                                     incorect_data, not_found_data, diff_datetime_seconds],
                                                                     dict_of_incorect, array_not_found)
-            functions.save_to_file_cpu_gpu("llava-34b", type_of_data, True, cpu_usage, ram_usage, diff_datetime_seconds)
+            functions.save_to_file_cpu_gpu("llava-34b", type_of_data, True, cpu_usage, functions.monitor_data["peak_cpu_percent"],
+                                       ram_usage, functions.monitor_data["peak_gpu_utilization"], total_vram_mb,
+                                       diff_datetime_seconds)
         elif model == "gemma3:27b":
             if ocr_method:
                 functions.save_to_file_ocr("gemma3-27b", type_of_data, [correctness, correct_data, 
@@ -182,7 +214,9 @@ def load_and_measure(dir_path, first_ticket, latest_file):
                 functions.save_to_file_object("gemma3-27b", type_of_data, [correctness, correct_data,
                                                                     incorect_data, not_found_data, diff_datetime_seconds],
                                                                     dict_of_incorect, array_not_found)
-            functions.save_to_file_cpu_gpu("gemma3-27b", type_of_data, True, cpu_usage, ram_usage, diff_datetime_seconds)
+            functions.save_to_file_cpu_gpu("gemma3-27b", type_of_data, True, cpu_usage, functions.monitor_data["peak_cpu_percent"],
+                                       ram_usage, functions.monitor_data["peak_gpu_utilization"], total_vram_mb,
+                                       diff_datetime_seconds)
         elif model == "gemma3:12b":
             if ocr_method:
                 functions.save_to_file_ocr("gemma3-12b", type_of_data, [correctness, correct_data, 
@@ -194,7 +228,9 @@ def load_and_measure(dir_path, first_ticket, latest_file):
                 functions.save_to_file_object("gemma3-12b", type_of_data, [correctness, correct_data,
                                                                     incorect_data, not_found_data, diff_datetime_seconds],
                                                                     dict_of_incorect, array_not_found)
-            functions.save_to_file_cpu_gpu("gemma3-12b", type_of_data, True, cpu_usage, ram_usage, diff_datetime_seconds)
+            functions.save_to_file_cpu_gpu("gemma3-12b", type_of_data, True, cpu_usage, functions.monitor_data["peak_cpu_percent"],
+                                       ram_usage, functions.monitor_data["peak_gpu_utilization"], total_vram_mb,
+                                       diff_datetime_seconds)
         elif model == "gemma3:4b":
             if ocr_method:
                 functions.save_to_file_ocr("gemma3-4b", type_of_data, [correctness, correct_data, 
@@ -206,7 +242,9 @@ def load_and_measure(dir_path, first_ticket, latest_file):
                 functions.save_to_file_object("gemma3-4b", type_of_data, [correctness, correct_data,
                                                                     incorect_data, not_found_data, diff_datetime_seconds],
                                                                     dict_of_incorect, array_not_found)
-            functions.save_to_file_cpu_gpu("gemma3-4b", type_of_data, True, cpu_usage, ram_usage, diff_datetime_seconds)
+            functions.save_to_file_cpu_gpu("gemma3-4b", type_of_data, True, cpu_usage, functions.monitor_data["peak_cpu_percent"],
+                                       ram_usage, functions.monitor_data["peak_gpu_utilization"], total_vram_mb,
+                                       diff_datetime_seconds)
         else:
             if ocr_method:
                 functions.save_to_file_ocr(model, type_of_data, [correctness, correct_data, 
@@ -218,8 +256,10 @@ def load_and_measure(dir_path, first_ticket, latest_file):
                 functions.save_to_file_object(model, type_of_data, [correctness, correct_data,
                                                                     incorect_data, not_found_data, diff_datetime_seconds],
                                                                     dict_of_incorect, array_not_found)
-            functions.save_to_file_cpu_gpu(model, type_of_data, True, cpu_usage, ram_usage, diff_datetime_seconds)
-        
+            functions.save_to_file_cpu_gpu(model, type_of_data, True, cpu_usage, functions.monitor_data["peak_cpu_percent"],
+                                       ram_usage, functions.monitor_data["peak_gpu_utilization"], total_vram_mb,
+                                       diff_datetime_seconds)
+
         if ocr_method:
             print(correctness, correct_data, incorect_data, not_found_data, 
                   good_not_found, diff_datetime_seconds, dict_of_incorect,

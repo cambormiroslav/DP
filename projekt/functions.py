@@ -1,19 +1,38 @@
 import json
 import codecs
 import psutil
+import pynvml
 import time
 
 monitor_data = {
     "peak_rss_mb": 0.0,
+    "peak_cpu_percent": 0.0,
+    "peak_vram_mb": 0.0,
+    "peak_gpu_utilization": 0,
     "is_running": True
 }
 
-def monitor_memory(process):
+def monitor_memory_gpu_vram(process, gpu_handle):
     monitor_data["peak_rss_mb"] = 0.0
+    monitor_data["peak_cpu_percent"] = 0.0
+    monitor_data["peak_vram_mb"] = 0.0
+    monitor_data["peak_gpu_utilization"] = 0
+
+    # init of CPU percentage usage measurement
+    try:
+        process.cpu_percent(interval=None) 
+    except psutil.NoSuchProcess:
+        pass
     
     while monitor_data["is_running"]:
+        #CPU and RAM measurement
         total_rss_bytes = 0
         try:
+            #CPU percentage usage measurement
+            current_cpu = process.cpu_percent(interval=None)
+            if current_cpu > monitor_data["peak_cpu_percent"]:
+                monitor_data["peak_cpu_percent"] = current_cpu
+
             #memory of main process
             total_rss_bytes += process.memory_info().rss
             
@@ -34,6 +53,23 @@ def monitor_memory(process):
                 
         except psutil.NoSuchProcess:
             break
+
+        if gpu_handle:
+            try:
+                #GPU measurement
+                util = pynvml.nvmlDeviceGetUtilizationRates(gpu_handle)
+                if util.gpu > monitor_data["peak_gpu_utilization"]:
+                    monitor_data["peak_gpu_utilization"] = util.gpu
+                
+                #VRAM measurement
+                info = pynvml.nvmlDeviceGetMemoryInfo(gpu_handle)
+                current_vram_mb = info.used / (1024 * 1024)
+                if current_vram_mb > monitor_data["peak_vram_mb"]:
+                    monitor_data["peak_vram_mb"] = current_vram_mb
+                    
+            except pynvml.NVMLError:
+                print("NVML error.")
+                break
         
         time.sleep(0.01)
 
@@ -425,7 +461,7 @@ def save_to_file_object(model, type_of_data, values, incorrect_data, not_found_d
 Input: (model name, are test or train data, CPU usage, RAM usage, GPU usage, VRAM usage)
 Output: None
 """  
-def save_to_file_cpu_gpu(model, type_of_data, is_test, cpu_usage, ram_usage, datetime_diff):
+def save_to_file_cpu_gpu(model, type_of_data, is_test, cpu_usage, cpu_percentage, ram_usage, gpu_usage, vram_usage, datetime_diff):
     if is_test:
         output_file_path = f"./test_measurement/{model}_{type_of_data}.txt"
     else:
@@ -433,6 +469,6 @@ def save_to_file_cpu_gpu(model, type_of_data, is_test, cpu_usage, ram_usage, dat
     
     with open(output_file_path, "+a") as file:
         if is_test:
-            file.write(f"{cpu_usage};{ram_usage}\n")
+            file.write(f"{cpu_usage};{cpu_percentage};{ram_usage};{gpu_usage};{vram_usage}\n")
         else:
-            file.write(f"{cpu_usage};{ram_usage};{datetime_diff}\n")
+            file.write(f"{cpu_usage};{cpu_percentage};{ram_usage};{gpu_usage};{vram_usage};{datetime_diff}\n")

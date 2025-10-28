@@ -3,6 +3,7 @@ from ultralytics import YOLO
 import os
 import cv2
 import psutil
+import pynvml
 import threading
 
 import functions
@@ -17,17 +18,33 @@ def test_img(img_path, model, model_name, file_name):
     #get process id
     pid = os.getpid()
     process = psutil.Process(pid)
-    #cpu and memory before test model
-    process.cpu_percent(interval=None)
-    mem_before = process.memory_info().rss / (1024 * 1024)
 
+    #GPU init
+    gpu_handle = None
+    base_vram_mb = 0.0
+    try:
+        pynvml.nvmlInit()
+        gpu_handle = pynvml.nvmlDeviceGetHandleByIndex(0)
+        info = pynvml.nvmlDeviceGetMemoryInfo(gpu_handle)
+        base_vram_mb = info.used / (1024 * 1024)
+        gpu_is_available = True
+    except pynvml.NVMLError:
+        print("NVIDIA GPU not found.")
+        gpu_is_available = False
+
+    #init of thread
     functions.monitor_data["is_running"] = True
     monitor_thread = threading.Thread(
-        target=functions.monitor_memory, 
-        args=(process,),
+        target=functions.monitor_memory_gpu_vram, 
+        args=(process, gpu_handle),
         daemon=True #stops if main script stops
     )
     monitor_thread.start()
+    vram_after = 0.0
+
+    #cpu and memory before test model
+    process.cpu_percent(interval=None)
+    mem_before = process.memory_info().rss / (1024 * 1024)
 
     try:
         image = cv2.imread(img_path)
@@ -46,7 +63,11 @@ def test_img(img_path, model, model_name, file_name):
     finally:
         # stop thread
         functions.monitor_data["is_running"] = False
-        monitor_thread.join(timeout=1.0) # Počkáme max 1s
+        monitor_thread.join(timeout=1.0)
+        if gpu_is_available:
+            vram_info = pynvml.nvmlDeviceGetMemoryInfo(gpu_handle)
+            vram_after = vram_info.used / (1024 * 1024)
+            pynvml.nvmlShutdown() #shutdown nvml
 
     #get cpu and ram usage
     mem_after = process.memory_info().rss / (1024 * 1024)
@@ -56,7 +77,15 @@ def test_img(img_path, model, model_name, file_name):
     peak_ram_mb = max(peak_ram_mb, mem_after) #maximum of peak RAM and final value of RAM
     ram_usage = peak_ram_mb - mem_before
 
-    functions.save_to_file_cpu_gpu(model_name, type_of_data, True, cpu_usage, ram_usage, 0) #this information is in other file there
+    #GPU VRAM usage
+    if gpu_is_available:
+        total_vram_mb = max(functions.monitor_data["peak_vram_mb"], vram_after) - base_vram_mb
+    else:
+        total_vram_mb = -1
+
+    functions.save_to_file_cpu_gpu(model_name, type_of_data, True, cpu_usage, functions.monitor_data["peak_cpu_percent"],
+                                       ram_usage, functions.monitor_data["peak_gpu_utilization"], total_vram_mb,
+                                       0) #this information is in other file there
 
     return {file_name: class_names_array}
 
@@ -77,27 +106,68 @@ def train_yolo(model_specification, dataset_yaml, count_of_epochs, model_train_d
     #get process id
     pid = os.getpid()
     process = psutil.Process(pid)
-    #cpu and memory before train model
+    
+    #GPU init
+    gpu_handle = None
+    base_vram_mb = 0.0
+    try:
+        pynvml.nvmlInit()
+        gpu_handle = pynvml.nvmlDeviceGetHandleByIndex(0)
+        info = pynvml.nvmlDeviceGetMemoryInfo(gpu_handle)
+        base_vram_mb = info.used / (1024 * 1024)
+        gpu_is_available = True
+    except pynvml.NVMLError:
+        print("NVIDIA GPU not found.")
+        gpu_is_available = False
+
+    functions.monitor_data["is_running"] = True
+    monitor_thread = threading.Thread(
+        target=functions.monitor_memory_gpu_vram, 
+        args=(process, gpu_handle),
+        daemon=True #stops if main script stops
+    )
+    monitor_thread.start()
+    vram_after = 0.0
+
+    #cpu and memory before test model
     process.cpu_percent(interval=None)
     mem_before = process.memory_info().rss / (1024 * 1024)
-    
     start_datetime = datetime.datetime.now()
 
-    #train model
-    model.train(data=dataset_yaml, epochs=count_of_epochs, imgsz=32, project = model_train_dir)
-
-    #get cpu and ram usage
-    cpu_usage = process.cpu_percent(interval=None)
-    mem_after = process.memory_info().rss / (1024 * 1024)
-    ram_usage = mem_after - mem_before
+    try:
+        #train model
+        model.train(data=dataset_yaml, epochs=count_of_epochs, imgsz=32, project = model_train_dir)
+    finally:
+            # stop thread
+            functions.monitor_data["is_running"] = False
+            monitor_thread.join(timeout=1.0)
+            if gpu_is_available:
+                vram_info = pynvml.nvmlDeviceGetMemoryInfo(gpu_handle)
+                vram_after = vram_info.used / (1024 * 1024)
+                pynvml.nvmlShutdown() #shutdown nvml
 
     end_datetime = datetime.datetime.now()
+    #get cpu and ram usage
+    mem_after = process.memory_info().rss / (1024 * 1024)
+    peak_ram_mb = functions.monitor_data["peak_rss_mb"]
+    cpu_usage = process.cpu_percent(interval=None)
+
+    peak_ram_mb = max(peak_ram_mb, mem_after) #maximum of peak RAM and final value of RAM
+    ram_usage = peak_ram_mb - mem_before
+
+    #GPU VRAM usage
+    if gpu_is_available:
+        total_vram_mb = max(functions.monitor_data["peak_vram_mb"], vram_after) - base_vram_mb
+    else:
+        total_vram_mb = -1
 
     #time of train
     diff_datetime = end_datetime - start_datetime
     diff_datetime_seconds = diff_datetime.total_seconds()
-
-    functions.save_to_file_cpu_gpu(model_specification.replace(".pt", ""), type_of_data, False, cpu_usage, ram_usage, diff_datetime_seconds)
+    
+    functions.save_to_file_cpu_gpu(model_specification.replace(".pt", ""), type_of_data, True, cpu_usage, functions.monitor_data["peak_cpu_percent"],
+                                       ram_usage, functions.monitor_data["peak_gpu_utilization"], total_vram_mb,
+                                       diff_datetime_seconds)
 
     return model
 

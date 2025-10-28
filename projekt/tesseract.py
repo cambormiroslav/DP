@@ -5,6 +5,7 @@ import json
 import datetime
 from PIL import Image
 import psutil
+import pynvml
 import threading
 
 import functions
@@ -96,18 +97,33 @@ def load_and_measure(dir_path, first_ticket, latest_file):
         #get process id
         pid = os.getpid()
         process = psutil.Process(pid)
-        #cpu and memory before test model
-        process.cpu_percent(interval=None)
-        mem_before = process.memory_info().rss / (1024 * 1024)
+        
+        #GPU init
+        gpu_handle = None
+        base_vram_mb = 0.0
+        try:
+            pynvml.nvmlInit()
+            gpu_handle = pynvml.nvmlDeviceGetHandleByIndex(0)
+            info = pynvml.nvmlDeviceGetMemoryInfo(gpu_handle)
+            base_vram_mb = info.used / (1024 * 1024)
+            gpu_is_available = True
+        except pynvml.NVMLError:
+            print("NVIDIA GPU not found.")
+            gpu_is_available = False
 
+        #init of thread
         functions.monitor_data["is_running"] = True
         monitor_thread = threading.Thread(
-            target=functions.monitor_memory, 
-            args=(process,),
+            target=functions.monitor_memory_gpu_vram, 
+            args=(process, gpu_handle),
             daemon=True #stops if main script stops
         )
         monitor_thread.start()
+        vram_after = 0.0
 
+        #cpu and memory before test model
+        process.cpu_percent(interval=None)
+        mem_before = process.memory_info().rss / (1024 * 1024)
         start_datetime = datetime.datetime.now()
 
         try:
@@ -116,6 +132,10 @@ def load_and_measure(dir_path, first_ticket, latest_file):
             # stop thread
             functions.monitor_data["is_running"] = False
             monitor_thread.join(timeout=1.0)
+            if gpu_is_available:
+                vram_info = pynvml.nvmlDeviceGetMemoryInfo(gpu_handle)
+                vram_after = vram_info.used / (1024 * 1024)
+                pynvml.nvmlShutdown() #shutdown nvml
         
         end_datetime = datetime.datetime.now()
         #get cpu and ram usage
@@ -125,6 +145,12 @@ def load_and_measure(dir_path, first_ticket, latest_file):
 
         peak_ram_mb = max(peak_ram_mb, mem_after) #maximum of peak RAM and final value of RAM
         ram_usage = peak_ram_mb - mem_before
+
+        #GPU VRAM usage
+        if gpu_is_available:
+            total_vram_mb = max(functions.monitor_data["peak_vram_mb"], vram_after) - base_vram_mb
+        else:
+            total_vram_mb = -1
 
         data_tuple = functions.check_the_data_ocr(response, file, correct_data_path, False)
         correctness = data_tuple[0]
@@ -144,7 +170,9 @@ def load_and_measure(dir_path, first_ticket, latest_file):
                                                                                    good_not_found, diff_datetime_seconds], 
                                                                                    dict_of_incorect, array_not_found, 
                                                                                    array_good_not_found)
-        functions.save_to_file_cpu_gpu("tesseract-5_3_0", "ticket", True, cpu_usage, ram_usage, diff_datetime_seconds)
+        functions.save_to_file_cpu_gpu("tesseract-5_3_0", "ticket", True, cpu_usage, functions.monitor_data["peak_cpu_percent"],
+                                       ram_usage, functions.monitor_data["peak_gpu_utilization"], total_vram_mb,
+                                       diff_datetime_seconds)
 
         i += 1
 
