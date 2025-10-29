@@ -142,7 +142,7 @@ def load_and_measure(dir_path, first_ticket, latest_file):
             array_not_found = data_tuple[6]
             array_good_not_found = data_tuple[7]
         else:
-            data_tuple = functions.check_the_data_object(response, file, correct_data_path)
+            data_tuple = functions.check_the_data_object(response, file, correct_data_path, True)
             correctness = data_tuple[0]
             correct_data = data_tuple[1]
             incorect_data = data_tuple[2]
