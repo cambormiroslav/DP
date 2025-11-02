@@ -1,5 +1,5 @@
 import re
-import easyocr  # <--- ZMĚNA: import easyocr
+import easyocr
 import os
 import json
 import datetime
@@ -168,10 +168,10 @@ def load_and_measure(dir_path, first_ticket, latest_file):
         diff_datetime = end_datetime - start_datetime
         diff_datetime_seconds = diff_datetime.total_seconds()
         
-        functions.save_to_file_ocr("easyocr", "ticket", [correctness, correct_data, 
-                                                              incorect_data, not_found_data, 
-                                                              good_not_found, diff_datetime_seconds], 
-                                                              dict_of_incorect, array_not_found, 
+        functions.save_to_file_ocr("easyocr", "ticket", [correctness, correct_data,
+                                                              incorect_data, not_found_data,
+                                                              good_not_found, diff_datetime_seconds],
+                                                              dict_of_incorect, array_not_found,
                                                               array_good_not_found)
         functions.save_to_file_cpu_gpu("easyocr", "ticket", True, cpu_usage, functions.monitor_data["peak_cpu_percent"],
                                        ram_usage, functions.monitor_data["peak_gpu_utilization"], total_vram_mb,

@@ -205,5 +205,5 @@ def load_and_measure(model, model_name):
                                                                  dict_of_incorect, array_not_found)
 
 if __name__ == "__main__":
-    model = train_yolo("yolo12n.pt", dataset_yaml, 100,"./output_objects/yolo12n/") #600
+    model = train_yolo("yolo12n.pt", dataset_yaml, 600,"./output_objects/yolo12n/")
     load_and_measure(model, "yolo12n")

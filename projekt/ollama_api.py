@@ -9,8 +9,8 @@ import threading
 
 import functions
 
-ocr_method = True
-is_mistral = True
+ocr_method = False
+is_mistral = False
 
 if ocr_method:
     if is_mistral:
@@ -150,7 +150,7 @@ def load_and_measure(dir_path, first_ticket, latest_file):
             array_not_found = data_tuple[6]
             array_good_not_found = data_tuple[7]
         else:
-            data_tuple = functions.check_the_data_object(response, file, correct_data_path)
+            data_tuple = functions.check_the_data_object(response, file, correct_data_path, True)
             correctness = data_tuple[0]
             correct_data = data_tuple[1]
             incorect_data = data_tuple[2]
@@ -313,5 +313,6 @@ if __name__ == "__main__":
     model = "gemma3:4b"
     #load_and_measure(dir_path, 1, 103)
 
+    is_mistral = True
     model = "mistral-small3.1"
-    load_and_measure(dir_path, 75, 103)
+    load_and_measure(dir_path, 1, 103)
