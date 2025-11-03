@@ -54,7 +54,7 @@ def test_img(img_path, model, model_name, file_name):
         firstResult = results[0]
 
         boxes = firstResult.boxes
-        classes = boxes.cls.numpy().astype('uint')
+        classes = boxes.cls.cpu().numpy().astype('uint')
         class_names_array = []
         for j in range(len(classes)):
             classId = classes[j]
@@ -205,5 +205,17 @@ def load_and_measure(model, model_name):
                                                                  dict_of_incorect, array_not_found)
 
 if __name__ == "__main__":
-    model = train_yolo("yolo12n.pt", dataset_yaml, 600,"./output_objects/yolo12n/")
-    load_and_measure(model, "yolo12n")
+    model = train_yolo("yolo11n.pt", dataset_yaml, 600,"./output_objects/yolo11n/")
+    load_and_measure(model, "yolo11n")
+
+    model = train_yolo("yolo11s.pt", dataset_yaml, 600,"./output_objects/yolo11s/")
+    load_and_measure(model, "yolo11s")
+
+    model = train_yolo("yolo11m.pt", dataset_yaml, 600,"./output_objects/yolo11m/")
+    load_and_measure(model, "yolo11m")
+
+    model = train_yolo("yolo11l.pt", dataset_yaml, 600,"./output_objects/yolo11l/")
+    load_and_measure(model, "yolo11l")
+
+    model = train_yolo("yolo11x.pt", dataset_yaml, 600,"./output_objects/yolo11x/")
+    load_and_measure(model, "yolo11x")
