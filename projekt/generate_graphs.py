@@ -1,8 +1,12 @@
 import os
 import matplotlib.pyplot as plt
 
-#type_of_dataset = "ticket"
-type_of_dataset = "objects"
+type_of_dataset = "ticket"
+#type_of_dataset = "objects"
+
+graphs_dir = "./graphs/"
+if not os.path.exists(graphs_dir):
+    os.makedirs(graphs_dir)
 
 if type_of_dataset == "ticket":
     output_dir = "./output/"
@@ -39,7 +43,7 @@ def generate_boxplot(tick_labels, values, y_label, type_data):
 
     plt.margins(0.1)
     plt.subplots_adjust(bottom=0.45)
-    plt.savefig(f"./graphs/{type_data}_{type_of_dataset}.png")
+    plt.savefig(f"{graphs_dir}{type_data}_{type_of_dataset}.png")
 
 def generate_bar(models, values, type_of_data):
     colors = ['blue', 'green', 'red', 'purple', 'brown',
@@ -57,7 +61,7 @@ def generate_bar(models, values, type_of_data):
     plt.xticks(rotation=90)
     plt.margins(0.1)
     plt.subplots_adjust(bottom=0.45)
-    plt.savefig(f"./graphs/{type_of_data}_{type_of_dataset}.png")
+    plt.savefig(f"{graphs_dir}{type_of_data}_{type_of_dataset}.png")
 
 def generate_graph(type_of_data):
     tick_labels = []
@@ -185,14 +189,14 @@ def load_all_data():
 if __name__ == "__main__":
     load_all_data()
 
-    """if type_of_dataset == "ticket":
+    if type_of_dataset == "ticket":
         generate_graph("correctness")
         generate_graph("incorrect_data")
         generate_graph("not_found")
         generate_graph("goods_not_found")
-    generate_graph("time_of_run")"""
+    generate_graph("time_of_run")
 
     if type_of_dataset == "objects":
-        #generate_bar_graph_from_data(not_found_json_dict, "not_json")
         generate_bar_graph_from_data(precision_sum_dict, "precision")
         generate_bar_graph_from_data(recall_sum_dict, "recall")
+    generate_bar_graph_from_data(not_found_json_dict, "not_json")
