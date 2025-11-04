@@ -4,6 +4,40 @@ import matplotlib.pyplot as plt
 type_of_dataset = "ticket"
 #type_of_dataset = "objects"
 
+add_to_graph = {
+    "bakllava" : True,
+    "easyocr": True,
+    "gemini-2.0-flash-lite": True,
+    "gemini-2.0-flash" : True,
+    "gemini-2.5-flash-lite": True,
+    "gemini-2.5-flash" : True,
+    "gemini-2.5-pro" : True,
+    "gemma3-4b" : True,
+    "gemma3-12b": True,
+    "gemma3-27b" : True,
+    "gpt-4o-mini" : True,
+    "gpt-4o" : True,
+    "gpt-4.1-nano" : True,
+    "gpt-4.1-mini" : True,
+    "gpt-4.1" : True,
+    "gpt-5-nano" : True,
+    "gpt-5-mini" : True,
+    "gpt-5" : True,
+    "granite3.2-vision" : True,
+    "knoopx-mobile-vlm-3b-fp16" : True,
+    "llava-7b" : True,
+    "llava-13b" : True,
+    "llava-34b" : True,
+    "minicpm-v": True,
+    "mistral-small3.1" : True,
+    "tesseract-5" : True,
+    "yolo11n" : True,
+    "yolo11s" : True,
+    "yolo11m" : True,
+    "yolo11l" : True,
+    "yolo11x" : True
+    }
+
 graphs_dir = "./graphs/"
 if not os.path.exists(graphs_dir):
     os.makedirs(graphs_dir)
@@ -120,6 +154,9 @@ def load_all_data():
         model = file.split("_")[0]
         if model == "llava":
             model = "llava-7b"
+
+        if not add_to_graph[model]:
+            continue
         path_to_data = output_dir + file
 
         correctness_array = []
