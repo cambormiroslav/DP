@@ -4,6 +4,8 @@ import matplotlib.pyplot as plt
 #type_of_dataset = "ticket"
 type_of_dataset = "objects"
 
+is_best_data = False
+
 add_to_graph = {
     "bakllava" : True,
     "easyocr": True,
@@ -77,7 +79,11 @@ def generate_boxplot(tick_labels, values, y_label, type_data):
 
     plt.margins(0.1)
     plt.subplots_adjust(bottom=0.45)
-    plt.savefig(f"{graphs_dir}{type_data}_{type_of_dataset}.svg")
+    if is_best_data:
+        plt.savefig(f"{graphs_dir}{type_data}_{type_of_dataset}_best.svg")
+    else:
+        plt.savefig(f"{graphs_dir}{type_data}_{type_of_dataset}.svg")
+    
 
 def generate_bar(models, values, type_of_data):
     colors = ['blue', 'green', 'red', 'purple', 'brown',
@@ -95,7 +101,10 @@ def generate_bar(models, values, type_of_data):
     plt.xticks(rotation=90)
     plt.margins(0.1)
     plt.subplots_adjust(bottom=0.45)
-    plt.savefig(f"{graphs_dir}{type_of_data}_{type_of_dataset}.svg")
+    if is_best_data:
+        plt.savefig(f"{graphs_dir}{type_of_data}_{type_of_dataset}_best.svg")
+    else:
+        plt.savefig(f"{graphs_dir}{type_of_data}_{type_of_dataset}.svg")
 
 def generate_graph(type_of_data):
     tick_labels = []
