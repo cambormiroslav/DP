@@ -32,7 +32,7 @@ add_to_graph = {
     "llava-34b" : True,
     "minicpm-v": True,
     "mistral-small3.1" : True,
-    "tesseract-5" : True,
+    "tesseract-5.3.0" : True,
     "yolo11n" : True,
     "yolo11s" : True,
     "yolo11m" : True,
