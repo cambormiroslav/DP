@@ -1,8 +1,8 @@
 import os
 import matplotlib.pyplot as plt
 
-#type_of_dataset = "ticket"
-type_of_dataset = "objects"
+type_of_dataset = "ticket"
+#type_of_dataset = "objects"
 
 is_best_data = False
 
