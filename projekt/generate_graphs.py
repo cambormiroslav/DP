@@ -1,8 +1,8 @@
 import os
 import matplotlib.pyplot as plt
 
-type_of_dataset = "ticket"
-#type_of_dataset = "objects"
+#type_of_dataset = "ticket"
+type_of_dataset = "objects"
 
 is_best_data = False
 
@@ -157,6 +157,72 @@ def generate_bar_graph_from_data(dict_data, type_of_data):
     
     generate_bar(names, values, type_of_data)
 
+def load_output_of_models(file_path, model_name):
+    path_to_data = output_dir + file_path
+
+    correctness_array = []
+    correct_data_count_array = []
+    incorrect_data_count_array = []
+    not_finded_main_count_key_array = []
+    goods_not_finded_count_array = []
+    time_run_array = []
+    precision_sum = 0.0
+    recall_sum = 0.0
+
+    with open(path_to_data, "r") as file:
+        lines = file.readlines()
+
+        for line in lines:
+            array_of_values = line.replace("\n", "").split(";")
+
+            correct_data = int(array_of_values[1])
+            incorect_data = int(array_of_values[2])
+            not_finded = int(array_of_values[3])
+            if type_of_dataset == "ticket":
+                goods_not_finded = int(array_of_values[4])
+                count_of_all_data = get_count_of_all_data(correct_data, incorect_data, not_finded, goods_not_finded)
+            else:
+                count_of_all_data = get_count_of_all_data(correct_data, incorect_data, not_finded, 0)
+                
+            correctness_array += [float(array_of_values[0])]
+            correct_data_count_array += [correct_data]
+            incorrect_data_count_array += [incorect_data / count_of_all_data]
+            not_finded_main_count_key_array += [not_finded / count_of_all_data]
+
+            if (correct_data + incorect_data) != 0:
+                precision_sum += (correct_data / (correct_data + incorect_data))
+            if (correct_data + not_finded) != 0:
+                recall_sum += (correct_data / (correct_data + not_finded))
+
+            if type_of_dataset == "ticket":
+                goods_not_finded_count_array += [(goods_not_finded * 3) / count_of_all_data]
+                time_run_array += [float(array_of_values[5])]
+            else:
+                time_run_array += [float(array_of_values[4])]
+
+            if type_of_dataset == "ticket":
+                if correct_data == 0 and incorect_data == 0 and not_finded > 0 and goods_not_finded == 0:
+                    if model_name in not_found_json_dict:
+                        not_found_json_dict[model_name] =  not_found_json_dict[model_name] + 1
+                    else:
+                        not_found_json_dict[model_name] = 1
+            else:
+                if correct_data == 0 and incorect_data == 0 and not_finded > 0 and array_of_values[5] == "{}" and array_of_values[6] == "[]":
+                    if model_name in not_found_json_dict:
+                        not_found_json_dict[model_name] =  not_found_json_dict[model_name] + 1
+                    else:
+                        not_found_json_dict[model_name] = 1
+                        
+        
+    correctness_dict[model_name] = correctness_array
+    correct_data_count_dict[model_name] = correct_data_count_array
+    incorrect_data_count_dict[model_name] = incorrect_data_count_array
+    not_finded_main_count_key_dict[model_name] = not_finded_main_count_key_array
+    goods_not_finded_count_dict[model_name] = goods_not_finded_count_array
+    time_run_dict[model_name] = time_run_array
+    precision_sum_dict[model_name] = precision_sum
+    recall_sum_dict[model_name] = recall_sum
+
 
 def load_all_data():
     for file in os.listdir(output_dir):
@@ -166,70 +232,9 @@ def load_all_data():
 
         if not add_to_graph[model]:
             continue
-        path_to_data = output_dir + file
 
-        correctness_array = []
-        correct_data_count_array = []
-        incorrect_data_count_array = []
-        not_finded_main_count_key_array = []
-        goods_not_finded_count_array = []
-        time_run_array = []
-        precision_sum = 0.0
-        recall_sum = 0.0
-
-        with open(path_to_data, "r") as file:
-            lines = file.readlines()
-
-            for line in lines:
-                array_of_values = line.replace("\n", "").split(";")
-
-                correct_data = int(array_of_values[1])
-                incorect_data = int(array_of_values[2])
-                not_finded = int(array_of_values[3])
-                if type_of_dataset == "ticket":
-                    goods_not_finded = int(array_of_values[4])
-                    count_of_all_data = get_count_of_all_data(correct_data, incorect_data, not_finded, goods_not_finded)
-                else:
-                    count_of_all_data = get_count_of_all_data(correct_data, incorect_data, not_finded, 0)
-                
-                correctness_array += [float(array_of_values[0])]
-                correct_data_count_array += [correct_data]
-                incorrect_data_count_array += [incorect_data / count_of_all_data]
-                not_finded_main_count_key_array += [not_finded / count_of_all_data]
-
-                if (correct_data + incorect_data) != 0:
-                    precision_sum += (correct_data / (correct_data + incorect_data))
-                if (correct_data + not_finded) != 0:
-                    recall_sum += (correct_data / (correct_data + not_finded))
-
-                if type_of_dataset == "ticket":
-                    goods_not_finded_count_array += [(goods_not_finded * 3) / count_of_all_data]
-                    time_run_array += [float(array_of_values[5])]
-                else:
-                    time_run_array += [float(array_of_values[4])]
-
-                if type_of_dataset == "ticket":
-                    if correct_data == 0 and incorect_data == 0 and not_finded > 0 and goods_not_finded == 0:
-                        if model in not_found_json_dict:
-                            not_found_json_dict[model] =  not_found_json_dict[model] + 1
-                        else:
-                            not_found_json_dict[model] = 1
-                else:
-                    if correct_data == 0 and incorect_data == 0 and not_finded > 0 and array_of_values[5] == "{}" and array_of_values[6] == "[]":
-                        if model in not_found_json_dict:
-                            not_found_json_dict[model] =  not_found_json_dict[model] + 1
-                        else:
-                            not_found_json_dict[model] = 1
-                        
+        load_output_of_models(file, model)
         
-        correctness_dict[model] = correctness_array
-        correct_data_count_dict[model] = correct_data_count_array
-        incorrect_data_count_dict[model] = incorrect_data_count_array
-        not_finded_main_count_key_dict[model] = not_finded_main_count_key_array
-        goods_not_finded_count_dict[model] = goods_not_finded_count_array
-        time_run_dict[model] = time_run_array
-        precision_sum_dict[model] = precision_sum
-        recall_sum_dict[model] = recall_sum
         
 
 if __name__ == "__main__":
