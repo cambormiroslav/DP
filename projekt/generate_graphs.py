@@ -1,8 +1,8 @@
 import os
 import matplotlib.pyplot as plt
 
-#type_of_dataset = "ticket"
-type_of_dataset = "objects"
+type_of_dataset = "ticket"
+#type_of_dataset = "objects"
 
 is_best_data = False
 
@@ -40,14 +40,23 @@ add_to_graph = {
     "yolo11x" : True
     }
 
+load_cpu_gpu_data = True
+is_cpu_gpu_data_test = True
+
 graphs_dir = "./graphs/"
 if not os.path.exists(graphs_dir):
     os.makedirs(graphs_dir)
 
-if type_of_dataset == "ticket":
-    output_dir = "./output/"
+if load_cpu_gpu_data:
+    if is_cpu_gpu_data_test:
+        output_dir = "./test_measurement/"
+    else:
+        output_dir = "./train_measurement/"
 else:
-    output_dir = "./output_objects/"
+    if type_of_dataset == "ticket":
+        output_dir = "./output/"
+    else:
+        output_dir = "./output_objects/"
 
 correctness_dict = {}
 correct_data_count_dict = {}
@@ -58,6 +67,9 @@ time_run_dict = {}
 not_found_json_dict = {}
 precision_sum_dict = {}
 recall_sum_dict = {}
+
+cpu_gpu_data = {}
+cpu_gpu_data_time_diffs = {}
 
 def get_count_of_all_data(correct_data, incorect_data, not_finded, goods_not_finded):
     count_of_all_data = correct_data + incorect_data + not_finded + 3 * goods_not_finded
@@ -223,6 +235,34 @@ def load_output_of_models(file_path, model_name):
     precision_sum_dict[model_name] = precision_sum
     recall_sum_dict[model_name] = recall_sum
 
+def load_cpu_gpu_data_of_models(file_path, model_name):
+    path_to_data = output_dir + file_path
+
+    with open(path_to_data, "r") as file:
+        lines = file.readlines()
+
+        for line in lines:
+            array_of_values = line.replace("\n", "").split(";")
+            
+            if model_name not in cpu_gpu_data:
+                cpu_gpu_data[model_name] = {
+                    "cpu_usage": [],
+                    "peak_cpu_percent": [],
+                    "ram_usage": [],
+                    "peak_gpu_utilization": [],
+                    "total_vram_mb": []
+                }
+                cpu_gpu_data_time_diffs[model_name] = []
+            
+            cpu_gpu_data[model_name]["cpu_usage"] += [float(array_of_values[0])]
+            cpu_gpu_data[model_name]["peak_cpu_percent"] += [float(array_of_values[1])]
+            cpu_gpu_data[model_name]["ram_usage"] += [float(array_of_values[2])]
+            cpu_gpu_data[model_name]["peak_gpu_utilization"] += [float(array_of_values[3])]
+            cpu_gpu_data[model_name]["total_vram_mb"] += [float(array_of_values[4])]
+
+            if is_cpu_gpu_data_test:
+                cpu_gpu_data_time_diffs[model_name] += [float(array_of_values[5])]
+
 
 def load_all_data():
     for file in os.listdir(output_dir):
@@ -232,8 +272,11 @@ def load_all_data():
 
         if not add_to_graph[model]:
             continue
-
-        load_output_of_models(file, model)
+        
+        if load_cpu_gpu_data:
+            load_cpu_gpu_data_of_models(file, model)
+        else:
+            load_output_of_models(file, model)
         
         
 
