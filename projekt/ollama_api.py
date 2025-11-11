@@ -124,6 +124,8 @@ def load_and_measure(dir_path, first_ticket, latest_file):
                 vram_after = vram_info.used / (1024 * 1024)
                 pynvml.nvmlShutdown() #shutdown nvml
         
+        print(response)
+
         end_datetime = datetime.datetime.now()
         #get cpu and ram usage
         mem_after = process.memory_info().rss / (1024 * 1024)
@@ -231,6 +233,20 @@ def load_and_measure(dir_path, first_ticket, latest_file):
             functions.save_to_file_cpu_gpu("gemma3-12b", type_of_data, True, cpu_usage, functions.monitor_data["peak_cpu_percent"],
                                        ram_usage, functions.monitor_data["peak_gpu_utilization"], total_vram_mb,
                                        diff_datetime_seconds)
+        elif model == "mistral-small3.2:24b":
+            if ocr_method:
+                functions.save_to_file_ocr("mistral-small3.2-24b", type_of_data, [correctness, correct_data, 
+                                                                   incorect_data, not_found_data, 
+                                                                   good_not_found, diff_datetime_seconds], 
+                                                                   dict_of_incorect, array_not_found, 
+                                                                   array_good_not_found)
+            else:
+                functions.save_to_file_object("mistral-small3.2-24b", type_of_data, [correctness, correct_data,
+                                                                    incorect_data, not_found_data, diff_datetime_seconds],
+                                                                    dict_of_incorect, array_not_found)
+            functions.save_to_file_cpu_gpu("mistral-small3.2-24b", type_of_data, True, cpu_usage, functions.monitor_data["peak_cpu_percent"],
+                                       ram_usage, functions.monitor_data["peak_gpu_utilization"], total_vram_mb,
+                                       diff_datetime_seconds)
         elif model == "gemma3:4b":
             if ocr_method:
                 functions.save_to_file_ocr("gemma3-4b", type_of_data, [correctness, correct_data, 
@@ -315,4 +331,7 @@ if __name__ == "__main__":
 
     is_mistral = True
     model = "mistral-small3.1"
-    load_and_measure(dir_path, 1, 103)
+    #load_and_measure(dir_path, 1, 103)
+
+    model = "mistral-small3.2:24b"
+    #load_and_measure(dir_path, 1, 103)
