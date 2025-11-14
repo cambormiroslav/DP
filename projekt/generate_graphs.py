@@ -284,14 +284,16 @@ def load_all_data():
 if __name__ == "__main__":
     load_all_data()
 
-    if type_of_dataset == "ticket":
+    if type_of_dataset == "ticket" and not load_cpu_gpu_data:
         generate_graph("correctness")
         generate_graph("incorrect_data")
         generate_graph("not_found")
         generate_graph("goods_not_found")
-    generate_graph("time_of_run")
+    if not load_cpu_gpu_data:
+        generate_graph("time_of_run")
 
-    if type_of_dataset == "objects":
+    if type_of_dataset == "objects" and not load_cpu_gpu_data:
         generate_bar_graph_from_data(precision_sum_dict, "precision")
         generate_bar_graph_from_data(recall_sum_dict, "recall")
-    generate_bar_graph_from_data(not_found_json_dict, "not_json")
+    if not load_cpu_gpu_data:
+        generate_bar_graph_from_data(not_found_json_dict, "not_json")
