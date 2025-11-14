@@ -154,6 +154,31 @@ def generate_graph(type_of_data):
             tick_labels += [key]
             values += [time_run_dict[key]]
         y_label = "Délka běhu [s]"
+    elif type_of_data == "cpu_usage_main_thread":
+        for key in cpu_gpu_data:
+            tick_labels += [key]
+            values += [cpu_gpu_data[key]["cpu_usage"]]
+        y_label = "Využití CPU (hlavní vlákno)"
+    elif type_of_data == "cpu_usage_peak":
+        for key in cpu_gpu_data:
+            tick_labels += [key]
+            values += [cpu_gpu_data[key]["peak_cpu_percent"]]
+        y_label = "Využití CPU (nejvyšší zatížení)"
+    elif type_of_data == "ram_usage_peak":
+        for key in cpu_gpu_data:
+            tick_labels += [key]
+            values += [cpu_gpu_data[key]["ram_usage"]]
+        y_label = "Využití RAM (nejvyšší spotřeba)"
+    elif type_of_data == "gpu_usage":
+        for key in cpu_gpu_data:
+            tick_labels += [key]
+            values += [cpu_gpu_data[key]["peak_gpu_utilization"]]
+        y_label = "Využití GPU"
+    elif type_of_data == "vram_usage":
+        for key in cpu_gpu_data:
+            tick_labels += [key]
+            values += [cpu_gpu_data[key]["total_vram_mb"]]
+        y_label = "Využití VRAM"
     else:
         print("Not found type of data.")
         return
@@ -255,10 +280,10 @@ def load_cpu_gpu_data_of_models(file_path, model_name):
                 }
                 cpu_gpu_data_time_diffs[model_name] = []
             
-            cpu_gpu_data[model_name]["cpu_usage"] += [float(array_of_values[0])]
-            cpu_gpu_data[model_name]["peak_cpu_percent"] += [float(array_of_values[1])]
+            cpu_gpu_data[model_name]["cpu_usage"] += [float(array_of_values[0]) / 100]
+            cpu_gpu_data[model_name]["peak_cpu_percent"] += [float(array_of_values[1]) / 100]
             cpu_gpu_data[model_name]["ram_usage"] += [float(array_of_values[2])]
-            cpu_gpu_data[model_name]["peak_gpu_utilization"] += [float(array_of_values[3])]
+            cpu_gpu_data[model_name]["peak_gpu_utilization"] += [float(array_of_values[3]) / 100]
             cpu_gpu_data[model_name]["total_vram_mb"] += [float(array_of_values[4])]
 
             if not is_cpu_gpu_data_test:
@@ -298,3 +323,10 @@ if __name__ == "__main__":
         generate_bar_graph_from_data(recall_sum_dict, "recall")
     if not load_cpu_gpu_data:
         generate_bar_graph_from_data(not_found_json_dict, "not_json")
+    
+    if load_cpu_gpu_data:
+        generate_graph("cpu_usage_main_thread")
+        generate_graph("cpu_usage_peak")
+        generate_graph("ram_usage_peak")
+        generate_graph("gpu_usage")
+        generate_graph("vram_usage")
