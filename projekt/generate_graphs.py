@@ -32,6 +32,7 @@ add_to_graph = {
     "llava-34b" : True,
     "minicpm-v": True,
     "mistral-small3.1" : True,
+    "mistral-small3.2-24b" : True,
     "tesseract-5.3.0" : True,
     "yolo11n" : True,
     "yolo11s" : True,
@@ -260,7 +261,7 @@ def load_cpu_gpu_data_of_models(file_path, model_name):
             cpu_gpu_data[model_name]["peak_gpu_utilization"] += [float(array_of_values[3])]
             cpu_gpu_data[model_name]["total_vram_mb"] += [float(array_of_values[4])]
 
-            if is_cpu_gpu_data_test:
+            if not is_cpu_gpu_data_test:
                 cpu_gpu_data_time_diffs[model_name] += [float(array_of_values[5])]
 
 
