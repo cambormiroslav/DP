@@ -275,7 +275,8 @@ def load_all_data():
             continue
         
         if load_cpu_gpu_data:
-            load_cpu_gpu_data_of_models(file, model)
+            if file.split("_")[1].split(".")[0] == type_of_dataset:
+                load_cpu_gpu_data_of_models(file, model)
         else:
             load_output_of_models(file, model)
         
