@@ -48,6 +48,10 @@ graphs_dir = "./graphs/"
 if not os.path.exists(graphs_dir):
     os.makedirs(graphs_dir)
 
+tables_dir = "./tables/"
+if not os.path.exists(tables_dir):
+    os.makedirs(tables_dir)
+
 if load_cpu_gpu_data:
     if is_cpu_gpu_data_test:
         output_dir = "./test_measurement/"
@@ -126,6 +130,175 @@ def generate_bar(models, values, type_of_data):
         plt.savefig(f"{graphs_dir}{type_of_data}_{type_of_dataset}_test.svg")
     else:
         plt.savefig(f"{graphs_dir}{type_of_data}_{type_of_dataset}.svg")
+
+def generate_latex_table_and_save_to_file(dict_data, type_of_data):
+    if is_best_data:
+        output_file_path = f"{tables_dir}{type_of_data}_best.txt"
+    elif load_cpu_gpu_data and not is_cpu_gpu_data_test:
+        output_file_path = f"{tables_dir}{type_of_data}_train.txt"
+    elif load_cpu_gpu_data and is_cpu_gpu_data_test:
+        output_file_path = f"{tables_dir}{type_of_data}_test.txt"
+    else:
+        output_file_path = f"{tables_dir}{type_of_data}.txt"
+
+    with open(output_file_path, "+a") as file:
+        file.write("\\begin{table}[h!]\n")
+        file.write("\\begin{tabular}{|l|l|l|l|l|}\n")
+        file.write("\\hline\n")
+
+        if type_of_data == "cpu_usage_main_thread":
+            file.write("\\textbf{Model} & \\textbf{CPU [%]} & \\textbf{CPU MIN} & \\textbf{CPU MAX} & \\textbf{CPU Medián} \\\\ \hline\n")
+        elif type_of_data == "cpu_usage_peak":
+            file.write("\\textbf{Model} & \\textbf{CPU [%]} & \\textbf{CPU MIN} & \\textbf{CPU MAX} & \\textbf{CPU Medián} \\\\ \hline\n")
+        elif type_of_data == "ram_usage_peak":
+            file.write("\\textbf{Model} & \\textbf{RAM} & \\textbf{RAM MIN} & \\textbf{RAM MAX} & \\textbf{RAM Medián} \\\\ \hline\n")
+        elif type_of_data == "gpu_usage":
+            file.write("\\textbf{Model} & \\textbf{GPU [%]} & \\textbf{GPU MIN} & \\textbf{GPU MAX} & \\textbf{GPU Medián} \\\\ \hline\n")
+        elif type_of_data == "vram_usage":
+            file.write("\\textbf{Model} & \\textbf{VRAM} & \\textbf{VRAM MIN} & \\textbf{VRAM MAX} & \\textbf{VRAM Medián} \\\\ \hline\n")
+        elif type_of_data == "time_of_run":
+            file.write("\\textbf{Model} & \\textbf{Čas [%]} & \\textbf{Čas MIN} & \\textbf{Čas MAX} & \\textbf{Čas Medián} \\\\ \hline\n")
+        else:
+            print("Not found type of data.")
+            return
+        
+        file.write("\\end{tabular}\n")
+        file.write("\\centering\n")
+
+        if type_of_data == "cpu_usage_main_thread":
+            if load_cpu_gpu_data and not is_cpu_gpu_data_test:
+                if is_best_data:
+                    file.write("\\caption{Využití procesoru z hlavního vlákna (trénování modelu, nejlepší výsledky)}\n")
+                    file.write("\\label{tab: cpu_usage_main_thread_train_best}\n")
+                else:
+                    file.write("\\caption{Využití procesoru z hlavního vlákna (trénování modelu)}\n")
+                    file.write("\\label{tab: cpu_usage_main_thread_train}\n")
+            elif load_cpu_gpu_data and is_cpu_gpu_data_test:
+                if is_best_data:
+                    file.write("\\caption{Využití procesoru z hlavního vlákna (testování modelu, nejlepší výsledky)}\n")
+                    file.write("\\label{tab: cpu_usage_main_thread_test_best}\n")
+                else:
+                    file.write("\\caption{Využití procesoru z hlavního vlákna (testování modelu)}\n")
+                    file.write("\\label{tab: cpu_usage_main_thread_test}\n")
+            else:
+                if is_best_data:
+                    file.write("\\caption{Využití procesoru z hlavního vlákna (nejlepší výsledky)")
+                    file.write("\\label{tab: cpu_usage_main_thread_best}\n")
+                else:
+                    file.write("\\caption{Využití procesoru z hlavního vlákna")
+                    file.write("\\label{tab: cpu_usage_main_thread}\n")
+        elif type_of_data == "cpu_usage_peak":
+            if load_cpu_gpu_data and not is_cpu_gpu_data_test:
+                if is_best_data:
+                    file.write("\\caption{Využití procesoru z hlavního vlákna i vedlejších vláken (trénování modelu, nejlepší výsledky)}\n")
+                    file.write("\\label{tab: cpu_usage_peak_train_best}\n")
+                else:
+                    file.write("\\caption{Využití procesoru z hlavního vlákna i vedlejších vláken (trénování modelu)}\n")
+                    file.write("\\label{tab: cpu_usage_peak_train}\n")
+            elif load_cpu_gpu_data and is_cpu_gpu_data_test:
+                if is_best_data:
+                    file.write("\\caption{Využití procesoru z hlavního vlákna i vedlejších vláken (testování modelu, nejlepší výsledky)}\n")
+                    file.write("\\label{tab: cpu_usage_peak_test_best}\n")
+                else:
+                    file.write("\\caption{Využití procesoru z hlavního vlákna i vedlejších vláken (testování modelu)}\n")
+                    file.write("\\label{tab: cpu_usage_peak_test}\n")
+            else:
+                if is_best_data:
+                    file.write("\\caption{Využití procesoru z hlavního vlákna i vedlejších vláken (nejlepší výsledky)")
+                    file.write("\\label{tab: cpu_usage_peak_best}\n")
+                else:
+                    file.write("\\caption{Využití procesoru z hlavního vlákna i vedlejších vláken")
+                    file.write("\\label{tab: cpu_usage_peak}\n")
+        elif type_of_data == "ram_usage_peak":
+            if load_cpu_gpu_data and not is_cpu_gpu_data_test:
+                if is_best_data:
+                    file.write("\\caption{Využití paměti RAM (trénování modelu, nejlepší výsledky)}\n")
+                    file.write("\\label{tab: ram_usage_peak_train_best}\n")
+                else:
+                    file.write("\\caption{Využití paměti RAM (trénování modelu)}\n")
+                    file.write("\\label{tab: ram_usage_peak_train}\n")
+            elif load_cpu_gpu_data and is_cpu_gpu_data_test:
+                if is_best_data:
+                    file.write("\\caption{Využití paměti RAM (testování modelu, nejlepší výsledky)}\n")
+                    file.write("\\label{tab: ram_usage_peak_test_best}\n")
+                else:
+                    file.write("\\caption{Využití paměti RAM (testování modelu)}\n")
+                    file.write("\\label{tab: ram_usage_peak_test}\n")
+            else:
+                if is_best_data:
+                    file.write("\\caption{Využití paměti RAM (nejlepší výsledky)")
+                    file.write("\\label{tab: ram_usage_peak_best}\n")
+                else:
+                    file.write("\\caption{Využití paměti RAM")
+                    file.write("\\label{tab: ram_usage_peak}\n")
+        elif type_of_data == "gpu_usage":
+            if load_cpu_gpu_data and not is_cpu_gpu_data_test:
+                if is_best_data:
+                    file.write("\\caption{Využití grafické karty (trénování modelu, nejlepší výsledky)}\n")
+                    file.write("\\label{tab: gpu_usage_train_best}\n")
+                else:
+                    file.write("\\caption{Využití grafické karty (trénování modelu)}\n")
+                    file.write("\\label{tab: gpu_usage_train}\n")
+            elif load_cpu_gpu_data and is_cpu_gpu_data_test:
+                if is_best_data:
+                    file.write("\\caption{Využití grafické karty (testování modelu, nejlepší výsledky)}\n")
+                    file.write("\\label{tab: gpu_usage_test_best}\n")
+                else:
+                    file.write("\\caption{Využití grafické karty (testování modelu)}\n")
+                    file.write("\\label{tab: gpu_usage_test}\n")
+            else:
+                if is_best_data:
+                    file.write("\\caption{Využití grafické karty (nejlepší výsledky)")
+                    file.write("\\label{tab: gpu_usage_best}\n")
+                else:
+                    file.write("\\caption{Využití grafické karty")
+                    file.write("\\label{tab: gpu_usage}\n")
+        elif type_of_data == "vram_usage":
+            if load_cpu_gpu_data and not is_cpu_gpu_data_test:
+                if is_best_data:
+                    file.write("\\caption{Využití paměti VRAM (trénování modelu, nejlepší výsledky)}\n")
+                    file.write("\\label{tab: vram_usage_train_best}\n")
+                else:
+                    file.write("\\caption{Využití paměti VRAM (trénování modelu)}\n")
+                    file.write("\\label{tab: vram_usage_train}\n")
+            elif load_cpu_gpu_data and is_cpu_gpu_data_test:
+                if is_best_data:
+                    file.write("\\caption{Využití paměti VRAM (testování modelu, nejlepší výsledky)}\n")
+                    file.write("\\label{tab: vram_usage_test_best}\n")
+                else:
+                    file.write("\\caption{Využití paměti VRAM (testování modelu)}\n")
+                    file.write("\\label{tab: vram_usage_test}\n")
+            else:
+                if is_best_data:
+                    file.write("\\caption{Využití paměti VRAM (nejlepší výsledky)")
+                    file.write("\\label{tab: vram_usage_best}\n")
+                else:
+                    file.write("\\caption{Využití paměti VRAM")
+                    file.write("\\label{tab: vram_usage}\n")
+        elif type_of_data == "time_of_run":
+            if load_cpu_gpu_data and not is_cpu_gpu_data_test:
+                if is_best_data:
+                    file.write("\\caption{Délka běhu [s] (trénování modelu, nejlepší výsledky)}\n")
+                    file.write("\\label{tab: time_of_run_train_best}\n")
+                else:
+                    file.write("\\caption{Délka běhu [s] (trénování modelu)}\n")
+                    file.write("\\label{tab: time_of_run_train}\n")
+            elif load_cpu_gpu_data and is_cpu_gpu_data_test:
+                if is_best_data:
+                    file.write("\\caption{Délka běhu [s] (testování modelu, nejlepší výsledky)}\n")
+                    file.write("\\label{tab: time_of_run_test_best}\n")
+                else:
+                    file.write("\\caption{Délka běhu [s] (testování modelu)}\n")
+                    file.write("\\label{tab: time_of_run_test}\n")
+            else:
+                if is_best_data:
+                    file.write("\\caption{Délka běhu [s] (nejlepší výsledky)")
+                    file.write("\\label{tab: time_of_run_best}\n")
+                else:
+                    file.write("\\caption{Délka běhu [s]")
+                    file.write("\\label{tab: time_of_run}\n")
+
+        file.write("\\end{table}\n")
 
 def generate_graph(type_of_data):
     tick_labels = []
