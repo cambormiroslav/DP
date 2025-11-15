@@ -94,6 +94,10 @@ def generate_boxplot(tick_labels, values, y_label, type_data):
     plt.subplots_adjust(bottom=0.45)
     if is_best_data:
         plt.savefig(f"{graphs_dir}{type_data}_{type_of_dataset}_best.svg")
+    elif load_cpu_gpu_data and not is_cpu_gpu_data_test:
+        plt.savefig(f"{graphs_dir}{type_data}_{type_of_dataset}_train.svg")
+    elif load_cpu_gpu_data and is_cpu_gpu_data_test:
+        plt.savefig(f"{graphs_dir}{type_data}_{type_of_dataset}_test.svg")
     else:
         plt.savefig(f"{graphs_dir}{type_data}_{type_of_dataset}.svg")
     
@@ -116,6 +120,10 @@ def generate_bar(models, values, type_of_data):
     plt.subplots_adjust(bottom=0.45)
     if is_best_data:
         plt.savefig(f"{graphs_dir}{type_of_data}_{type_of_dataset}_best.svg")
+    elif load_cpu_gpu_data and not is_cpu_gpu_data_test:
+        plt.savefig(f"{graphs_dir}{type_of_data}_{type_of_dataset}_train.svg")
+    elif load_cpu_gpu_data and is_cpu_gpu_data_test:
+        plt.savefig(f"{graphs_dir}{type_of_data}_{type_of_dataset}_test.svg")
     else:
         plt.savefig(f"{graphs_dir}{type_of_data}_{type_of_dataset}.svg")
 
