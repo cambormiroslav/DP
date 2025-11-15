@@ -187,6 +187,11 @@ def generate_graph(type_of_data):
             tick_labels += [key]
             values += [cpu_gpu_data[key]["total_vram_mb"]]
         y_label = "Využití VRAM"
+    elif type_of_data == "time_of_run_cpu_gpu":
+        for key in cpu_gpu_data_time_diffs:
+            tick_labels += [key]
+            values += [cpu_gpu_data_time_diffs[key]]
+        y_label = "Délka běhu [s]"
     else:
         print("Not found type of data.")
         return
@@ -338,3 +343,5 @@ if __name__ == "__main__":
         generate_graph("ram_usage_peak")
         generate_graph("gpu_usage")
         generate_graph("vram_usage")
+        if not is_cpu_gpu_data_test:
+            generate_graph("time_of_run_cpu_gpu")
