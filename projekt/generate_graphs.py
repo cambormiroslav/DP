@@ -125,13 +125,17 @@ def generate_bar(models, values, type_of_data):
     plt.margins(0.1)
     plt.subplots_adjust(bottom=0.45)
     if is_best_data:
-        plt.savefig(f"{graphs_dir}{type_of_data}_{type_of_dataset}_best.svg")
+        graph_path = f"{graphs_dir}{type_of_data}_{type_of_dataset}_best.svg"
     elif load_cpu_gpu_data and not is_cpu_gpu_data_test:
-        plt.savefig(f"{graphs_dir}{type_of_data}_{type_of_dataset}_train.svg")
+        graph_path = f"{graphs_dir}{type_of_data}_{type_of_dataset}_train.svg"
     elif load_cpu_gpu_data and is_cpu_gpu_data_test:
-        plt.savefig(f"{graphs_dir}{type_of_data}_{type_of_dataset}_test.svg")
+        graph_path = f"{graphs_dir}{type_of_data}_{type_of_dataset}_test.svg"
     else:
-        plt.savefig(f"{graphs_dir}{type_of_data}_{type_of_dataset}.svg")
+        graph_path = f"{graphs_dir}{type_of_data}_{type_of_dataset}.svg"
+    
+    if os.path.exists(graph_path):
+        os.remove(graph_path)
+    plt.savefig(graph_path)
 
 def generate_latex_table_and_save_to_file(type_of_data):
     if is_best_data:
@@ -142,6 +146,9 @@ def generate_latex_table_and_save_to_file(type_of_data):
         output_file_path = f"{tables_dir}{type_of_data}_test.txt"
     else:
         output_file_path = f"{tables_dir}{type_of_data}.txt"
+    
+    if os.path.exists(output_file_path):
+        os.remove(output_file_path)
 
     with open(output_file_path, "+a") as file:
         file.write("\\begin{table}[h!]\n")
