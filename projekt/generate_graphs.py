@@ -124,29 +124,36 @@ def generate_bar(models, values, type_of_data):
     plt.xticks(rotation=90)
     plt.margins(0.1)
     plt.subplots_adjust(bottom=0.45)
-    if is_best_data:
-        graph_path = f"{graphs_dir}{type_of_data}_{type_of_dataset}_best.svg"
-    elif load_cpu_gpu_data and not is_cpu_gpu_data_test:
-        graph_path = f"{graphs_dir}{type_of_data}_{type_of_dataset}_train.svg"
+
+    if load_cpu_gpu_data and not is_cpu_gpu_data_test:
+        graph_path = f"{graphs_dir}{type_of_data}_{type_of_dataset}_train"
     elif load_cpu_gpu_data and is_cpu_gpu_data_test:
-        graph_path = f"{graphs_dir}{type_of_data}_{type_of_dataset}_test.svg"
+        graph_path = f"{graphs_dir}{type_of_data}_{type_of_dataset}_test"
     else:
-        graph_path = f"{graphs_dir}{type_of_data}_{type_of_dataset}.svg"
+        graph_path = f"{graphs_dir}{type_of_data}_{type_of_dataset}"
+
+    if is_best_data:
+        graph_path = f"{graph_path}_best.svg"
+    else:
+        graph_path = f"{graph_path}.svg"
     
     if os.path.exists(graph_path):
         os.remove(graph_path)
     plt.savefig(graph_path)
 
 def generate_latex_table_and_save_to_file(type_of_data):
-    if is_best_data:
-        output_file_path = f"{tables_dir}{type_of_data}_best.txt"
-    elif load_cpu_gpu_data and not is_cpu_gpu_data_test:
-        output_file_path = f"{tables_dir}{type_of_data}_train.txt"
+    if load_cpu_gpu_data and not is_cpu_gpu_data_test:
+        output_file_path = f"{tables_dir}{type_of_data}_{type_of_dataset}_train"
     elif load_cpu_gpu_data and is_cpu_gpu_data_test:
-        output_file_path = f"{tables_dir}{type_of_data}_test.txt"
+        output_file_path = f"{tables_dir}{type_of_data}_{type_of_dataset}_test"
     else:
-        output_file_path = f"{tables_dir}{type_of_data}.txt"
+        output_file_path = f"{tables_dir}{type_of_data}_{type_of_dataset}"
     
+    if is_best_data:
+        output_file_path = f"{output_file_path}_best.txt"
+    else:
+        output_file_path = f"{output_file_path}.txt"
+
     if os.path.exists(output_file_path):
         os.remove(output_file_path)
 
