@@ -1,0 +1,14 @@
+\begin{table}[h!]
+\begin{tabular}{|l|l|l|l|l|}
+\hline
+\textbf{Model} & \textbf{Čas [%]} & \textbf{Čas MIN} & \textbf{Čas MAX} & \textbf{Čas Medián} \\ \hline
+yolo11m & 2535.93 & 2535.93 & 2535.93 & 2535.93 \\ \hline
+yolo11n & 2384.99 & 2384.99 & 2384.99 & 2384.99 \\ \hline
+yolo11x & 3836.81 & 3836.81 & 3836.81 & 3836.81 \\ \hline
+yolo11s & 2446.69 & 2446.69 & 2446.69 & 2446.69 \\ \hline
+yolo11l & 3690.15 & 3690.15 & 3690.15 & 3690.15 \\ \hline
+\end{tabular}
+\centering
+\caption{Délka běhu [s] (trénování modelu)}
+\label{tab: time_of_run_train}
+\end{table}

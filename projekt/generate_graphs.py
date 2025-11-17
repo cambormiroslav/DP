@@ -1,8 +1,8 @@
 import os
 import matplotlib.pyplot as plt
 
-type_of_dataset = "ticket"
-#type_of_dataset = "objects"
+#type_of_dataset = "ticket"
+type_of_dataset = "objects"
 
 is_best_data = False
 
@@ -41,8 +41,8 @@ add_to_graph = {
     "yolo11x" : True
     }
 
-load_cpu_gpu_data = False
-is_cpu_gpu_data_test = False
+load_cpu_gpu_data = True
+is_cpu_gpu_data_test = True
 
 graphs_dir = "./graphs/"
 if not os.path.exists(graphs_dir):
