@@ -41,8 +41,8 @@ add_to_graph = {
     "yolo11x" : True
     }
 
-load_cpu_gpu_data = True
-is_cpu_gpu_data_test = True
+load_cpu_gpu_data = False
+is_cpu_gpu_data_test = False
 
 graphs_dir = "./graphs/"
 if not os.path.exists(graphs_dir):
@@ -75,6 +75,8 @@ recall_sum_dict = {}
 
 cpu_gpu_data = {}
 cpu_gpu_data_time_diffs = {}
+
+time_of_run_dict_tmp = {}
 
 def get_count_of_all_data(correct_data, incorect_data, not_finded, goods_not_finded):
     count_of_all_data = correct_data + incorect_data + not_finded + 3 * goods_not_finded
@@ -131,7 +133,7 @@ def generate_bar(models, values, type_of_data):
     else:
         plt.savefig(f"{graphs_dir}{type_of_data}_{type_of_dataset}.svg")
 
-def generate_latex_table_and_save_to_file(dict_data, type_of_data):
+def generate_latex_table_and_save_to_file(type_of_data):
     if is_best_data:
         output_file_path = f"{tables_dir}{type_of_data}_best.txt"
     elif load_cpu_gpu_data and not is_cpu_gpu_data_test:
@@ -148,16 +150,58 @@ def generate_latex_table_and_save_to_file(dict_data, type_of_data):
 
         if type_of_data == "cpu_usage_main_thread":
             file.write("\\textbf{Model} & \\textbf{CPU [%]} & \\textbf{CPU MIN} & \\textbf{CPU MAX} & \\textbf{CPU Medián} \\\\ \hline\n")
+            for model in cpu_gpu_data:
+                cpu_values = cpu_gpu_data[model]["cpu_usage"]
+                cpu_min = min(cpu_values)
+                cpu_max = max(cpu_values)
+                cpu_median = sorted(cpu_values)[len(cpu_values) // 2]
+                cpu_avg = sum(cpu_values) / len(cpu_values)
+                file.write(f"{model} & {cpu_avg:.2f} & {cpu_min:.2f} & {cpu_max:.2f} & {cpu_median:.2f} \\\\ \hline\n")
         elif type_of_data == "cpu_usage_peak":
             file.write("\\textbf{Model} & \\textbf{CPU [%]} & \\textbf{CPU MIN} & \\textbf{CPU MAX} & \\textbf{CPU Medián} \\\\ \hline\n")
+            for model in cpu_gpu_data:
+                cpu_values = cpu_gpu_data[model]["peak_cpu_percent"]
+                cpu_min = min(cpu_values)
+                cpu_max = max(cpu_values)
+                cpu_median = sorted(cpu_values)[len(cpu_values) // 2]
+                cpu_avg = sum(cpu_values) / len(cpu_values)
+                file.write(f"{model} & {cpu_avg:.2f} & {cpu_min:.2f} & {cpu_max:.2f} & {cpu_median:.2f} \\\\ \hline\n")
         elif type_of_data == "ram_usage_peak":
             file.write("\\textbf{Model} & \\textbf{RAM} & \\textbf{RAM MIN} & \\textbf{RAM MAX} & \\textbf{RAM Medián} \\\\ \hline\n")
+            for model in cpu_gpu_data:
+                ram_values = cpu_gpu_data[model]["ram_usage"]
+                ram_min = min(ram_values)
+                ram_max = max(ram_values)
+                ram_median = sorted(ram_values)[len(ram_values) // 2]
+                ram_avg = sum(ram_values) / len(ram_values)
+                file.write(f"{model} & {ram_avg:.2f} & {ram_min:.2f} & {ram_max:.2f} & {ram_median:.2f} \\\\ \hline\n")
         elif type_of_data == "gpu_usage":
             file.write("\\textbf{Model} & \\textbf{GPU [%]} & \\textbf{GPU MIN} & \\textbf{GPU MAX} & \\textbf{GPU Medián} \\\\ \hline\n")
+            for model in cpu_gpu_data:
+                gpu_values = cpu_gpu_data[model]["peak_gpu_utilization"]
+                gpu_min = min(gpu_values)
+                gpu_max = max(gpu_values)
+                gpu_median = sorted(gpu_values)[len(gpu_values) // 2]
+                gpu_avg = sum(gpu_values) / len(gpu_values)
+                file.write(f"{model} & {gpu_avg:.2f} & {gpu_min:.2f} & {gpu_max:.2f} & {gpu_median:.2f} \\\\ \hline\n")
         elif type_of_data == "vram_usage":
             file.write("\\textbf{Model} & \\textbf{VRAM} & \\textbf{VRAM MIN} & \\textbf{VRAM MAX} & \\textbf{VRAM Medián} \\\\ \hline\n")
+            for model in cpu_gpu_data:
+                vram_values = cpu_gpu_data[model]["total_vram_mb"]
+                vram_min = min(vram_values)
+                vram_max = max(vram_values)
+                vram_median = sorted(vram_values)[len(vram_values) // 2]
+                vram_avg = sum(vram_values) / len(vram_values)
+                file.write(f"{model} & {vram_avg:.2f} & {vram_min:.2f} & {vram_max:.2f} & {vram_median:.2f} \\\\ \hline\n")
         elif type_of_data == "time_of_run":
             file.write("\\textbf{Model} & \\textbf{Čas [%]} & \\textbf{Čas MIN} & \\textbf{Čas MAX} & \\textbf{Čas Medián} \\\\ \hline\n")
+            for model in time_of_run_dict_tmp:
+                time_values = time_of_run_dict_tmp[model]
+                time_min = min(time_values)
+                time_max = max(time_values)
+                time_median = sorted(time_values)[len(time_values) // 2]
+                time_avg = sum(time_values) / len(time_values)
+                file.write(f"{model} & {time_avg:.2f} & {time_min:.2f} & {time_max:.2f} & {time_median:.2f} \\\\ \hline\n")
         else:
             print("Not found type of data.")
             return
@@ -503,6 +547,8 @@ if __name__ == "__main__":
         generate_graph("goods_not_found")
     if not load_cpu_gpu_data:
         generate_graph("time_of_run")
+        time_of_run_dict_tmp = time_run_dict.copy()
+        generate_latex_table_and_save_to_file("time_of_run")
 
     if type_of_dataset == "objects" and not load_cpu_gpu_data:
         generate_bar_graph_from_data(precision_sum_dict, "precision")
@@ -518,3 +564,5 @@ if __name__ == "__main__":
         generate_graph("vram_usage")
         if not is_cpu_gpu_data_test:
             generate_graph("time_of_run_cpu_gpu")
+            time_of_run_dict_tmp = cpu_gpu_data_time_diffs.copy()
+            generate_latex_table_and_save_to_file("time_of_run")
