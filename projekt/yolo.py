@@ -10,8 +10,7 @@ import functions
 
 correct_data_path = "../data_for_control/dataset_objects_correct_data.json"
 type_of_data = "objects"
-test_images_dir_path = "../dataset/yolo_dataset/test/"
-labels_dir_path = "../dataset/yolo_dataset/labels/"
+test_images_dir_path = "../dataset/yolo_dataset/test/images/"
 dataset_yaml = "../dataset/yolo_dataset/data.yaml"
 
 def test_img(img_path, model, model_name, file_name):
@@ -206,7 +205,7 @@ def load_and_measure(model, model_name):
 
 if __name__ == "__main__":
     model = train_yolo("yolo11n.pt", dataset_yaml, 600,"./output_objects/yolo11n/")
-    load_and_measure(model, "yolo11n")
+    """load_and_measure(model, "yolo11n")
 
     model = train_yolo("yolo11s.pt", dataset_yaml, 600,"./output_objects/yolo11s/")
     load_and_measure(model, "yolo11s")
@@ -218,4 +217,4 @@ if __name__ == "__main__":
     load_and_measure(model, "yolo11l")
 
     model = train_yolo("yolo11x.pt", dataset_yaml, 600,"./output_objects/yolo11x/")
-    load_and_measure(model, "yolo11x")
+    load_and_measure(model, "yolo11x")"""

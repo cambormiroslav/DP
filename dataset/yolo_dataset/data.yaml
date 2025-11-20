@@ -1,18 +1,14 @@
-# Train/val/test sets as 1) dir: path/to/imgs, 2) file: path/to/imgs.txt, or 3) list: [path/to/imgs1, path/to/imgs2, ..]
 path: ../dataset/yolo_dataset # dataset root dir
-train: images # train images (relative to 'path') 128 images
-val: images # val images (relative to 'path') 128 images
-test: test
+train: train/images
+val: valid/images
+test: test/images
 
-# Classes
-names:
-    0: frog
-    1: automobile
-    2: ship
-    3: dog
-    4: bird
-    5: truck
-    6: horse
-    7: airplane
-    8: deer
-    9: cat
+nc: 1
+names: ['person']
+
+roboflow:
+  workspace: cambormiroslav
+  project: people-detection-f0fgt-urp73
+  version: 1
+  license: CC BY 4.0
+  url: https://app.roboflow.com/cambormiroslav/people-detection-f0fgt-urp73/1
