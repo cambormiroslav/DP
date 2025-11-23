@@ -1,414 +1,6684 @@
 {
-    "1.png" :
-    {
-        "type" : ["frog", "toad"]
-    },
-    "2.png" :
-    {
-        "type" : ["truck", "lorry", "freighter"]
-    },
-    "3.png" :
-    {
-        "type" : ["truck", "lorry", "freighter"]
-    },
-    "4.png" :
-    {
-        "type" : ["deer", "hart", "buck", "stag", "elk"]
-    },
-    "5.png" :
-    {
-        "type" : ["automobile", "vehicle", "coach", "car", "waggon", "carriage", "wain", "cart", "motorcar"]
-    },
-    "6.png" :
-    {
-        "type" : ["automobile", "vehicle", "coach", "car", "waggon", "carriage", "wain", "cart", "motorcar"]
-    },
-    "7.png" :
-    {
-        "type" : ["bird"]
-    },
-    "8.png" :
-    {
-        "type" : ["horse"]
-    },
-    "9.png" :
-    {
-        "type" : ["ship", "boat", "craft", "spacecraft", "vessel"]
-    },
-    "10.png" :
-    {
-        "type" : ["cat", "wildcat","stunner", "puss", "feline"]
-    },
-    "11.png" :
-    {
-        "type" : ["deer", "hart", "buck", "stag", "elk"]
-    },
-    "12.png" :
-    {
-        "type" : ["horse"]
-    },
-    "13.png" :
-    {
-        "type" : ["horse"]
-    },
-    "14.png" :
-    {
-        "type" : ["bird"]
-    },
-    "15.png" :
-    {
-        "type" : ["truck", "lorry", "freighter"]
-    },
-    "16.png" :
-    {
-        "type" : ["truck", "lorry", "freighter"]
-    },
-    "17.png" :
-    {
-        "type" : ["truck", "lorry", "freighter"]
-    },
-    "18.png" :
-    {
-        "type" : ["cat", "wildcat","stunner", "puss", "feline"]
-    },
-    "19.png" :
-    {
-        "type" : ["bird"]
-    },
-    "20.png" :
-    {
-        "type" : ["frog", "toad"]
-    },
-    "21.png" :
-    {
-        "type" : ["deer", "hart", "buck", "stag", "elk"]
-    },
-    "22.png" :
-    {
-        "type" : ["cat", "wildcat","stunner", "puss", "feline"]
-    },
-    "23.png" :
-    {
-        "type" : ["frog", "toad"]
-    },
-    "24.png" :
-    {
-        "type" : ["frog", "toad"]
-    },
-    "25.png" :
-    {
-        "type" : ["bird"]
-    },
-    "26.png" :
-    {
-        "type" : ["frog", "toad"]
-    },
-    "27.png" :
-    {
-        "type" : ["cat", "wildcat","stunner", "puss", "feline"]
-    },
-    "28.png" :
-    {
-        "type" : ["dog"]
-    },
-    "29.png" :
-    {
-        "type" : ["deer", "hart", "buck", "stag", "elk"]
-    },
-    "30.png" :
-    {
-        "type" : ["airplane", "plane", "craft", "aircraft", "aeroplane"]
-    },
-    "31.png" :
-    {
-        "type" : ["airplane", "plane", "craft", "aircraft", "aeroplane"]
-    },
-    "32.png" :
-    {
-        "type" : ["truck", "lorry", "freighter"]
-    },
-    "33.png" :
-    {
-        "type" : ["automobile", "vehicle", "coach", "car", "waggon", "carriage", "wain", "cart", "motorcar"]
-    },
-    "34.png" :
-    {
-        "type" : ["cat", "wildcat","stunner", "puss", "feline"]
-    },
-    "35.png" :
-    {
-        "type" : ["deer", "hart", "buck", "stag", "elk"]
-    },
-    "36.png" :
-    {
-        "type" : ["airplane", "plane", "craft", "aircraft", "aeroplane"]
-    },
-    "37.png" :
-    {
-        "type" : ["cat", "wildcat","stunner", "puss", "feline"]
-    },
-    "38.png" :
-    {
-        "type" : ["horse"]
-    },
-    "39.png" :
-    {
-        "type" : ["cat", "wildcat","stunner", "puss", "feline"]
-    },
-    "40.png" :
-    {
-        "type" : ["cat", "wildcat","stunner", "puss", "feline"]
-    },
-    "41.png" :
-    {
-        "type" : ["dog"]
-    },
-    "42.png" :
-    {
-        "type" : ["bird"]
-    },
-    "43.png" :
-    {
-        "type" : ["bird"]
-    },
-    "44.png" :
-    {
-        "type" : ["horse"]
-    },
-    "45.png" :
-    {
-        "type" : ["automobile", "vehicle", "coach", "car", "waggon", "carriage", "wain", "cart", "motorcar"]
-    },
-    "46.png" :
-    {
-        "type" : ["automobile", "vehicle", "coach", "car", "waggon", "carriage", "wain", "cart", "motorcar"]
-    },
-    "47.png" :
-    {
-        "type" : ["automobile", "vehicle", "coach", "car", "waggon", "carriage", "wain", "cart", "motorcar"]
-    },
-    "48.png" :
-    {
-        "type" : ["bird"]
-    },
-    "49.png" :
-    {
-        "type" : ["bird"]
-    },
-    "50.png" :
-    {
-        "type" : ["airplane", "plane", "craft", "aircraft", "aeroplane"]
-    },
-    "51.png" :
-    {
-        "type" : ["truck", "lorry", "freighter"]
-    },
-    "52.png" :
-    {
-        "type" : ["dog"]
-    },
-    "53.png" :
-    {
-        "type" : ["horse"]
-    },
-    "54.png" :
-    {
-        "type" : ["truck", "lorry", "freighter"]
-    },
-    "55.png" :
-    {
-        "type" : ["bird"]
-    },
-    "56.png" :
-    {
-        "type" : ["bird"]
-    },
-    "57.png" :
-    {
-        "type" : ["dog"]
-    },
-    "58.png" :
-    {
-        "type" : ["bird"]
-    },
-    "59.png" :
-    {
-        "type" : ["deer", "hart", "buck", "stag", "elk"]
-    },
-    "60.png" :
-    {
-        "type" : ["cat", "wildcat","stunner", "puss", "feline"]
-    },
-    "61.png" :
-    {
-        "type" : ["automobile", "vehicle", "coach", "car", "waggon", "carriage", "wain", "cart", "motorcar"]
-    },
-    "62.png" :
-    {
-        "type" : ["automobile", "vehicle", "coach", "car", "waggon", "carriage", "wain", "cart", "motorcar"]
-    },
-    "63.png" :
-    {
-        "type" : ["ship", "boat", "craft", "spacecraft", "vessel"]
-    },
-    "64.png" :
-    {
-        "type" : ["bird"]
-    },
-    "65.png" :
-    {
-        "type" : ["automobile", "vehicle", "coach", "car", "waggon", "carriage", "wain", "cart", "motorcar"]
-    },
-    "66.png" :
-    {
-        "type" : ["automobile", "vehicle", "coach", "car", "waggon", "carriage", "wain", "cart", "motorcar"]
-    },
-    "67.png" :
-    {
-        "type" : ["deer", "hart", "buck", "stag", "elk"]
-    },
-    "68.png" :
-    {
-        "type" : ["truck", "lorry", "freighter"]
-    },
-    "69.png" :
-    {
-        "type" : ["horse"]
-    },
-    "70.png" :
-    {
-        "type" : ["ship", "boat", "craft", "spacecraft", "vessel"]
-    },
-    "71.png" :
-    {
-        "type" : ["dog"]
-    },
-    "72.png" :
-    {
-        "type" : ["truck", "lorry", "freighter"]
-    },
-    "73.png" :
-    {
-        "type" : ["frog", "toad"]
-    },
-    "74.png" :
-    {
-        "type" : ["horse"]
-    },
-    "75.png" :
-    {
-        "type" : ["cat", "wildcat","stunner", "puss", "feline"]
-    },
-    "76.png" :
-    {
-        "type" : ["automobile", "vehicle", "coach", "car", "waggon", "carriage", "wain", "cart", "motorcar"]
-    },
-    "77.png" :
-    {
-        "type" : ["truck", "lorry", "freighter"]
-    },
-    "78.png" :
-    {
-        "type" : ["airplane", "plane", "craft", "aircraft", "aeroplane"]
-    },
-    "79.png" :
-    {
-        "type" : ["cat", "wildcat","stunner", "puss", "feline"]
-    },
-    "80.png" :
-    {
-        "type" : ["automobile", "vehicle", "coach", "car", "waggon", "carriage", "wain", "cart", "motorcar"]
-    },
-    "81.png" :
-    {
-        "type" : ["cat", "wildcat","stunner", "puss", "feline"]
-    },
-    "82.png" :
-    {
-        "type" : ["dog"]
-    },
-    "83.png" :
-    {
-        "type" : ["deer", "hart", "buck", "stag", "elk"]
-    },
-    "84.png" :
-    {
-        "type" : ["dog"]
-    },
-    "85.png" :
-    {
-        "type" : ["horse"]
-    },
-    "86.png" :
-    {
-        "type" : ["horse"]
-    },
-    "87.png" :
-    {
-        "type" : ["deer", "hart", "buck", "stag", "elk"]
-    },
-    "88.png" :
-    {
-        "type" : ["horse"]
-    },
-    "89.png" :
-    {
-        "type" : ["truck", "lorry", "freighter"]
-    },
-    "90.png" :
-    {
-        "type" : ["deer", "hart", "buck", "stag", "elk"]
-    },
-    "91.png" :
-    {
-        "type" : ["bird"]
-    },
-    "92.png" :
-    {
-        "type" : ["cat", "wildcat","stunner", "puss", "feline"]
-    },
-    "93.png" :
-    {
-        "type" : ["ship", "boat", "craft", "spacecraft", "vessel"]
-    },
-    "94.png" :
-    {
-        "type" : ["airplane", "plane", "craft", "aircraft", "aeroplane"]
-    },
-    "95.png" :
-    {
-        "type" : ["automobile", "vehicle", "coach", "car", "waggon", "carriage", "wain", "cart", "motorcar"]
-    },
-    "96.png" :
-    {
-        "type" : ["frog", "toad"]
-    },
-    "97.png" :
-    {
-        "type" : ["automobile", "vehicle", "coach", "car", "waggon", "carriage", "wain", "cart", "motorcar"]
-    },
-    "98.png" :
-    {
-        "type" : ["automobile", "vehicle", "coach", "car", "waggon", "carriage", "wain", "cart", "motorcar"]
-    },
-    "99.png" :
-    {
-        "type" : ["deer", "hart", "buck", "stag", "elk"]
-    },
-    "100.png" :
-    {
-        "type" : ["automobile", "vehicle", "coach", "car", "waggon", "carriage", "wain", "cart", "motorcar"]
-    },
-    "101.png" :
-    {
-        "type" : ["ship", "boat", "craft", "spacecraft", "vessel"]
-    },
-    "102.png" :
-    {
-        "type" : ["cat", "wildcat","stunner", "puss", "feline"]
-    },
-    "103.png" :
-    {
-        "type" : ["truck", "lorry", "freighter"]
-    }
+    "GX010023_frame_00007_left_jpg.rf.e95d3a2e9bcf4c9a5d5c0972ca5f245b.xml": [
+        {
+            "name": "person",
+            "xmin": 742,
+            "ymin": 555,
+            "xmax": 962,
+            "ymax": 901
+        },
+        {
+            "name": "person",
+            "xmin": 954,
+            "ymin": 566,
+            "xmax": 1153,
+            "ymax": 899
+        },
+        {
+            "name": "person",
+            "xmin": 461,
+            "ymin": 7,
+            "xmax": 577,
+            "ymax": 319
+        },
+        {
+            "name": "person",
+            "xmin": 1225,
+            "ymin": 1,
+            "xmax": 1368,
+            "ymax": 209
+        },
+        {
+            "name": "person",
+            "xmin": 1035,
+            "ymin": 281,
+            "xmax": 1213,
+            "ymax": 823
+        },
+        {
+            "name": "person",
+            "xmin": 1265,
+            "ymin": 357,
+            "xmax": 1405,
+            "ymax": 826
+        },
+        {
+            "name": "person",
+            "xmin": 1465,
+            "ymin": 313,
+            "xmax": 1617,
+            "ymax": 805
+        },
+        {
+            "name": "person",
+            "xmin": 1177,
+            "ymin": 263,
+            "xmax": 1320,
+            "ymax": 698
+        },
+        {
+            "name": "person",
+            "xmin": 651,
+            "ymin": 1,
+            "xmax": 771,
+            "ymax": 314
+        },
+        {
+            "name": "person",
+            "xmin": 781,
+            "ymin": 1,
+            "xmax": 879,
+            "ymax": 295
+        },
+        {
+            "name": "person",
+            "xmin": 329,
+            "ymin": 1,
+            "xmax": 459,
+            "ymax": 318
+        },
+        {
+            "name": "person",
+            "xmin": 147,
+            "ymin": 1,
+            "xmax": 270,
+            "ymax": 224
+        },
+        {
+            "name": "person",
+            "xmin": 1419,
+            "ymin": 59,
+            "xmax": 1581,
+            "ymax": 371
+        }
+    ],
+    "GX010023_frame_00012_left_jpg.rf.e968a0e2586734173c40fe5e22693902.xml": [
+        {
+            "name": "person",
+            "xmin": 718,
+            "ymin": 527,
+            "xmax": 982,
+            "ymax": 895
+        },
+        {
+            "name": "person",
+            "xmin": 942,
+            "ymin": 539,
+            "xmax": 1150,
+            "ymax": 889
+        },
+        {
+            "name": "person",
+            "xmin": 472,
+            "ymin": 6,
+            "xmax": 594,
+            "ymax": 355
+        },
+        {
+            "name": "person",
+            "xmin": 1059,
+            "ymin": 285,
+            "xmax": 1245,
+            "ymax": 852
+        },
+        {
+            "name": "person",
+            "xmin": 1258,
+            "ymin": 345,
+            "xmax": 1419,
+            "ymax": 838
+        },
+        {
+            "name": "person",
+            "xmin": 1472,
+            "ymin": 290,
+            "xmax": 1626,
+            "ymax": 815
+        },
+        {
+            "name": "person",
+            "xmin": 357,
+            "ymin": 1,
+            "xmax": 492,
+            "ymax": 329
+        },
+        {
+            "name": "person",
+            "xmin": 749,
+            "ymin": 6,
+            "xmax": 868,
+            "ymax": 306
+        },
+        {
+            "name": "person",
+            "xmin": 1181,
+            "ymin": 264,
+            "xmax": 1323,
+            "ymax": 517
+        },
+        {
+            "name": "person",
+            "xmin": 1473,
+            "ymin": 265,
+            "xmax": 1566,
+            "ymax": 523
+        },
+        {
+            "name": "person",
+            "xmin": 603,
+            "ymin": 1,
+            "xmax": 699,
+            "ymax": 274
+        },
+        {
+            "name": "person",
+            "xmin": 665,
+            "ymin": 1,
+            "xmax": 778,
+            "ymax": 320
+        }
+    ],
+    "GX010023_frame_00025_right_jpg.rf.2eb59ee5acd356395e9f342689e57d79.xml": [
+        {
+            "name": "person",
+            "xmin": 795,
+            "ymin": 432,
+            "xmax": 1085,
+            "ymax": 880
+        },
+        {
+            "name": "person",
+            "xmin": 441,
+            "ymin": 532,
+            "xmax": 659,
+            "ymax": 897
+        },
+        {
+            "name": "person",
+            "xmin": 898,
+            "ymin": 54,
+            "xmax": 1052,
+            "ymax": 452
+        },
+        {
+            "name": "person",
+            "xmin": 387,
+            "ymin": 84,
+            "xmax": 541,
+            "ymax": 517
+        },
+        {
+            "name": "person",
+            "xmin": 782,
+            "ymin": 113,
+            "xmax": 919,
+            "ymax": 482
+        },
+        {
+            "name": "person",
+            "xmin": 289,
+            "ymin": 73,
+            "xmax": 410,
+            "ymax": 491
+        },
+        {
+            "name": "person",
+            "xmin": 703,
+            "ymin": 74,
+            "xmax": 829,
+            "ymax": 478
+        },
+        {
+            "name": "person",
+            "xmin": 795,
+            "ymin": 432,
+            "xmax": 1085,
+            "ymax": 880
+        },
+        {
+            "name": "person",
+            "xmin": 441,
+            "ymin": 532,
+            "xmax": 659,
+            "ymax": 897
+        },
+        {
+            "name": "person",
+            "xmin": 898,
+            "ymin": 54,
+            "xmax": 1052,
+            "ymax": 452
+        },
+        {
+            "name": "person",
+            "xmin": 387,
+            "ymin": 84,
+            "xmax": 541,
+            "ymax": 517
+        },
+        {
+            "name": "person",
+            "xmin": 289,
+            "ymin": 73,
+            "xmax": 410,
+            "ymax": 491
+        },
+        {
+            "name": "person",
+            "xmin": 795,
+            "ymin": 432,
+            "xmax": 1085,
+            "ymax": 880
+        },
+        {
+            "name": "person",
+            "xmin": 441,
+            "ymin": 532,
+            "xmax": 659,
+            "ymax": 897
+        },
+        {
+            "name": "person",
+            "xmin": 387,
+            "ymin": 84,
+            "xmax": 541,
+            "ymax": 517
+        },
+        {
+            "name": "person",
+            "xmin": 289,
+            "ymin": 73,
+            "xmax": 410,
+            "ymax": 491
+        },
+        {
+            "name": "person",
+            "xmin": 795,
+            "ymin": 432,
+            "xmax": 1085,
+            "ymax": 880
+        },
+        {
+            "name": "person",
+            "xmin": 441,
+            "ymin": 532,
+            "xmax": 659,
+            "ymax": 897
+        },
+        {
+            "name": "person",
+            "xmin": 387,
+            "ymin": 84,
+            "xmax": 541,
+            "ymax": 517
+        },
+        {
+            "name": "person",
+            "xmin": 289,
+            "ymin": 73,
+            "xmax": 410,
+            "ymax": 491
+        },
+        {
+            "name": "person",
+            "xmin": 795,
+            "ymin": 432,
+            "xmax": 1085,
+            "ymax": 880
+        },
+        {
+            "name": "person",
+            "xmin": 441,
+            "ymin": 532,
+            "xmax": 659,
+            "ymax": 897
+        },
+        {
+            "name": "person",
+            "xmin": 387,
+            "ymin": 84,
+            "xmax": 541,
+            "ymax": 517
+        },
+        {
+            "name": "person",
+            "xmin": 289,
+            "ymin": 73,
+            "xmax": 410,
+            "ymax": 491
+        },
+        {
+            "name": "person",
+            "xmin": 795,
+            "ymin": 432,
+            "xmax": 1085,
+            "ymax": 880
+        },
+        {
+            "name": "person",
+            "xmin": 441,
+            "ymin": 532,
+            "xmax": 659,
+            "ymax": 897
+        },
+        {
+            "name": "person",
+            "xmin": 387,
+            "ymin": 84,
+            "xmax": 541,
+            "ymax": 517
+        },
+        {
+            "name": "person",
+            "xmin": 795,
+            "ymin": 432,
+            "xmax": 1085,
+            "ymax": 880
+        },
+        {
+            "name": "person",
+            "xmin": 441,
+            "ymin": 532,
+            "xmax": 659,
+            "ymax": 897
+        },
+        {
+            "name": "person",
+            "xmin": 387,
+            "ymin": 84,
+            "xmax": 541,
+            "ymax": 517
+        }
+    ],
+    "GX010023_frame_00033_left_jpg.rf.f5c9bff53ef6a2de43f158f7e725fd00.xml": [
+        {
+            "name": "person",
+            "xmin": 944,
+            "ymin": 398,
+            "xmax": 1117,
+            "ymax": 891
+        },
+        {
+            "name": "person",
+            "xmin": 751,
+            "ymin": 408,
+            "xmax": 953,
+            "ymax": 898
+        },
+        {
+            "name": "person",
+            "xmin": 478,
+            "ymin": 54,
+            "xmax": 614,
+            "ymax": 379
+        },
+        {
+            "name": "person",
+            "xmin": 342,
+            "ymin": 65,
+            "xmax": 475,
+            "ymax": 379
+        },
+        {
+            "name": "person",
+            "xmin": 1109,
+            "ymin": 263,
+            "xmax": 1260,
+            "ymax": 818
+        },
+        {
+            "name": "person",
+            "xmin": 684,
+            "ymin": 1,
+            "xmax": 817,
+            "ymax": 320
+        },
+        {
+            "name": "person",
+            "xmin": 1343,
+            "ymin": 505,
+            "xmax": 1534,
+            "ymax": 901
+        },
+        {
+            "name": "person",
+            "xmin": 1297,
+            "ymin": 347,
+            "xmax": 1469,
+            "ymax": 621
+        },
+        {
+            "name": "person",
+            "xmin": 1519,
+            "ymin": 305,
+            "xmax": 1626,
+            "ymax": 763
+        },
+        {
+            "name": "person",
+            "xmin": 1227,
+            "ymin": 257,
+            "xmax": 1366,
+            "ymax": 690
+        },
+        {
+            "name": "person",
+            "xmin": 811,
+            "ymin": 1,
+            "xmax": 904,
+            "ymax": 286
+        }
+    ],
+    "GX010023_frame_00041_left_jpg.rf.3957e1893834d88e7cf5348da545b572.xml": [
+        {
+            "name": "person",
+            "xmin": 745,
+            "ymin": 353,
+            "xmax": 950,
+            "ymax": 841
+        },
+        {
+            "name": "person",
+            "xmin": 934,
+            "ymin": 335,
+            "xmax": 1109,
+            "ymax": 813
+        },
+        {
+            "name": "person",
+            "xmin": 1257,
+            "ymin": 468,
+            "xmax": 1444,
+            "ymax": 894
+        },
+        {
+            "name": "person",
+            "xmin": 460,
+            "ymin": 66,
+            "xmax": 591,
+            "ymax": 433
+        },
+        {
+            "name": "person",
+            "xmin": 1090,
+            "ymin": 234,
+            "xmax": 1285,
+            "ymax": 790
+        },
+        {
+            "name": "person",
+            "xmin": 1502,
+            "ymin": 297,
+            "xmax": 1626,
+            "ymax": 756
+        },
+        {
+            "name": "person",
+            "xmin": 341,
+            "ymin": 65,
+            "xmax": 474,
+            "ymax": 443
+        },
+        {
+            "name": "person",
+            "xmin": 1505,
+            "ymin": 257,
+            "xmax": 1619,
+            "ymax": 680
+        },
+        {
+            "name": "person",
+            "xmin": 1279,
+            "ymin": 331,
+            "xmax": 1449,
+            "ymax": 803
+        },
+        {
+            "name": "person",
+            "xmin": 1221,
+            "ymin": 235,
+            "xmax": 1349,
+            "ymax": 674
+        }
+    ],
+    "GX010023_frame_00046_crop_0_1_jpg.rf.8b703e18a11f6e45c482bf265d758c94.xml": [
+        {
+            "name": "person",
+            "xmin": 1,
+            "ymin": 330,
+            "xmax": 125,
+            "ymax": 864
+        },
+        {
+            "name": "person",
+            "xmin": 125,
+            "ymin": 318,
+            "xmax": 283,
+            "ymax": 829
+        },
+        {
+            "name": "person",
+            "xmin": 293,
+            "ymin": 241,
+            "xmax": 477,
+            "ymax": 769
+        },
+        {
+            "name": "person",
+            "xmin": 1,
+            "ymin": 2,
+            "xmax": 92,
+            "ymax": 302
+        },
+        {
+            "name": "person",
+            "xmin": 709,
+            "ymin": 289,
+            "xmax": 883,
+            "ymax": 801
+        },
+        {
+            "name": "person",
+            "xmin": 1,
+            "ymin": 741,
+            "xmax": 119,
+            "ymax": 996
+        },
+        {
+            "name": "person",
+            "xmin": 505,
+            "ymin": 329,
+            "xmax": 653,
+            "ymax": 831
+        },
+        {
+            "name": "person",
+            "xmin": 371,
+            "ymin": 475,
+            "xmax": 615,
+            "ymax": 967
+        },
+        {
+            "name": "person",
+            "xmin": 645,
+            "ymin": 50,
+            "xmax": 855,
+            "ymax": 384
+        }
+    ],
+    "GX010023_frame_00053_left_jpg.rf.f058287a474025ca99e03f1585317df3.xml": [
+        {
+            "name": "person",
+            "xmin": 749,
+            "ymin": 295,
+            "xmax": 951,
+            "ymax": 735
+        },
+        {
+            "name": "person",
+            "xmin": 1297,
+            "ymin": 313,
+            "xmax": 1476,
+            "ymax": 793
+        },
+        {
+            "name": "person",
+            "xmin": 481,
+            "ymin": 86,
+            "xmax": 630,
+            "ymax": 487
+        },
+        {
+            "name": "person",
+            "xmin": 940,
+            "ymin": 282,
+            "xmax": 1117,
+            "ymax": 767
+        },
+        {
+            "name": "person",
+            "xmin": 688,
+            "ymin": 672,
+            "xmax": 972,
+            "ymax": 896
+        },
+        {
+            "name": "person",
+            "xmin": 1143,
+            "ymin": 435,
+            "xmax": 1379,
+            "ymax": 901
+        },
+        {
+            "name": "person",
+            "xmin": 352,
+            "ymin": 90,
+            "xmax": 501,
+            "ymax": 485
+        },
+        {
+            "name": "person",
+            "xmin": 1115,
+            "ymin": 227,
+            "xmax": 1260,
+            "ymax": 490
+        }
+    ],
+    "GX010023_frame_00055_crop_0_2_jpg.rf.97c43777ca769e8120278856b2d6de8e.xml": [
+        {
+            "name": "person",
+            "xmin": 253,
+            "ymin": 370,
+            "xmax": 418,
+            "ymax": 935
+        },
+        {
+            "name": "person",
+            "xmin": 340,
+            "ymin": 52,
+            "xmax": 479,
+            "ymax": 508
+        },
+        {
+            "name": "person",
+            "xmin": 656,
+            "ymin": 44,
+            "xmax": 758,
+            "ymax": 471
+        },
+        {
+            "name": "person",
+            "xmin": 252,
+            "ymin": 45,
+            "xmax": 365,
+            "ymax": 459
+        },
+        {
+            "name": "person",
+            "xmin": 753,
+            "ymin": 98,
+            "xmax": 858,
+            "ymax": 481
+        }
+    ],
+    "GX010023_frame_00059_jpg.rf.5acc691c25618b0dc676864c09fb71fd.xml": [
+        {
+            "name": "person",
+            "xmin": 519,
+            "ymin": 346,
+            "xmax": 690,
+            "ymax": 888
+        },
+        {
+            "name": "person",
+            "xmin": 519,
+            "ymin": 24,
+            "xmax": 638,
+            "ymax": 430
+        },
+        {
+            "name": "person",
+            "xmin": 604,
+            "ymin": 55,
+            "xmax": 738,
+            "ymax": 456
+        },
+        {
+            "name": "person",
+            "xmin": 101,
+            "ymin": 266,
+            "xmax": 281,
+            "ymax": 756
+        },
+        {
+            "name": "person",
+            "xmin": 97,
+            "ymin": 249,
+            "xmax": 201,
+            "ymax": 582
+        },
+        {
+            "name": "person",
+            "xmin": 29,
+            "ymin": 41,
+            "xmax": 265,
+            "ymax": 347
+        }
+    ],
+    "GX010023_frame_00077_left_jpg.rf.ff74c0844ad6956e299f495d09b0d61c.xml": [
+        {
+            "name": "person",
+            "xmin": 740,
+            "ymin": 489,
+            "xmax": 948,
+            "ymax": 901
+        },
+        {
+            "name": "person",
+            "xmin": 1297,
+            "ymin": 303,
+            "xmax": 1486,
+            "ymax": 762
+        },
+        {
+            "name": "person",
+            "xmin": 966,
+            "ymin": 332,
+            "xmax": 1164,
+            "ymax": 794
+        },
+        {
+            "name": "person",
+            "xmin": 6,
+            "ymin": 365,
+            "xmax": 171,
+            "ymax": 874
+        },
+        {
+            "name": "person",
+            "xmin": 768,
+            "ymin": 181,
+            "xmax": 959,
+            "ymax": 558
+        },
+        {
+            "name": "person",
+            "xmin": 517,
+            "ymin": 152,
+            "xmax": 679,
+            "ymax": 568
+        },
+        {
+            "name": "person",
+            "xmin": 1096,
+            "ymin": 200,
+            "xmax": 1304,
+            "ymax": 732
+        },
+        {
+            "name": "person",
+            "xmin": 344,
+            "ymin": 170,
+            "xmax": 511,
+            "ymax": 601
+        },
+        {
+            "name": "person",
+            "xmin": 961,
+            "ymin": 151,
+            "xmax": 1131,
+            "ymax": 400
+        },
+        {
+            "name": "person",
+            "xmin": 1227,
+            "ymin": 209,
+            "xmax": 1378,
+            "ymax": 638
+        },
+        {
+            "name": "person",
+            "xmin": 1529,
+            "ymin": 223,
+            "xmax": 1625,
+            "ymax": 634
+        }
+    ],
+    "GX010023_frame_00085_right_jpg.rf.b76c395fda0c0f193d1af05e0f4191e7.xml": [
+        {
+            "name": "person",
+            "xmin": 419,
+            "ymin": 29,
+            "xmax": 565,
+            "ymax": 470
+        },
+        {
+            "name": "person",
+            "xmin": 839,
+            "ymin": 111,
+            "xmax": 1017,
+            "ymax": 553
+        },
+        {
+            "name": "person",
+            "xmin": 262,
+            "ymin": 242,
+            "xmax": 420,
+            "ymax": 757
+        },
+        {
+            "name": "person",
+            "xmin": 1321,
+            "ymin": 420,
+            "xmax": 1549,
+            "ymax": 894
+        },
+        {
+            "name": "person",
+            "xmin": 1192,
+            "ymin": 301,
+            "xmax": 1430,
+            "ymax": 785
+        },
+        {
+            "name": "person",
+            "xmin": 321,
+            "ymin": 10,
+            "xmax": 433,
+            "ymax": 292
+        },
+        {
+            "name": "person",
+            "xmin": 719,
+            "ymin": 21,
+            "xmax": 841,
+            "ymax": 416
+        }
+    ],
+    "GX010023_frame_00085_right_jpg.rf.e4c468ad50e88dca25e948bf566a79f7.xml": [
+        {
+            "name": "person",
+            "xmin": 1311,
+            "ymin": 438,
+            "xmax": 1545,
+            "ymax": 893
+        },
+        {
+            "name": "person",
+            "xmin": 804,
+            "ymin": 125,
+            "xmax": 1002,
+            "ymax": 570
+        },
+        {
+            "name": "person",
+            "xmin": 1205,
+            "ymin": 318,
+            "xmax": 1413,
+            "ymax": 797
+        },
+        {
+            "name": "person",
+            "xmin": 255,
+            "ymin": 247,
+            "xmax": 416,
+            "ymax": 781
+        },
+        {
+            "name": "person",
+            "xmin": 399,
+            "ymin": 25,
+            "xmax": 547,
+            "ymax": 456
+        },
+        {
+            "name": "person",
+            "xmin": 721,
+            "ymin": 17,
+            "xmax": 843,
+            "ymax": 418
+        }
+    ],
+    "GX010023_frame_00115_crop_0_2_jpg.rf.8b90268c9e77fb5dfc44b8f33e12f3c9.xml": [
+        {
+            "name": "person",
+            "xmin": 336,
+            "ymin": 12,
+            "xmax": 480,
+            "ymax": 462
+        },
+        {
+            "name": "person",
+            "xmin": 124,
+            "ymin": 169,
+            "xmax": 264,
+            "ymax": 678
+        },
+        {
+            "name": "person",
+            "xmin": 641,
+            "ymin": 1,
+            "xmax": 750,
+            "ymax": 435
+        },
+        {
+            "name": "person",
+            "xmin": 232,
+            "ymin": 7,
+            "xmax": 343,
+            "ymax": 431
+        },
+        {
+            "name": "person",
+            "xmin": 541,
+            "ymin": 127,
+            "xmax": 670,
+            "ymax": 587
+        },
+        {
+            "name": "person",
+            "xmin": 739,
+            "ymin": 61,
+            "xmax": 849,
+            "ymax": 413
+        }
+    ],
+    "GX010023_frame_00132_crop_0_0_jpg.rf.09097f07a5fccfe9d2951bc250c13279.xml": [
+        {
+            "name": "person",
+            "xmin": 7,
+            "ymin": 703,
+            "xmax": 291,
+            "ymax": 997
+        },
+        {
+            "name": "person",
+            "xmin": 379,
+            "ymin": 424,
+            "xmax": 571,
+            "ymax": 987
+        },
+        {
+            "name": "person",
+            "xmin": 603,
+            "ymin": 392,
+            "xmax": 751,
+            "ymax": 922
+        },
+        {
+            "name": "person",
+            "xmin": 585,
+            "ymin": 2,
+            "xmax": 674,
+            "ymax": 295
+        },
+        {
+            "name": "person",
+            "xmin": 784,
+            "ymin": 220,
+            "xmax": 882,
+            "ymax": 797
+        },
+        {
+            "name": "person",
+            "xmin": 479,
+            "ymin": 1,
+            "xmax": 583,
+            "ymax": 298
+        }
+    ],
+    "GX010023_frame_00143_crop_0_1_jpg.rf.953b4092c8d8eb11c859393d8d2b8992.xml": [
+        {
+            "name": "person",
+            "xmin": 300,
+            "ymin": 188,
+            "xmax": 470,
+            "ymax": 726
+        },
+        {
+            "name": "person",
+            "xmin": 491,
+            "ymin": 285,
+            "xmax": 651,
+            "ymax": 766
+        },
+        {
+            "name": "person",
+            "xmin": 720,
+            "ymin": 248,
+            "xmax": 870,
+            "ymax": 749
+        },
+        {
+            "name": "person",
+            "xmin": 66,
+            "ymin": 1,
+            "xmax": 181,
+            "ymax": 310
+        },
+        {
+            "name": "person",
+            "xmin": 217,
+            "ymin": 1,
+            "xmax": 332,
+            "ymax": 291
+        }
+    ],
+    "GX010023_frame_00150_right_jpg.rf.d86381c9ca78fcdb717dbebbf4c77171.xml": [
+        {
+            "name": "person",
+            "xmin": 121,
+            "ymin": 119,
+            "xmax": 261,
+            "ymax": 565
+        },
+        {
+            "name": "person",
+            "xmin": 349,
+            "ymin": 153,
+            "xmax": 504,
+            "ymax": 613
+        },
+        {
+            "name": "person",
+            "xmin": 1217,
+            "ymin": 141,
+            "xmax": 1401,
+            "ymax": 594
+        },
+        {
+            "name": "person",
+            "xmin": 763,
+            "ymin": 203,
+            "xmax": 962,
+            "ymax": 597
+        },
+        {
+            "name": "person",
+            "xmin": 1029,
+            "ymin": 443,
+            "xmax": 1245,
+            "ymax": 901
+        },
+        {
+            "name": "person",
+            "xmin": 403,
+            "ymin": 35,
+            "xmax": 546,
+            "ymax": 438
+        },
+        {
+            "name": "person",
+            "xmin": 321,
+            "ymin": 23,
+            "xmax": 414,
+            "ymax": 410
+        },
+        {
+            "name": "person",
+            "xmin": 723,
+            "ymin": 9,
+            "xmax": 835,
+            "ymax": 411
+        }
+    ],
+    "GX010023_frame_00178_left_jpg.rf.cff5630b8f394ece30adb07aad35dbad.xml": [
+        {
+            "name": "person",
+            "xmin": 984,
+            "ymin": 1,
+            "xmax": 1111,
+            "ymax": 194
+        },
+        {
+            "name": "person",
+            "xmin": 541,
+            "ymin": 747,
+            "xmax": 756,
+            "ymax": 895
+        },
+        {
+            "name": "person",
+            "xmin": 1100,
+            "ymin": 195,
+            "xmax": 1275,
+            "ymax": 701
+        },
+        {
+            "name": "person",
+            "xmin": 316,
+            "ymin": 753,
+            "xmax": 499,
+            "ymax": 901
+        },
+        {
+            "name": "person",
+            "xmin": 876,
+            "ymin": 2,
+            "xmax": 1009,
+            "ymax": 207
+        },
+        {
+            "name": "person",
+            "xmin": 1288,
+            "ymin": 302,
+            "xmax": 1468,
+            "ymax": 754
+        },
+        {
+            "name": "person",
+            "xmin": 1491,
+            "ymin": 226,
+            "xmax": 1626,
+            "ymax": 714
+        },
+        {
+            "name": "person",
+            "xmin": 469,
+            "ymin": 34,
+            "xmax": 579,
+            "ymax": 406
+        },
+        {
+            "name": "person",
+            "xmin": 331,
+            "ymin": 39,
+            "xmax": 466,
+            "ymax": 390
+        },
+        {
+            "name": "person",
+            "xmin": 787,
+            "ymin": 81,
+            "xmax": 923,
+            "ymax": 504
+        },
+        {
+            "name": "person",
+            "xmin": 1219,
+            "ymin": 221,
+            "xmax": 1378,
+            "ymax": 624
+        },
+        {
+            "name": "person",
+            "xmin": 579,
+            "ymin": 17,
+            "xmax": 715,
+            "ymax": 387
+        }
+    ],
+    "GX010023_frame_00194_left_jpg.rf.c6ddcbd74a96304f5b3e4ed4774107fc.xml": [
+        {
+            "name": "person",
+            "xmin": 1273,
+            "ymin": 325,
+            "xmax": 1459,
+            "ymax": 775
+        },
+        {
+            "name": "person",
+            "xmin": 1182,
+            "ymin": 232,
+            "xmax": 1372,
+            "ymax": 645
+        },
+        {
+            "name": "person",
+            "xmin": 518,
+            "ymin": 11,
+            "xmax": 644,
+            "ymax": 380
+        },
+        {
+            "name": "person",
+            "xmin": 1071,
+            "ymin": 206,
+            "xmax": 1228,
+            "ymax": 707
+        },
+        {
+            "name": "person",
+            "xmin": 826,
+            "ymin": 45,
+            "xmax": 967,
+            "ymax": 427
+        },
+        {
+            "name": "person",
+            "xmin": 443,
+            "ymin": 89,
+            "xmax": 542,
+            "ymax": 456
+        },
+        {
+            "name": "person",
+            "xmin": 291,
+            "ymin": 83,
+            "xmax": 434,
+            "ymax": 453
+        },
+        {
+            "name": "person",
+            "xmin": 1515,
+            "ymin": 235,
+            "xmax": 1626,
+            "ymax": 733
+        },
+        {
+            "name": "person",
+            "xmin": 1475,
+            "ymin": 235,
+            "xmax": 1552,
+            "ymax": 482
+        },
+        {
+            "name": "person",
+            "xmin": 671,
+            "ymin": 1,
+            "xmax": 786,
+            "ymax": 299
+        }
+    ],
+    "GX010023_frame_00208_right_jpg.rf.b127ae91ed1acfdb2b0571b22d258c74.xml": [
+        {
+            "name": "person",
+            "xmin": 41,
+            "ymin": 91,
+            "xmax": 186,
+            "ymax": 508
+        },
+        {
+            "name": "person",
+            "xmin": 578,
+            "ymin": 169,
+            "xmax": 818,
+            "ymax": 610
+        },
+        {
+            "name": "person",
+            "xmin": 385,
+            "ymin": 129,
+            "xmax": 512,
+            "ymax": 558
+        },
+        {
+            "name": "person",
+            "xmin": 1275,
+            "ymin": 321,
+            "xmax": 1555,
+            "ymax": 792
+        },
+        {
+            "name": "person",
+            "xmin": 749,
+            "ymin": 99,
+            "xmax": 861,
+            "ymax": 434
+        },
+        {
+            "name": "person",
+            "xmin": 249,
+            "ymin": 217,
+            "xmax": 424,
+            "ymax": 592
+        },
+        {
+            "name": "person",
+            "xmin": 675,
+            "ymin": 49,
+            "xmax": 766,
+            "ymax": 205
+        }
+    ],
+    "GX010023_frame_00290_left_jpg.rf.afab3a88b80fe815128bb4e980885cc1.xml": [
+        {
+            "name": "person",
+            "xmin": 59,
+            "ymin": 705,
+            "xmax": 267,
+            "ymax": 900
+        },
+        {
+            "name": "person",
+            "xmin": 274,
+            "ymin": 384,
+            "xmax": 491,
+            "ymax": 876
+        },
+        {
+            "name": "person",
+            "xmin": 463,
+            "ymin": 378,
+            "xmax": 630,
+            "ymax": 820
+        },
+        {
+            "name": "person",
+            "xmin": 1017,
+            "ymin": 235,
+            "xmax": 1191,
+            "ymax": 762
+        },
+        {
+            "name": "person",
+            "xmin": 716,
+            "ymin": 3,
+            "xmax": 829,
+            "ymax": 302
+        },
+        {
+            "name": "person",
+            "xmin": 1221,
+            "ymin": 358,
+            "xmax": 1393,
+            "ymax": 818
+        },
+        {
+            "name": "person",
+            "xmin": 1446,
+            "ymin": 270,
+            "xmax": 1590,
+            "ymax": 773
+        }
+    ],
+    "GX010023_frame_00295_right_jpg.rf.0c830db83e01e7e0a76a521460d23d59.xml": [
+        {
+            "name": "person",
+            "xmin": 309,
+            "ymin": 98,
+            "xmax": 461,
+            "ymax": 524
+        },
+        {
+            "name": "person",
+            "xmin": 694,
+            "ymin": 130,
+            "xmax": 836,
+            "ymax": 485
+        },
+        {
+            "name": "person",
+            "xmin": 58,
+            "ymin": 117,
+            "xmax": 189,
+            "ymax": 559
+        },
+        {
+            "name": "person",
+            "xmin": 419,
+            "ymin": 97,
+            "xmax": 560,
+            "ymax": 449
+        },
+        {
+            "name": "person",
+            "xmin": 1439,
+            "ymin": 342,
+            "xmax": 1617,
+            "ymax": 755
+        },
+        {
+            "name": "person",
+            "xmin": 624,
+            "ymin": 98,
+            "xmax": 748,
+            "ymax": 480
+        },
+        {
+            "name": "person",
+            "xmin": 211,
+            "ymin": 81,
+            "xmax": 344,
+            "ymax": 487
+        }
+    ],
+    "GX010023_frame_00316_crop_0_0_jpg.rf.46cfd9576e75813bc8802fee9727204b.xml": [
+        {
+            "name": "person",
+            "xmin": 187,
+            "ymin": 708,
+            "xmax": 415,
+            "ymax": 997
+        },
+        {
+            "name": "person",
+            "xmin": 598,
+            "ymin": 442,
+            "xmax": 727,
+            "ymax": 955
+        },
+        {
+            "name": "person",
+            "xmin": 787,
+            "ymin": 1,
+            "xmax": 878,
+            "ymax": 324
+        },
+        {
+            "name": "person",
+            "xmin": 626,
+            "ymin": 2,
+            "xmax": 698,
+            "ymax": 306
+        },
+        {
+            "name": "person",
+            "xmin": 405,
+            "ymin": 495,
+            "xmax": 528,
+            "ymax": 950
+        },
+        {
+            "name": "person",
+            "xmin": 672,
+            "ymin": 1,
+            "xmax": 759,
+            "ymax": 340
+        },
+        {
+            "name": "person",
+            "xmin": 490,
+            "ymin": 483,
+            "xmax": 614,
+            "ymax": 991
+        },
+        {
+            "name": "person",
+            "xmin": 223,
+            "ymin": 17,
+            "xmax": 324,
+            "ymax": 307
+        }
+    ],
+    "GX010023_frame_00332_right_jpg.rf.7db81233080a93724d0f99fa26e59631.xml": [
+        {
+            "name": "person",
+            "xmin": 301,
+            "ymin": 105,
+            "xmax": 444,
+            "ymax": 529
+        },
+        {
+            "name": "person",
+            "xmin": 79,
+            "ymin": 140,
+            "xmax": 208,
+            "ymax": 553
+        },
+        {
+            "name": "person",
+            "xmin": 1117,
+            "ymin": 246,
+            "xmax": 1273,
+            "ymax": 701
+        },
+        {
+            "name": "person",
+            "xmin": 686,
+            "ymin": 140,
+            "xmax": 823,
+            "ymax": 497
+        },
+        {
+            "name": "person",
+            "xmin": 459,
+            "ymin": 141,
+            "xmax": 595,
+            "ymax": 508
+        },
+        {
+            "name": "person",
+            "xmin": 204,
+            "ymin": 89,
+            "xmax": 317,
+            "ymax": 489
+        },
+        {
+            "name": "person",
+            "xmin": 613,
+            "ymin": 106,
+            "xmax": 744,
+            "ymax": 501
+        },
+        {
+            "name": "person",
+            "xmin": 1358,
+            "ymin": 338,
+            "xmax": 1524,
+            "ymax": 785
+        }
+    ],
+    "GX010023_frame_00371_left_jpg.rf.60aaf41bcc40d8965d479c3415e32bf6.xml": [
+        {
+            "name": "person",
+            "xmin": 825,
+            "ymin": 589,
+            "xmax": 1001,
+            "ymax": 901
+        },
+        {
+            "name": "person",
+            "xmin": 1171,
+            "ymin": 371,
+            "xmax": 1338,
+            "ymax": 813
+        },
+        {
+            "name": "person",
+            "xmin": 985,
+            "ymin": 247,
+            "xmax": 1174,
+            "ymax": 778
+        },
+        {
+            "name": "person",
+            "xmin": 850,
+            "ymin": 49,
+            "xmax": 961,
+            "ymax": 375
+        },
+        {
+            "name": "person",
+            "xmin": 1397,
+            "ymin": 314,
+            "xmax": 1536,
+            "ymax": 790
+        },
+        {
+            "name": "person",
+            "xmin": 99,
+            "ymin": 750,
+            "xmax": 350,
+            "ymax": 901
+        },
+        {
+            "name": "person",
+            "xmin": 671,
+            "ymin": 637,
+            "xmax": 840,
+            "ymax": 899
+        },
+        {
+            "name": "person",
+            "xmin": 695,
+            "ymin": 6,
+            "xmax": 794,
+            "ymax": 308
+        }
+    ],
+    "GX010023_frame_00371_right_jpg.rf.0d1bcbab044f5401ddcff4e639eac177.xml": [
+        {
+            "name": "person",
+            "xmin": 22,
+            "ymin": 124,
+            "xmax": 152,
+            "ymax": 564
+        },
+        {
+            "name": "person",
+            "xmin": 2,
+            "ymin": 708,
+            "xmax": 308,
+            "ymax": 901
+        },
+        {
+            "name": "person",
+            "xmin": 287,
+            "ymin": 106,
+            "xmax": 430,
+            "ymax": 533
+        },
+        {
+            "name": "person",
+            "xmin": 675,
+            "ymin": 143,
+            "xmax": 810,
+            "ymax": 499
+        },
+        {
+            "name": "person",
+            "xmin": 459,
+            "ymin": 147,
+            "xmax": 585,
+            "ymax": 510
+        },
+        {
+            "name": "person",
+            "xmin": 941,
+            "ymin": 288,
+            "xmax": 1122,
+            "ymax": 757
+        },
+        {
+            "name": "person",
+            "xmin": 193,
+            "ymin": 84,
+            "xmax": 313,
+            "ymax": 495
+        },
+        {
+            "name": "person",
+            "xmin": 1344,
+            "ymin": 351,
+            "xmax": 1496,
+            "ymax": 790
+        }
+    ],
+    "GX010023_frame_00378_crop_0_2_jpg.rf.8f5db641bff80334dc715b19ffb26169.xml": [
+        {
+            "name": "person",
+            "xmin": 616,
+            "ymin": 141,
+            "xmax": 716,
+            "ymax": 521
+        },
+        {
+            "name": "person",
+            "xmin": 214,
+            "ymin": 106,
+            "xmax": 337,
+            "ymax": 549
+        },
+        {
+            "name": "person",
+            "xmin": 129,
+            "ymin": 103,
+            "xmax": 234,
+            "ymax": 495
+        },
+        {
+            "name": "person",
+            "xmin": 384,
+            "ymin": 147,
+            "xmax": 499,
+            "ymax": 534
+        },
+        {
+            "name": "person",
+            "xmin": 1,
+            "ymin": 714,
+            "xmax": 206,
+            "ymax": 997
+        },
+        {
+            "name": "person",
+            "xmin": 533,
+            "ymin": 105,
+            "xmax": 618,
+            "ymax": 510
+        }
+    ],
+    "GX010023_frame_00380_crop_0_1_jpg.rf.643d95db1d44919a2b061395ff4ef13d.xml": [
+        {
+            "name": "person",
+            "xmin": 175,
+            "ymin": 236,
+            "xmax": 331,
+            "ymax": 798
+        },
+        {
+            "name": "person",
+            "xmin": 375,
+            "ymin": 371,
+            "xmax": 518,
+            "ymax": 848
+        },
+        {
+            "name": "person",
+            "xmin": 496,
+            "ymin": 6,
+            "xmax": 636,
+            "ymax": 296
+        },
+        {
+            "name": "person",
+            "xmin": 60,
+            "ymin": 601,
+            "xmax": 227,
+            "ymax": 997
+        },
+        {
+            "name": "person",
+            "xmin": 8,
+            "ymin": 29,
+            "xmax": 101,
+            "ymax": 359
+        },
+        {
+            "name": "person",
+            "xmin": 1,
+            "ymin": 701,
+            "xmax": 107,
+            "ymax": 997
+        },
+        {
+            "name": "person",
+            "xmin": 586,
+            "ymin": 316,
+            "xmax": 716,
+            "ymax": 800
+        },
+        {
+            "name": "person",
+            "xmin": 243,
+            "ymin": 87,
+            "xmax": 355,
+            "ymax": 312
+        },
+        {
+            "name": "person",
+            "xmin": 97,
+            "ymin": 9,
+            "xmax": 198,
+            "ymax": 382
+        }
+    ],
+    "GX010023_frame_00581_left_jpg.rf.0209db73249c037e552b76c72ad7ecf3.xml": [
+        {
+            "name": "person",
+            "xmin": 968,
+            "ymin": 314,
+            "xmax": 1153,
+            "ymax": 849
+        },
+        {
+            "name": "person",
+            "xmin": 1168,
+            "ymin": 408,
+            "xmax": 1318,
+            "ymax": 868
+        },
+        {
+            "name": "person",
+            "xmin": 740,
+            "ymin": 293,
+            "xmax": 882,
+            "ymax": 678
+        },
+        {
+            "name": "person",
+            "xmin": 1,
+            "ymin": 348,
+            "xmax": 117,
+            "ymax": 770
+        },
+        {
+            "name": "person",
+            "xmin": 1392,
+            "ymin": 336,
+            "xmax": 1537,
+            "ymax": 854
+        },
+        {
+            "name": "person",
+            "xmin": 1360,
+            "ymin": 1,
+            "xmax": 1451,
+            "ymax": 249
+        },
+        {
+            "name": "person",
+            "xmin": 679,
+            "ymin": 1,
+            "xmax": 784,
+            "ymax": 320
+        },
+        {
+            "name": "person",
+            "xmin": 382,
+            "ymin": 228,
+            "xmax": 501,
+            "ymax": 580
+        },
+        {
+            "name": "person",
+            "xmin": 653,
+            "ymin": 350,
+            "xmax": 762,
+            "ymax": 728
+        },
+        {
+            "name": "person",
+            "xmin": 554,
+            "ymin": 301,
+            "xmax": 668,
+            "ymax": 723
+        },
+        {
+            "name": "person",
+            "xmin": 1151,
+            "ymin": 175,
+            "xmax": 1266,
+            "ymax": 418
+        }
+    ],
+    "GX010023_frame_00650_right_jpg.rf.7541a1219fc489b0b52d2c8e11f0998e.xml": [
+        {
+            "name": "person",
+            "xmin": 269,
+            "ymin": 123,
+            "xmax": 408,
+            "ymax": 545
+        },
+        {
+            "name": "person",
+            "xmin": 315,
+            "ymin": 599,
+            "xmax": 521,
+            "ymax": 901
+        },
+        {
+            "name": "person",
+            "xmin": 1,
+            "ymin": 301,
+            "xmax": 118,
+            "ymax": 719
+        },
+        {
+            "name": "person",
+            "xmin": 526,
+            "ymin": 375,
+            "xmax": 743,
+            "ymax": 847
+        },
+        {
+            "name": "person",
+            "xmin": 670,
+            "ymin": 178,
+            "xmax": 787,
+            "ymax": 536
+        },
+        {
+            "name": "person",
+            "xmin": 112,
+            "ymin": 104,
+            "xmax": 238,
+            "ymax": 504
+        },
+        {
+            "name": "person",
+            "xmin": 368,
+            "ymin": 126,
+            "xmax": 485,
+            "ymax": 491
+        },
+        {
+            "name": "person",
+            "xmin": 458,
+            "ymin": 696,
+            "xmax": 671,
+            "ymax": 900
+        }
+    ],
+    "GX010023_frame_00716_left_jpg.rf.aaa05a56650127b3fa08291e694167f4.xml": [
+        {
+            "name": "person",
+            "xmin": 1149,
+            "ymin": 382,
+            "xmax": 1307,
+            "ymax": 846
+        },
+        {
+            "name": "person",
+            "xmin": 1390,
+            "ymin": 313,
+            "xmax": 1522,
+            "ymax": 818
+        },
+        {
+            "name": "person",
+            "xmin": 662,
+            "ymin": 1,
+            "xmax": 770,
+            "ymax": 326
+        },
+        {
+            "name": "person",
+            "xmin": 371,
+            "ymin": 297,
+            "xmax": 514,
+            "ymax": 754
+        },
+        {
+            "name": "person",
+            "xmin": 215,
+            "ymin": 677,
+            "xmax": 416,
+            "ymax": 899
+        },
+        {
+            "name": "person",
+            "xmin": 459,
+            "ymin": 659,
+            "xmax": 670,
+            "ymax": 901
+        },
+        {
+            "name": "person",
+            "xmin": 621,
+            "ymin": 487,
+            "xmax": 795,
+            "ymax": 898
+        },
+        {
+            "name": "person",
+            "xmin": 831,
+            "ymin": 537,
+            "xmax": 968,
+            "ymax": 901
+        },
+        {
+            "name": "person",
+            "xmin": 1019,
+            "ymin": 573,
+            "xmax": 1203,
+            "ymax": 901
+        },
+        {
+            "name": "person",
+            "xmin": 915,
+            "ymin": 295,
+            "xmax": 1117,
+            "ymax": 688
+        },
+        {
+            "name": "person",
+            "xmin": 179,
+            "ymin": 235,
+            "xmax": 326,
+            "ymax": 632
+        },
+        {
+            "name": "person",
+            "xmin": 177,
+            "ymin": 39,
+            "xmax": 309,
+            "ymax": 304
+        },
+        {
+            "name": "person",
+            "xmin": 1149,
+            "ymin": 382,
+            "xmax": 1307,
+            "ymax": 846
+        },
+        {
+            "name": "person",
+            "xmin": 1390,
+            "ymin": 313,
+            "xmax": 1522,
+            "ymax": 818
+        },
+        {
+            "name": "person",
+            "xmin": 662,
+            "ymin": 1,
+            "xmax": 770,
+            "ymax": 326
+        }
+    ],
+    "GX010023_frame_00716_right_jpg.rf.545783723b245165605f08a4c33b7758.xml": [
+        {
+            "name": "person",
+            "xmin": 207,
+            "ymin": 336,
+            "xmax": 389,
+            "ymax": 766
+        },
+        {
+            "name": "person",
+            "xmin": 936,
+            "ymin": 536,
+            "xmax": 1167,
+            "ymax": 901
+        },
+        {
+            "name": "person",
+            "xmin": 657,
+            "ymin": 167,
+            "xmax": 787,
+            "ymax": 529
+        },
+        {
+            "name": "person",
+            "xmin": 129,
+            "ymin": 79,
+            "xmax": 247,
+            "ymax": 487
+        },
+        {
+            "name": "person",
+            "xmin": 1222,
+            "ymin": 352,
+            "xmax": 1402,
+            "ymax": 859
+        },
+        {
+            "name": "person",
+            "xmin": 445,
+            "ymin": 407,
+            "xmax": 641,
+            "ymax": 850
+        },
+        {
+            "name": "person",
+            "xmin": 467,
+            "ymin": 209,
+            "xmax": 630,
+            "ymax": 506
+        },
+        {
+            "name": "person",
+            "xmin": 267,
+            "ymin": 95,
+            "xmax": 390,
+            "ymax": 514
+        },
+        {
+            "name": "person",
+            "xmin": 207,
+            "ymin": 336,
+            "xmax": 389,
+            "ymax": 766
+        },
+        {
+            "name": "person",
+            "xmin": 936,
+            "ymin": 536,
+            "xmax": 1167,
+            "ymax": 901
+        },
+        {
+            "name": "person",
+            "xmin": 657,
+            "ymin": 167,
+            "xmax": 787,
+            "ymax": 529
+        },
+        {
+            "name": "person",
+            "xmin": 129,
+            "ymin": 79,
+            "xmax": 247,
+            "ymax": 487
+        },
+        {
+            "name": "person",
+            "xmin": 1222,
+            "ymin": 352,
+            "xmax": 1402,
+            "ymax": 859
+        },
+        {
+            "name": "person",
+            "xmin": 445,
+            "ymin": 407,
+            "xmax": 641,
+            "ymax": 850
+        }
+    ],
+    "GX010023_frame_00721_right_jpg.rf.406e7db016cde9c0892c5d7479593e4d.xml": [
+        {
+            "name": "person",
+            "xmin": 1011,
+            "ymin": 524,
+            "xmax": 1250,
+            "ymax": 901
+        },
+        {
+            "name": "person",
+            "xmin": 545,
+            "ymin": 403,
+            "xmax": 690,
+            "ymax": 849
+        },
+        {
+            "name": "person",
+            "xmin": 655,
+            "ymin": 152,
+            "xmax": 774,
+            "ymax": 514
+        },
+        {
+            "name": "person",
+            "xmin": 108,
+            "ymin": 85,
+            "xmax": 228,
+            "ymax": 490
+        },
+        {
+            "name": "person",
+            "xmin": 1248,
+            "ymin": 361,
+            "xmax": 1472,
+            "ymax": 859
+        },
+        {
+            "name": "person",
+            "xmin": 362,
+            "ymin": 116,
+            "xmax": 464,
+            "ymax": 475
+        },
+        {
+            "name": "person",
+            "xmin": 276,
+            "ymin": 324,
+            "xmax": 410,
+            "ymax": 765
+        }
+    ],
+    "GX010023_frame_00742_left_jpg.rf.5d2a42de6c42d3a07e3ee4c7bbd23da5.xml": [
+        {
+            "name": "person",
+            "xmin": 1142,
+            "ymin": 367,
+            "xmax": 1308,
+            "ymax": 834
+        },
+        {
+            "name": "person",
+            "xmin": 1390,
+            "ymin": 301,
+            "xmax": 1526,
+            "ymax": 801
+        },
+        {
+            "name": "person",
+            "xmin": 950,
+            "ymin": 516,
+            "xmax": 1105,
+            "ymax": 899
+        },
+        {
+            "name": "person",
+            "xmin": 1007,
+            "ymin": 1,
+            "xmax": 1129,
+            "ymax": 238
+        },
+        {
+            "name": "person",
+            "xmin": 77,
+            "ymin": 114,
+            "xmax": 213,
+            "ymax": 480
+        },
+        {
+            "name": "person",
+            "xmin": 302,
+            "ymin": 792,
+            "xmax": 494,
+            "ymax": 898
+        },
+        {
+            "name": "person",
+            "xmin": 520,
+            "ymin": 531,
+            "xmax": 716,
+            "ymax": 895
+        },
+        {
+            "name": "person",
+            "xmin": 662,
+            "ymin": 3,
+            "xmax": 764,
+            "ymax": 217
+        },
+        {
+            "name": "person",
+            "xmin": 764,
+            "ymin": 472,
+            "xmax": 908,
+            "ymax": 897
+        },
+        {
+            "name": "person",
+            "xmin": 948,
+            "ymin": 292,
+            "xmax": 1124,
+            "ymax": 588
+        },
+        {
+            "name": "person",
+            "xmin": 636,
+            "ymin": 161,
+            "xmax": 774,
+            "ymax": 455
+        },
+        {
+            "name": "person",
+            "xmin": 78,
+            "ymin": 802,
+            "xmax": 275,
+            "ymax": 898
+        },
+        {
+            "name": "person",
+            "xmin": 413,
+            "ymin": 239,
+            "xmax": 549,
+            "ymax": 672
+        },
+        {
+            "name": "person",
+            "xmin": 185,
+            "ymin": 237,
+            "xmax": 328,
+            "ymax": 630
+        },
+        {
+            "name": "person",
+            "xmin": 507,
+            "ymin": 127,
+            "xmax": 633,
+            "ymax": 507
+        }
+    ],
+    "GX010023_frame_00795_left_jpg.rf.e8ff7fe7fe197f2078ff0fc1862c8f07.xml": [
+        {
+            "name": "person",
+            "xmin": 172,
+            "ymin": 2,
+            "xmax": 312,
+            "ymax": 281
+        },
+        {
+            "name": "person",
+            "xmin": 19,
+            "ymin": 18,
+            "xmax": 151,
+            "ymax": 353
+        },
+        {
+            "name": "person",
+            "xmin": 1397,
+            "ymin": 315,
+            "xmax": 1535,
+            "ymax": 805
+        },
+        {
+            "name": "person",
+            "xmin": 1165,
+            "ymin": 379,
+            "xmax": 1310,
+            "ymax": 839
+        },
+        {
+            "name": "person",
+            "xmin": 691,
+            "ymin": 644,
+            "xmax": 883,
+            "ymax": 900
+        },
+        {
+            "name": "person",
+            "xmin": 1277,
+            "ymin": 1,
+            "xmax": 1413,
+            "ymax": 296
+        },
+        {
+            "name": "person",
+            "xmin": 199,
+            "ymin": 237,
+            "xmax": 349,
+            "ymax": 648
+        },
+        {
+            "name": "person",
+            "xmin": 385,
+            "ymin": 199,
+            "xmax": 486,
+            "ymax": 557
+        },
+        {
+            "name": "person",
+            "xmin": 573,
+            "ymin": 273,
+            "xmax": 725,
+            "ymax": 691
+        },
+        {
+            "name": "person",
+            "xmin": 1105,
+            "ymin": 279,
+            "xmax": 1250,
+            "ymax": 706
+        },
+        {
+            "name": "person",
+            "xmin": 945,
+            "ymin": 293,
+            "xmax": 1118,
+            "ymax": 706
+        },
+        {
+            "name": "person",
+            "xmin": 719,
+            "ymin": 49,
+            "xmax": 850,
+            "ymax": 341
+        },
+        {
+            "name": "person",
+            "xmin": 635,
+            "ymin": 107,
+            "xmax": 742,
+            "ymax": 336
+        },
+        {
+            "name": "person",
+            "xmin": 555,
+            "ymin": 15,
+            "xmax": 680,
+            "ymax": 304
+        },
+        {
+            "name": "person",
+            "xmin": 329,
+            "ymin": 715,
+            "xmax": 547,
+            "ymax": 901
+        }
+    ],
+    "GX010023_frame_00802_left_jpg.rf.1a16aa29e832839d203cd146468e5471.xml": [
+        {
+            "name": "person",
+            "xmin": 1163,
+            "ymin": 376,
+            "xmax": 1318,
+            "ymax": 837
+        },
+        {
+            "name": "person",
+            "xmin": 1394,
+            "ymin": 308,
+            "xmax": 1533,
+            "ymax": 806
+        },
+        {
+            "name": "person",
+            "xmin": 2,
+            "ymin": 27,
+            "xmax": 141,
+            "ymax": 379
+        },
+        {
+            "name": "person",
+            "xmin": 544,
+            "ymin": 269,
+            "xmax": 710,
+            "ymax": 724
+        },
+        {
+            "name": "person",
+            "xmin": 682,
+            "ymin": 598,
+            "xmax": 877,
+            "ymax": 901
+        },
+        {
+            "name": "person",
+            "xmin": 1282,
+            "ymin": 1,
+            "xmax": 1399,
+            "ymax": 303
+        },
+        {
+            "name": "person",
+            "xmin": 296,
+            "ymin": 770,
+            "xmax": 561,
+            "ymax": 901
+        },
+        {
+            "name": "person",
+            "xmin": 945,
+            "ymin": 281,
+            "xmax": 1134,
+            "ymax": 797
+        },
+        {
+            "name": "person",
+            "xmin": 731,
+            "ymin": 1,
+            "xmax": 869,
+            "ymax": 309
+        },
+        {
+            "name": "person",
+            "xmin": 383,
+            "ymin": 213,
+            "xmax": 502,
+            "ymax": 576
+        },
+        {
+            "name": "person",
+            "xmin": 211,
+            "ymin": 239,
+            "xmax": 365,
+            "ymax": 632
+        }
+    ],
+    "GX010023_frame_00807_left_jpg.rf.5bd9eb54dd2a4fa0acdda559e4540faf.xml": [
+        {
+            "name": "person",
+            "xmin": 151,
+            "ymin": 3,
+            "xmax": 291,
+            "ymax": 284
+        },
+        {
+            "name": "person",
+            "xmin": 1158,
+            "ymin": 362,
+            "xmax": 1297,
+            "ymax": 824
+        },
+        {
+            "name": "person",
+            "xmin": 540,
+            "ymin": 281,
+            "xmax": 680,
+            "ymax": 758
+        },
+        {
+            "name": "person",
+            "xmin": 1404,
+            "ymin": 303,
+            "xmax": 1533,
+            "ymax": 807
+        },
+        {
+            "name": "person",
+            "xmin": 690,
+            "ymin": 597,
+            "xmax": 867,
+            "ymax": 901
+        },
+        {
+            "name": "person",
+            "xmin": 382,
+            "ymin": 212,
+            "xmax": 509,
+            "ymax": 572
+        }
+    ],
+    "GX010023_frame_00820_left_jpg.rf.91be27989e400bcc51acf08eb7077fe3.xml": [
+        {
+            "name": "person",
+            "xmin": 1168,
+            "ymin": 376,
+            "xmax": 1318,
+            "ymax": 828
+        },
+        {
+            "name": "person",
+            "xmin": 512,
+            "ymin": 319,
+            "xmax": 651,
+            "ymax": 744
+        },
+        {
+            "name": "person",
+            "xmin": 1395,
+            "ymin": 300,
+            "xmax": 1535,
+            "ymax": 807
+        },
+        {
+            "name": "person",
+            "xmin": 689,
+            "ymin": 563,
+            "xmax": 867,
+            "ymax": 900
+        },
+        {
+            "name": "person",
+            "xmin": 143,
+            "ymin": 4,
+            "xmax": 278,
+            "ymax": 300
+        },
+        {
+            "name": "person",
+            "xmin": 1,
+            "ymin": 46,
+            "xmax": 98,
+            "ymax": 404
+        },
+        {
+            "name": "person",
+            "xmin": 922,
+            "ymin": 279,
+            "xmax": 1132,
+            "ymax": 836
+        },
+        {
+            "name": "person",
+            "xmin": 689,
+            "ymin": 255,
+            "xmax": 802,
+            "ymax": 526
+        },
+        {
+            "name": "person",
+            "xmin": 765,
+            "ymin": 329,
+            "xmax": 910,
+            "ymax": 592
+        },
+        {
+            "name": "person",
+            "xmin": 369,
+            "ymin": 225,
+            "xmax": 509,
+            "ymax": 488
+        }
+    ],
+    "GX010023_frame_00845_right_jpg.rf.7c31ddda425d2e57e90098fbbad74607.xml": [
+        {
+            "name": "person",
+            "xmin": 281,
+            "ymin": 103,
+            "xmax": 412,
+            "ymax": 522
+        },
+        {
+            "name": "person",
+            "xmin": 671,
+            "ymin": 147,
+            "xmax": 795,
+            "ymax": 506
+        },
+        {
+            "name": "person",
+            "xmin": 141,
+            "ymin": 76,
+            "xmax": 264,
+            "ymax": 487
+        },
+        {
+            "name": "person",
+            "xmin": 7,
+            "ymin": 304,
+            "xmax": 163,
+            "ymax": 808
+        },
+        {
+            "name": "person",
+            "xmin": 379,
+            "ymin": 112,
+            "xmax": 477,
+            "ymax": 446
+        },
+        {
+            "name": "person",
+            "xmin": 1407,
+            "ymin": 380,
+            "xmax": 1626,
+            "ymax": 880
+        },
+        {
+            "name": "person",
+            "xmin": 566,
+            "ymin": 122,
+            "xmax": 684,
+            "ymax": 530
+        },
+        {
+            "name": "person",
+            "xmin": 954,
+            "ymin": 266,
+            "xmax": 1113,
+            "ymax": 705
+        },
+        {
+            "name": "person",
+            "xmin": 541,
+            "ymin": 233,
+            "xmax": 669,
+            "ymax": 645
+        }
+    ],
+    "GX010023_frame_00923_right_jpg.rf.82b40fd31a4f52c9b6cc8c4a009e37bf.xml": [
+        {
+            "name": "person",
+            "xmin": 992,
+            "ymin": 439,
+            "xmax": 1238,
+            "ymax": 901
+        },
+        {
+            "name": "person",
+            "xmin": 1,
+            "ymin": 698,
+            "xmax": 162,
+            "ymax": 901
+        },
+        {
+            "name": "person",
+            "xmin": 653,
+            "ymin": 141,
+            "xmax": 786,
+            "ymax": 510
+        },
+        {
+            "name": "person",
+            "xmin": 1307,
+            "ymin": 537,
+            "xmax": 1609,
+            "ymax": 889
+        },
+        {
+            "name": "person",
+            "xmin": 425,
+            "ymin": 231,
+            "xmax": 570,
+            "ymax": 603
+        },
+        {
+            "name": "person",
+            "xmin": 587,
+            "ymin": 109,
+            "xmax": 690,
+            "ymax": 512
+        },
+        {
+            "name": "person",
+            "xmin": 339,
+            "ymin": 237,
+            "xmax": 470,
+            "ymax": 664
+        },
+        {
+            "name": "person",
+            "xmin": 263,
+            "ymin": 103,
+            "xmax": 376,
+            "ymax": 531
+        },
+        {
+            "name": "person",
+            "xmin": 83,
+            "ymin": 87,
+            "xmax": 207,
+            "ymax": 461
+        }
+    ],
+    "GX010023_frame_01054_right_jpg.rf.c06a7ddd5aee7db927c1de4a3c947693.xml": [
+        {
+            "name": "person",
+            "xmin": 74,
+            "ymin": 68,
+            "xmax": 206,
+            "ymax": 472
+        },
+        {
+            "name": "person",
+            "xmin": 264,
+            "ymin": 204,
+            "xmax": 418,
+            "ymax": 643
+        },
+        {
+            "name": "person",
+            "xmin": 529,
+            "ymin": 235,
+            "xmax": 738,
+            "ymax": 648
+        },
+        {
+            "name": "person",
+            "xmin": 643,
+            "ymin": 149,
+            "xmax": 747,
+            "ymax": 395
+        }
+    ],
+    "GX010023_frame_01086_right_jpg.rf.ac8bafade8aaff8a3b64b8d7233cb755.xml": [
+        {
+            "name": "person",
+            "xmin": 67,
+            "ymin": 177,
+            "xmax": 222,
+            "ymax": 619
+        },
+        {
+            "name": "person",
+            "xmin": 350,
+            "ymin": 122,
+            "xmax": 459,
+            "ymax": 460
+        },
+        {
+            "name": "person",
+            "xmin": 257,
+            "ymin": 110,
+            "xmax": 391,
+            "ymax": 528
+        },
+        {
+            "name": "person",
+            "xmin": 2,
+            "ymin": 744,
+            "xmax": 166,
+            "ymax": 901
+        },
+        {
+            "name": "person",
+            "xmin": 578,
+            "ymin": 239,
+            "xmax": 734,
+            "ymax": 678
+        },
+        {
+            "name": "person",
+            "xmin": 891,
+            "ymin": 277,
+            "xmax": 1115,
+            "ymax": 674
+        },
+        {
+            "name": "person",
+            "xmin": 651,
+            "ymin": 165,
+            "xmax": 757,
+            "ymax": 413
+        }
+    ],
+    "GX010023_frame_01133_left_jpg.rf.b0eccf6c50fc4d6ecd68547bf77a3501.xml": [
+        {
+            "name": "person",
+            "xmin": 922,
+            "ymin": 297,
+            "xmax": 1134,
+            "ymax": 823
+        },
+        {
+            "name": "person",
+            "xmin": 696,
+            "ymin": 622,
+            "xmax": 946,
+            "ymax": 901
+        },
+        {
+            "name": "person",
+            "xmin": 217,
+            "ymin": 4,
+            "xmax": 347,
+            "ymax": 289
+        },
+        {
+            "name": "person",
+            "xmin": 927,
+            "ymin": 1,
+            "xmax": 1063,
+            "ymax": 253
+        },
+        {
+            "name": "person",
+            "xmin": 312,
+            "ymin": 392,
+            "xmax": 550,
+            "ymax": 897
+        },
+        {
+            "name": "person",
+            "xmin": 655,
+            "ymin": 1,
+            "xmax": 768,
+            "ymax": 310
+        },
+        {
+            "name": "person",
+            "xmin": 151,
+            "ymin": 459,
+            "xmax": 316,
+            "ymax": 896
+        },
+        {
+            "name": "person",
+            "xmin": 1372,
+            "ymin": 307,
+            "xmax": 1504,
+            "ymax": 792
+        },
+        {
+            "name": "person",
+            "xmin": 491,
+            "ymin": 1,
+            "xmax": 587,
+            "ymax": 310
+        },
+        {
+            "name": "person",
+            "xmin": 1311,
+            "ymin": 281,
+            "xmax": 1418,
+            "ymax": 712
+        },
+        {
+            "name": "person",
+            "xmin": 1059,
+            "ymin": 287,
+            "xmax": 1205,
+            "ymax": 709
+        },
+        {
+            "name": "person",
+            "xmin": 159,
+            "ymin": 275,
+            "xmax": 310,
+            "ymax": 555
+        },
+        {
+            "name": "person",
+            "xmin": 7,
+            "ymin": 183,
+            "xmax": 103,
+            "ymax": 597
+        },
+        {
+            "name": "person",
+            "xmin": 543,
+            "ymin": 3,
+            "xmax": 659,
+            "ymax": 339
+        }
+    ],
+    "GX010023_frame_01212_right_jpg.rf.1122110577935b6bf0d1e6bafe70e044.xml": [
+        {
+            "name": "person",
+            "xmin": 112,
+            "ymin": 52,
+            "xmax": 246,
+            "ymax": 468
+        },
+        {
+            "name": "person",
+            "xmin": 300,
+            "ymin": 88,
+            "xmax": 438,
+            "ymax": 469
+        },
+        {
+            "name": "person",
+            "xmin": 1182,
+            "ymin": 534,
+            "xmax": 1398,
+            "ymax": 901
+        },
+        {
+            "name": "person",
+            "xmin": 397,
+            "ymin": 270,
+            "xmax": 546,
+            "ymax": 721
+        },
+        {
+            "name": "person",
+            "xmin": 658,
+            "ymin": 147,
+            "xmax": 775,
+            "ymax": 491
+        },
+        {
+            "name": "person",
+            "xmin": 1419,
+            "ymin": 665,
+            "xmax": 1613,
+            "ymax": 901
+        }
+    ],
+    "GX010023_frame_01220_left_jpg.rf.e856b47afb72c3670e6ded9ad75be70e.xml": [
+        {
+            "name": "person",
+            "xmin": 1169,
+            "ymin": 369,
+            "xmax": 1318,
+            "ymax": 830
+        },
+        {
+            "name": "person",
+            "xmin": 35,
+            "ymin": 375,
+            "xmax": 200,
+            "ymax": 822
+        },
+        {
+            "name": "person",
+            "xmin": 641,
+            "ymin": 173,
+            "xmax": 790,
+            "ymax": 586
+        },
+        {
+            "name": "person",
+            "xmin": 539,
+            "ymin": 201,
+            "xmax": 674,
+            "ymax": 590
+        },
+        {
+            "name": "person",
+            "xmin": 387,
+            "ymin": 235,
+            "xmax": 488,
+            "ymax": 605
+        },
+        {
+            "name": "person",
+            "xmin": 811,
+            "ymin": 211,
+            "xmax": 947,
+            "ymax": 592
+        },
+        {
+            "name": "person",
+            "xmin": 947,
+            "ymin": 281,
+            "xmax": 1142,
+            "ymax": 810
+        },
+        {
+            "name": "person",
+            "xmin": 1323,
+            "ymin": 277,
+            "xmax": 1427,
+            "ymax": 718
+        },
+        {
+            "name": "person",
+            "xmin": 1408,
+            "ymin": 309,
+            "xmax": 1541,
+            "ymax": 791
+        },
+        {
+            "name": "person",
+            "xmin": 153,
+            "ymin": 239,
+            "xmax": 298,
+            "ymax": 645
+        },
+        {
+            "name": "person",
+            "xmin": 316,
+            "ymin": 334,
+            "xmax": 402,
+            "ymax": 586
+        },
+        {
+            "name": "person",
+            "xmin": 1054,
+            "ymin": 293,
+            "xmax": 1190,
+            "ymax": 696
+        }
+    ],
+    "GX010023_frame_01256_left_jpg.rf.012e30fdb8b3041d05082c4879c60c58.xml": [
+        {
+            "name": "person",
+            "xmin": 1155,
+            "ymin": 374,
+            "xmax": 1296,
+            "ymax": 831
+        },
+        {
+            "name": "person",
+            "xmin": 1,
+            "ymin": 145,
+            "xmax": 159,
+            "ymax": 617
+        },
+        {
+            "name": "person",
+            "xmin": 95,
+            "ymin": 563,
+            "xmax": 304,
+            "ymax": 900
+        },
+        {
+            "name": "person",
+            "xmin": 951,
+            "ymin": 275,
+            "xmax": 1135,
+            "ymax": 813
+        },
+        {
+            "name": "person",
+            "xmin": 573,
+            "ymin": 78,
+            "xmax": 710,
+            "ymax": 507
+        },
+        {
+            "name": "person",
+            "xmin": 1389,
+            "ymin": 301,
+            "xmax": 1513,
+            "ymax": 797
+        },
+        {
+            "name": "person",
+            "xmin": 374,
+            "ymin": 232,
+            "xmax": 490,
+            "ymax": 602
+        },
+        {
+            "name": "person",
+            "xmin": 1373,
+            "ymin": 720,
+            "xmax": 1557,
+            "ymax": 899
+        },
+        {
+            "name": "person",
+            "xmin": 762,
+            "ymin": 79,
+            "xmax": 904,
+            "ymax": 481
+        }
+    ],
+    "GX010023_frame_01278_left_jpg.rf.5177758f19188a82cef1032714ca32df.xml": [
+        {
+            "name": "person",
+            "xmin": 544,
+            "ymin": 150,
+            "xmax": 706,
+            "ymax": 580
+        },
+        {
+            "name": "person",
+            "xmin": 382,
+            "ymin": 260,
+            "xmax": 500,
+            "ymax": 621
+        },
+        {
+            "name": "person",
+            "xmin": 1182,
+            "ymin": 375,
+            "xmax": 1336,
+            "ymax": 849
+        },
+        {
+            "name": "person",
+            "xmin": 941,
+            "ymin": 262,
+            "xmax": 1122,
+            "ymax": 831
+        },
+        {
+            "name": "person",
+            "xmin": 167,
+            "ymin": 1,
+            "xmax": 283,
+            "ymax": 311
+        },
+        {
+            "name": "person",
+            "xmin": 1060,
+            "ymin": 299,
+            "xmax": 1226,
+            "ymax": 728
+        },
+        {
+            "name": "person",
+            "xmin": 1,
+            "ymin": 201,
+            "xmax": 143,
+            "ymax": 727
+        },
+        {
+            "name": "person",
+            "xmin": 740,
+            "ymin": 60,
+            "xmax": 867,
+            "ymax": 416
+        },
+        {
+            "name": "person",
+            "xmin": 1373,
+            "ymin": 305,
+            "xmax": 1528,
+            "ymax": 785
+        },
+        {
+            "name": "person",
+            "xmin": 852,
+            "ymin": 189,
+            "xmax": 974,
+            "ymax": 569
+        },
+        {
+            "name": "person",
+            "xmin": 544,
+            "ymin": 150,
+            "xmax": 706,
+            "ymax": 580
+        },
+        {
+            "name": "person",
+            "xmin": 382,
+            "ymin": 260,
+            "xmax": 500,
+            "ymax": 621
+        },
+        {
+            "name": "person",
+            "xmin": 1182,
+            "ymin": 375,
+            "xmax": 1336,
+            "ymax": 849
+        },
+        {
+            "name": "person",
+            "xmin": 941,
+            "ymin": 262,
+            "xmax": 1122,
+            "ymax": 831
+        },
+        {
+            "name": "person",
+            "xmin": 1060,
+            "ymin": 299,
+            "xmax": 1226,
+            "ymax": 728
+        },
+        {
+            "name": "person",
+            "xmin": 740,
+            "ymin": 60,
+            "xmax": 867,
+            "ymax": 416
+        },
+        {
+            "name": "person",
+            "xmin": 1373,
+            "ymin": 305,
+            "xmax": 1528,
+            "ymax": 785
+        },
+        {
+            "name": "person",
+            "xmin": 161,
+            "ymin": 245,
+            "xmax": 291,
+            "ymax": 654
+        },
+        {
+            "name": "person",
+            "xmin": 297,
+            "ymin": 361,
+            "xmax": 400,
+            "ymax": 624
+        },
+        {
+            "name": "person",
+            "xmin": 1339,
+            "ymin": 275,
+            "xmax": 1448,
+            "ymax": 725
+        },
+        {
+            "name": "person",
+            "xmin": 1027,
+            "ymin": 127,
+            "xmax": 1149,
+            "ymax": 301
+        },
+        {
+            "name": "person",
+            "xmin": 844,
+            "ymin": 53,
+            "xmax": 989,
+            "ymax": 250
+        }
+    ],
+    "GX010023_frame_01410_right_jpg.rf.5d08e6109f3ad77f423c13e6810f10b8.xml": [
+        {
+            "name": "person",
+            "xmin": 1119,
+            "ymin": 699,
+            "xmax": 1423,
+            "ymax": 899
+        },
+        {
+            "name": "person",
+            "xmin": 4,
+            "ymin": 650,
+            "xmax": 248,
+            "ymax": 901
+        },
+        {
+            "name": "person",
+            "xmin": 310,
+            "ymin": 452,
+            "xmax": 520,
+            "ymax": 901
+        },
+        {
+            "name": "person",
+            "xmin": 656,
+            "ymin": 130,
+            "xmax": 779,
+            "ymax": 488
+        },
+        {
+            "name": "person",
+            "xmin": 299,
+            "ymin": 79,
+            "xmax": 425,
+            "ymax": 436
+        },
+        {
+            "name": "person",
+            "xmin": 1013,
+            "ymin": 234,
+            "xmax": 1205,
+            "ymax": 681
+        },
+        {
+            "name": "person",
+            "xmin": 112,
+            "ymin": 30,
+            "xmax": 227,
+            "ymax": 438
+        },
+        {
+            "name": "person",
+            "xmin": 564,
+            "ymin": 96,
+            "xmax": 677,
+            "ymax": 487
+        }
+    ],
+    "GX010023_frame_01422_left_jpg.rf.228f060ff55509b3f432eaa41e0b4681.xml": [
+        {
+            "name": "person",
+            "xmin": 331,
+            "ymin": 762,
+            "xmax": 590,
+            "ymax": 898
+        },
+        {
+            "name": "person",
+            "xmin": 1155,
+            "ymin": 375,
+            "xmax": 1299,
+            "ymax": 832
+        },
+        {
+            "name": "person",
+            "xmin": 1422,
+            "ymin": 650,
+            "xmax": 1576,
+            "ymax": 901
+        },
+        {
+            "name": "person",
+            "xmin": 663,
+            "ymin": 1,
+            "xmax": 762,
+            "ymax": 314
+        },
+        {
+            "name": "person",
+            "xmin": 944,
+            "ymin": 287,
+            "xmax": 1103,
+            "ymax": 821
+        },
+        {
+            "name": "person",
+            "xmin": 359,
+            "ymin": 227,
+            "xmax": 490,
+            "ymax": 651
+        },
+        {
+            "name": "person",
+            "xmin": 1390,
+            "ymin": 308,
+            "xmax": 1516,
+            "ymax": 782
+        },
+        {
+            "name": "person",
+            "xmin": 133,
+            "ymin": 263,
+            "xmax": 297,
+            "ymax": 676
+        },
+        {
+            "name": "person",
+            "xmin": 592,
+            "ymin": 299,
+            "xmax": 734,
+            "ymax": 727
+        },
+        {
+            "name": "person",
+            "xmin": 73,
+            "ymin": 1,
+            "xmax": 195,
+            "ymax": 324
+        },
+        {
+            "name": "person",
+            "xmin": 1,
+            "ymin": 158,
+            "xmax": 87,
+            "ymax": 530
+        }
+    ],
+    "GX010023_frame_01462_left_jpg.rf.d91c78f741b890aa442a02c7b9c4f806.xml": [
+        {
+            "name": "person",
+            "xmin": 1157,
+            "ymin": 372,
+            "xmax": 1305,
+            "ymax": 832
+        },
+        {
+            "name": "person",
+            "xmin": 360,
+            "ymin": 221,
+            "xmax": 488,
+            "ymax": 609
+        },
+        {
+            "name": "person",
+            "xmin": 933,
+            "ymin": 287,
+            "xmax": 1106,
+            "ymax": 825
+        },
+        {
+            "name": "person",
+            "xmin": 1383,
+            "ymin": 302,
+            "xmax": 1518,
+            "ymax": 815
+        },
+        {
+            "name": "person",
+            "xmin": 819,
+            "ymin": 105,
+            "xmax": 941,
+            "ymax": 475
+        },
+        {
+            "name": "person",
+            "xmin": 643,
+            "ymin": 171,
+            "xmax": 803,
+            "ymax": 554
+        },
+        {
+            "name": "person",
+            "xmin": 531,
+            "ymin": 1,
+            "xmax": 658,
+            "ymax": 338
+        },
+        {
+            "name": "person",
+            "xmin": 133,
+            "ymin": 255,
+            "xmax": 299,
+            "ymax": 664
+        },
+        {
+            "name": "person",
+            "xmin": 107,
+            "ymin": 81,
+            "xmax": 248,
+            "ymax": 299
+        }
+    ],
+    "GX010023_frame_01462_right_jpg.rf.242355e85760663f5af6dcb7e699ae68.xml": [
+        {
+            "name": "person",
+            "xmin": 373,
+            "ymin": 469,
+            "xmax": 584,
+            "ymax": 901
+        },
+        {
+            "name": "person",
+            "xmin": 977,
+            "ymin": 127,
+            "xmax": 1152,
+            "ymax": 531
+        },
+        {
+            "name": "person",
+            "xmin": 659,
+            "ymin": 111,
+            "xmax": 770,
+            "ymax": 479
+        },
+        {
+            "name": "person",
+            "xmin": 271,
+            "ymin": 77,
+            "xmax": 416,
+            "ymax": 408
+        },
+        {
+            "name": "person",
+            "xmin": 72,
+            "ymin": 62,
+            "xmax": 189,
+            "ymax": 409
+        },
+        {
+            "name": "person",
+            "xmin": 549,
+            "ymin": 73,
+            "xmax": 664,
+            "ymax": 438
+        },
+        {
+            "name": "person",
+            "xmin": 9,
+            "ymin": 305,
+            "xmax": 149,
+            "ymax": 718
+        }
+    ],
+    "GX010023_frame_01805_left_jpg.rf.e6582a4c33f22782627efa5f25f127c9.xml": [
+        {
+            "name": "person",
+            "xmin": 512,
+            "ymin": 470,
+            "xmax": 715,
+            "ymax": 901
+        },
+        {
+            "name": "person",
+            "xmin": 294,
+            "ymin": 239,
+            "xmax": 434,
+            "ymax": 630
+        },
+        {
+            "name": "person",
+            "xmin": 1411,
+            "ymin": 18,
+            "xmax": 1540,
+            "ymax": 308
+        },
+        {
+            "name": "person",
+            "xmin": 1150,
+            "ymin": 379,
+            "xmax": 1309,
+            "ymax": 847
+        },
+        {
+            "name": "person",
+            "xmin": 647,
+            "ymin": 2,
+            "xmax": 753,
+            "ymax": 315
+        },
+        {
+            "name": "person",
+            "xmin": 1366,
+            "ymin": 317,
+            "xmax": 1496,
+            "ymax": 791
+        },
+        {
+            "name": "person",
+            "xmin": 10,
+            "ymin": 831,
+            "xmax": 235,
+            "ymax": 899
+        },
+        {
+            "name": "person",
+            "xmin": 926,
+            "ymin": 290,
+            "xmax": 1060,
+            "ymax": 852
+        },
+        {
+            "name": "person",
+            "xmin": 738,
+            "ymin": 213,
+            "xmax": 874,
+            "ymax": 720
+        },
+        {
+            "name": "person",
+            "xmin": 135,
+            "ymin": 237,
+            "xmax": 287,
+            "ymax": 695
+        },
+        {
+            "name": "person",
+            "xmin": 1063,
+            "ymin": 284,
+            "xmax": 1203,
+            "ymax": 731
+        },
+        {
+            "name": "person",
+            "xmin": 531,
+            "ymin": 7,
+            "xmax": 646,
+            "ymax": 356
+        },
+        {
+            "name": "person",
+            "xmin": 18,
+            "ymin": 155,
+            "xmax": 164,
+            "ymax": 632
+        },
+        {
+            "name": "person",
+            "xmin": 838,
+            "ymin": 1,
+            "xmax": 963,
+            "ymax": 337
+        }
+    ],
+    "GX010023_frame_01930_right_jpg.rf.752c19d5c0e54701c692290f9285167c.xml": [
+        {
+            "name": "person",
+            "xmin": 688,
+            "ymin": 156,
+            "xmax": 814,
+            "ymax": 509
+        },
+        {
+            "name": "person",
+            "xmin": 581,
+            "ymin": 94,
+            "xmax": 711,
+            "ymax": 494
+        },
+        {
+            "name": "person",
+            "xmin": 327,
+            "ymin": 646,
+            "xmax": 536,
+            "ymax": 901
+        },
+        {
+            "name": "person",
+            "xmin": 683,
+            "ymin": 542,
+            "xmax": 866,
+            "ymax": 892
+        },
+        {
+            "name": "person",
+            "xmin": 132,
+            "ymin": 60,
+            "xmax": 266,
+            "ymax": 458
+        },
+        {
+            "name": "person",
+            "xmin": 588,
+            "ymin": 663,
+            "xmax": 791,
+            "ymax": 898
+        },
+        {
+            "name": "person",
+            "xmin": 199,
+            "ymin": 710,
+            "xmax": 392,
+            "ymax": 899
+        },
+        {
+            "name": "person",
+            "xmin": 297,
+            "ymin": 63,
+            "xmax": 418,
+            "ymax": 411
+        }
+    ],
+    "GX010023_frame_01953_left_jpg.rf.15715221aac2cfb27cd8e8b24c96d546.xml": [
+        {
+            "name": "person",
+            "xmin": 329,
+            "ymin": 234,
+            "xmax": 465,
+            "ymax": 622
+        },
+        {
+            "name": "person",
+            "xmin": 845,
+            "ymin": 2,
+            "xmax": 975,
+            "ymax": 342
+        },
+        {
+            "name": "person",
+            "xmin": 194,
+            "ymin": 265,
+            "xmax": 375,
+            "ymax": 707
+        },
+        {
+            "name": "person",
+            "xmin": 1198,
+            "ymin": 385,
+            "xmax": 1345,
+            "ymax": 848
+        },
+        {
+            "name": "person",
+            "xmin": 178,
+            "ymin": 1,
+            "xmax": 302,
+            "ymax": 246
+        },
+        {
+            "name": "person",
+            "xmin": 663,
+            "ymin": 1,
+            "xmax": 777,
+            "ymax": 320
+        },
+        {
+            "name": "person",
+            "xmin": 972,
+            "ymin": 293,
+            "xmax": 1116,
+            "ymax": 842
+        },
+        {
+            "name": "person",
+            "xmin": 60,
+            "ymin": 1,
+            "xmax": 172,
+            "ymax": 297
+        },
+        {
+            "name": "person",
+            "xmin": 1410,
+            "ymin": 324,
+            "xmax": 1539,
+            "ymax": 800
+        },
+        {
+            "name": "person",
+            "xmin": 1468,
+            "ymin": 7,
+            "xmax": 1614,
+            "ymax": 261
+        },
+        {
+            "name": "person",
+            "xmin": 1103,
+            "ymin": 293,
+            "xmax": 1240,
+            "ymax": 724
+        },
+        {
+            "name": "person",
+            "xmin": 561,
+            "ymin": 11,
+            "xmax": 671,
+            "ymax": 349
+        },
+        {
+            "name": "person",
+            "xmin": 764,
+            "ymin": 345,
+            "xmax": 912,
+            "ymax": 864
+        },
+        {
+            "name": "person",
+            "xmin": 1339,
+            "ymin": 301,
+            "xmax": 1451,
+            "ymax": 724
+        },
+        {
+            "name": "person",
+            "xmin": 626,
+            "ymin": 388,
+            "xmax": 774,
+            "ymax": 671
+        }
+    ],
+    "GX010023_frame_01995_left_jpg.rf.7ff403c689b813b834b40a66366729f7.xml": [
+        {
+            "name": "person",
+            "xmin": 328,
+            "ymin": 231,
+            "xmax": 465,
+            "ymax": 634
+        },
+        {
+            "name": "person",
+            "xmin": 1,
+            "ymin": 359,
+            "xmax": 128,
+            "ymax": 742
+        },
+        {
+            "name": "person",
+            "xmin": 1173,
+            "ymin": 392,
+            "xmax": 1312,
+            "ymax": 864
+        },
+        {
+            "name": "person",
+            "xmin": 170,
+            "ymin": 279,
+            "xmax": 344,
+            "ymax": 719
+        },
+        {
+            "name": "person",
+            "xmin": 650,
+            "ymin": 11,
+            "xmax": 744,
+            "ymax": 325
+        },
+        {
+            "name": "person",
+            "xmin": 1391,
+            "ymin": 323,
+            "xmax": 1519,
+            "ymax": 824
+        },
+        {
+            "name": "person",
+            "xmin": 767,
+            "ymin": 2,
+            "xmax": 866,
+            "ymax": 220
+        },
+        {
+            "name": "person",
+            "xmin": 1077,
+            "ymin": 300,
+            "xmax": 1205,
+            "ymax": 724
+        },
+        {
+            "name": "person",
+            "xmin": 956,
+            "ymin": 283,
+            "xmax": 1083,
+            "ymax": 856
+        },
+        {
+            "name": "person",
+            "xmin": 792,
+            "ymin": 183,
+            "xmax": 908,
+            "ymax": 592
+        },
+        {
+            "name": "person",
+            "xmin": 214,
+            "ymin": 1,
+            "xmax": 317,
+            "ymax": 242
+        },
+        {
+            "name": "person",
+            "xmin": 582,
+            "ymin": 226,
+            "xmax": 725,
+            "ymax": 613
+        },
+        {
+            "name": "person",
+            "xmin": 536,
+            "ymin": 16,
+            "xmax": 632,
+            "ymax": 354
+        },
+        {
+            "name": "person",
+            "xmin": 1573,
+            "ymin": 619,
+            "xmax": 1626,
+            "ymax": 888
+        },
+        {
+            "name": "person",
+            "xmin": 1320,
+            "ymin": 310,
+            "xmax": 1417,
+            "ymax": 728
+        }
+    ],
+    "GX010023_frame_02143_left_jpg.rf.c5287ad60b5a223a1e184eabeb18347d.xml": [
+        {
+            "name": "person",
+            "xmin": 140,
+            "ymin": 281,
+            "xmax": 304,
+            "ymax": 734
+        },
+        {
+            "name": "person",
+            "xmin": 320,
+            "ymin": 243,
+            "xmax": 487,
+            "ymax": 638
+        },
+        {
+            "name": "person",
+            "xmin": 1044,
+            "ymin": 324,
+            "xmax": 1184,
+            "ymax": 736
+        },
+        {
+            "name": "person",
+            "xmin": 1153,
+            "ymin": 393,
+            "xmax": 1313,
+            "ymax": 862
+        },
+        {
+            "name": "person",
+            "xmin": 1343,
+            "ymin": 317,
+            "xmax": 1487,
+            "ymax": 823
+        },
+        {
+            "name": "person",
+            "xmin": 880,
+            "ymin": 278,
+            "xmax": 1082,
+            "ymax": 867
+        },
+        {
+            "name": "person",
+            "xmin": 598,
+            "ymin": 7,
+            "xmax": 719,
+            "ymax": 341
+        },
+        {
+            "name": "person",
+            "xmin": 1283,
+            "ymin": 322,
+            "xmax": 1410,
+            "ymax": 782
+        },
+        {
+            "name": "person",
+            "xmin": 443,
+            "ymin": 1,
+            "xmax": 544,
+            "ymax": 315
+        },
+        {
+            "name": "person",
+            "xmin": 517,
+            "ymin": 17,
+            "xmax": 622,
+            "ymax": 366
+        }
+    ],
+    "GX010023_frame_02187_left_jpg.rf.151c32d2a0482fb16e8bab83b56657d1.xml": [
+        {
+            "name": "person",
+            "xmin": 1,
+            "ymin": 1,
+            "xmax": 142,
+            "ymax": 372
+        },
+        {
+            "name": "person",
+            "xmin": 900,
+            "ymin": 322,
+            "xmax": 1092,
+            "ymax": 877
+        },
+        {
+            "name": "person",
+            "xmin": 530,
+            "ymin": 571,
+            "xmax": 718,
+            "ymax": 901
+        },
+        {
+            "name": "person",
+            "xmin": 1147,
+            "ymin": 404,
+            "xmax": 1284,
+            "ymax": 877
+        },
+        {
+            "name": "person",
+            "xmin": 331,
+            "ymin": 245,
+            "xmax": 479,
+            "ymax": 658
+        },
+        {
+            "name": "person",
+            "xmin": 624,
+            "ymin": 3,
+            "xmax": 728,
+            "ymax": 327
+        },
+        {
+            "name": "person",
+            "xmin": 687,
+            "ymin": 570,
+            "xmax": 881,
+            "ymax": 901
+        },
+        {
+            "name": "person",
+            "xmin": 1372,
+            "ymin": 342,
+            "xmax": 1499,
+            "ymax": 831
+        },
+        {
+            "name": "person",
+            "xmin": 1056,
+            "ymin": 317,
+            "xmax": 1190,
+            "ymax": 749
+        }
+    ],
+    "GX010023_frame_02253_left_jpg.rf.a6183da047e08699503185e049c59807.xml": [
+        {
+            "name": "person",
+            "xmin": 906,
+            "ymin": 320,
+            "xmax": 1092,
+            "ymax": 867
+        },
+        {
+            "name": "person",
+            "xmin": 520,
+            "ymin": 305,
+            "xmax": 672,
+            "ymax": 796
+        },
+        {
+            "name": "person",
+            "xmin": 1140,
+            "ymin": 405,
+            "xmax": 1280,
+            "ymax": 874
+        },
+        {
+            "name": "person",
+            "xmin": 651,
+            "ymin": 339,
+            "xmax": 813,
+            "ymax": 778
+        },
+        {
+            "name": "person",
+            "xmin": 342,
+            "ymin": 245,
+            "xmax": 478,
+            "ymax": 665
+        },
+        {
+            "name": "person",
+            "xmin": 1346,
+            "ymin": 339,
+            "xmax": 1479,
+            "ymax": 827
+        },
+        {
+            "name": "person",
+            "xmin": 1053,
+            "ymin": 315,
+            "xmax": 1191,
+            "ymax": 746
+        },
+        {
+            "name": "person",
+            "xmin": 626,
+            "ymin": 2,
+            "xmax": 726,
+            "ymax": 333
+        },
+        {
+            "name": "person",
+            "xmin": 706,
+            "ymin": 2,
+            "xmax": 806,
+            "ymax": 265
+        }
+    ],
+    "GX010023_frame_02253_right_jpg.rf.a6c9644f34ce433effb9eb7d577ef19c.xml": [
+        {
+            "name": "person",
+            "xmin": 740,
+            "ymin": 251,
+            "xmax": 896,
+            "ymax": 649
+        },
+        {
+            "name": "person",
+            "xmin": 313,
+            "ymin": 137,
+            "xmax": 439,
+            "ymax": 496
+        },
+        {
+            "name": "person",
+            "xmin": 1446,
+            "ymin": 520,
+            "xmax": 1626,
+            "ymax": 897
+        },
+        {
+            "name": "person",
+            "xmin": 884,
+            "ymin": 298,
+            "xmax": 1069,
+            "ymax": 717
+        },
+        {
+            "name": "person",
+            "xmin": 640,
+            "ymin": 187,
+            "xmax": 775,
+            "ymax": 537
+        },
+        {
+            "name": "person",
+            "xmin": 521,
+            "ymin": 114,
+            "xmax": 651,
+            "ymax": 507
+        },
+        {
+            "name": "person",
+            "xmin": 93,
+            "ymin": 92,
+            "xmax": 220,
+            "ymax": 462
+        },
+        {
+            "name": "person",
+            "xmin": 1027,
+            "ymin": 232,
+            "xmax": 1155,
+            "ymax": 617
+        },
+        {
+            "name": "person",
+            "xmin": 1,
+            "ymin": 152,
+            "xmax": 88,
+            "ymax": 569
+        }
+    ],
+    "GX010023_frame_02570_left_jpg.rf.7a1d2fc42d44db36c6f0a6e83be5a40e.xml": [
+        {
+            "name": "person",
+            "xmin": 637,
+            "ymin": 680,
+            "xmax": 851,
+            "ymax": 901
+        },
+        {
+            "name": "person",
+            "xmin": 1115,
+            "ymin": 399,
+            "xmax": 1264,
+            "ymax": 889
+        },
+        {
+            "name": "person",
+            "xmin": 871,
+            "ymin": 330,
+            "xmax": 1033,
+            "ymax": 891
+        },
+        {
+            "name": "person",
+            "xmin": 165,
+            "ymin": 223,
+            "xmax": 298,
+            "ymax": 587
+        },
+        {
+            "name": "person",
+            "xmin": 429,
+            "ymin": 389,
+            "xmax": 586,
+            "ymax": 840
+        },
+        {
+            "name": "person",
+            "xmin": 1265,
+            "ymin": 370,
+            "xmax": 1394,
+            "ymax": 856
+        },
+        {
+            "name": "person",
+            "xmin": 292,
+            "ymin": 58,
+            "xmax": 404,
+            "ymax": 411
+        },
+        {
+            "name": "person",
+            "xmin": 1371,
+            "ymin": 247,
+            "xmax": 1501,
+            "ymax": 709
+        },
+        {
+            "name": "person",
+            "xmin": 23,
+            "ymin": 519,
+            "xmax": 167,
+            "ymax": 901
+        },
+        {
+            "name": "person",
+            "xmin": 724,
+            "ymin": 1,
+            "xmax": 813,
+            "ymax": 74
+        },
+        {
+            "name": "person",
+            "xmin": 213,
+            "ymin": 475,
+            "xmax": 406,
+            "ymax": 895
+        },
+        {
+            "name": "person",
+            "xmin": 967,
+            "ymin": 317,
+            "xmax": 1144,
+            "ymax": 750
+        },
+        {
+            "name": "person",
+            "xmin": 585,
+            "ymin": 5,
+            "xmax": 707,
+            "ymax": 322
+        },
+        {
+            "name": "person",
+            "xmin": 467,
+            "ymin": 29,
+            "xmax": 586,
+            "ymax": 366
+        },
+        {
+            "name": "person",
+            "xmin": 979,
+            "ymin": 37,
+            "xmax": 1098,
+            "ymax": 338
+        },
+        {
+            "name": "person",
+            "xmin": 1103,
+            "ymin": 19,
+            "xmax": 1238,
+            "ymax": 363
+        }
+    ],
+    "GX010023_frame_02570_right_jpg.rf.8f48a2d3a78e58e5cece9f4a604c36f4.xml": [
+        {
+            "name": "person",
+            "xmin": 615,
+            "ymin": 182,
+            "xmax": 735,
+            "ymax": 552
+        },
+        {
+            "name": "person",
+            "xmin": 299,
+            "ymin": 142,
+            "xmax": 404,
+            "ymax": 507
+        },
+        {
+            "name": "person",
+            "xmin": 146,
+            "ymin": 128,
+            "xmax": 276,
+            "ymax": 557
+        },
+        {
+            "name": "person",
+            "xmin": 506,
+            "ymin": 124,
+            "xmax": 619,
+            "ymax": 521
+        }
+    ],
+    "GX010023_frame_02582_jpg.rf.e944da6041af773997e7284c46aa919a.xml": [
+        {
+            "name": "person",
+            "xmin": 1411,
+            "ymin": 294,
+            "xmax": 1554,
+            "ymax": 741
+        },
+        {
+            "name": "person",
+            "xmin": 889,
+            "ymin": 351,
+            "xmax": 1039,
+            "ymax": 891
+        },
+        {
+            "name": "person",
+            "xmin": 1119,
+            "ymin": 416,
+            "xmax": 1266,
+            "ymax": 889
+        },
+        {
+            "name": "person",
+            "xmin": 426,
+            "ymin": 406,
+            "xmax": 586,
+            "ymax": 871
+        },
+        {
+            "name": "person",
+            "xmin": 229,
+            "ymin": 471,
+            "xmax": 429,
+            "ymax": 874
+        },
+        {
+            "name": "person",
+            "xmin": 666,
+            "ymin": 601,
+            "xmax": 881,
+            "ymax": 901
+        },
+        {
+            "name": "person",
+            "xmin": 499,
+            "ymin": 629,
+            "xmax": 669,
+            "ymax": 891
+        },
+        {
+            "name": "person",
+            "xmin": 41,
+            "ymin": 466,
+            "xmax": 219,
+            "ymax": 899
+        },
+        {
+            "name": "person",
+            "xmin": 199,
+            "ymin": 184,
+            "xmax": 351,
+            "ymax": 514
+        },
+        {
+            "name": "person",
+            "xmin": 314,
+            "ymin": 96,
+            "xmax": 431,
+            "ymax": 429
+        },
+        {
+            "name": "person",
+            "xmin": 421,
+            "ymin": 1,
+            "xmax": 519,
+            "ymax": 309
+        },
+        {
+            "name": "person",
+            "xmin": 581,
+            "ymin": 1,
+            "xmax": 689,
+            "ymax": 356
+        },
+        {
+            "name": "person",
+            "xmin": 1004,
+            "ymin": 59,
+            "xmax": 1124,
+            "ymax": 374
+        },
+        {
+            "name": "person",
+            "xmin": 1154,
+            "ymin": 29,
+            "xmax": 1279,
+            "ymax": 331
+        },
+        {
+            "name": "person",
+            "xmin": 1629,
+            "ymin": 59,
+            "xmax": 1719,
+            "ymax": 404
+        },
+        {
+            "name": "person",
+            "xmin": 1734,
+            "ymin": 54,
+            "xmax": 1839,
+            "ymax": 386
+        },
+        {
+            "name": "person",
+            "xmin": 1816,
+            "ymin": 159,
+            "xmax": 1939,
+            "ymax": 546
+        },
+        {
+            "name": "person",
+            "xmin": 1909,
+            "ymin": 146,
+            "xmax": 2024,
+            "ymax": 514
+        },
+        {
+            "name": "person",
+            "xmin": 2129,
+            "ymin": 124,
+            "xmax": 2259,
+            "ymax": 481
+        },
+        {
+            "name": "person",
+            "xmin": 2259,
+            "ymin": 179,
+            "xmax": 2359,
+            "ymax": 551
+        },
+        {
+            "name": "person",
+            "xmin": 1235,
+            "ymin": 388,
+            "xmax": 1376,
+            "ymax": 846
+        }
+    ],
+    "GX010023_frame_02635_right_jpg.rf.924bd3b0a96b40ac746509209ec1d05b.xml": [
+        {
+            "name": "person",
+            "xmin": 610,
+            "ymin": 191,
+            "xmax": 734,
+            "ymax": 558
+        },
+        {
+            "name": "person",
+            "xmin": 285,
+            "ymin": 134,
+            "xmax": 400,
+            "ymax": 506
+        },
+        {
+            "name": "person",
+            "xmin": 142,
+            "ymin": 134,
+            "xmax": 269,
+            "ymax": 539
+        },
+        {
+            "name": "person",
+            "xmin": 481,
+            "ymin": 129,
+            "xmax": 593,
+            "ymax": 520
+        },
+        {
+            "name": "person",
+            "xmin": 1,
+            "ymin": 520,
+            "xmax": 109,
+            "ymax": 895
+        }
+    ],
+    "GX010023_frame_02726_right_jpg.rf.41043b7bd39cf06e23b6394f03c290cc.xml": [
+        {
+            "name": "person",
+            "xmin": 832,
+            "ymin": 599,
+            "xmax": 1109,
+            "ymax": 900
+        },
+        {
+            "name": "person",
+            "xmin": 596,
+            "ymin": 180,
+            "xmax": 726,
+            "ymax": 557
+        },
+        {
+            "name": "person",
+            "xmin": 270,
+            "ymin": 138,
+            "xmax": 394,
+            "ymax": 508
+        },
+        {
+            "name": "person",
+            "xmin": 479,
+            "ymin": 120,
+            "xmax": 611,
+            "ymax": 501
+        },
+        {
+            "name": "person",
+            "xmin": 109,
+            "ymin": 134,
+            "xmax": 227,
+            "ymax": 532
+        },
+        {
+            "name": "person",
+            "xmin": 5,
+            "ymin": 459,
+            "xmax": 176,
+            "ymax": 901
+        }
+    ],
+    "GX010023_frame_03012_right_jpg.rf.cab55a3751d78a490fd47f348660706c.xml": [
+        {
+            "name": "person",
+            "xmin": 926,
+            "ymin": 413,
+            "xmax": 1174,
+            "ymax": 880
+        },
+        {
+            "name": "person",
+            "xmin": 247,
+            "ymin": 154,
+            "xmax": 370,
+            "ymax": 511
+        },
+        {
+            "name": "person",
+            "xmin": 732,
+            "ymin": 391,
+            "xmax": 915,
+            "ymax": 840
+        },
+        {
+            "name": "person",
+            "xmin": 575,
+            "ymin": 202,
+            "xmax": 697,
+            "ymax": 565
+        },
+        {
+            "name": "person",
+            "xmin": 443,
+            "ymin": 130,
+            "xmax": 558,
+            "ymax": 541
+        },
+        {
+            "name": "person",
+            "xmin": 99,
+            "ymin": 190,
+            "xmax": 232,
+            "ymax": 608
+        }
+    ],
+    "GX010023_frame_03042_left_jpg.rf.5c9662d808f6ac6ca10932f895f1b17c.xml": [
+        {
+            "name": "person",
+            "xmin": 1308,
+            "ymin": 385,
+            "xmax": 1450,
+            "ymax": 874
+        },
+        {
+            "name": "person",
+            "xmin": 903,
+            "ymin": 350,
+            "xmax": 1068,
+            "ymax": 885
+        },
+        {
+            "name": "person",
+            "xmin": 1,
+            "ymin": 234,
+            "xmax": 114,
+            "ymax": 672
+        },
+        {
+            "name": "person",
+            "xmin": 1080,
+            "ymin": 439,
+            "xmax": 1243,
+            "ymax": 899
+        },
+        {
+            "name": "person",
+            "xmin": 1486,
+            "ymin": 545,
+            "xmax": 1618,
+            "ymax": 901
+        },
+        {
+            "name": "person",
+            "xmin": 592,
+            "ymin": 380,
+            "xmax": 719,
+            "ymax": 830
+        },
+        {
+            "name": "person",
+            "xmin": 681,
+            "ymin": 311,
+            "xmax": 822,
+            "ymax": 704
+        },
+        {
+            "name": "person",
+            "xmin": 520,
+            "ymin": 275,
+            "xmax": 658,
+            "ymax": 531
+        },
+        {
+            "name": "person",
+            "xmin": 771,
+            "ymin": 73,
+            "xmax": 883,
+            "ymax": 459
+        },
+        {
+            "name": "person",
+            "xmin": 883,
+            "ymin": 85,
+            "xmax": 992,
+            "ymax": 352
+        },
+        {
+            "name": "person",
+            "xmin": 1175,
+            "ymin": 351,
+            "xmax": 1285,
+            "ymax": 630
+        }
+    ],
+    "GX010023_frame_03051_left_jpg.rf.cfcade8e2b3ef040007423a9d02663dd.xml": [
+        {
+            "name": "person",
+            "xmin": 570,
+            "ymin": 351,
+            "xmax": 711,
+            "ymax": 739
+        },
+        {
+            "name": "person",
+            "xmin": 1,
+            "ymin": 249,
+            "xmax": 117,
+            "ymax": 685
+        },
+        {
+            "name": "person",
+            "xmin": 1526,
+            "ymin": 608,
+            "xmax": 1622,
+            "ymax": 901
+        },
+        {
+            "name": "person",
+            "xmin": 877,
+            "ymin": 355,
+            "xmax": 1048,
+            "ymax": 901
+        },
+        {
+            "name": "person",
+            "xmin": 1299,
+            "ymin": 385,
+            "xmax": 1449,
+            "ymax": 867
+        },
+        {
+            "name": "person",
+            "xmin": 787,
+            "ymin": 97,
+            "xmax": 891,
+            "ymax": 458
+        },
+        {
+            "name": "person",
+            "xmin": 685,
+            "ymin": 297,
+            "xmax": 795,
+            "ymax": 659
+        },
+        {
+            "name": "person",
+            "xmin": 361,
+            "ymin": 11,
+            "xmax": 464,
+            "ymax": 355
+        },
+        {
+            "name": "person",
+            "xmin": 581,
+            "ymin": 9,
+            "xmax": 688,
+            "ymax": 294
+        }
+    ],
+    "GX010023_frame_03075_right_jpg.rf.e9a8ac46b477937a019f4b0b84dbbf6c.xml": [
+        {
+            "name": "person",
+            "xmin": 427,
+            "ymin": 375,
+            "xmax": 621,
+            "ymax": 771
+        },
+        {
+            "name": "person",
+            "xmin": 581,
+            "ymin": 217,
+            "xmax": 717,
+            "ymax": 595
+        },
+        {
+            "name": "person",
+            "xmin": 483,
+            "ymin": 165,
+            "xmax": 590,
+            "ymax": 402
+        },
+        {
+            "name": "person",
+            "xmin": 1,
+            "ymin": 209,
+            "xmax": 128,
+            "ymax": 650
+        },
+        {
+            "name": "person",
+            "xmin": 81,
+            "ymin": 167,
+            "xmax": 184,
+            "ymax": 552
+        },
+        {
+            "name": "person",
+            "xmin": 1357,
+            "ymin": 425,
+            "xmax": 1626,
+            "ymax": 851
+        }
+    ],
+    "GX010023_frame_03126_right_jpg.rf.4af653c4f0ca664b3e924810409f0bc2.xml": [
+        {
+            "name": "person",
+            "xmin": 467,
+            "ymin": 470,
+            "xmax": 703,
+            "ymax": 901
+        },
+        {
+            "name": "person",
+            "xmin": 191,
+            "ymin": 497,
+            "xmax": 322,
+            "ymax": 758
+        },
+        {
+            "name": "person",
+            "xmin": 482,
+            "ymin": 147,
+            "xmax": 609,
+            "ymax": 503
+        },
+        {
+            "name": "person",
+            "xmin": 596,
+            "ymin": 224,
+            "xmax": 716,
+            "ymax": 592
+        },
+        {
+            "name": "person",
+            "xmin": 1133,
+            "ymin": 373,
+            "xmax": 1310,
+            "ymax": 800
+        },
+        {
+            "name": "person",
+            "xmin": 17,
+            "ymin": 355,
+            "xmax": 166,
+            "ymax": 794
+        },
+        {
+            "name": "person",
+            "xmin": 21,
+            "ymin": 143,
+            "xmax": 115,
+            "ymax": 424
+        }
+    ],
+    "GX010023_frame_03143_left_jpg.rf.8fe680f097a163cfd125e27a705cabaf.xml": [
+        {
+            "name": "person",
+            "xmin": 834,
+            "ymin": 43,
+            "xmax": 936,
+            "ymax": 353
+        },
+        {
+            "name": "person",
+            "xmin": 569,
+            "ymin": 9,
+            "xmax": 671,
+            "ymax": 355
+        },
+        {
+            "name": "person",
+            "xmin": 726,
+            "ymin": 59,
+            "xmax": 843,
+            "ymax": 410
+        },
+        {
+            "name": "person",
+            "xmin": 602,
+            "ymin": 367,
+            "xmax": 746,
+            "ymax": 874
+        },
+        {
+            "name": "person",
+            "xmin": 1080,
+            "ymin": 439,
+            "xmax": 1224,
+            "ymax": 901
+        },
+        {
+            "name": "person",
+            "xmin": 1304,
+            "ymin": 401,
+            "xmax": 1434,
+            "ymax": 895
+        },
+        {
+            "name": "person",
+            "xmin": 449,
+            "ymin": 31,
+            "xmax": 559,
+            "ymax": 377
+        },
+        {
+            "name": "person",
+            "xmin": 375,
+            "ymin": 17,
+            "xmax": 468,
+            "ymax": 373
+        },
+        {
+            "name": "person",
+            "xmin": 869,
+            "ymin": 348,
+            "xmax": 1049,
+            "ymax": 901
+        },
+        {
+            "name": "person",
+            "xmin": 756,
+            "ymin": 361,
+            "xmax": 887,
+            "ymax": 841
+        }
+    ],
+    "GX010023_frame_03153_right_jpg.rf.1262a8aab93d4443120d9f4546569d69.xml": [
+        {
+            "name": "person",
+            "xmin": 570,
+            "ymin": 229,
+            "xmax": 711,
+            "ymax": 589
+        },
+        {
+            "name": "person",
+            "xmin": 357,
+            "ymin": 343,
+            "xmax": 548,
+            "ymax": 836
+        },
+        {
+            "name": "person",
+            "xmin": 914,
+            "ymin": 385,
+            "xmax": 1116,
+            "ymax": 841
+        },
+        {
+            "name": "person",
+            "xmin": 28,
+            "ymin": 481,
+            "xmax": 151,
+            "ymax": 736
+        },
+        {
+            "name": "person",
+            "xmin": 813,
+            "ymin": 303,
+            "xmax": 984,
+            "ymax": 768
+        }
+    ],
+    "GX010023_frame_03168_left_jpg.rf.8b65798e4d5dbea1049f43da89885900.xml": [
+        {
+            "name": "person",
+            "xmin": 1211,
+            "ymin": 399,
+            "xmax": 1357,
+            "ymax": 885
+        },
+        {
+            "name": "person",
+            "xmin": 543,
+            "ymin": 8,
+            "xmax": 653,
+            "ymax": 354
+        },
+        {
+            "name": "person",
+            "xmin": 869,
+            "ymin": 346,
+            "xmax": 1021,
+            "ymax": 900
+        },
+        {
+            "name": "person",
+            "xmin": 1045,
+            "ymin": 436,
+            "xmax": 1194,
+            "ymax": 899
+        },
+        {
+            "name": "person",
+            "xmin": 774,
+            "ymin": 31,
+            "xmax": 870,
+            "ymax": 317
+        },
+        {
+            "name": "person",
+            "xmin": 617,
+            "ymin": 472,
+            "xmax": 796,
+            "ymax": 895
+        },
+        {
+            "name": "person",
+            "xmin": 354,
+            "ymin": 16,
+            "xmax": 449,
+            "ymax": 371
+        },
+        {
+            "name": "person",
+            "xmin": 430,
+            "ymin": 28,
+            "xmax": 543,
+            "ymax": 372
+        },
+        {
+            "name": "person",
+            "xmin": 1435,
+            "ymin": 311,
+            "xmax": 1589,
+            "ymax": 739
+        },
+        {
+            "name": "person",
+            "xmin": 1339,
+            "ymin": 175,
+            "xmax": 1469,
+            "ymax": 560
+        },
+        {
+            "name": "person",
+            "xmin": 967,
+            "ymin": 195,
+            "xmax": 1131,
+            "ymax": 445
+        },
+        {
+            "name": "person",
+            "xmin": 1397,
+            "ymin": 89,
+            "xmax": 1510,
+            "ymax": 355
+        }
+    ],
+    "GX010023_frame_03185_right_jpg.rf.04e8b69d87be5578ac98923d99269b4a.xml": [
+        {
+            "name": "person",
+            "xmin": 598,
+            "ymin": 463,
+            "xmax": 813,
+            "ymax": 901
+        },
+        {
+            "name": "person",
+            "xmin": 240,
+            "ymin": 255,
+            "xmax": 405,
+            "ymax": 676
+        },
+        {
+            "name": "person",
+            "xmin": 1331,
+            "ymin": 356,
+            "xmax": 1562,
+            "ymax": 831
+        },
+        {
+            "name": "person",
+            "xmin": 436,
+            "ymin": 157,
+            "xmax": 557,
+            "ymax": 545
+        },
+        {
+            "name": "person",
+            "xmin": 516,
+            "ymin": 398,
+            "xmax": 677,
+            "ymax": 857
+        },
+        {
+            "name": "person",
+            "xmin": 550,
+            "ymin": 225,
+            "xmax": 645,
+            "ymax": 442
+        }
+    ],
+    "GX010023_frame_03208_left_jpg.rf.3ca0efbec40f9fd896aeff215776737b.xml": [
+        {
+            "name": "person",
+            "xmin": 397,
+            "ymin": 542,
+            "xmax": 625,
+            "ymax": 895
+        },
+        {
+            "name": "person",
+            "xmin": 495,
+            "ymin": 19,
+            "xmax": 616,
+            "ymax": 370
+        },
+        {
+            "name": "person",
+            "xmin": 674,
+            "ymin": 713,
+            "xmax": 861,
+            "ymax": 900
+        },
+        {
+            "name": "person",
+            "xmin": 226,
+            "ymin": 544,
+            "xmax": 401,
+            "ymax": 894
+        },
+        {
+            "name": "person",
+            "xmin": 308,
+            "ymin": 36,
+            "xmax": 413,
+            "ymax": 381
+        },
+        {
+            "name": "person",
+            "xmin": 1020,
+            "ymin": 440,
+            "xmax": 1173,
+            "ymax": 901
+        },
+        {
+            "name": "person",
+            "xmin": 27,
+            "ymin": 544,
+            "xmax": 214,
+            "ymax": 901
+        },
+        {
+            "name": "person",
+            "xmin": 388,
+            "ymin": 57,
+            "xmax": 504,
+            "ymax": 386
+        },
+        {
+            "name": "person",
+            "xmin": 1172,
+            "ymin": 403,
+            "xmax": 1301,
+            "ymax": 901
+        },
+        {
+            "name": "person",
+            "xmin": 828,
+            "ymin": 373,
+            "xmax": 1006,
+            "ymax": 837
+        },
+        {
+            "name": "person",
+            "xmin": 586,
+            "ymin": 1,
+            "xmax": 710,
+            "ymax": 337
+        }
+    ],
+    "GX010023_frame_03281_left_jpg.rf.bf51f6cd54cf9585e0acb7bf4c0d6a55.xml": [
+        {
+            "name": "person",
+            "xmin": 173,
+            "ymin": 343,
+            "xmax": 403,
+            "ymax": 778
+        },
+        {
+            "name": "person",
+            "xmin": 784,
+            "ymin": 393,
+            "xmax": 992,
+            "ymax": 901
+        },
+        {
+            "name": "person",
+            "xmin": 481,
+            "ymin": 44,
+            "xmax": 606,
+            "ymax": 393
+        },
+        {
+            "name": "person",
+            "xmin": 371,
+            "ymin": 64,
+            "xmax": 498,
+            "ymax": 412
+        },
+        {
+            "name": "person",
+            "xmin": 43,
+            "ymin": 315,
+            "xmax": 217,
+            "ymax": 773
+        },
+        {
+            "name": "person",
+            "xmin": 1240,
+            "ymin": 189,
+            "xmax": 1363,
+            "ymax": 554
+        },
+        {
+            "name": "person",
+            "xmin": 1126,
+            "ymin": 646,
+            "xmax": 1289,
+            "ymax": 901
+        },
+        {
+            "name": "person",
+            "xmin": 5,
+            "ymin": 306,
+            "xmax": 107,
+            "ymax": 758
+        },
+        {
+            "name": "person",
+            "xmin": 1109,
+            "ymin": 379,
+            "xmax": 1206,
+            "ymax": 546
+        },
+        {
+            "name": "person",
+            "xmin": 1183,
+            "ymin": 401,
+            "xmax": 1290,
+            "ymax": 694
+        },
+        {
+            "name": "person",
+            "xmin": 933,
+            "ymin": 379,
+            "xmax": 1056,
+            "ymax": 786
+        },
+        {
+            "name": "person",
+            "xmin": 843,
+            "ymin": 55,
+            "xmax": 939,
+            "ymax": 266
+        },
+        {
+            "name": "person",
+            "xmin": 765,
+            "ymin": 249,
+            "xmax": 898,
+            "ymax": 730
+        },
+        {
+            "name": "person",
+            "xmin": 289,
+            "ymin": 39,
+            "xmax": 390,
+            "ymax": 306
+        },
+        {
+            "name": "person",
+            "xmin": 143,
+            "ymin": 3,
+            "xmax": 264,
+            "ymax": 301
+        }
+    ],
+    "GX010023_frame_03291_right_jpg.rf.a19906fd00c6288ade45f689348c421c.xml": [
+        {
+            "name": "person",
+            "xmin": 518,
+            "ymin": 217,
+            "xmax": 644,
+            "ymax": 602
+        },
+        {
+            "name": "person",
+            "xmin": 231,
+            "ymin": 432,
+            "xmax": 375,
+            "ymax": 896
+        },
+        {
+            "name": "person",
+            "xmin": 40,
+            "ymin": 32,
+            "xmax": 189,
+            "ymax": 374
+        },
+        {
+            "name": "person",
+            "xmin": 4,
+            "ymin": 461,
+            "xmax": 106,
+            "ymax": 898
+        },
+        {
+            "name": "person",
+            "xmin": 396,
+            "ymin": 163,
+            "xmax": 517,
+            "ymax": 554
+        },
+        {
+            "name": "person",
+            "xmin": 89,
+            "ymin": 456,
+            "xmax": 256,
+            "ymax": 900
+        }
+    ],
+    "GX010023_frame_03417_right_jpg.rf.3444babb03279965969796e191cb6b4f.xml": [
+        {
+            "name": "person",
+            "xmin": 526,
+            "ymin": 226,
+            "xmax": 660,
+            "ymax": 608
+        },
+        {
+            "name": "person",
+            "xmin": 425,
+            "ymin": 159,
+            "xmax": 550,
+            "ymax": 587
+        },
+        {
+            "name": "person",
+            "xmin": 3,
+            "ymin": 105,
+            "xmax": 114,
+            "ymax": 490
+        }
+    ],
+    "GX010023_frame_03431_right_jpg.rf.8811e49bbdc4fcbca92dcc0c4bf54f6c.xml": [
+        {
+            "name": "person",
+            "xmin": 531,
+            "ymin": 234,
+            "xmax": 667,
+            "ymax": 615
+        },
+        {
+            "name": "person",
+            "xmin": 423,
+            "ymin": 160,
+            "xmax": 561,
+            "ymax": 584
+        },
+        {
+            "name": "person",
+            "xmin": 1,
+            "ymin": 101,
+            "xmax": 113,
+            "ymax": 466
+        }
+    ],
+    "GX010023_frame_03486_left_jpg.rf.d81134591099239c772b259e9bf778b5.xml": [
+        {
+            "name": "person",
+            "xmin": 774,
+            "ymin": 384,
+            "xmax": 994,
+            "ymax": 901
+        },
+        {
+            "name": "person",
+            "xmin": 205,
+            "ymin": 264,
+            "xmax": 446,
+            "ymax": 758
+        },
+        {
+            "name": "person",
+            "xmin": 642,
+            "ymin": 170,
+            "xmax": 804,
+            "ymax": 610
+        },
+        {
+            "name": "person",
+            "xmin": 1315,
+            "ymin": 331,
+            "xmax": 1496,
+            "ymax": 822
+        },
+        {
+            "name": "person",
+            "xmin": 1018,
+            "ymin": 470,
+            "xmax": 1173,
+            "ymax": 901
+        },
+        {
+            "name": "person",
+            "xmin": 67,
+            "ymin": 250,
+            "xmax": 265,
+            "ymax": 710
+        },
+        {
+            "name": "person",
+            "xmin": 1170,
+            "ymin": 424,
+            "xmax": 1301,
+            "ymax": 901
+        },
+        {
+            "name": "person",
+            "xmin": 502,
+            "ymin": 51,
+            "xmax": 615,
+            "ymax": 397
+        },
+        {
+            "name": "person",
+            "xmin": 844,
+            "ymin": 1,
+            "xmax": 961,
+            "ymax": 286
+        },
+        {
+            "name": "person",
+            "xmin": 376,
+            "ymin": 81,
+            "xmax": 505,
+            "ymax": 420
+        }
+    ],
+    "GX010023_frame_03538_right_jpg.rf.bcbefd8e4d238f702b5fab5aaf0bf91f.xml": [
+        {
+            "name": "person",
+            "xmin": 1099,
+            "ymin": 622,
+            "xmax": 1342,
+            "ymax": 901
+        },
+        {
+            "name": "person",
+            "xmin": 206,
+            "ymin": 461,
+            "xmax": 391,
+            "ymax": 901
+        },
+        {
+            "name": "person",
+            "xmin": 97,
+            "ymin": 10,
+            "xmax": 235,
+            "ymax": 373
+        },
+        {
+            "name": "person",
+            "xmin": 548,
+            "ymin": 228,
+            "xmax": 698,
+            "ymax": 622
+        },
+        {
+            "name": "person",
+            "xmin": 384,
+            "ymin": 314,
+            "xmax": 532,
+            "ymax": 787
+        },
+        {
+            "name": "person",
+            "xmin": 1254,
+            "ymin": 761,
+            "xmax": 1497,
+            "ymax": 898
+        },
+        {
+            "name": "person",
+            "xmin": 751,
+            "ymin": 465,
+            "xmax": 953,
+            "ymax": 842
+        },
+        {
+            "name": "person",
+            "xmin": 731,
+            "ymin": 285,
+            "xmax": 888,
+            "ymax": 706
+        },
+        {
+            "name": "person",
+            "xmin": 603,
+            "ymin": 165,
+            "xmax": 710,
+            "ymax": 547
+        }
+    ],
+    "GX010023_frame_03581_right_jpg.rf.6b55a11ab1c6117aa5133fbf40921e57.xml": [
+        {
+            "name": "person",
+            "xmin": 185,
+            "ymin": 371,
+            "xmax": 362,
+            "ymax": 793
+        },
+        {
+            "name": "person",
+            "xmin": 99,
+            "ymin": 20,
+            "xmax": 241,
+            "ymax": 372
+        },
+        {
+            "name": "person",
+            "xmin": 1418,
+            "ymin": 552,
+            "xmax": 1617,
+            "ymax": 895
+        },
+        {
+            "name": "person",
+            "xmin": 547,
+            "ymin": 251,
+            "xmax": 678,
+            "ymax": 605
+        },
+        {
+            "name": "person",
+            "xmin": 1115,
+            "ymin": 493,
+            "xmax": 1254,
+            "ymax": 901
+        },
+        {
+            "name": "person",
+            "xmin": 1265,
+            "ymin": 409,
+            "xmax": 1462,
+            "ymax": 839
+        },
+        {
+            "name": "person",
+            "xmin": 595,
+            "ymin": 159,
+            "xmax": 720,
+            "ymax": 445
+        }
+    ],
+    "GX010023_frame_03822_left_jpg.rf.b776a66b50a88968e5e24273adae039a.xml": [
+        {
+            "name": "person",
+            "xmin": 843,
+            "ymin": 384,
+            "xmax": 1018,
+            "ymax": 901
+        },
+        {
+            "name": "person",
+            "xmin": 95,
+            "ymin": 4,
+            "xmax": 217,
+            "ymax": 262
+        },
+        {
+            "name": "person",
+            "xmin": 715,
+            "ymin": 1,
+            "xmax": 818,
+            "ymax": 218
+        },
+        {
+            "name": "person",
+            "xmin": 1188,
+            "ymin": 423,
+            "xmax": 1324,
+            "ymax": 901
+        },
+        {
+            "name": "person",
+            "xmin": 1042,
+            "ymin": 489,
+            "xmax": 1192,
+            "ymax": 901
+        },
+        {
+            "name": "person",
+            "xmin": 517,
+            "ymin": 58,
+            "xmax": 623,
+            "ymax": 412
+        },
+        {
+            "name": "person",
+            "xmin": 333,
+            "ymin": 61,
+            "xmax": 420,
+            "ymax": 427
+        }
+    ],
+    "GX010023_frame_03885_left_jpg.rf.bb3c7a29103e634e0761d665ac5425f2.xml": [
+        {
+            "name": "person",
+            "xmin": 133,
+            "ymin": 595,
+            "xmax": 391,
+            "ymax": 901
+        },
+        {
+            "name": "person",
+            "xmin": 857,
+            "ymin": 379,
+            "xmax": 1019,
+            "ymax": 900
+        },
+        {
+            "name": "person",
+            "xmin": 516,
+            "ymin": 53,
+            "xmax": 623,
+            "ymax": 398
+        },
+        {
+            "name": "person",
+            "xmin": 1203,
+            "ymin": 414,
+            "xmax": 1329,
+            "ymax": 901
+        },
+        {
+            "name": "person",
+            "xmin": 1047,
+            "ymin": 482,
+            "xmax": 1193,
+            "ymax": 896
+        },
+        {
+            "name": "person",
+            "xmin": 328,
+            "ymin": 55,
+            "xmax": 424,
+            "ymax": 418
+        },
+        {
+            "name": "person",
+            "xmin": 421,
+            "ymin": 79,
+            "xmax": 533,
+            "ymax": 430
+        },
+        {
+            "name": "person",
+            "xmin": 1,
+            "ymin": 1,
+            "xmax": 90,
+            "ymax": 192
+        },
+        {
+            "name": "person",
+            "xmin": 133,
+            "ymin": 595,
+            "xmax": 391,
+            "ymax": 901
+        },
+        {
+            "name": "person",
+            "xmin": 857,
+            "ymin": 379,
+            "xmax": 1019,
+            "ymax": 900
+        },
+        {
+            "name": "person",
+            "xmin": 516,
+            "ymin": 53,
+            "xmax": 623,
+            "ymax": 398
+        },
+        {
+            "name": "person",
+            "xmin": 1203,
+            "ymin": 414,
+            "xmax": 1329,
+            "ymax": 901
+        },
+        {
+            "name": "person",
+            "xmin": 1047,
+            "ymin": 482,
+            "xmax": 1193,
+            "ymax": 896
+        },
+        {
+            "name": "person",
+            "xmin": 328,
+            "ymin": 55,
+            "xmax": 424,
+            "ymax": 418
+        },
+        {
+            "name": "person",
+            "xmin": 421,
+            "ymin": 79,
+            "xmax": 533,
+            "ymax": 430
+        },
+        {
+            "name": "person",
+            "xmin": 1,
+            "ymin": 1,
+            "xmax": 90,
+            "ymax": 192
+        }
+    ],
+    "GX010023_frame_04135_left_jpg.rf.7cc2f92bb09b96a143f05905bd902bdc.xml": [
+        {
+            "name": "person",
+            "xmin": 5,
+            "ymin": 756,
+            "xmax": 262,
+            "ymax": 898
+        },
+        {
+            "name": "person",
+            "xmin": 462,
+            "ymin": 404,
+            "xmax": 642,
+            "ymax": 901
+        },
+        {
+            "name": "person",
+            "xmin": 94,
+            "ymin": 165,
+            "xmax": 258,
+            "ymax": 548
+        },
+        {
+            "name": "person",
+            "xmin": 876,
+            "ymin": 363,
+            "xmax": 1033,
+            "ymax": 900
+        },
+        {
+            "name": "person",
+            "xmin": 525,
+            "ymin": 33,
+            "xmax": 628,
+            "ymax": 382
+        },
+        {
+            "name": "person",
+            "xmin": 1218,
+            "ymin": 398,
+            "xmax": 1335,
+            "ymax": 900
+        },
+        {
+            "name": "person",
+            "xmin": 1051,
+            "ymin": 462,
+            "xmax": 1195,
+            "ymax": 896
+        },
+        {
+            "name": "person",
+            "xmin": 331,
+            "ymin": 35,
+            "xmax": 433,
+            "ymax": 395
+        },
+        {
+            "name": "person",
+            "xmin": 1284,
+            "ymin": 91,
+            "xmax": 1393,
+            "ymax": 502
+        },
+        {
+            "name": "person",
+            "xmin": 770,
+            "ymin": 121,
+            "xmax": 899,
+            "ymax": 483
+        }
+    ],
+    "GX010023_frame_04135_right_jpg.rf.978ea44241a7008f5cac53a890585c08.xml": [
+        {
+            "name": "person",
+            "xmin": 612,
+            "ymin": 315,
+            "xmax": 821,
+            "ymax": 716
+        },
+        {
+            "name": "person",
+            "xmin": 141,
+            "ymin": 103,
+            "xmax": 265,
+            "ymax": 406
+        },
+        {
+            "name": "person",
+            "xmin": 255,
+            "ymin": 216,
+            "xmax": 348,
+            "ymax": 418
+        },
+        {
+            "name": "person",
+            "xmin": 1267,
+            "ymin": 281,
+            "xmax": 1412,
+            "ymax": 666
+        },
+        {
+            "name": "person",
+            "xmin": 1169,
+            "ymin": 193,
+            "xmax": 1286,
+            "ymax": 598
+        }
+    ],
+    "GX010023_frame_04170_left_jpg.rf.5cb839b278057ea0979ade240b189034.xml": [
+        {
+            "name": "person",
+            "xmin": 406,
+            "ymin": 609,
+            "xmax": 616,
+            "ymax": 901
+        },
+        {
+            "name": "person",
+            "xmin": 76,
+            "ymin": 95,
+            "xmax": 222,
+            "ymax": 451
+        },
+        {
+            "name": "person",
+            "xmin": 706,
+            "ymin": 243,
+            "xmax": 860,
+            "ymax": 680
+        },
+        {
+            "name": "person",
+            "xmin": 531,
+            "ymin": 46,
+            "xmax": 635,
+            "ymax": 392
+        },
+        {
+            "name": "person",
+            "xmin": 873,
+            "ymin": 371,
+            "xmax": 1027,
+            "ymax": 897
+        },
+        {
+            "name": "person",
+            "xmin": 338,
+            "ymin": 51,
+            "xmax": 441,
+            "ymax": 409
+        },
+        {
+            "name": "person",
+            "xmin": 1227,
+            "ymin": 416,
+            "xmax": 1342,
+            "ymax": 895
+        },
+        {
+            "name": "person",
+            "xmin": 841,
+            "ymin": 67,
+            "xmax": 960,
+            "ymax": 420
+        },
+        {
+            "name": "person",
+            "xmin": 731,
+            "ymin": 49,
+            "xmax": 856,
+            "ymax": 322
+        },
+        {
+            "name": "person",
+            "xmin": 1267,
+            "ymin": 127,
+            "xmax": 1384,
+            "ymax": 522
+        },
+        {
+            "name": "person",
+            "xmin": 1043,
+            "ymin": 489,
+            "xmax": 1214,
+            "ymax": 901
+        }
+    ],
+    "GX010023_frame_04204_jpg.rf.88fa661d0d056e1123ae1e658488a4b5.xml": [
+        {
+            "name": "person",
+            "xmin": 616,
+            "ymin": 411,
+            "xmax": 776,
+            "ymax": 901
+        },
+        {
+            "name": "person",
+            "xmin": 864,
+            "ymin": 381,
+            "xmax": 1019,
+            "ymax": 894
+        },
+        {
+            "name": "person",
+            "xmin": 1046,
+            "ymin": 501,
+            "xmax": 1209,
+            "ymax": 901
+        },
+        {
+            "name": "person",
+            "xmin": 961,
+            "ymin": 374,
+            "xmax": 1071,
+            "ymax": 836
+        },
+        {
+            "name": "person",
+            "xmin": 474,
+            "ymin": 186,
+            "xmax": 634,
+            "ymax": 564
+        },
+        {
+            "name": "person",
+            "xmin": 344,
+            "ymin": 56,
+            "xmax": 454,
+            "ymax": 424
+        },
+        {
+            "name": "person",
+            "xmin": 51,
+            "ymin": 36,
+            "xmax": 214,
+            "ymax": 349
+        },
+        {
+            "name": "person",
+            "xmin": 516,
+            "ymin": 51,
+            "xmax": 634,
+            "ymax": 231
+        },
+        {
+            "name": "person",
+            "xmin": 651,
+            "ymin": 189,
+            "xmax": 789,
+            "ymax": 489
+        },
+        {
+            "name": "person",
+            "xmin": 796,
+            "ymin": 189,
+            "xmax": 924,
+            "ymax": 546
+        },
+        {
+            "name": "person",
+            "xmin": 1279,
+            "ymin": 149,
+            "xmax": 1399,
+            "ymax": 519
+        },
+        {
+            "name": "person",
+            "xmin": 1196,
+            "ymin": 434,
+            "xmax": 1356,
+            "ymax": 901
+        },
+        {
+            "name": "person",
+            "xmin": 1611,
+            "ymin": 181,
+            "xmax": 1769,
+            "ymax": 569
+        },
+        {
+            "name": "person",
+            "xmin": 1871,
+            "ymin": 81,
+            "xmax": 2009,
+            "ymax": 384
+        },
+        {
+            "name": "person",
+            "xmin": 1769,
+            "ymin": 26,
+            "xmax": 1876,
+            "ymax": 331
+        },
+        {
+            "name": "person",
+            "xmin": 1584,
+            "ymin": 6,
+            "xmax": 1676,
+            "ymax": 281
+        },
+        {
+            "name": "person",
+            "xmin": 1499,
+            "ymin": 11,
+            "xmax": 1586,
+            "ymax": 274
+        },
+        {
+            "name": "person",
+            "xmin": 1399,
+            "ymin": 1,
+            "xmax": 1504,
+            "ymax": 316
+        },
+        {
+            "name": "person",
+            "xmin": 3131,
+            "ymin": 379,
+            "xmax": 3246,
+            "ymax": 784
+        },
+        {
+            "name": "person",
+            "xmin": 2871,
+            "ymin": 541,
+            "xmax": 3074,
+            "ymax": 724
+        }
+    ],
+    "GX010023_frame_04238_right_jpg.rf.ead86b0fd895565b790154ed7f4c4664.xml": [
+        {
+            "name": "person",
+            "xmin": 1190,
+            "ymin": 377,
+            "xmax": 1399,
+            "ymax": 787
+        },
+        {
+            "name": "person",
+            "xmin": 263,
+            "ymin": 79,
+            "xmax": 374,
+            "ymax": 382
+        },
+        {
+            "name": "person",
+            "xmin": 115,
+            "ymin": 25,
+            "xmax": 245,
+            "ymax": 349
+        }
+    ],
+    "GX010023_frame_04625_jpg.rf.c28e7c54bff400936a8a6c01e76e051f.xml": [
+        {
+            "name": "person",
+            "xmin": 764,
+            "ymin": 196,
+            "xmax": 889,
+            "ymax": 541
+        },
+        {
+            "name": "person",
+            "xmin": 294,
+            "ymin": 229,
+            "xmax": 439,
+            "ymax": 646
+        },
+        {
+            "name": "person",
+            "xmin": 424,
+            "ymin": 254,
+            "xmax": 561,
+            "ymax": 611
+        },
+        {
+            "name": "person",
+            "xmin": 1666,
+            "ymin": 181,
+            "xmax": 1789,
+            "ymax": 526
+        },
+        {
+            "name": "person",
+            "xmin": 2686,
+            "ymin": 296,
+            "xmax": 2851,
+            "ymax": 754
+        },
+        {
+            "name": "person",
+            "xmin": 1208,
+            "ymin": 398,
+            "xmax": 1331,
+            "ymax": 901
+        },
+        {
+            "name": "person",
+            "xmin": 1138,
+            "ymin": 395,
+            "xmax": 1235,
+            "ymax": 614
+        },
+        {
+            "name": "person",
+            "xmin": 1038,
+            "ymin": 495,
+            "xmax": 1192,
+            "ymax": 901
+        },
+        {
+            "name": "person",
+            "xmin": 945,
+            "ymin": 365,
+            "xmax": 1083,
+            "ymax": 795
+        },
+        {
+            "name": "person",
+            "xmin": 822,
+            "ymin": 362,
+            "xmax": 992,
+            "ymax": 886
+        }
+    ],
+    "GX010023_frame_04960_right_jpg.rf.c2022846b1e048b6169ee9592a47f69e.xml": [
+        {
+            "name": "person",
+            "xmin": 591,
+            "ymin": 386,
+            "xmax": 757,
+            "ymax": 901
+        },
+        {
+            "name": "person",
+            "xmin": 12,
+            "ymin": 316,
+            "xmax": 149,
+            "ymax": 803
+        },
+        {
+            "name": "person",
+            "xmin": 791,
+            "ymin": 205,
+            "xmax": 919,
+            "ymax": 585
+        },
+        {
+            "name": "person",
+            "xmin": 126,
+            "ymin": 436,
+            "xmax": 222,
+            "ymax": 671
+        }
+    ],
+    "GX010023_frame_04965_left_jpg.rf.51414efc068df04098ada4b3708858f9.xml": [
+        {
+            "name": "person",
+            "xmin": 536,
+            "ymin": 20,
+            "xmax": 650,
+            "ymax": 372
+        },
+        {
+            "name": "person",
+            "xmin": 790,
+            "ymin": 100,
+            "xmax": 958,
+            "ymax": 460
+        },
+        {
+            "name": "person",
+            "xmin": 889,
+            "ymin": 409,
+            "xmax": 1072,
+            "ymax": 901
+        },
+        {
+            "name": "person",
+            "xmin": 1055,
+            "ymin": 453,
+            "xmax": 1238,
+            "ymax": 901
+        },
+        {
+            "name": "person",
+            "xmin": 1256,
+            "ymin": 422,
+            "xmax": 1429,
+            "ymax": 901
+        },
+        {
+            "name": "person",
+            "xmin": 1440,
+            "ymin": 409,
+            "xmax": 1616,
+            "ymax": 896
+        },
+        {
+            "name": "person",
+            "xmin": 72,
+            "ymin": 50,
+            "xmax": 251,
+            "ymax": 465
+        },
+        {
+            "name": "person",
+            "xmin": 355,
+            "ymin": 42,
+            "xmax": 453,
+            "ymax": 394
+        },
+        {
+            "name": "person",
+            "xmin": 429,
+            "ymin": 64,
+            "xmax": 541,
+            "ymax": 405
+        },
+        {
+            "name": "person",
+            "xmin": 925,
+            "ymin": 339,
+            "xmax": 1078,
+            "ymax": 773
+        }
+    ],
+    "GX010023_frame_05357_left_jpg.rf.402f6b21dfd1d307b803259ebee2b3ed.xml": [
+        {
+            "name": "person",
+            "xmin": 346,
+            "ymin": 505,
+            "xmax": 574,
+            "ymax": 900
+        },
+        {
+            "name": "person",
+            "xmin": 1056,
+            "ymin": 390,
+            "xmax": 1230,
+            "ymax": 882
+        },
+        {
+            "name": "person",
+            "xmin": 1179,
+            "ymin": 333,
+            "xmax": 1340,
+            "ymax": 840
+        },
+        {
+            "name": "person",
+            "xmin": 6,
+            "ymin": 579,
+            "xmax": 133,
+            "ymax": 900
+        },
+        {
+            "name": "person",
+            "xmin": 559,
+            "ymin": 1,
+            "xmax": 710,
+            "ymax": 277
+        },
+        {
+            "name": "person",
+            "xmin": 685,
+            "ymin": 176,
+            "xmax": 832,
+            "ymax": 554
+        },
+        {
+            "name": "person",
+            "xmin": 194,
+            "ymin": 506,
+            "xmax": 402,
+            "ymax": 897
+        }
+    ],
+    "GX010023_frame_05385_left_jpg.rf.407e563b6d03c27ae079287195defdfc.xml": [
+        {
+            "name": "person",
+            "xmin": 116,
+            "ymin": 654,
+            "xmax": 340,
+            "ymax": 901
+        },
+        {
+            "name": "person",
+            "xmin": 586,
+            "ymin": 2,
+            "xmax": 728,
+            "ymax": 239
+        },
+        {
+            "name": "person",
+            "xmin": 287,
+            "ymin": 635,
+            "xmax": 535,
+            "ymax": 901
+        },
+        {
+            "name": "person",
+            "xmin": 1062,
+            "ymin": 397,
+            "xmax": 1238,
+            "ymax": 887
+        },
+        {
+            "name": "person",
+            "xmin": 1187,
+            "ymin": 324,
+            "xmax": 1351,
+            "ymax": 836
+        },
+        {
+            "name": "person",
+            "xmin": 866,
+            "ymin": 308,
+            "xmax": 1058,
+            "ymax": 869
+        },
+        {
+            "name": "person",
+            "xmin": 1274,
+            "ymin": 30,
+            "xmax": 1453,
+            "ymax": 452
+        }
+    ],
+    "GX010023_frame_05963_right_jpg.rf.1e2f41c50a0844b67c07380e516cdcf3.xml": [
+        {
+            "name": "person",
+            "xmin": 446,
+            "ymin": 583,
+            "xmax": 613,
+            "ymax": 899
+        },
+        {
+            "name": "person",
+            "xmin": 80,
+            "ymin": 517,
+            "xmax": 330,
+            "ymax": 901
+        },
+        {
+            "name": "person",
+            "xmin": 1383,
+            "ymin": 403,
+            "xmax": 1625,
+            "ymax": 901
+        },
+        {
+            "name": "person",
+            "xmin": 752,
+            "ymin": 104,
+            "xmax": 920,
+            "ymax": 488
+        },
+        {
+            "name": "person",
+            "xmin": 481,
+            "ymin": 207,
+            "xmax": 703,
+            "ymax": 605
+        },
+        {
+            "name": "person",
+            "xmin": 643,
+            "ymin": 152,
+            "xmax": 833,
+            "ymax": 586
+        },
+        {
+            "name": "person",
+            "xmin": 1163,
+            "ymin": 182,
+            "xmax": 1335,
+            "ymax": 581
+        }
+    ],
+    "GX010023_frame_06926_left_jpg.rf.1443010d9b2bdaf31145f51d52b6352f.xml": [
+        {
+            "name": "person",
+            "xmin": 355,
+            "ymin": 232,
+            "xmax": 552,
+            "ymax": 701
+        },
+        {
+            "name": "person",
+            "xmin": 180,
+            "ymin": 212,
+            "xmax": 389,
+            "ymax": 686
+        },
+        {
+            "name": "person",
+            "xmin": 993,
+            "ymin": 501,
+            "xmax": 1185,
+            "ymax": 897
+        },
+        {
+            "name": "person",
+            "xmin": 809,
+            "ymin": 288,
+            "xmax": 994,
+            "ymax": 744
+        },
+        {
+            "name": "person",
+            "xmin": 669,
+            "ymin": 285,
+            "xmax": 870,
+            "ymax": 857
+        },
+        {
+            "name": "person",
+            "xmin": 1168,
+            "ymin": 470,
+            "xmax": 1339,
+            "ymax": 900
+        },
+        {
+            "name": "person",
+            "xmin": 624,
+            "ymin": 6,
+            "xmax": 763,
+            "ymax": 281
+        },
+        {
+            "name": "person",
+            "xmin": 1482,
+            "ymin": 235,
+            "xmax": 1607,
+            "ymax": 741
+        },
+        {
+            "name": "person",
+            "xmin": 1311,
+            "ymin": 169,
+            "xmax": 1467,
+            "ymax": 683
+        }
+    ],
+    "GX010023_frame_06926_right_jpg.rf.0534a6a4c1804124773e2fc7c99a914e.xml": [
+        {
+            "name": "person",
+            "xmin": 357,
+            "ymin": 722,
+            "xmax": 603,
+            "ymax": 900
+        },
+        {
+            "name": "person",
+            "xmin": 1187,
+            "ymin": 151,
+            "xmax": 1378,
+            "ymax": 566
+        },
+        {
+            "name": "person",
+            "xmin": 1315,
+            "ymin": 213,
+            "xmax": 1544,
+            "ymax": 640
+        }
+    ],
+    "GX010023_frame_07110_jpg.rf.c3b94a9e48fa0b2f286e754ee6604531.xml": [
+        {
+            "name": "person",
+            "xmin": 1479,
+            "ymin": 174,
+            "xmax": 1659,
+            "ymax": 616
+        },
+        {
+            "name": "person",
+            "xmin": 741,
+            "ymin": 354,
+            "xmax": 894,
+            "ymax": 876
+        },
+        {
+            "name": "person",
+            "xmin": 201,
+            "ymin": 189,
+            "xmax": 386,
+            "ymax": 691
+        },
+        {
+            "name": "person",
+            "xmin": 16,
+            "ymin": 46,
+            "xmax": 169,
+            "ymax": 431
+        },
+        {
+            "name": "person",
+            "xmin": 539,
+            "ymin": 14,
+            "xmax": 654,
+            "ymax": 304
+        },
+        {
+            "name": "person",
+            "xmin": 416,
+            "ymin": 1,
+            "xmax": 521,
+            "ymax": 341
+        },
+        {
+            "name": "person",
+            "xmin": 329,
+            "ymin": 626,
+            "xmax": 561,
+            "ymax": 901
+        },
+        {
+            "name": "person",
+            "xmin": 1196,
+            "ymin": 516,
+            "xmax": 1359,
+            "ymax": 899
+        },
+        {
+            "name": "person",
+            "xmin": 1029,
+            "ymin": 476,
+            "xmax": 1186,
+            "ymax": 846
+        },
+        {
+            "name": "person",
+            "xmin": 1001,
+            "ymin": 299,
+            "xmax": 1124,
+            "ymax": 594
+        },
+        {
+            "name": "person",
+            "xmin": 841,
+            "ymin": 304,
+            "xmax": 994,
+            "ymax": 751
+        },
+        {
+            "name": "person",
+            "xmin": 876,
+            "ymin": 1,
+            "xmax": 1031,
+            "ymax": 211
+        },
+        {
+            "name": "person",
+            "xmin": 1355,
+            "ymin": 115,
+            "xmax": 1488,
+            "ymax": 529
+        }
+    ],
+    "GX010023_frame_07144_left_jpg.rf.0cfbd0877e515c19d1808e646f8c651a.xml": [
+        {
+            "name": "person",
+            "xmin": 461,
+            "ymin": 90,
+            "xmax": 623,
+            "ymax": 459
+        },
+        {
+            "name": "person",
+            "xmin": 1470,
+            "ymin": 2,
+            "xmax": 1602,
+            "ymax": 262
+        },
+        {
+            "name": "person",
+            "xmin": 717,
+            "ymin": 325,
+            "xmax": 934,
+            "ymax": 865
+        },
+        {
+            "name": "person",
+            "xmin": 214,
+            "ymin": 86,
+            "xmax": 386,
+            "ymax": 526
+        },
+        {
+            "name": "person",
+            "xmin": 6,
+            "ymin": 156,
+            "xmax": 163,
+            "ymax": 629
+        },
+        {
+            "name": "person",
+            "xmin": 1137,
+            "ymin": 515,
+            "xmax": 1335,
+            "ymax": 897
+        },
+        {
+            "name": "person",
+            "xmin": 1009,
+            "ymin": 314,
+            "xmax": 1139,
+            "ymax": 762
+        },
+        {
+            "name": "person",
+            "xmin": 841,
+            "ymin": 300,
+            "xmax": 992,
+            "ymax": 749
+        },
+        {
+            "name": "person",
+            "xmin": 1059,
+            "ymin": 456,
+            "xmax": 1227,
+            "ymax": 805
+        },
+        {
+            "name": "person",
+            "xmin": 397,
+            "ymin": 16,
+            "xmax": 522,
+            "ymax": 413
+        }
+    ],
+    "GX010023_frame_07616_right_jpg.rf.4211092d01ebf43d2de59752e45a522c.xml": [
+        {
+            "name": "person",
+            "xmin": 163,
+            "ymin": 387,
+            "xmax": 336,
+            "ymax": 830
+        },
+        {
+            "name": "person",
+            "xmin": 1216,
+            "ymin": 688,
+            "xmax": 1488,
+            "ymax": 900
+        },
+        {
+            "name": "person",
+            "xmin": 1,
+            "ymin": 332,
+            "xmax": 146,
+            "ymax": 860
+        },
+        {
+            "name": "person",
+            "xmin": 971,
+            "ymin": 328,
+            "xmax": 1127,
+            "ymax": 631
+        },
+        {
+            "name": "person",
+            "xmin": 979,
+            "ymin": 552,
+            "xmax": 1228,
+            "ymax": 901
+        },
+        {
+            "name": "person",
+            "xmin": 19,
+            "ymin": 102,
+            "xmax": 183,
+            "ymax": 424
+        }
+    ],
+    "GX010023_frame_07632_right_jpg.rf.dcd0e384e172a4a11f37483e4645629c.xml": [
+        {
+            "name": "person",
+            "xmin": 1042,
+            "ymin": 521,
+            "xmax": 1268,
+            "ymax": 898
+        },
+        {
+            "name": "person",
+            "xmin": 1247,
+            "ymin": 641,
+            "xmax": 1507,
+            "ymax": 897
+        },
+        {
+            "name": "person",
+            "xmin": 221,
+            "ymin": 465,
+            "xmax": 402,
+            "ymax": 898
+        },
+        {
+            "name": "person",
+            "xmin": 1,
+            "ymin": 378,
+            "xmax": 165,
+            "ymax": 879
+        },
+        {
+            "name": "person",
+            "xmin": 1143,
+            "ymin": 365,
+            "xmax": 1293,
+            "ymax": 731
+        },
+        {
+            "name": "person",
+            "xmin": 149,
+            "ymin": 131,
+            "xmax": 282,
+            "ymax": 557
+        }
+    ],
+    "GX010023_frame_07740_right_jpg.rf.58068ef7a86fdb78abc0fe8443554de1.xml": [
+        {
+            "name": "person",
+            "xmin": 1388,
+            "ymin": 496,
+            "xmax": 1622,
+            "ymax": 899
+        },
+        {
+            "name": "person",
+            "xmin": 1263,
+            "ymin": 469,
+            "xmax": 1457,
+            "ymax": 901
+        },
+        {
+            "name": "person",
+            "xmin": 587,
+            "ymin": 37,
+            "xmax": 766,
+            "ymax": 442
+        }
+    ]
 }
