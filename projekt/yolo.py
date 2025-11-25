@@ -55,8 +55,7 @@ def test_img(img_path, model, model_name, file_name):
         boxes = firstResult.boxes
         classes = boxes.cls.cpu().numpy().astype('uint')
         class_names_array = []
-        for j in range(len(classes)):
-            classId = classes[j]
+        for classId in classes:
             className = firstResult.names[classId]
             class_names_array += [className]
     finally:
