@@ -73,6 +73,25 @@ def monitor_memory_gpu_vram(process, gpu_handle):
         
         time.sleep(0.01)
 
+def calculate_iou(box_ref, box_test):
+    xmin_ref, ymin_ref, xmax_ref, ymax_ref = box_ref
+    xmin_test, ymin_test, xmax_test, ymax_test = box_test
+    
+    max_of_xmin = max(xmin_ref, xmin_test)
+    max_of_ymin = max(ymin_ref, ymin_test)
+    min_of_xmax = min(xmax_ref, xmax_test)
+    min_of_ymax = min(ymax_ref, ymax_test)
+
+    if min_of_xmax < max_of_xmin or min_of_ymax < max_of_ymin:
+        return 0
+    
+    intersection = (min_of_xmax - max_of_xmin) * (min_of_ymax - max_of_ymin)
+    size_of_ref = (xmax_ref - xmin_ref) * (ymax_ref - ymin_ref)
+    size_of_test = (xmax_test - xmin_test) * (ymax_test - ymin_test)
+    union_of_sizes = size_of_ref + size_of_test - intersection
+
+    return intersection / union_of_sizes
+
 """
 * Check the response characteristics.
 * Check corectness of data.
