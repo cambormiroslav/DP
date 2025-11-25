@@ -50,14 +50,26 @@ def test_img(img_path, model, model_name, file_name):
         img_rgb = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
     
         results = model.predict(img_rgb)
-        firstResult = results[0]
+        first_result = results[0]
 
-        boxes = firstResult.boxes
+        boxes = first_result.boxes
+
+        #(x_min, y_min, x_max, y_max)
+        coords_array = boxes.xyxy.cpu().numpy()
         classes = boxes.cls.cpu().numpy().astype('uint')
-        class_names_array = []
-        for classId in classes:
-            className = firstResult.names[classId]
-            class_names_array += [className]
+
+        detections = []
+        for index, classId in enumerate(classes):
+            class_name = first_result.names[classId]
+            box_coord = coords_array[index]
+
+            detections.append({
+                "class_name": class_name,
+                "x_min": box_coord[0],
+                "y_min": box_coord[1],
+                "x_max": box_coord[2],
+                "y_max": box_coord[3]
+            })
     finally:
         # stop thread
         functions.monitor_data["is_running"] = False
@@ -85,7 +97,7 @@ def test_img(img_path, model, model_name, file_name):
                                        ram_usage, functions.monitor_data["peak_gpu_utilization"], total_vram_mb,
                                        0) #this information is in other file there
 
-    return {file_name: class_names_array}
+    return {file_name: detections}
 
 def get_array_of_test_names_and_paths():
     array_of_file_paths = []
