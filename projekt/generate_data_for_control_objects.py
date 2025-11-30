@@ -11,6 +11,9 @@ def generate_data_for_control_file():
     for annotation_file in sorted_annotation_files:
         print(annotation_file)
         root = ET.parse(xml_annotations_files_dir + annotation_file)
+
+        file_name_found = root.findall('filename')[0].text
+
         object_found = root.findall('object')
         for obj in object_found:
             bndbox = obj.findall('bndbox')[0]
@@ -21,8 +24,8 @@ def generate_data_for_control_file():
 
             name = obj.findall('name')[0].text
             
-            if annotation_file not in dict_for_control_file:
-                dict_for_control_file[annotation_file] = [{
+            if file_name_found not in dict_for_control_file:
+                dict_for_control_file[file_name_found] = [{
                     "name": name,
                     "xmin": xmin,
                     "ymin": ymin,
@@ -30,7 +33,7 @@ def generate_data_for_control_file():
                     "ymax": ymax
                 }]
             else:
-                dict_for_control_file[annotation_file].append({
+                dict_for_control_file[file_name_found].append({
                     "name": name,
                     "xmin": xmin,
                     "ymin": ymin,

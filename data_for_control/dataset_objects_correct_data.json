@@ -1,5 +1,5 @@
 {
-    "GX010023_frame_00007_left_jpg.rf.e95d3a2e9bcf4c9a5d5c0972ca5f245b.xml": [
+    "GX010023_frame_00007_left_jpg.rf.e95d3a2e9bcf4c9a5d5c0972ca5f245b.jpg": [
         {
             "name": "person",
             "xmin": 742,
@@ -92,7 +92,7 @@
             "ymax": 371
         }
     ],
-    "GX010023_frame_00012_left_jpg.rf.e968a0e2586734173c40fe5e22693902.xml": [
+    "GX010023_frame_00012_left_jpg.rf.e968a0e2586734173c40fe5e22693902.jpg": [
         {
             "name": "person",
             "xmin": 718,
@@ -178,7 +178,7 @@
             "ymax": 320
         }
     ],
-    "GX010023_frame_00025_right_jpg.rf.2eb59ee5acd356395e9f342689e57d79.xml": [
+    "GX010023_frame_00025_right_jpg.rf.2eb59ee5acd356395e9f342689e57d79.jpg": [
         {
             "name": "person",
             "xmin": 795,
@@ -390,7 +390,7 @@
             "ymax": 517
         }
     ],
-    "GX010023_frame_00033_left_jpg.rf.f5c9bff53ef6a2de43f158f7e725fd00.xml": [
+    "GX010023_frame_00033_left_jpg.rf.f5c9bff53ef6a2de43f158f7e725fd00.jpg": [
         {
             "name": "person",
             "xmin": 944,
@@ -469,7 +469,7 @@
             "ymax": 286
         }
     ],
-    "GX010023_frame_00041_left_jpg.rf.3957e1893834d88e7cf5348da545b572.xml": [
+    "GX010023_frame_00041_left_jpg.rf.3957e1893834d88e7cf5348da545b572.jpg": [
         {
             "name": "person",
             "xmin": 745,
@@ -541,7 +541,7 @@
             "ymax": 674
         }
     ],
-    "GX010023_frame_00046_crop_0_1_jpg.rf.8b703e18a11f6e45c482bf265d758c94.xml": [
+    "GX010023_frame_00046_crop_0_1_jpg.rf.8b703e18a11f6e45c482bf265d758c94.jpg": [
         {
             "name": "person",
             "xmin": 1,
@@ -606,7 +606,7 @@
             "ymax": 384
         }
     ],
-    "GX010023_frame_00053_left_jpg.rf.f058287a474025ca99e03f1585317df3.xml": [
+    "GX010023_frame_00053_left_jpg.rf.f058287a474025ca99e03f1585317df3.jpg": [
         {
             "name": "person",
             "xmin": 749,
@@ -664,7 +664,7 @@
             "ymax": 490
         }
     ],
-    "GX010023_frame_00055_crop_0_2_jpg.rf.97c43777ca769e8120278856b2d6de8e.xml": [
+    "GX010023_frame_00055_crop_0_2_jpg.rf.97c43777ca769e8120278856b2d6de8e.jpg": [
         {
             "name": "person",
             "xmin": 253,
@@ -701,7 +701,7 @@
             "ymax": 481
         }
     ],
-    "GX010023_frame_00059_jpg.rf.5acc691c25618b0dc676864c09fb71fd.xml": [
+    "GX010023_frame_00059_jpg.rf.5acc691c25618b0dc676864c09fb71fd.jpg": [
         {
             "name": "person",
             "xmin": 519,
@@ -745,7 +745,7 @@
             "ymax": 347
         }
     ],
-    "GX010023_frame_00077_left_jpg.rf.ff74c0844ad6956e299f495d09b0d61c.xml": [
+    "GX010023_frame_00077_left_jpg.rf.ff74c0844ad6956e299f495d09b0d61c.jpg": [
         {
             "name": "person",
             "xmin": 740,
@@ -824,7 +824,7 @@
             "ymax": 634
         }
     ],
-    "GX010023_frame_00085_right_jpg.rf.b76c395fda0c0f193d1af05e0f4191e7.xml": [
+    "GX010023_frame_00085_right_jpg.rf.b76c395fda0c0f193d1af05e0f4191e7.jpg": [
         {
             "name": "person",
             "xmin": 419,
@@ -875,7 +875,7 @@
             "ymax": 416
         }
     ],
-    "GX010023_frame_00085_right_jpg.rf.e4c468ad50e88dca25e948bf566a79f7.xml": [
+    "GX010023_frame_00085_right_jpg.rf.e4c468ad50e88dca25e948bf566a79f7.jpg": [
         {
             "name": "person",
             "xmin": 1311,
@@ -919,7 +919,7 @@
             "ymax": 418
         }
     ],
-    "GX010023_frame_00115_crop_0_2_jpg.rf.8b90268c9e77fb5dfc44b8f33e12f3c9.xml": [
+    "GX010023_frame_00115_crop_0_2_jpg.rf.8b90268c9e77fb5dfc44b8f33e12f3c9.jpg": [
         {
             "name": "person",
             "xmin": 336,
@@ -963,7 +963,7 @@
             "ymax": 413
         }
     ],
-    "GX010023_frame_00132_crop_0_0_jpg.rf.09097f07a5fccfe9d2951bc250c13279.xml": [
+    "GX010023_frame_00132_crop_0_0_jpg.rf.09097f07a5fccfe9d2951bc250c13279.jpg": [
         {
             "name": "person",
             "xmin": 7,
@@ -1007,7 +1007,7 @@
             "ymax": 298
         }
     ],
-    "GX010023_frame_00143_crop_0_1_jpg.rf.953b4092c8d8eb11c859393d8d2b8992.xml": [
+    "GX010023_frame_00143_crop_0_1_jpg.rf.953b4092c8d8eb11c859393d8d2b8992.jpg": [
         {
             "name": "person",
             "xmin": 300,
@@ -1044,7 +1044,7 @@
             "ymax": 291
         }
     ],
-    "GX010023_frame_00150_right_jpg.rf.d86381c9ca78fcdb717dbebbf4c77171.xml": [
+    "GX010023_frame_00150_right_jpg.rf.d86381c9ca78fcdb717dbebbf4c77171.jpg": [
         {
             "name": "person",
             "xmin": 121,
@@ -1102,7 +1102,7 @@
             "ymax": 411
         }
     ],
-    "GX010023_frame_00178_left_jpg.rf.cff5630b8f394ece30adb07aad35dbad.xml": [
+    "GX010023_frame_00178_left_jpg.rf.cff5630b8f394ece30adb07aad35dbad.jpg": [
         {
             "name": "person",
             "xmin": 984,
@@ -1188,7 +1188,7 @@
             "ymax": 387
         }
     ],
-    "GX010023_frame_00194_left_jpg.rf.c6ddcbd74a96304f5b3e4ed4774107fc.xml": [
+    "GX010023_frame_00194_left_jpg.rf.c6ddcbd74a96304f5b3e4ed4774107fc.jpg": [
         {
             "name": "person",
             "xmin": 1273,
@@ -1260,7 +1260,7 @@
             "ymax": 299
         }
     ],
-    "GX010023_frame_00208_right_jpg.rf.b127ae91ed1acfdb2b0571b22d258c74.xml": [
+    "GX010023_frame_00208_right_jpg.rf.b127ae91ed1acfdb2b0571b22d258c74.jpg": [
         {
             "name": "person",
             "xmin": 41,
@@ -1311,7 +1311,7 @@
             "ymax": 205
         }
     ],
-    "GX010023_frame_00290_left_jpg.rf.afab3a88b80fe815128bb4e980885cc1.xml": [
+    "GX010023_frame_00290_left_jpg.rf.afab3a88b80fe815128bb4e980885cc1.jpg": [
         {
             "name": "person",
             "xmin": 59,
@@ -1362,7 +1362,7 @@
             "ymax": 773
         }
     ],
-    "GX010023_frame_00295_right_jpg.rf.0c830db83e01e7e0a76a521460d23d59.xml": [
+    "GX010023_frame_00295_right_jpg.rf.0c830db83e01e7e0a76a521460d23d59.jpg": [
         {
             "name": "person",
             "xmin": 309,
@@ -1413,7 +1413,7 @@
             "ymax": 487
         }
     ],
-    "GX010023_frame_00316_crop_0_0_jpg.rf.46cfd9576e75813bc8802fee9727204b.xml": [
+    "GX010023_frame_00316_crop_0_0_jpg.rf.46cfd9576e75813bc8802fee9727204b.jpg": [
         {
             "name": "person",
             "xmin": 187,
@@ -1471,7 +1471,7 @@
             "ymax": 307
         }
     ],
-    "GX010023_frame_00332_right_jpg.rf.7db81233080a93724d0f99fa26e59631.xml": [
+    "GX010023_frame_00332_right_jpg.rf.7db81233080a93724d0f99fa26e59631.jpg": [
         {
             "name": "person",
             "xmin": 301,
@@ -1529,7 +1529,7 @@
             "ymax": 785
         }
     ],
-    "GX010023_frame_00371_left_jpg.rf.60aaf41bcc40d8965d479c3415e32bf6.xml": [
+    "GX010023_frame_00371_left_jpg.rf.60aaf41bcc40d8965d479c3415e32bf6.jpg": [
         {
             "name": "person",
             "xmin": 825,
@@ -1587,7 +1587,7 @@
             "ymax": 308
         }
     ],
-    "GX010023_frame_00371_right_jpg.rf.0d1bcbab044f5401ddcff4e639eac177.xml": [
+    "GX010023_frame_00371_right_jpg.rf.0d1bcbab044f5401ddcff4e639eac177.jpg": [
         {
             "name": "person",
             "xmin": 22,
@@ -1645,7 +1645,7 @@
             "ymax": 790
         }
     ],
-    "GX010023_frame_00378_crop_0_2_jpg.rf.8f5db641bff80334dc715b19ffb26169.xml": [
+    "GX010023_frame_00378_crop_0_2_jpg.rf.8f5db641bff80334dc715b19ffb26169.jpg": [
         {
             "name": "person",
             "xmin": 616,
@@ -1689,7 +1689,7 @@
             "ymax": 510
         }
     ],
-    "GX010023_frame_00380_crop_0_1_jpg.rf.643d95db1d44919a2b061395ff4ef13d.xml": [
+    "GX010023_frame_00380_crop_0_1_jpg.rf.643d95db1d44919a2b061395ff4ef13d.jpg": [
         {
             "name": "person",
             "xmin": 175,
@@ -1754,7 +1754,7 @@
             "ymax": 382
         }
     ],
-    "GX010023_frame_00581_left_jpg.rf.0209db73249c037e552b76c72ad7ecf3.xml": [
+    "GX010023_frame_00581_left_jpg.rf.0209db73249c037e552b76c72ad7ecf3.jpg": [
         {
             "name": "person",
             "xmin": 968,
@@ -1833,7 +1833,7 @@
             "ymax": 418
         }
     ],
-    "GX010023_frame_00650_right_jpg.rf.7541a1219fc489b0b52d2c8e11f0998e.xml": [
+    "GX010023_frame_00650_right_jpg.rf.7541a1219fc489b0b52d2c8e11f0998e.jpg": [
         {
             "name": "person",
             "xmin": 269,
@@ -1891,7 +1891,7 @@
             "ymax": 900
         }
     ],
-    "GX010023_frame_00716_left_jpg.rf.aaa05a56650127b3fa08291e694167f4.xml": [
+    "GX010023_frame_00716_left_jpg.rf.aaa05a56650127b3fa08291e694167f4.jpg": [
         {
             "name": "person",
             "xmin": 1149,
@@ -1998,7 +1998,7 @@
             "ymax": 326
         }
     ],
-    "GX010023_frame_00716_right_jpg.rf.545783723b245165605f08a4c33b7758.xml": [
+    "GX010023_frame_00716_right_jpg.rf.545783723b245165605f08a4c33b7758.jpg": [
         {
             "name": "person",
             "xmin": 207,
@@ -2098,7 +2098,7 @@
             "ymax": 850
         }
     ],
-    "GX010023_frame_00721_right_jpg.rf.406e7db016cde9c0892c5d7479593e4d.xml": [
+    "GX010023_frame_00721_right_jpg.rf.406e7db016cde9c0892c5d7479593e4d.jpg": [
         {
             "name": "person",
             "xmin": 1011,
@@ -2149,7 +2149,7 @@
             "ymax": 765
         }
     ],
-    "GX010023_frame_00742_left_jpg.rf.5d2a42de6c42d3a07e3ee4c7bbd23da5.xml": [
+    "GX010023_frame_00742_left_jpg.rf.5d2a42de6c42d3a07e3ee4c7bbd23da5.jpg": [
         {
             "name": "person",
             "xmin": 1142,
@@ -2256,7 +2256,7 @@
             "ymax": 507
         }
     ],
-    "GX010023_frame_00795_left_jpg.rf.e8ff7fe7fe197f2078ff0fc1862c8f07.xml": [
+    "GX010023_frame_00795_left_jpg.rf.e8ff7fe7fe197f2078ff0fc1862c8f07.jpg": [
         {
             "name": "person",
             "xmin": 172,
@@ -2363,7 +2363,7 @@
             "ymax": 901
         }
     ],
-    "GX010023_frame_00802_left_jpg.rf.1a16aa29e832839d203cd146468e5471.xml": [
+    "GX010023_frame_00802_left_jpg.rf.1a16aa29e832839d203cd146468e5471.jpg": [
         {
             "name": "person",
             "xmin": 1163,
@@ -2442,7 +2442,7 @@
             "ymax": 632
         }
     ],
-    "GX010023_frame_00807_left_jpg.rf.5bd9eb54dd2a4fa0acdda559e4540faf.xml": [
+    "GX010023_frame_00807_left_jpg.rf.5bd9eb54dd2a4fa0acdda559e4540faf.jpg": [
         {
             "name": "person",
             "xmin": 151,
@@ -2486,7 +2486,7 @@
             "ymax": 572
         }
     ],
-    "GX010023_frame_00820_left_jpg.rf.91be27989e400bcc51acf08eb7077fe3.xml": [
+    "GX010023_frame_00820_left_jpg.rf.91be27989e400bcc51acf08eb7077fe3.jpg": [
         {
             "name": "person",
             "xmin": 1168,
@@ -2558,7 +2558,7 @@
             "ymax": 488
         }
     ],
-    "GX010023_frame_00845_right_jpg.rf.7c31ddda425d2e57e90098fbbad74607.xml": [
+    "GX010023_frame_00845_right_jpg.rf.7c31ddda425d2e57e90098fbbad74607.jpg": [
         {
             "name": "person",
             "xmin": 281,
@@ -2623,7 +2623,7 @@
             "ymax": 645
         }
     ],
-    "GX010023_frame_00923_right_jpg.rf.82b40fd31a4f52c9b6cc8c4a009e37bf.xml": [
+    "GX010023_frame_00923_right_jpg.rf.82b40fd31a4f52c9b6cc8c4a009e37bf.jpg": [
         {
             "name": "person",
             "xmin": 992,
@@ -2688,7 +2688,7 @@
             "ymax": 461
         }
     ],
-    "GX010023_frame_01054_right_jpg.rf.c06a7ddd5aee7db927c1de4a3c947693.xml": [
+    "GX010023_frame_01054_right_jpg.rf.c06a7ddd5aee7db927c1de4a3c947693.jpg": [
         {
             "name": "person",
             "xmin": 74,
@@ -2718,7 +2718,7 @@
             "ymax": 395
         }
     ],
-    "GX010023_frame_01086_right_jpg.rf.ac8bafade8aaff8a3b64b8d7233cb755.xml": [
+    "GX010023_frame_01086_right_jpg.rf.ac8bafade8aaff8a3b64b8d7233cb755.jpg": [
         {
             "name": "person",
             "xmin": 67,
@@ -2769,7 +2769,7 @@
             "ymax": 413
         }
     ],
-    "GX010023_frame_01133_left_jpg.rf.b0eccf6c50fc4d6ecd68547bf77a3501.xml": [
+    "GX010023_frame_01133_left_jpg.rf.b0eccf6c50fc4d6ecd68547bf77a3501.jpg": [
         {
             "name": "person",
             "xmin": 922,
@@ -2869,7 +2869,7 @@
             "ymax": 339
         }
     ],
-    "GX010023_frame_01212_right_jpg.rf.1122110577935b6bf0d1e6bafe70e044.xml": [
+    "GX010023_frame_01212_right_jpg.rf.1122110577935b6bf0d1e6bafe70e044.jpg": [
         {
             "name": "person",
             "xmin": 112,
@@ -2913,7 +2913,7 @@
             "ymax": 901
         }
     ],
-    "GX010023_frame_01220_left_jpg.rf.e856b47afb72c3670e6ded9ad75be70e.xml": [
+    "GX010023_frame_01220_left_jpg.rf.e856b47afb72c3670e6ded9ad75be70e.jpg": [
         {
             "name": "person",
             "xmin": 1169,
@@ -2999,7 +2999,7 @@
             "ymax": 696
         }
     ],
-    "GX010023_frame_01256_left_jpg.rf.012e30fdb8b3041d05082c4879c60c58.xml": [
+    "GX010023_frame_01256_left_jpg.rf.012e30fdb8b3041d05082c4879c60c58.jpg": [
         {
             "name": "person",
             "xmin": 1155,
@@ -3064,7 +3064,7 @@
             "ymax": 481
         }
     ],
-    "GX010023_frame_01278_left_jpg.rf.5177758f19188a82cef1032714ca32df.xml": [
+    "GX010023_frame_01278_left_jpg.rf.5177758f19188a82cef1032714ca32df.jpg": [
         {
             "name": "person",
             "xmin": 544,
@@ -3220,7 +3220,7 @@
             "ymax": 250
         }
     ],
-    "GX010023_frame_01410_right_jpg.rf.5d08e6109f3ad77f423c13e6810f10b8.xml": [
+    "GX010023_frame_01410_right_jpg.rf.5d08e6109f3ad77f423c13e6810f10b8.jpg": [
         {
             "name": "person",
             "xmin": 1119,
@@ -3278,7 +3278,7 @@
             "ymax": 487
         }
     ],
-    "GX010023_frame_01422_left_jpg.rf.228f060ff55509b3f432eaa41e0b4681.xml": [
+    "GX010023_frame_01422_left_jpg.rf.228f060ff55509b3f432eaa41e0b4681.jpg": [
         {
             "name": "person",
             "xmin": 331,
@@ -3357,7 +3357,7 @@
             "ymax": 530
         }
     ],
-    "GX010023_frame_01462_left_jpg.rf.d91c78f741b890aa442a02c7b9c4f806.xml": [
+    "GX010023_frame_01462_left_jpg.rf.d91c78f741b890aa442a02c7b9c4f806.jpg": [
         {
             "name": "person",
             "xmin": 1157,
@@ -3422,7 +3422,7 @@
             "ymax": 299
         }
     ],
-    "GX010023_frame_01462_right_jpg.rf.242355e85760663f5af6dcb7e699ae68.xml": [
+    "GX010023_frame_01462_right_jpg.rf.242355e85760663f5af6dcb7e699ae68.jpg": [
         {
             "name": "person",
             "xmin": 373,
@@ -3473,7 +3473,7 @@
             "ymax": 718
         }
     ],
-    "GX010023_frame_01805_left_jpg.rf.e6582a4c33f22782627efa5f25f127c9.xml": [
+    "GX010023_frame_01805_left_jpg.rf.e6582a4c33f22782627efa5f25f127c9.jpg": [
         {
             "name": "person",
             "xmin": 512,
@@ -3573,7 +3573,7 @@
             "ymax": 337
         }
     ],
-    "GX010023_frame_01930_right_jpg.rf.752c19d5c0e54701c692290f9285167c.xml": [
+    "GX010023_frame_01930_right_jpg.rf.752c19d5c0e54701c692290f9285167c.jpg": [
         {
             "name": "person",
             "xmin": 688,
@@ -3631,7 +3631,7 @@
             "ymax": 411
         }
     ],
-    "GX010023_frame_01953_left_jpg.rf.15715221aac2cfb27cd8e8b24c96d546.xml": [
+    "GX010023_frame_01953_left_jpg.rf.15715221aac2cfb27cd8e8b24c96d546.jpg": [
         {
             "name": "person",
             "xmin": 329,
@@ -3738,7 +3738,7 @@
             "ymax": 671
         }
     ],
-    "GX010023_frame_01995_left_jpg.rf.7ff403c689b813b834b40a66366729f7.xml": [
+    "GX010023_frame_01995_left_jpg.rf.7ff403c689b813b834b40a66366729f7.jpg": [
         {
             "name": "person",
             "xmin": 328,
@@ -3845,7 +3845,7 @@
             "ymax": 728
         }
     ],
-    "GX010023_frame_02143_left_jpg.rf.c5287ad60b5a223a1e184eabeb18347d.xml": [
+    "GX010023_frame_02143_left_jpg.rf.c5287ad60b5a223a1e184eabeb18347d.jpg": [
         {
             "name": "person",
             "xmin": 140,
@@ -3917,7 +3917,7 @@
             "ymax": 366
         }
     ],
-    "GX010023_frame_02187_left_jpg.rf.151c32d2a0482fb16e8bab83b56657d1.xml": [
+    "GX010023_frame_02187_left_jpg.rf.151c32d2a0482fb16e8bab83b56657d1.jpg": [
         {
             "name": "person",
             "xmin": 1,
@@ -3982,7 +3982,7 @@
             "ymax": 749
         }
     ],
-    "GX010023_frame_02253_left_jpg.rf.a6183da047e08699503185e049c59807.xml": [
+    "GX010023_frame_02253_left_jpg.rf.a6183da047e08699503185e049c59807.jpg": [
         {
             "name": "person",
             "xmin": 906,
@@ -4047,7 +4047,7 @@
             "ymax": 265
         }
     ],
-    "GX010023_frame_02253_right_jpg.rf.a6c9644f34ce433effb9eb7d577ef19c.xml": [
+    "GX010023_frame_02253_right_jpg.rf.a6c9644f34ce433effb9eb7d577ef19c.jpg": [
         {
             "name": "person",
             "xmin": 740,
@@ -4112,7 +4112,7 @@
             "ymax": 569
         }
     ],
-    "GX010023_frame_02570_left_jpg.rf.7a1d2fc42d44db36c6f0a6e83be5a40e.xml": [
+    "GX010023_frame_02570_left_jpg.rf.7a1d2fc42d44db36c6f0a6e83be5a40e.jpg": [
         {
             "name": "person",
             "xmin": 637,
@@ -4226,7 +4226,7 @@
             "ymax": 363
         }
     ],
-    "GX010023_frame_02570_right_jpg.rf.8f48a2d3a78e58e5cece9f4a604c36f4.xml": [
+    "GX010023_frame_02570_right_jpg.rf.8f48a2d3a78e58e5cece9f4a604c36f4.jpg": [
         {
             "name": "person",
             "xmin": 615,
@@ -4256,7 +4256,7 @@
             "ymax": 521
         }
     ],
-    "GX010023_frame_02582_jpg.rf.e944da6041af773997e7284c46aa919a.xml": [
+    "GX010023_frame_02582_jpg.rf.e944da6041af773997e7284c46aa919a.jpg": [
         {
             "name": "person",
             "xmin": 1411,
@@ -4405,7 +4405,7 @@
             "ymax": 846
         }
     ],
-    "GX010023_frame_02635_right_jpg.rf.924bd3b0a96b40ac746509209ec1d05b.xml": [
+    "GX010023_frame_02635_right_jpg.rf.924bd3b0a96b40ac746509209ec1d05b.jpg": [
         {
             "name": "person",
             "xmin": 610,
@@ -4442,7 +4442,7 @@
             "ymax": 895
         }
     ],
-    "GX010023_frame_02726_right_jpg.rf.41043b7bd39cf06e23b6394f03c290cc.xml": [
+    "GX010023_frame_02726_right_jpg.rf.41043b7bd39cf06e23b6394f03c290cc.jpg": [
         {
             "name": "person",
             "xmin": 832,
@@ -4486,7 +4486,7 @@
             "ymax": 901
         }
     ],
-    "GX010023_frame_03012_right_jpg.rf.cab55a3751d78a490fd47f348660706c.xml": [
+    "GX010023_frame_03012_right_jpg.rf.cab55a3751d78a490fd47f348660706c.jpg": [
         {
             "name": "person",
             "xmin": 926,
@@ -4530,7 +4530,7 @@
             "ymax": 608
         }
     ],
-    "GX010023_frame_03042_left_jpg.rf.5c9662d808f6ac6ca10932f895f1b17c.xml": [
+    "GX010023_frame_03042_left_jpg.rf.5c9662d808f6ac6ca10932f895f1b17c.jpg": [
         {
             "name": "person",
             "xmin": 1308,
@@ -4609,7 +4609,7 @@
             "ymax": 630
         }
     ],
-    "GX010023_frame_03051_left_jpg.rf.cfcade8e2b3ef040007423a9d02663dd.xml": [
+    "GX010023_frame_03051_left_jpg.rf.cfcade8e2b3ef040007423a9d02663dd.jpg": [
         {
             "name": "person",
             "xmin": 570,
@@ -4674,7 +4674,7 @@
             "ymax": 294
         }
     ],
-    "GX010023_frame_03075_right_jpg.rf.e9a8ac46b477937a019f4b0b84dbbf6c.xml": [
+    "GX010023_frame_03075_right_jpg.rf.e9a8ac46b477937a019f4b0b84dbbf6c.jpg": [
         {
             "name": "person",
             "xmin": 427,
@@ -4718,7 +4718,7 @@
             "ymax": 851
         }
     ],
-    "GX010023_frame_03126_right_jpg.rf.4af653c4f0ca664b3e924810409f0bc2.xml": [
+    "GX010023_frame_03126_right_jpg.rf.4af653c4f0ca664b3e924810409f0bc2.jpg": [
         {
             "name": "person",
             "xmin": 467,
@@ -4769,7 +4769,7 @@
             "ymax": 424
         }
     ],
-    "GX010023_frame_03143_left_jpg.rf.8fe680f097a163cfd125e27a705cabaf.xml": [
+    "GX010023_frame_03143_left_jpg.rf.8fe680f097a163cfd125e27a705cabaf.jpg": [
         {
             "name": "person",
             "xmin": 834,
@@ -4841,7 +4841,7 @@
             "ymax": 841
         }
     ],
-    "GX010023_frame_03153_right_jpg.rf.1262a8aab93d4443120d9f4546569d69.xml": [
+    "GX010023_frame_03153_right_jpg.rf.1262a8aab93d4443120d9f4546569d69.jpg": [
         {
             "name": "person",
             "xmin": 570,
@@ -4878,7 +4878,7 @@
             "ymax": 768
         }
     ],
-    "GX010023_frame_03168_left_jpg.rf.8b65798e4d5dbea1049f43da89885900.xml": [
+    "GX010023_frame_03168_left_jpg.rf.8b65798e4d5dbea1049f43da89885900.jpg": [
         {
             "name": "person",
             "xmin": 1211,
@@ -4964,7 +4964,7 @@
             "ymax": 355
         }
     ],
-    "GX010023_frame_03185_right_jpg.rf.04e8b69d87be5578ac98923d99269b4a.xml": [
+    "GX010023_frame_03185_right_jpg.rf.04e8b69d87be5578ac98923d99269b4a.jpg": [
         {
             "name": "person",
             "xmin": 598,
@@ -5008,7 +5008,7 @@
             "ymax": 442
         }
     ],
-    "GX010023_frame_03208_left_jpg.rf.3ca0efbec40f9fd896aeff215776737b.xml": [
+    "GX010023_frame_03208_left_jpg.rf.3ca0efbec40f9fd896aeff215776737b.jpg": [
         {
             "name": "person",
             "xmin": 397,
@@ -5087,7 +5087,7 @@
             "ymax": 337
         }
     ],
-    "GX010023_frame_03281_left_jpg.rf.bf51f6cd54cf9585e0acb7bf4c0d6a55.xml": [
+    "GX010023_frame_03281_left_jpg.rf.bf51f6cd54cf9585e0acb7bf4c0d6a55.jpg": [
         {
             "name": "person",
             "xmin": 173,
@@ -5194,7 +5194,7 @@
             "ymax": 301
         }
     ],
-    "GX010023_frame_03291_right_jpg.rf.a19906fd00c6288ade45f689348c421c.xml": [
+    "GX010023_frame_03291_right_jpg.rf.a19906fd00c6288ade45f689348c421c.jpg": [
         {
             "name": "person",
             "xmin": 518,
@@ -5238,7 +5238,7 @@
             "ymax": 900
         }
     ],
-    "GX010023_frame_03417_right_jpg.rf.3444babb03279965969796e191cb6b4f.xml": [
+    "GX010023_frame_03417_right_jpg.rf.3444babb03279965969796e191cb6b4f.jpg": [
         {
             "name": "person",
             "xmin": 526,
@@ -5261,7 +5261,7 @@
             "ymax": 490
         }
     ],
-    "GX010023_frame_03431_right_jpg.rf.8811e49bbdc4fcbca92dcc0c4bf54f6c.xml": [
+    "GX010023_frame_03431_right_jpg.rf.8811e49bbdc4fcbca92dcc0c4bf54f6c.jpg": [
         {
             "name": "person",
             "xmin": 531,
@@ -5284,7 +5284,7 @@
             "ymax": 466
         }
     ],
-    "GX010023_frame_03486_left_jpg.rf.d81134591099239c772b259e9bf778b5.xml": [
+    "GX010023_frame_03486_left_jpg.rf.d81134591099239c772b259e9bf778b5.jpg": [
         {
             "name": "person",
             "xmin": 774,
@@ -5356,7 +5356,7 @@
             "ymax": 420
         }
     ],
-    "GX010023_frame_03538_right_jpg.rf.bcbefd8e4d238f702b5fab5aaf0bf91f.xml": [
+    "GX010023_frame_03538_right_jpg.rf.bcbefd8e4d238f702b5fab5aaf0bf91f.jpg": [
         {
             "name": "person",
             "xmin": 1099,
@@ -5421,7 +5421,7 @@
             "ymax": 547
         }
     ],
-    "GX010023_frame_03581_right_jpg.rf.6b55a11ab1c6117aa5133fbf40921e57.xml": [
+    "GX010023_frame_03581_right_jpg.rf.6b55a11ab1c6117aa5133fbf40921e57.jpg": [
         {
             "name": "person",
             "xmin": 185,
@@ -5472,7 +5472,7 @@
             "ymax": 445
         }
     ],
-    "GX010023_frame_03822_left_jpg.rf.b776a66b50a88968e5e24273adae039a.xml": [
+    "GX010023_frame_03822_left_jpg.rf.b776a66b50a88968e5e24273adae039a.jpg": [
         {
             "name": "person",
             "xmin": 843,
@@ -5523,7 +5523,7 @@
             "ymax": 427
         }
     ],
-    "GX010023_frame_03885_left_jpg.rf.bb3c7a29103e634e0761d665ac5425f2.xml": [
+    "GX010023_frame_03885_left_jpg.rf.bb3c7a29103e634e0761d665ac5425f2.jpg": [
         {
             "name": "person",
             "xmin": 133,
@@ -5637,7 +5637,7 @@
             "ymax": 192
         }
     ],
-    "GX010023_frame_04135_left_jpg.rf.7cc2f92bb09b96a143f05905bd902bdc.xml": [
+    "GX010023_frame_04135_left_jpg.rf.7cc2f92bb09b96a143f05905bd902bdc.jpg": [
         {
             "name": "person",
             "xmin": 5,
@@ -5709,7 +5709,7 @@
             "ymax": 483
         }
     ],
-    "GX010023_frame_04135_right_jpg.rf.978ea44241a7008f5cac53a890585c08.xml": [
+    "GX010023_frame_04135_right_jpg.rf.978ea44241a7008f5cac53a890585c08.jpg": [
         {
             "name": "person",
             "xmin": 612,
@@ -5746,7 +5746,7 @@
             "ymax": 598
         }
     ],
-    "GX010023_frame_04170_left_jpg.rf.5cb839b278057ea0979ade240b189034.xml": [
+    "GX010023_frame_04170_left_jpg.rf.5cb839b278057ea0979ade240b189034.jpg": [
         {
             "name": "person",
             "xmin": 406,
@@ -5825,7 +5825,7 @@
             "ymax": 901
         }
     ],
-    "GX010023_frame_04204_jpg.rf.88fa661d0d056e1123ae1e658488a4b5.xml": [
+    "GX010023_frame_04204_jpg.rf.88fa661d0d056e1123ae1e658488a4b5.jpg": [
         {
             "name": "person",
             "xmin": 616,
@@ -5967,7 +5967,7 @@
             "ymax": 724
         }
     ],
-    "GX010023_frame_04238_right_jpg.rf.ead86b0fd895565b790154ed7f4c4664.xml": [
+    "GX010023_frame_04238_right_jpg.rf.ead86b0fd895565b790154ed7f4c4664.jpg": [
         {
             "name": "person",
             "xmin": 1190,
@@ -5990,7 +5990,7 @@
             "ymax": 349
         }
     ],
-    "GX010023_frame_04625_jpg.rf.c28e7c54bff400936a8a6c01e76e051f.xml": [
+    "GX010023_frame_04625_jpg.rf.c28e7c54bff400936a8a6c01e76e051f.jpg": [
         {
             "name": "person",
             "xmin": 764,
@@ -6062,7 +6062,7 @@
             "ymax": 886
         }
     ],
-    "GX010023_frame_04960_right_jpg.rf.c2022846b1e048b6169ee9592a47f69e.xml": [
+    "GX010023_frame_04960_right_jpg.rf.c2022846b1e048b6169ee9592a47f69e.jpg": [
         {
             "name": "person",
             "xmin": 591,
@@ -6092,7 +6092,7 @@
             "ymax": 671
         }
     ],
-    "GX010023_frame_04965_left_jpg.rf.51414efc068df04098ada4b3708858f9.xml": [
+    "GX010023_frame_04965_left_jpg.rf.51414efc068df04098ada4b3708858f9.jpg": [
         {
             "name": "person",
             "xmin": 536,
@@ -6164,7 +6164,7 @@
             "ymax": 773
         }
     ],
-    "GX010023_frame_05357_left_jpg.rf.402f6b21dfd1d307b803259ebee2b3ed.xml": [
+    "GX010023_frame_05357_left_jpg.rf.402f6b21dfd1d307b803259ebee2b3ed.jpg": [
         {
             "name": "person",
             "xmin": 346,
@@ -6215,7 +6215,7 @@
             "ymax": 897
         }
     ],
-    "GX010023_frame_05385_left_jpg.rf.407e563b6d03c27ae079287195defdfc.xml": [
+    "GX010023_frame_05385_left_jpg.rf.407e563b6d03c27ae079287195defdfc.jpg": [
         {
             "name": "person",
             "xmin": 116,
@@ -6266,7 +6266,7 @@
             "ymax": 452
         }
     ],
-    "GX010023_frame_05963_right_jpg.rf.1e2f41c50a0844b67c07380e516cdcf3.xml": [
+    "GX010023_frame_05963_right_jpg.rf.1e2f41c50a0844b67c07380e516cdcf3.jpg": [
         {
             "name": "person",
             "xmin": 446,
@@ -6317,7 +6317,7 @@
             "ymax": 581
         }
     ],
-    "GX010023_frame_06926_left_jpg.rf.1443010d9b2bdaf31145f51d52b6352f.xml": [
+    "GX010023_frame_06926_left_jpg.rf.1443010d9b2bdaf31145f51d52b6352f.jpg": [
         {
             "name": "person",
             "xmin": 355,
@@ -6382,7 +6382,7 @@
             "ymax": 683
         }
     ],
-    "GX010023_frame_06926_right_jpg.rf.0534a6a4c1804124773e2fc7c99a914e.xml": [
+    "GX010023_frame_06926_right_jpg.rf.0534a6a4c1804124773e2fc7c99a914e.jpg": [
         {
             "name": "person",
             "xmin": 357,
@@ -6405,7 +6405,7 @@
             "ymax": 640
         }
     ],
-    "GX010023_frame_07110_jpg.rf.c3b94a9e48fa0b2f286e754ee6604531.xml": [
+    "GX010023_frame_07110_jpg.rf.c3b94a9e48fa0b2f286e754ee6604531.jpg": [
         {
             "name": "person",
             "xmin": 1479,
@@ -6498,7 +6498,7 @@
             "ymax": 529
         }
     ],
-    "GX010023_frame_07144_left_jpg.rf.0cfbd0877e515c19d1808e646f8c651a.xml": [
+    "GX010023_frame_07144_left_jpg.rf.0cfbd0877e515c19d1808e646f8c651a.jpg": [
         {
             "name": "person",
             "xmin": 461,
@@ -6570,7 +6570,7 @@
             "ymax": 413
         }
     ],
-    "GX010023_frame_07616_right_jpg.rf.4211092d01ebf43d2de59752e45a522c.xml": [
+    "GX010023_frame_07616_right_jpg.rf.4211092d01ebf43d2de59752e45a522c.jpg": [
         {
             "name": "person",
             "xmin": 163,
@@ -6614,7 +6614,7 @@
             "ymax": 424
         }
     ],
-    "GX010023_frame_07632_right_jpg.rf.dcd0e384e172a4a11f37483e4645629c.xml": [
+    "GX010023_frame_07632_right_jpg.rf.dcd0e384e172a4a11f37483e4645629c.jpg": [
         {
             "name": "person",
             "xmin": 1042,
@@ -6658,7 +6658,7 @@
             "ymax": 557
         }
     ],
-    "GX010023_frame_07740_right_jpg.rf.58068ef7a86fdb78abc0fe8443554de1.xml": [
+    "GX010023_frame_07740_right_jpg.rf.58068ef7a86fdb78abc0fe8443554de1.jpg": [
         {
             "name": "person",
             "xmin": 1388,
