@@ -31,6 +31,8 @@ def test_img(img_path, model, model_name, file_name):
         print("NVIDIA GPU not found.")
         gpu_is_available = False
 
+    detections = []
+
     #init of thread
     functions.monitor_data["is_running"] = True
     monitor_thread = threading.Thread(
@@ -58,7 +60,7 @@ def test_img(img_path, model, model_name, file_name):
         coords_array = boxes.xyxy.cpu().numpy()
         classes = boxes.cls.cpu().numpy().astype('uint')
 
-        detections = []
+        
         for index, classId in enumerate(classes):
             class_name = first_result.names[classId]
             box_coord = coords_array[index]
@@ -92,6 +94,17 @@ def test_img(img_path, model, model_name, file_name):
         total_vram_mb = max(functions.monitor_data["peak_vram_mb"], vram_after) - base_vram_mb
     else:
         total_vram_mb = -1
+
+    good_boxes = functions.get_boxes(file_name)
+    for detected_object in detections:
+        box_detected = (detected_object["x_min"], detected_object["y_min"],
+                        detected_object["x_max"], detected_object["y_max"])
+        max_iou = 0.0
+        for good_box in good_boxes:
+            iou = functions.calculate_iou(good_box, box_detected)
+            if iou > max_iou:
+                max_iou = iou
+        detected_object["iou"] = max_iou
 
     functions.save_to_file_cpu_gpu(model_name, type_of_data, True, cpu_usage, functions.monitor_data["peak_cpu_percent"],
                                        ram_usage, functions.monitor_data["peak_gpu_utilization"], total_vram_mb,

@@ -92,6 +92,16 @@ def calculate_iou(box_ref, box_test):
 
     return intersection / union_of_sizes
 
+def get_boxes(file_name):
+    correct_data_path = "../data_for_control/dataset_objects_correct_data.json"
+    with open(correct_data_path, 'r') as file:
+        data = json.load(file)
+        boxes = []
+        for obj in data[file_name]:
+            box = (obj["xmin"], obj["ymin"], obj["xmax"], obj["ymax"])
+            boxes.append(box)
+    return boxes
+
 """
 * Check the response characteristics.
 * Check corectness of data.
@@ -138,9 +148,7 @@ def check_the_data_object(dict_model, name_of_file, path_to_correct_data, load_j
 
         correctness = correct_data_counted / count_of_data
 
-        return (correctness, correct_data_counted, incorrect_data_counted, not_in_dict_counted, dict_incorrect, array_not_found)
-        
-        
+        return (correctness, correct_data_counted, incorrect_data_counted, not_in_dict_counted, dict_incorrect, array_not_found)  
 
 """
 * Check the response characteristics.
