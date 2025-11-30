@@ -102,6 +102,13 @@ def get_boxes(file_name):
             boxes.append(box)
     return boxes
 
+def get_count_of_boxes_with_iou_above_threshold(detections, iou_threshold):
+    count = 0
+    for detected_object in detections:
+        if detected_object["iou"] >= iou_threshold:
+            count += 1
+    return (count, len(detections) - count)
+
 """
 * Check the response characteristics.
 * Check corectness of data.
