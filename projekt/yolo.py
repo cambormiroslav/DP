@@ -13,6 +13,8 @@ type_of_data = "objects"
 test_images_dir_path = "../dataset/yolo_dataset/test/images/"
 dataset_yaml = "../dataset/yolo_dataset/data.yaml"
 
+iou_thresholds = [0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9]
+
 def test_img(img_path, model, model_name, file_name):
     #get process id
     pid = os.getpid()
