@@ -501,6 +501,12 @@ def save_to_file_object(model, type_of_data, values, incorrect_data, not_found_d
     with open(output_file_path, "+a") as file:
         file.write(f"{correctness};{correct_data_counted};{incorrect_data_counted};{not_data_found_counted};{time_diff};{incorrect_data};{not_found_data}\n")
 
+def save_to_file_object2(model, type_of_data, tp, fp, tn, fn, iou):
+    output_file_path = f"./output_objects/{model}_{type_of_data}_{iou}.txt"
+    
+    with open(output_file_path, "+a") as file:
+        file.write(f"{tp};{fp};{tn};{fn}\n")
+
 """
 * Save the CPU and GPU measurement to the file.
 
