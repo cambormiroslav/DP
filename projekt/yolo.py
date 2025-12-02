@@ -233,10 +233,10 @@ def load_and_measure(model, model_name):
                                                                  dict_of_incorect, array_not_found)
 
 if __name__ == "__main__":
-    model = train_yolo("yolo11n.pt", dataset_yaml, 600,"./output_objects/yolo11n/")
-    """load_and_measure(model, "yolo11n")
+    model = train_yolo("yolo11n.pt", dataset_yaml, 100,"./output_objects/yolo11n/")
+    load_and_measure(model, "yolo11n")
 
-    model = train_yolo("yolo11s.pt", dataset_yaml, 600,"./output_objects/yolo11s/")
+    """model = train_yolo("yolo11s.pt", dataset_yaml, 600,"./output_objects/yolo11s/")
     load_and_measure(model, "yolo11s")
 
     model = train_yolo("yolo11m.pt", dataset_yaml, 600,"./output_objects/yolo11m/")
