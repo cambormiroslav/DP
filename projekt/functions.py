@@ -102,12 +102,24 @@ def get_boxes(file_name):
             boxes.append(box)
     return boxes
 
-def get_count_of_boxes_with_iou_above_threshold(detections, iou_threshold):
-    count = 0
-    for detected_object in detections:
-        if detected_object["iou"] >= iou_threshold:
-            count += 1
-    return (count, len(detections) - count)
+def get_tp_fp_tn_fn(detections, good_boxes, iou_threshold):
+    count_tp = 0
+    count_fp = 0
+    count_tn = 0
+    count_fn = 0
+    
+    if len(good_boxes) == 0:
+        for detected_object in detections:
+            count_fn += 1
+        if count_fn == 0:
+            count_tn += 1
+    else:
+        for detected_object in detections:
+            if detected_object["iou"] >= iou_threshold:
+                count_tp += 1
+        count_fp = len(detections) - count_tp
+    
+    return (count_tp, count_fp, count_tn, count_fn)
 
 """
 * Check the response characteristics.
