@@ -102,21 +102,34 @@ def get_boxes(file_name):
             boxes.append(box)
     return boxes
 
-def get_tp_fp_tn_fn(detections, good_boxes, iou_threshold):
+def get_tp_fp_tn_fn_precision_recall(detections, good_boxes, iou_threshold):
     count_tp = 0 #detected with iou
     count_fp = 0 #not detected objects but should be detected
     count_tn = 0 #not detected objects but there no objects in data
     count_fn = 0 #detected with smaller iou or not correct
     
+    len_detections = len(detections)
+    len_good_boxes = len(good_boxes)
+
     for detected_object in detections:
         if detected_object["iou"] >= iou_threshold:
             count_tp += 1
-    count_fn = len(detections) - count_tp
-    count_fp = len(good_boxes) - count_tp
-    if len(detections) == len(good_boxes) and len(detections) == 0:
+    count_fn = len_detections - count_tp
+    count_fp = len_good_boxes - count_tp
+    if len_detections == len_good_boxes and len_detections == 0:
         count_tn = 1
+    
+    if len_detections != 0:
+        precision = count_tp / len_detections
+    else:
+        precision = 1
 
-    return (count_tp, count_fp, count_tn, count_fn)
+    if len_good_boxes != 0:
+        recall = count_tp /  len_good_boxes
+    else:
+        recall = 1
+
+    return (count_tp, count_fp, count_tn, count_fn, precision, recall)
 
 """
 * Check the response characteristics.
@@ -498,11 +511,11 @@ def save_to_file_object(model, type_of_data, values, incorrect_data, not_found_d
     with open(output_file_path, "+a") as file:
         file.write(f"{correctness};{correct_data_counted};{incorrect_data_counted};{not_data_found_counted};{time_diff};{incorrect_data};{not_found_data}\n")
 
-def save_to_file_object2(model, type_of_data, tp, fp, tn, fn, iou):
+def save_to_file_object2(model, type_of_data, tp, fp, tn, fn, precision, recall, iou):
     output_file_path = f"./output_objects/{model}_{type_of_data}_{iou}.txt"
     
     with open(output_file_path, "+a") as file:
-        file.write(f"{tp};{fp};{tn};{fn}\n")
+        file.write(f"{tp};{fp};{tn};{fn};{precision};{recall}\n")
 
 """
 * Save the CPU and GPU measurement to the file.

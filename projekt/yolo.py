@@ -108,8 +108,8 @@ def test_img(img_path, model, model_name, file_name):
                 max_iou = iou
         detected_object["iou"] = max_iou
 
-    tp, fp, tn, fn = functions.get_tp_fp_tn_fn(detections, good_boxes, 0.5)
-    functions.save_to_file_object2(model_name, type_of_data, tp, fp, tn, fn, 0.5)
+    tp, fp, tn, fn, precision, recall = functions.get_tp_fp_tn_fn_precision_recall(detections, good_boxes, 0.5)
+    functions.save_to_file_object2(model_name, type_of_data, tp, fp, tn, fn, precision, recall, 0.5)
 
     functions.save_to_file_cpu_gpu(model_name, type_of_data, True, cpu_usage, functions.monitor_data["peak_cpu_percent"],
                                        ram_usage, functions.monitor_data["peak_gpu_utilization"], total_vram_mb,
