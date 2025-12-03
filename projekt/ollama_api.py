@@ -21,9 +21,9 @@ if ocr_method:
     correct_data_path = "../data_for_control/dataset_correct_data.json"
 else:
     if is_mistral:
-        pattern = "What type of objekt is on this image? Return it as only JSON. Type of objekt put in the key type."
+        pattern = "Detect all peaple. For every person add the string person to name key, x-min coordinate of person add to xmin key, x-max coordinate of person add to xmax key, y-min coordinate of person add to ymin key and y-max coordinate of person add to ymax key. All this data are given as JSON and added to JSON array. This JSON array add to key objects. Return only JSON output with detections."
     else:
-        pattern = "What type of objekt is on this image? Return it as JSON. Type of objekt put in the key type."
+        pattern = "Detect all peaple. For every person add the string person to name key, x-min coordinate of person add to xmin key, x-max coordinate of person add to xmax key, y-min coordinate of person add to ymin key and y-max coordinate of person add to ymax key. All this data are given as JSON and added to JSON array. This JSON array add to key objects."
     type_of_data = "objects"
     correct_data_path = "../data_for_control/dataset_objects_correct_data.json"
 
@@ -124,7 +124,6 @@ def load_and_measure(dir_path, first_ticket, latest_file):
                 vram_after = vram_info.used / (1024 * 1024)
                 pynvml.nvmlShutdown() #shutdown nvml
         
-        print(response)
 
         end_datetime = datetime.datetime.now()
         #get cpu and ram usage
