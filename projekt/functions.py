@@ -92,6 +92,20 @@ def calculate_iou(box_ref, box_test):
 
     return intersection / union_of_sizes
 
+def get_max_iou_and_good_boxes(file_name, detections):
+    good_boxes = get_boxes(file_name)
+    for detected_object in detections:
+        box_detected = (detected_object["x_min"], detected_object["y_min"],
+                        detected_object["x_max"], detected_object["y_max"])
+        max_iou = 0.0
+        for good_box in good_boxes:
+            iou = calculate_iou(good_box, box_detected)
+            if iou > max_iou:
+                max_iou = iou
+        detected_object["iou"] = max_iou
+    
+    return detections
+
 def get_boxes(file_name):
     correct_data_path = "../data_for_control/dataset_objects_correct_data.json"
     with open(correct_data_path, 'r') as file:

@@ -155,16 +155,9 @@ def load_and_measure(dir_path, first_ticket, latest_file):
 
             json_response = json.loads(response)
             
-            for detected_object in json_response["objects"]:
-                box_detected = (detected_object["x_min"], detected_object["y_min"], detected_object["x_max"], detected_object["y_max"])
-                max_iou = 0.0
-                for good_box in good_boxes:
-                    iou = functions.calculate_iou(good_box, box_detected)
-                    if iou > max_iou:
-                        max_iou = iou
-                detected_object["iou"] = max_iou
+            max_iou_detections, good_boxes = functions.get_max_iou_and_good_boxes(file, json_response["objects"])
             
-            tp, fp, tn, fn, precision, recall = functions.get_tp_fp_tn_fn_precision_recall(json_response["objects"], good_boxes, 0.5)
+            tp, fp, tn, fn, precision, recall = functions.get_tp_fp_tn_fn_precision_recall(max_iou_detections, good_boxes, 0.5)
         
         diff_datetime = end_datetime - start_datetime
         diff_datetime_seconds = diff_datetime.total_seconds()

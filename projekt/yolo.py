@@ -97,18 +97,9 @@ def test_img(img_path, model, model_name, file_name):
     else:
         total_vram_mb = -1
 
-    good_boxes = functions.get_boxes(file_name)
-    for detected_object in detections:
-        box_detected = (detected_object["x_min"], detected_object["y_min"],
-                        detected_object["x_max"], detected_object["y_max"])
-        max_iou = 0.0
-        for good_box in good_boxes:
-            iou = functions.calculate_iou(good_box, box_detected)
-            if iou > max_iou:
-                max_iou = iou
-        detected_object["iou"] = max_iou
+    max_iou_detections, good_boxes = functions.get_max_iou_and_good_boxes(file_name, detections)
 
-    tp, fp, tn, fn, precision, recall = functions.get_tp_fp_tn_fn_precision_recall(detections, good_boxes, 0.5)
+    tp, fp, tn, fn, precision, recall = functions.get_tp_fp_tn_fn_precision_recall(max_iou_detections, good_boxes, 0.5)
     functions.save_to_file_object2(model_name, type_of_data, tp, fp, tn, fn, precision, recall, 0.5)
 
     functions.save_to_file_cpu_gpu(model_name, type_of_data, True, cpu_usage, functions.monitor_data["peak_cpu_percent"],
