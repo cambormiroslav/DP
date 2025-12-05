@@ -104,7 +104,7 @@ def get_max_iou_and_good_boxes(file_name, detections):
                 max_iou = iou
         detected_object["iou"] = max_iou
     
-    return detections
+    return (detections, good_boxes)
 
 def get_boxes(file_name):
     correct_data_path = "../data_for_control/dataset_objects_correct_data.json"

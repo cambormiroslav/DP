@@ -5,6 +5,7 @@ import time
 import psutil
 import pynvml
 import threading
+import json
 
 import functions
 
@@ -17,7 +18,7 @@ if ocr_method:
     type_of_data = "ticket"
     correct_data_path = "../data_for_control/dataset_correct_data.json"
 else:
-    pattern = "What type of objekt is on this image? Return it as JSON. Type of objekt put in the key type."
+    pattern = "Detect all peaple. Every person is described by one JSON. Every person has the label person."
     type_of_data = "objects"
     correct_data_path = "../data_for_control/dataset_objects_correct_data.json"
 
@@ -73,6 +74,8 @@ def load_and_measure(dir_path, first_ticket, latest_file):
             print("NVIDIA GPU not found.")
             gpu_is_available = False
 
+        detections = []
+
         #init of thread
         functions.monitor_data["is_running"] = True
         monitor_thread = threading.Thread(
@@ -125,13 +128,25 @@ def load_and_measure(dir_path, first_ticket, latest_file):
             array_not_found = data_tuple[6]
             array_good_not_found = data_tuple[7]
         else:
-            data_tuple = functions.check_the_data_object(response, file, correct_data_path, True)
-            correctness = data_tuple[0]
-            correct_data = data_tuple[1]
-            incorect_data = data_tuple[2]
-            not_found_data = data_tuple[3]
-            dict_of_incorect = data_tuple[4]
-            array_not_found = data_tuple[5]
+            json_response = json.loads(response)
+            
+            for resp in json_response:
+                box_coord = resp["box_2d"]
+                
+                detections.append({
+                    "class_name": resp["label"],
+                    "x_min": int(box_coord[0]),
+                    "y_min": int(box_coord[1]),
+                    "x_max": int(box_coord[2]),
+                    "y_max": int(box_coord[3])
+                })
+            
+            print(detections)
+            print(file)
+            max_iou_detections, good_boxes = functions.get_max_iou_and_good_boxes(file, detections)
+            tp, fp, tn, fn, precision, recall = functions.get_tp_fp_tn_fn_precision_recall(max_iou_detections, good_boxes, 0.5)
+
+
         
         diff_datetime = end_datetime - start_datetime
         diff_datetime_seconds = diff_datetime.total_seconds()
@@ -143,9 +158,7 @@ def load_and_measure(dir_path, first_ticket, latest_file):
                                                                   dict_of_incorect, array_not_found, 
                                                                   array_good_not_found)
         else:
-            functions.save_to_file_object(model_text, type_of_data, [correctness, correct_data,
-                                                                     incorect_data, not_found_data, diff_datetime_seconds],
-                                                                     dict_of_incorect, array_not_found)
+            functions.save_to_file_object2("knoopx-mobile-vlm-3b-fp16", type_of_data, tp, fp, tn, fn, precision, recall, 0.5)
         functions.save_to_file_cpu_gpu(model_text, type_of_data, True, cpu_usage, functions.monitor_data["peak_cpu_percent"],
                                        ram_usage, functions.monitor_data["peak_gpu_utilization"], total_vram_mb,
                                        diff_datetime_seconds)
@@ -155,8 +168,7 @@ def load_and_measure(dir_path, first_ticket, latest_file):
                   good_not_found, diff_datetime_seconds, dict_of_incorect,
                   array_not_found, array_good_not_found)
         else:
-            print(correctness, correct_data, incorect_data, not_found_data,
-                  diff_datetime_seconds, dict_of_incorect, array_not_found)
+            print(tp, fp, tn, fn, precision, recall, 0.5)
             
         i += 1
 
@@ -164,6 +176,7 @@ def load_and_measure(dir_path, first_ticket, latest_file):
             print("Receipt: ", i)
         else:
             print("Object: ", i)
+        break
 
         if i == latest_file:
             break
