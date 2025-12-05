@@ -5,6 +5,7 @@ import datetime
 import psutil
 import pynvml
 import threading
+import json
 
 import functions
 
@@ -17,7 +18,7 @@ if ocr_method:
     type_of_data = "ticket"
     correct_data_path = "../data_for_control/dataset_correct_data.json"
 else:
-    pattern = "What type of objekt is on this image? Return it as JSON. Type of objekt put in the key type."
+    pattern = "Detect all peaple. For every person add the string person to name key, x-min coordinate of person add to x_min key, x-max coordinate of person add to x_max key, y-min coordinate of person add to y_min key and y-max coordinate of person add to y_max key. All this data are given as JSON and added to JSON array. This JSON array add to key objects."
     type_of_data = "objects"
     correct_data_path = "../data_for_control/dataset_objects_correct_data.json"
 
@@ -59,7 +60,7 @@ def send_image_request(image_path, text_request):
         ],
         "max_tokens": 300
     }
-    return requests.post("https://api.openai.com/v1/chat/completions", headers=headers, json=payload).json()["choices"][0]["message"]["content"].replace("Here's the extracted information in JSON format:\n\n", "").replace("```json\n", "").replace("\n```", "")
+    return requests.post("https://api.openai.com/v1/chat/completions", headers=headers, json=payload).json()["choices"][0]["message"]["content"]#.replace("Here's the extracted information in JSON format:\n\n", "").replace("```json\n", "").replace("\n```", "")
 
 """
 * Load the specified number of images from directory path.
@@ -142,13 +143,10 @@ def load_and_measure(dir_path, first_ticket, latest_file):
             array_not_found = data_tuple[6]
             array_good_not_found = data_tuple[7]
         else:
-            data_tuple = functions.check_the_data_object(response, file, correct_data_path, True)
-            correctness = data_tuple[0]
-            correct_data = data_tuple[1]
-            incorect_data = data_tuple[2]
-            not_found_data = data_tuple[3]
-            dict_of_incorect = data_tuple[4]
-            array_not_found = data_tuple[5]
+            json_response = json.loads(response)
+            
+            max_iou_detections, good_boxes = functions.get_max_iou_and_good_boxes(file, json_response["objects"])
+            tp, fp, tn, fn, precision, recall = functions.get_tp_fp_tn_fn_precision_recall(max_iou_detections, good_boxes, 0.5)
         
         diff_datetime = end_datetime - start_datetime
         diff_datetime_seconds = diff_datetime.total_seconds()
@@ -160,9 +158,7 @@ def load_and_measure(dir_path, first_ticket, latest_file):
                                                          dict_of_incorect, array_not_found, 
                                                          array_good_not_found)
         else:
-            functions.save_to_file_object(model, type_of_data, [correctness, correct_data,
-                                                                      incorect_data, not_found_data, diff_datetime_seconds],
-                                                                      dict_of_incorect, array_not_found)
+            functions.save_to_file_object2(model, type_of_data, tp, fp, tn, fn, precision, recall, 0.5)
         functions.save_to_file_cpu_gpu(model, type_of_data, True, cpu_usage, functions.monitor_data["peak_cpu_percent"],
                                        ram_usage, functions.monitor_data["peak_gpu_utilization"], total_vram_mb,
                                        diff_datetime_seconds)
@@ -172,8 +168,7 @@ def load_and_measure(dir_path, first_ticket, latest_file):
                   good_not_found, diff_datetime_seconds, dict_of_incorect,
                   array_not_found, array_good_not_found)
         else:
-            print(correctness, correct_data, incorect_data, not_found_data,
-                  diff_datetime_seconds, dict_of_incorect, array_not_found)
+            print(tp, fp, tn, fn, precision, recall, 0.5)
         
         i += 1
 
