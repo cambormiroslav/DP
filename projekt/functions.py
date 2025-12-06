@@ -138,12 +138,12 @@ def get_tp_fp_tn_fn_precision_recall(detections, good_boxes, iou_threshold):
     if len_detections != 0:
         precision = count_tp / len_detections
     else:
-        precision = 1
+        precision = 0
 
     if len_good_boxes != 0:
         recall = count_tp /  len_good_boxes
     else:
-        recall = 1
+        recall = 0
 
     return (count_tp, count_fp, count_tn, count_fn, precision, recall)
 
