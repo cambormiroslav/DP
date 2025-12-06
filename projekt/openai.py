@@ -143,7 +143,7 @@ def load_and_measure(dir_path, first_ticket, latest_file):
             array_not_found = data_tuple[6]
             array_good_not_found = data_tuple[7]
         else:
-            json_response = json.loads(response)
+            json_response = functions.load_json_response(response)
             
             max_iou_detections, good_boxes = functions.get_max_iou_and_good_boxes(file, json_response["objects"])
             tp, fp, tn, fn, precision, recall = functions.get_tp_fp_tn_fn_precision_recall(max_iou_detections, good_boxes, 0.5)
