@@ -290,9 +290,6 @@ def load_and_measure(dir_path, first_ticket, latest_file):
             print(correctness, correct_data, incorect_data, not_found_data, 
                   good_not_found, diff_datetime_seconds, dict_of_incorect,
                   array_not_found, array_good_not_found)
-        else:
-            print(correctness, correct_data, incorect_data, not_found_data,
-                  diff_datetime_seconds, dict_of_incorect, array_not_found)
         
         i += 1
 
