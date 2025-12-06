@@ -128,7 +128,7 @@ def load_and_measure(dir_path, first_ticket, latest_file):
             array_not_found = data_tuple[6]
             array_good_not_found = data_tuple[7]
         else:
-            json_response = json.loads(response)
+            json_response = functions.load_json_response_gemini(response)
             
             for resp in json_response:
                 box_coord = resp["box_2d"]
