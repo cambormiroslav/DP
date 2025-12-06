@@ -151,6 +151,12 @@ def load_json_response(response):
     except:
         return {"objects": []}
 
+def load_json_response_gemini(response):
+    try:
+        return json.loads(response)
+    except:
+        return []
+
 """
 * Check the response characteristics.
 * Check corectness of data.
