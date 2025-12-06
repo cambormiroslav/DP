@@ -4,6 +4,8 @@ import psutil
 import pynvml
 import time
 
+iou_thresholds = [0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9]
+
 monitor_data = {
     "peak_rss_mb": 0.0,
     "peak_cpu_percent": 0.0,

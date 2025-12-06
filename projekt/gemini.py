@@ -74,6 +74,7 @@ def load_and_measure(dir_path, first_ticket, latest_file):
             gpu_is_available = False
 
         detections = []
+        output_array = []
 
         #init of thread
         functions.monitor_data["is_running"] = True
@@ -141,7 +142,18 @@ def load_and_measure(dir_path, first_ticket, latest_file):
                 })
             
             max_iou_detections, good_boxes = functions.get_max_iou_and_good_boxes(file, detections)
-            tp, fp, tn, fn, precision, recall = functions.get_tp_fp_tn_fn_precision_recall(max_iou_detections, good_boxes, 0.5)
+            for iou_threshold in functions.iou_thresholds:
+                tp, fp, tn, fn, precision, recall = functions.get_tp_fp_tn_fn_precision_recall(max_iou_detections, 
+                                                                                               good_boxes, iou_threshold)
+                output_array.append({
+                    "TP": tp,
+                    "FP" : fp,
+                    "TN": tn,
+                    "FN" : fn,
+                    "Precision": precision,
+                    "Recall" : recall,
+                    "IoU" : iou_threshold
+                })
 
 
         
@@ -155,7 +167,9 @@ def load_and_measure(dir_path, first_ticket, latest_file):
                                                                   dict_of_incorect, array_not_found, 
                                                                   array_good_not_found)
         else:
-            functions.save_to_file_object2("knoopx-mobile-vlm-3b-fp16", type_of_data, tp, fp, tn, fn, precision, recall, 0.5)
+            for output in output_array:
+                functions.save_to_file_object2(model_text, type_of_data, output["TP"], output["FP"], output["TN"],
+                                               output["FN"], output["Precision"], output["Recall"], output["IoU"])
         functions.save_to_file_cpu_gpu(model_text, type_of_data, True, cpu_usage, functions.monitor_data["peak_cpu_percent"],
                                        ram_usage, functions.monitor_data["peak_gpu_utilization"], total_vram_mb,
                                        diff_datetime_seconds)

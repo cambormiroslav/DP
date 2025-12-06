@@ -13,8 +13,6 @@ type_of_data = "objects"
 test_images_dir_path = "../dataset/yolo_dataset/test/images/"
 dataset_yaml = "../dataset/yolo_dataset/data.yaml"
 
-iou_thresholds = [0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9]
-
 def test_img(img_path, model, model_name, file_name):
     #get process id
     pid = os.getpid()
@@ -99,8 +97,9 @@ def test_img(img_path, model, model_name, file_name):
 
     max_iou_detections, good_boxes = functions.get_max_iou_and_good_boxes(file_name, detections)
 
-    tp, fp, tn, fn, precision, recall = functions.get_tp_fp_tn_fn_precision_recall(max_iou_detections, good_boxes, 0.5)
-    functions.save_to_file_object2(model_name, type_of_data, tp, fp, tn, fn, precision, recall, 0.5)
+    for iou_threshold in functions.iou_thresholds:
+        tp, fp, tn, fn, precision, recall = functions.get_tp_fp_tn_fn_precision_recall(max_iou_detections, good_boxes, iou_threshold)
+        functions.save_to_file_object2(model_name, type_of_data, tp, fp, tn, fn, precision, recall, iou_threshold)
 
     functions.save_to_file_cpu_gpu(model_name, type_of_data, True, cpu_usage, functions.monitor_data["peak_cpu_percent"],
                                        ram_usage, functions.monitor_data["peak_gpu_utilization"], total_vram_mb,

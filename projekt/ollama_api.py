@@ -97,6 +97,8 @@ def load_and_measure(dir_path, first_ticket, latest_file):
             print("NVIDIA GPU not found.")
             gpu_is_available = False
 
+        output_array = []
+
         #init of thread
         functions.monitor_data["is_running"] = True
         monitor_thread = threading.Thread(
@@ -155,7 +157,18 @@ def load_and_measure(dir_path, first_ticket, latest_file):
             
             max_iou_detections, good_boxes = functions.get_max_iou_and_good_boxes(file, json_response["objects"])
             
-            tp, fp, tn, fn, precision, recall = functions.get_tp_fp_tn_fn_precision_recall(max_iou_detections, good_boxes, 0.5)
+            for iou_threshold in functions.iou_thresholds:
+                tp, fp, tn, fn, precision, recall = functions.get_tp_fp_tn_fn_precision_recall(max_iou_detections, 
+                                                                                               good_boxes, iou_threshold)
+                output_array.append({
+                    "TP": tp,
+                    "FP" : fp,
+                    "TN": tn,
+                    "FN" : fn,
+                    "Precision": precision,
+                    "Recall" : recall,
+                    "IoU" : iou_threshold
+                })
         
         diff_datetime = end_datetime - start_datetime
         diff_datetime_seconds = diff_datetime.total_seconds()
@@ -168,7 +181,9 @@ def load_and_measure(dir_path, first_ticket, latest_file):
                                                                                    dict_of_incorect, array_not_found, 
                                                                                    array_good_not_found)
             else:
-                functions.save_to_file_object2("knoopx-mobile-vlm-3b-fp16", type_of_data, tp, fp, tn, fn, precision, recall, 0.5)
+                for output in output_array:
+                    functions.save_to_file_object2("knoopx-mobile-vlm-3b-fp16", type_of_data, output["TP"], output["FP"], output["TN"],
+                                                   output["FN"], output["Precision"], output["Recall"], output["IoU"])
             functions.save_to_file_cpu_gpu("knoopx-mobile-vlm-3b-fp16", type_of_data, True, cpu_usage, functions.monitor_data["peak_cpu_percent"],
                                        ram_usage, functions.monitor_data["peak_gpu_utilization"], total_vram_mb,
                                        diff_datetime_seconds)
@@ -180,7 +195,9 @@ def load_and_measure(dir_path, first_ticket, latest_file):
                                                                    dict_of_incorect, array_not_found,
                                                                    array_good_not_found)
             else:
-                functions.save_to_file_object2("llava-13b", type_of_data, tp, fp, tn, fn, precision, recall, 0.5)
+                for output in output_array:
+                    functions.save_to_file_object2("llava-13b", type_of_data, output["TP"], output["FP"], output["TN"],
+                                                   output["FN"], output["Precision"], output["Recall"], output["IoU"])
             functions.save_to_file_cpu_gpu("llava-13b", type_of_data, True, cpu_usage, functions.monitor_data["peak_cpu_percent"],
                                        ram_usage, functions.monitor_data["peak_gpu_utilization"], total_vram_mb,
                                        diff_datetime_seconds)
@@ -192,7 +209,9 @@ def load_and_measure(dir_path, first_ticket, latest_file):
                                                                    dict_of_incorect, array_not_found, 
                                                                    array_good_not_found)
             else:
-                functions.save_to_file_object2("llava-34b", type_of_data, tp, fp, tn, fn, precision, recall, 0.5)
+                for output in output_array:
+                    functions.save_to_file_object2("llava-34b", type_of_data, output["TP"], output["FP"], output["TN"],
+                                                   output["FN"], output["Precision"], output["Recall"], output["IoU"])
             functions.save_to_file_cpu_gpu("llava-34b", type_of_data, True, cpu_usage, functions.monitor_data["peak_cpu_percent"],
                                        ram_usage, functions.monitor_data["peak_gpu_utilization"], total_vram_mb,
                                        diff_datetime_seconds)
@@ -204,7 +223,9 @@ def load_and_measure(dir_path, first_ticket, latest_file):
                                                                    dict_of_incorect, array_not_found, 
                                                                    array_good_not_found)
             else:
-                functions.save_to_file_object2("gemma3-27b", type_of_data, tp, fp, tn, fn, precision, recall, 0.5)
+                for output in output_array:
+                    functions.save_to_file_object2("gemma3-27b", type_of_data, output["TP"], output["FP"], output["TN"],
+                                                   output["FN"], output["Precision"], output["Recall"], output["IoU"])
             functions.save_to_file_cpu_gpu("gemma3-27b", type_of_data, True, cpu_usage, functions.monitor_data["peak_cpu_percent"],
                                        ram_usage, functions.monitor_data["peak_gpu_utilization"], total_vram_mb,
                                        diff_datetime_seconds)
@@ -216,7 +237,9 @@ def load_and_measure(dir_path, first_ticket, latest_file):
                                                                    dict_of_incorect, array_not_found, 
                                                                    array_good_not_found)
             else:
-                functions.save_to_file_object2("gemma3-12b", type_of_data, tp, fp, tn, fn, precision, recall, 0.5)
+                for output in output_array:
+                    functions.save_to_file_object2("gemma3-12b", type_of_data, output["TP"], output["FP"], output["TN"],
+                                                   output["FN"], output["Precision"], output["Recall"], output["IoU"])
             functions.save_to_file_cpu_gpu("gemma3-12b", type_of_data, True, cpu_usage, functions.monitor_data["peak_cpu_percent"],
                                        ram_usage, functions.monitor_data["peak_gpu_utilization"], total_vram_mb,
                                        diff_datetime_seconds)
@@ -228,7 +251,9 @@ def load_and_measure(dir_path, first_ticket, latest_file):
                                                                    dict_of_incorect, array_not_found, 
                                                                    array_good_not_found)
             else:
-                functions.save_to_file_object2("mistral-small3.2-24b", type_of_data, tp, fp, tn, fn, precision, recall, 0.5)
+                for output in output_array:
+                    functions.save_to_file_object2("mistral-small3.2-24b", type_of_data, output["TP"], output["FP"], output["TN"],
+                                                   output["FN"], output["Precision"], output["Recall"], output["IoU"])
             functions.save_to_file_cpu_gpu("mistral-small3.2-24b", type_of_data, True, cpu_usage, functions.monitor_data["peak_cpu_percent"],
                                        ram_usage, functions.monitor_data["peak_gpu_utilization"], total_vram_mb,
                                        diff_datetime_seconds)
@@ -240,7 +265,9 @@ def load_and_measure(dir_path, first_ticket, latest_file):
                                                                    dict_of_incorect, array_not_found, 
                                                                    array_good_not_found)
             else:
-                functions.save_to_file_object2("gemma3-4b", type_of_data, tp, fp, tn, fn, precision, recall, 0.5)
+                for output in output_array:
+                    functions.save_to_file_object2("gemma3-4b", type_of_data, output["TP"], output["FP"], output["TN"],
+                                                   output["FN"], output["Precision"], output["Recall"], output["IoU"])
             functions.save_to_file_cpu_gpu("gemma3-4b", type_of_data, True, cpu_usage, functions.monitor_data["peak_cpu_percent"],
                                        ram_usage, functions.monitor_data["peak_gpu_utilization"], total_vram_mb,
                                        diff_datetime_seconds)
@@ -252,7 +279,9 @@ def load_and_measure(dir_path, first_ticket, latest_file):
                                                              dict_of_incorect, array_not_found,
                                                              array_good_not_found)
             else:
-                functions.save_to_file_object2(model, type_of_data, tp, fp, tn, fn, precision, recall, 0.5)
+                for output in output_array:
+                    functions.save_to_file_object2(model, type_of_data, output["TP"], output["FP"], output["TN"],
+                                                   output["FN"], output["Precision"], output["Recall"], output["IoU"])
             functions.save_to_file_cpu_gpu(model, type_of_data, True, cpu_usage, functions.monitor_data["peak_cpu_percent"],
                                        ram_usage, functions.monitor_data["peak_gpu_utilization"], total_vram_mb,
                                        diff_datetime_seconds)
