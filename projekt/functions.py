@@ -520,26 +520,7 @@ def save_to_file_ocr(model, type_of_data, values, incorrect_data, not_found_data
     with codecs.open(output_file_path, "+a", "utf-8") as file:
         file.write(f"{correctness};{correct_data_counted};{incorrect_data_counted};{not_data_found_counted};{good_not_found_counted};{time_diff};{incorrect_data};{not_found_data};{good_not_found}\n")
 
-"""
-* Save the characteristics of model response to the file.
-
-Input: (model name, type of data, charakteristics of data and time of run, incorrect data dict, 
-        not founded data array, not founded goods)
-Output: None
-"""  
-def save_to_file_object(model, type_of_data, values, incorrect_data, not_found_data):
-    output_file_path = f"./output_objects/{model}_{type_of_data}.txt"
-
-    correctness = values[0]
-    correct_data_counted = values[1]
-    incorrect_data_counted = values[2]
-    not_data_found_counted = values[3]
-    time_diff = values[4]
-    
-    with open(output_file_path, "+a") as file:
-        file.write(f"{correctness};{correct_data_counted};{incorrect_data_counted};{not_data_found_counted};{time_diff};{incorrect_data};{not_found_data}\n")
-
-def save_to_file_object2(model, type_of_data, tp, fp, tn, fn, precision, recall, time_diff, iou):
+def save_to_file_object(model, type_of_data, tp, fp, tn, fn, precision, recall, time_diff, iou):
     output_file_path = f"./output_objects/{model}_{type_of_data}_{iou}.txt"
     
     with open(output_file_path, "+a") as file:
