@@ -47,6 +47,8 @@ def test_img(img_path, model, model_name, file_name):
     process.cpu_percent(interval=None)
     mem_before = process.memory_info().rss / (1024 * 1024)
 
+    start_datetime = datetime.datetime.now()
+
     try:
         image = cv2.imread(img_path)
         img_rgb = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
@@ -81,6 +83,7 @@ def test_img(img_path, model, model_name, file_name):
             vram_after = vram_info.used / (1024 * 1024)
             pynvml.nvmlShutdown() #shutdown nvml
 
+    end_datetime = datetime.datetime.now()
     #get cpu and ram usage
     mem_after = process.memory_info().rss / (1024 * 1024)
     peak_ram_mb = functions.monitor_data["peak_rss_mb"]
@@ -94,12 +97,16 @@ def test_img(img_path, model, model_name, file_name):
         total_vram_mb = max(functions.monitor_data["peak_vram_mb"], vram_after) - base_vram_mb
     else:
         total_vram_mb = -1
+    
+    #time of test
+    diff_datetime = end_datetime - start_datetime
+    diff_datetime_seconds = diff_datetime.total_seconds()
 
     max_iou_detections, good_boxes = functions.get_max_iou_and_good_boxes(file_name, detections)
 
     for iou_threshold in functions.iou_thresholds:
         tp, fp, tn, fn, precision, recall = functions.get_tp_fp_tn_fn_precision_recall(max_iou_detections, good_boxes, iou_threshold)
-        functions.save_to_file_object2(model_name, type_of_data, tp, fp, tn, fn, precision, recall, iou_threshold)
+        functions.save_to_file_object2(model_name, type_of_data, tp, fp, tn, fn, precision, recall, diff_datetime_seconds, iou_threshold)
 
     functions.save_to_file_cpu_gpu(model_name, type_of_data, True, cpu_usage, functions.monitor_data["peak_cpu_percent"],
                                        ram_usage, functions.monitor_data["peak_gpu_utilization"], total_vram_mb,
@@ -203,24 +210,7 @@ def check_data(data, file_name):
 def load_and_measure(model, model_name):
     arrays_of_test_files = get_array_of_test_names_and_paths()
     for index in range(len(arrays_of_test_files[0])):
-        start_datetime = datetime.datetime.now()
-        response = test_img(arrays_of_test_files[1][index], model, model_name, arrays_of_test_files[0][index])
-        end_datetime = datetime.datetime.now()
-
-        diff_datetime = end_datetime - start_datetime
-        diff_datetime_seconds = diff_datetime.total_seconds()
-
-        
-        data_tuple = check_data(response, arrays_of_test_files[0][index])
-        correctness = data_tuple[0]
-        correct_data = data_tuple[1]
-        incorect_data = data_tuple[2]
-        not_found_data = data_tuple[3]
-        dict_of_incorect = data_tuple[4]
-        array_not_found = data_tuple[5]
-        functions.save_to_file_object(model_name, type_of_data, [correctness, correct_data, incorect_data,
-                                                                 not_found_data, diff_datetime_seconds],
-                                                                 dict_of_incorect, array_not_found)
+        test_img(arrays_of_test_files[1][index], model, model_name, arrays_of_test_files[0][index])
 
 if __name__ == "__main__":
     model = train_yolo("yolo11n.pt", dataset_yaml, 100,"./output_objects/yolo11n/")
