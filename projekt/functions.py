@@ -145,6 +145,12 @@ def get_tp_fp_tn_fn_precision_recall(detections, good_boxes, iou_threshold):
 
     return (count_tp, count_fp, count_tn, count_fn, precision, recall)
 
+def load_json_response_with_flag(response):
+    try:
+        return (json.loads(response), True)
+    except:
+        return ({}, False)
+
 """
 * Check the response characteristics.
 * Check corectness of data.
