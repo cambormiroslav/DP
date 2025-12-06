@@ -5,7 +5,6 @@ import time
 import psutil
 import pynvml
 import threading
-import json
 
 import functions
 
@@ -141,8 +140,6 @@ def load_and_measure(dir_path, first_ticket, latest_file):
                     "y_max": int(box_coord[3])
                 })
             
-            print(detections)
-            print(file)
             max_iou_detections, good_boxes = functions.get_max_iou_and_good_boxes(file, detections)
             tp, fp, tn, fn, precision, recall = functions.get_tp_fp_tn_fn_precision_recall(max_iou_detections, good_boxes, 0.5)
 
@@ -176,7 +173,6 @@ def load_and_measure(dir_path, first_ticket, latest_file):
             print("Receipt: ", i)
         else:
             print("Object: ", i)
-        break
 
         if i == latest_file:
             break

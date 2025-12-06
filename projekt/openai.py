@@ -5,7 +5,6 @@ import datetime
 import psutil
 import pynvml
 import threading
-import json
 
 import functions
 
