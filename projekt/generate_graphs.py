@@ -505,7 +505,7 @@ def load_output_of_models(file_path, model_name):
     precision_sum_dict[model_name] = precision_sum
     recall_sum_dict[model_name] = recall_sum
 
-def load_output_of_models_objects(file_path, model_name):
+def load_output_of_models_objects(file_path, model_name, iou):
     path_to_data = output_dir + file_path
 
     time_run_array = []
@@ -524,9 +524,20 @@ def load_output_of_models_objects(file_path, model_name):
             time_run_array += [float(array_of_values[6])]
             number_of_entries += 1
     
-    time_run_dict[model_name] = time_run_array
-    precision_sum_dict[model_name] = precision_sum / number_of_entries
-    recall_sum_dict[model_name] = recall_sum / number_of_entries
+    if model_name not in time_run_dict:
+        time_run_dict[model_name] = {iou: time_run_array}
+    else:
+        time_run_dict[model_name][iou] = time_run_array
+    
+    if model_name not in precision_sum_dict:
+        precision_sum_dict[model_name] = {iou: precision_sum / number_of_entries}
+    else:
+        precision_sum_dict[model_name][iou] = precision_sum / number_of_entries
+    
+    if model_name not in recall_sum_dict:
+        recall_sum_dict[model_name] = {iou: recall_sum / number_of_entries}
+    else:
+        recall_sum_dict[model_name][iou] = recall_sum / number_of_entries
 
 def load_cpu_gpu_data_of_models(file_path, model_name):
     path_to_data = output_dir + file_path
@@ -570,7 +581,11 @@ def load_all_data():
             if file.split("_")[1].split(".")[0] == type_of_dataset:
                 load_cpu_gpu_data_of_models(file, model)
         else:
-            load_output_of_models(file, model)
+            if type_of_dataset == "ticket":
+                load_output_of_models(file, model)
+            else:
+                iou = file.split("_")[2]
+                load_output_of_models_objects(file, model, iou)
         
         
 
