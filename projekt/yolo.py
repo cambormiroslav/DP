@@ -106,7 +106,8 @@ def test_img(img_path, model, model_name, file_name):
 
     for iou_threshold in functions.iou_thresholds:
         tp, fp, tn, fn, precision, recall = functions.get_tp_fp_tn_fn_precision_recall(max_iou_detections, good_boxes, iou_threshold)
-        functions.save_to_file_object(model_name, type_of_data, tp, fp, tn, fn, precision, recall, diff_datetime_seconds, iou_threshold)
+        functions.save_to_file_object(model_name, type_of_data, tp, fp, tn, fn, precision, recall, iou_threshold)
+    functions.save_to_file_object_main(model_name, type_of_data, diff_datetime_seconds)
 
     functions.save_to_file_cpu_gpu(model_name, type_of_data, True, cpu_usage, functions.monitor_data["peak_cpu_percent"],
                                        ram_usage, functions.monitor_data["peak_gpu_utilization"], total_vram_mb,

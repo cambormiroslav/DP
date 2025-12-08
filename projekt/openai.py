@@ -172,8 +172,8 @@ def load_and_measure(dir_path, first_ticket, latest_file):
         else:
             for output in output_array:
                 functions.save_to_file_object(model, type_of_data, output["TP"], output["FP"], output["TN"],
-                                               output["FN"], output["Precision"], output["Recall"],
-                                               diff_datetime_seconds, output["IoU"])
+                                               output["FN"], output["Precision"], output["Recall"], output["IoU"])
+            functions.save_to_file_object_main(model, type_of_data, diff_datetime_seconds)
         functions.save_to_file_cpu_gpu(model, type_of_data, True, cpu_usage, functions.monitor_data["peak_cpu_percent"],
                                        ram_usage, functions.monitor_data["peak_gpu_utilization"], total_vram_mb,
                                        diff_datetime_seconds)

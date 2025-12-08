@@ -520,11 +520,17 @@ def save_to_file_ocr(model, type_of_data, values, incorrect_data, not_found_data
     with codecs.open(output_file_path, "+a", "utf-8") as file:
         file.write(f"{correctness};{correct_data_counted};{incorrect_data_counted};{not_data_found_counted};{good_not_found_counted};{time_diff};{incorrect_data};{not_found_data};{good_not_found}\n")
 
-def save_to_file_object(model, type_of_data, tp, fp, tn, fn, precision, recall, time_diff, iou):
+def save_to_file_object(model, type_of_data, tp, fp, tn, fn, precision, recall, iou):
     output_file_path = f"./output_objects/{model}_{type_of_data}_{iou}.txt"
     
     with open(output_file_path, "+a") as file:
-        file.write(f"{tp};{fp};{tn};{fn};{precision};{recall};{time_diff}\n")
+        file.write(f"{tp};{fp};{tn};{fn};{precision};{recall}\n")
+
+def save_to_file_object_main(model, type_of_data, time_diff):
+    output_file_path = f"./output_objects/{model}_{type_of_data}_main.txt"
+
+    with open(output_file_path, "+a") as file:
+        file.write(f"{time_diff}\n")
 
 """
 * Save the CPU and GPU measurement to the file.
