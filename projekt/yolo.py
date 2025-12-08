@@ -191,7 +191,7 @@ def train_yolo(model_specification, dataset_yaml, count_of_epochs, model_train_d
     diff_datetime = end_datetime - start_datetime
     diff_datetime_seconds = diff_datetime.total_seconds()
     
-    functions.save_to_file_cpu_gpu(model_specification.replace(".pt", ""), type_of_data, True, cpu_usage, functions.monitor_data["peak_cpu_percent"],
+    functions.save_to_file_cpu_gpu(model_specification.replace(".pt", ""), type_of_data, False, cpu_usage, functions.monitor_data["peak_cpu_percent"],
                                        ram_usage, functions.monitor_data["peak_gpu_utilization"], total_vram_mb,
                                        diff_datetime_seconds)
 
@@ -214,7 +214,7 @@ def load_and_measure(model, model_name):
         test_img(arrays_of_test_files[1][index], model, model_name, arrays_of_test_files[0][index])
 
 if __name__ == "__main__":
-    model = train_yolo("yolo11n.pt", dataset_yaml, 100,"./output_objects/yolo11n/")
+    model = train_yolo("yolo11n.pt", dataset_yaml, 600,"./output_objects/yolo11n/")
     load_and_measure(model, "yolo11n")
 
     """model = train_yolo("yolo11s.pt", dataset_yaml, 600,"./output_objects/yolo11s/")
