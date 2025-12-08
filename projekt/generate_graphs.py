@@ -41,8 +41,8 @@ add_to_graph = {
     "yolo11x" : True
     }
 
-load_cpu_gpu_data = True
-is_cpu_gpu_data_test = True
+load_cpu_gpu_data = False
+is_cpu_gpu_data_test = False
 
 graphs_dir = "./graphs/"
 if not os.path.exists(graphs_dir):
@@ -591,11 +591,13 @@ def load_all_data():
             if type_of_dataset == "ticket":
                 load_output_of_models(file, model)
             else:
-                third = file.split("_")[2]
-                if third == "main":
-                    load_output_of_models_objects_main(file, model)
-                else:
-                    load_output_of_models_objects(file, model, third)
+                file_split = file.split("_")
+                if len(file_split) == 3:
+                    third = file_split[2].replace(".txt", "")
+                    if third == "main":
+                        load_output_of_models_objects_main(file, model)
+                    else:
+                        load_output_of_models_objects(file, model, third)
         
         
 
