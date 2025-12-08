@@ -508,7 +508,6 @@ def load_output_of_models(file_path, model_name):
 def load_output_of_models_objects(file_path, model_name, iou):
     path_to_data = output_dir + file_path
 
-    time_run_array = []
     precision_sum = 0.0
     recall_sum = 0.0
     number_of_entries = 0
@@ -521,13 +520,7 @@ def load_output_of_models_objects(file_path, model_name, iou):
 
             precision_sum += float(array_of_values[4])
             recall_sum += float(array_of_values[5])
-            time_run_array += [float(array_of_values[6])]
             number_of_entries += 1
-    
-    if model_name not in time_run_dict:
-        time_run_dict[model_name] = {iou: time_run_array}
-    else:
-        time_run_dict[model_name][iou] = time_run_array
     
     if model_name not in precision_sum_dict:
         precision_sum_dict[model_name] = {iou: precision_sum / number_of_entries}
@@ -538,6 +531,20 @@ def load_output_of_models_objects(file_path, model_name, iou):
         recall_sum_dict[model_name] = {iou: recall_sum / number_of_entries}
     else:
         recall_sum_dict[model_name][iou] = recall_sum / number_of_entries
+
+def load_output_of_models_objects_main(file_path, model_name):
+    path_to_data = output_dir + file_path
+
+    array_of_time_of_run = []
+
+    with open(path_to_data, "r") as file:
+        lines = file.readlines()
+
+        for line in lines:
+            time_of_run = line.replace("\n", "")
+            array_of_time_of_run += [float(time_of_run)]
+    
+    time_run_dict[model_name] = array_of_time_of_run
 
 def load_cpu_gpu_data_of_models(file_path, model_name):
     path_to_data = output_dir + file_path
@@ -584,8 +591,11 @@ def load_all_data():
             if type_of_dataset == "ticket":
                 load_output_of_models(file, model)
             else:
-                iou = file.split("_")[2]
-                load_output_of_models_objects(file, model, iou)
+                third = file.split("_")[2]
+                if third == "main":
+                    load_output_of_models_objects_main(file, model)
+                else:
+                    load_output_of_models_objects(file, model, third)
         
         
 
