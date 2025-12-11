@@ -45,14 +45,14 @@ def test_ocr():
         image_path = os.path.join(dataset_dir_path, file)
         for model in gemini_models:
             for pattern_en in patternsOcrEn:
-                response = gemini.send_image_request(image_path, pattern_en)
+                response = gemini.send_image_request(image_path, model, pattern_en)
             for pattern_cz in patternsOcrCz:
-                response = gemini.send_image_request(image_path, pattern_cz)
+                response = gemini.send_image_request(image_path, model, pattern_cz)
         for model in openai_models:
             for pattern_en in patternsOcrEn:
-                response = openai.send_image_request(image_path, pattern_en)
+                response = openai.send_image_request(image_path, model, pattern_en)
             for pattern_cz in patternsOcrCz:
-                response = openai.send_image_request(image_path, pattern_cz)
+                response = openai.send_image_request(image_path, model, pattern_cz)
         for model in ollama_models:
             for pattern_en in patternsOcrEn:
                 response = ollama_api.send_image_request(image_path, model, pattern_en)
