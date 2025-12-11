@@ -27,12 +27,6 @@ else:
     type_of_data = "objects"
     correct_data_path = "../data_for_control/dataset_objects_correct_data.json"
 
-
-model = "llava"
-#model = "bakllava"
-#model = "minicpm-v"
-#model  = "knoopx/mobile-vlm:3b-fp16"
-
 """
 * Transform the input image to base64.
 
@@ -51,7 +45,7 @@ def get_image_in_base64(path_to_image):
 Input: (Image in base64, Text pattern for model)
 Output: Response as text
 """
-def send_image_request(image_base64, text_request):
+def send_image_request(image_base64, model, text_request):
     url = "http://localhost:11434/api/generate"
     payload = {
         "model" : model,
@@ -75,7 +69,7 @@ def send_image_request(image_base64, text_request):
 Input: (Path to directory with input images, count of input images)
 Output: None (but call save to file)
 """
-def load_and_measure(dir_path, first_ticket, latest_file):
+def load_and_measure(dir_path, model, first_ticket, latest_file):
     i = first_ticket - 1
     array_of_images = os.listdir(dir_path)
     while(True):
@@ -116,7 +110,7 @@ def load_and_measure(dir_path, first_ticket, latest_file):
 
         try:
             base_64_image = get_image_in_base64(dir_path + file)
-            response = send_image_request(base_64_image, pattern)
+            response = send_image_request(base_64_image, model, pattern)
         finally:
             # stop thread
             functions.monitor_data["is_running"] = False
@@ -315,38 +309,27 @@ if __name__ == "__main__":
     else:
         dir_path = "../dataset/objects/"
 
-    #load_and_measure(dir_path, 1, 103)
+    load_and_measure(dir_path, "llava", 1, 103)
     
-    model = "bakllava"
-    #load_and_measure(dir_path, 1, 103)
+    load_and_measure(dir_path, "bakllava", 1, 103)
+    
+    load_and_measure(dir_path, "minicpm-v", 1, 103)
 
-    model = "minicpm-v"
-    #load_and_measure(dir_path, 1, 103)
+    load_and_measure(dir_path, "knoopx/mobile-vlm:3b-fp16", 1, 103)
 
-    model = "knoopx/mobile-vlm:3b-fp16"
-    #load_and_measure(dir_path, 1, 103)
+    load_and_measure(dir_path, "llava:13b", 1, 103)
 
-    model = "llava:13b"
-    #load_and_measure(dir_path, 1, 103)
+    load_and_measure(dir_path, "llava:34b", 1, 103)
 
-    model = "llava:34b"
-    #load_and_measure(dir_path, 1, 103)
+    load_and_measure(dir_path, "gemma3:27b", 1, 103)
 
-    model = "gemma3:27b"
-    #load_and_measure(dir_path, 1, 103)
+    load_and_measure(dir_path, "granite3.2-vision", 1, 103)
 
-    model = "granite3.2-vision"
-    #load_and_measure(dir_path, 1, 103)
+    load_and_measure(dir_path, "gemma3:12b", 1, 103)
 
-    model = "gemma3:12b"
-    #load_and_measure(dir_path, 1, 103)
-
-    model = "gemma3:4b"
-    #load_and_measure(dir_path, 1, 103)
+    load_and_measure(dir_path, "gemma3:4b", 1, 103)
 
     is_mistral = True
-    model = "mistral-small3.1"
-    #load_and_measure(dir_path, 1, 103)
-
-    model = "mistral-small3.2:24b"
-    #load_and_measure(dir_path, 1, 103)
+    load_and_measure(dir_path, "mistral-small3.1", 1, 103)
+    
+    load_and_measure(dir_path, "mistral-small3.2:24b", 1, 103)
