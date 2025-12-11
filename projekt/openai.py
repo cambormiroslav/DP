@@ -21,8 +21,6 @@ else:
     type_of_data = "objects"
     correct_data_path = "../data_for_control/dataset_objects_correct_data.json"
 
-model = "gpt-4o-mini"
-
 """
 * Send request to the model
 * Transform input image to base64.
@@ -30,7 +28,7 @@ model = "gpt-4o-mini"
 Input: (Image in base64, Text pattern for model)
 Output: Response as text
 """
-def send_image_request(image_path, text_request):
+def send_image_request(image_path, model, text_request):
     base64_image = None
     with open(image_path, "rb") as image_file:
         base64_image = base64.b64encode(image_file.read()).decode('utf-8')
@@ -71,7 +69,7 @@ def send_image_request(image_path, text_request):
 Input: (Path to directory with input images, count of input images)
 Output: None (but call save to file)
 """
-def load_and_measure(dir_path, first_ticket, latest_file):
+def load_and_measure(dir_path, model, first_ticket, latest_file):
     i = first_ticket - 1
     array_of_images = os.listdir(dir_path)
     while(True):
@@ -112,7 +110,7 @@ def load_and_measure(dir_path, first_ticket, latest_file):
         start_datetime = datetime.datetime.now()
 
         try:
-            response = send_image_request(dir_path + file, pattern)
+            response = send_image_request(dir_path + file, model, pattern)
         finally:
             # stop thread
             functions.monitor_data["is_running"] = False
@@ -199,25 +197,18 @@ if __name__ == "__main__":
     else:
         dir_path = "../dataset/objects/"
     
-    load_and_measure(dir_path, 1, 103)
+    load_and_measure(dir_path, "gpt-4o-mini", 1, 103)
 
-    model = "gpt-4o"
-    load_and_measure(dir_path, 1, 103)
+    load_and_measure(dir_path, "gpt-4o", 1, 103)
 
-    model = "gpt-4.1-nano"
-    load_and_measure(dir_path, 1, 103)
+    load_and_measure(dir_path, "gpt-4.1-nano", 1, 103)
 
-    model = "gpt-4.1-mini"
-    load_and_measure(dir_path, 1, 103)
+    load_and_measure(dir_path, "gpt-4.1-mini", 1, 103)
 
-    model = "gpt-4.1"
-    load_and_measure(dir_path, 1, 103)
+    load_and_measure(dir_path, "gpt-4.1", 1, 103)
 
-    model = "gpt-5-nano"
-    load_and_measure(dir_path, 1, 103)
+    load_and_measure(dir_path, "gpt-5-nano", 1, 103)
 
-    model = "gpt-5-mini"
-    load_and_measure(dir_path, 1, 103)
+    load_and_measure(dir_path, "gpt-5-mini", 1, 103)
 
-    model = "gpt-5"
-    load_and_measure(dir_path, 1, 103)
+    load_and_measure(dir_path, "gpt-5", 1, 103)
