@@ -21,7 +21,6 @@ else:
     type_of_data = "objects"
     correct_data_path = "../data_for_control/dataset_objects_correct_data.json"
 
-model_text = "gemini-2.0-flash-lite"
 model_is_pro = False
 
 """
@@ -30,7 +29,7 @@ model_is_pro = False
 Input: (Image in base64, Text pattern for model)
 Output: Response as text
 """
-def send_image_request(image_path, text_request):
+def send_image_request(image_path, model_text, text_request):
     myfile = genai.upload_file(image_path)
     genai.configure(api_key=api_key)
 
@@ -50,7 +49,7 @@ def send_image_request(image_path, text_request):
 Input: (Path to directory with input images, count of input images)
 Output: None (but call save to file)
 """
-def load_and_measure(dir_path, first_ticket, latest_file):
+def load_and_measure(dir_path, model, first_ticket, latest_file):
     i = first_ticket - 1
     array_of_images = os.listdir(dir_path)
     while(True):
@@ -92,7 +91,7 @@ def load_and_measure(dir_path, first_ticket, latest_file):
         start_datetime = datetime.datetime.now()
 
         try:
-            response = send_image_request(dir_path + file, pattern)
+            response = send_image_request(dir_path + file, model, pattern)
         finally:
             # stop thread
             functions.monitor_data["is_running"] = False
@@ -161,17 +160,17 @@ def load_and_measure(dir_path, first_ticket, latest_file):
         diff_datetime_seconds = diff_datetime.total_seconds()
 
         if ocr_method:
-            functions.save_to_file_ocr(model_text, type_of_data, [correctness, correct_data, 
+            functions.save_to_file_ocr(model, type_of_data, [correctness, correct_data, 
                                                                   incorect_data, not_found_data, 
                                                                   good_not_found, diff_datetime_seconds], 
                                                                   dict_of_incorect, array_not_found, 
                                                                   array_good_not_found)
         else:
             for output in output_array:
-                functions.save_to_file_object(model_text, type_of_data, output["TP"], output["FP"], output["TN"],
+                functions.save_to_file_object(model, type_of_data, output["TP"], output["FP"], output["TN"],
                                                output["FN"], output["Precision"], output["Recall"], output["IoU"])
-            functions.save_to_file_object_main(model_text, type_of_data, diff_datetime_seconds)
-        functions.save_to_file_cpu_gpu(model_text, type_of_data, True, cpu_usage, functions.monitor_data["peak_cpu_percent"],
+            functions.save_to_file_object_main(model, type_of_data, diff_datetime_seconds)
+        functions.save_to_file_cpu_gpu(model, type_of_data, True, cpu_usage, functions.monitor_data["peak_cpu_percent"],
                                        ram_usage, functions.monitor_data["peak_gpu_utilization"], total_vram_mb,
                                        diff_datetime_seconds)
         
@@ -204,20 +203,16 @@ if __name__ == "__main__":
         dir_path = "../dataset/objects/"
 
     model_is_pro = False
-    #load_and_measure(dir_path, 1, 103)
+    #load_and_measure(dir_path, "gemini-2.0-flash-lite" 1, 103)
 
-    model_text = "gemini-2.0-flash"
     model_is_pro = False
-    #load_and_measure(dir_path, 1, 103)
+    #load_and_measure(dir_path, "gemini-2.0-flash", 1, 103)
 
-    model_text = "gemini-2.5-flash-lite"
     model_is_pro = False
-    #load_and_measure(dir_path, 1, 103)
+    #load_and_measure(dir_path, "gemini-2.5-flash-lite", 1, 103)
 
-    model_text = "gemini-2.5-flash"
     model_is_pro = False
-    #load_and_measure(dir_path, 1, 103)
+    #load_and_measure(dir_path, "gemini-2.5-flash", 1, 103)
 
-    model_text = "gemini-2.5-pro"
     model_is_pro = True
-    load_and_measure(dir_path, 93, 103)
+    load_and_measure(dir_path, "gemini-2.5-pro", 93, 103)
