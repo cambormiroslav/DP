@@ -1,4 +1,5 @@
 import os
+import datetime
 import json
 
 import gemini
@@ -36,6 +37,22 @@ ollama_models = ["llava", "bakllava", "minicpm-v", "knoopx/mobile-vlm:3b-fp16", 
 
 number_of_inputs = 2
 
+def send_gemini_request(image_path, model, text_request):
+    start_datetime = datetime.datetime.now()
+    response = gemini.send_image_request(image_path, model, text_request)
+    end_datetime = datetime.datetime.now()
+
+def send_openai_request(image_path, model, text_request):
+    start_datetime = datetime.datetime.now()
+    response = openai.send_image_request(image_path, model, text_request)
+    end_datetime = datetime.datetime.now()
+
+def send_ollama_request(image_path, model, text_request):
+    start_datetime = datetime.datetime.now()
+    response = ollama_api.send_image_request(image_path, model, text_request)
+    end_datetime = datetime.datetime.now()
+
+
 def test_ocr():
     correct_data_path = "../data_for_control/dataset_correct_data.json"
     dataset_dir_path = "../dataset/large-receipt-image-dataset-SRD/"
@@ -45,19 +62,19 @@ def test_ocr():
         image_path = os.path.join(dataset_dir_path, file)
         for model in gemini_models:
             for pattern_en in patternsOcrEn:
-                response = gemini.send_image_request(image_path, model, pattern_en)
+                send_gemini_request(image_path, model, pattern_en)
             for pattern_cz in patternsOcrCz:
-                response = gemini.send_image_request(image_path, model, pattern_cz)
+                send_gemini_request(image_path, model, pattern_cz)
         for model in openai_models:
             for pattern_en in patternsOcrEn:
-                response = openai.send_image_request(image_path, model, pattern_en)
+                send_openai_request(image_path, model, pattern_en)
             for pattern_cz in patternsOcrCz:
-                response = openai.send_image_request(image_path, model, pattern_cz)
+                send_openai_request(image_path, model, pattern_cz)
         for model in ollama_models:
             for pattern_en in patternsOcrEn:
-                response = ollama_api.send_image_request(image_path, model, pattern_en)
+                send_ollama_request(image_path, model, pattern_en)
             for pattern_cz in patternsOcrCz:
-                response = ollama_api.send_image_request(image_path, model, pattern_cz)
+                send_ollama_request(image_path, model, pattern_cz)
         #gemini.model_text = "gemini-2.5-flash-lite"
         #json_output = gemini.send_image_request(image_path, pattern1G_OcrEn)
         #print(json.dumps(json_output, indent=4))
