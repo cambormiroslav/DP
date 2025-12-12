@@ -89,5 +89,30 @@ def test_ocr():
                 send_ollama_request(image_path, file, model, pattern_en, correct_data_path, "ticket")
             for pattern_cz in patternsOcrCz:
                 send_ollama_request(image_path, file, model, pattern_cz, correct_data_path, "ticket")
+
+def test_object():
+    correct_data_path = "../data_for_control/dataset_objects_correct_data.json"
+    dataset_dir_path = "../dataset/objects/"
+    sorted_array_of_images = sorted(os.listdir(dataset_dir_path))
+    for index in range(number_of_inputs):
+        file = sorted_array_of_images[index]
+        image_path = os.path.join(dataset_dir_path, file)
+        for model in gemini_models:
+            for pattern_en in patternsObjectEn:
+                send_gemini_request(image_path, file, model, pattern_en, correct_data_path, "object")
+            for pattern_cz in patternsObjectCz:
+                send_gemini_request(image_path, file, model, pattern_cz, correct_data_path, "object")
+        for model in openai_models:
+            for pattern_en in patternsObjectEn:
+                send_openai_request(image_path, file, model, pattern_en, correct_data_path, "object")
+            for pattern_cz in patternsObjectCz:
+                send_openai_request(image_path, file, model, pattern_cz, correct_data_path, "object")
+        for model in ollama_models:
+            for pattern_en in patternsObjectEn:
+                send_ollama_request(image_path, file, model, pattern_en, correct_data_path, "object")
+            for pattern_cz in patternsObjectCz:
+                send_ollama_request(image_path, file, model, pattern_cz, correct_data_path, "object")
+
 if __name__ == "__main__":
     test_ocr()
+    test_object()
