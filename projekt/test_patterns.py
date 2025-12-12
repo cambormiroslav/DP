@@ -1,10 +1,10 @@
 import os
 import datetime
-import json
 
 import gemini
 import ollama_api
 import openai
+import functions
 
 pattern1G_OcrEn = "Get me the list of goods from picture. Show the address, date, time and name of company. When you find the phone number show it too. When you find the fax number show it too as fax_number. When you find you find the table number, the information about guest or order number show it too. Show me the output as JSON. The company name put in key company, the address of company in key address, phone number in key phone_number, server name in key server, station number in key station, order number in key order_number, table info in key table, number of guests in key guests, subtotal price to key sub_total, tax in key tax, total cost in key total, date in key date, time in key time. Every good name will be as key of the JSON in key goods and value of the good will be the another JSON with amount of goods in key amount and the cost of the good in key price."
 pattern1G_OcrCz = "Zjisti mi ze snímku seznam zboží. Vrať mi adresu, datum, čas a název společnosti. Když najdeš telefonní číslo, vrať ho také. Když najdeš faxové číslo, vrať ho také jako fax_number. Když najdeš číslo stolu, informace o počtu hostů nebo číslo objednávky, vrať je také. Výstup mi ukaž jako JSON. Název společnosti navrať pod klíčem company, adresu společnosti pod klíčem address, telefonní číslo pod klíčem phone_number, jméno číšníka pod klíčem server, číslo stanice pod klíčem station, číslo objednávky pod klíčem order_number, informace o stole pod klíčem table, počet hostů pod klíčem guests, mezisoučet ceny pod klíčem sub_total, daň pod klíčem tax, celkovou cenu pod klíčem total, datum pod klíčem date, čas pod klíčem time. Každý název zboží bude jako klíč JSON v klíči goods a hodnota zboží bude další JSON s množstvím zboží v klíči amount a cenou zboží v klíči price."
@@ -37,22 +37,35 @@ ollama_models = ["llava", "bakllava", "minicpm-v", "knoopx/mobile-vlm:3b-fp16", 
 
 number_of_inputs = 2
 
-def send_gemini_request(image_path, model, text_request, correct_data_path, type_of_data):
+def calcute_timediff_and_save(response, start_datetime, end_datetime, model, file_name, type_of_data, correct_data_path):
+    diff_datetime = end_datetime - start_datetime
+    diff_datetime_seconds = diff_datetime.total_seconds()
+
+    data_tuple = functions.check_the_data_ocr(response, file_name, correct_data_path, True)
+    functions.save_to_file_ocr(model, type_of_data, [data_tuple[0], data_tuple[1], data_tuple[2], data_tuple[3],
+                                                     data_tuple[4], diff_datetime_seconds], data_tuple[5],
+                                                     data_tuple[6], data_tuple[7], True)
+
+def send_gemini_request(image_path, file_name, model, text_request, correct_data_path, type_of_data):
     start_datetime = datetime.datetime.now()
     response = gemini.send_image_request(image_path, model, text_request)
     end_datetime = datetime.datetime.now()
 
-def send_openai_request(image_path, model, text_request, correct_data_path, type_of_data):
+    calcute_timediff_and_save(response, start_datetime, end_datetime, model, file_name, type_of_data, correct_data_path)
+
+def send_openai_request(image_path, file_name, model, text_request, correct_data_path, type_of_data):
     start_datetime = datetime.datetime.now()
     response = openai.send_image_request(image_path, model, text_request)
     end_datetime = datetime.datetime.now()
 
-def send_ollama_request(image_path, model, text_request, correct_data_path, type_of_data):
+    calcute_timediff_and_save(response, start_datetime, end_datetime, model, file_name, type_of_data, correct_data_path)
+
+def send_ollama_request(image_path, file_name, model, text_request, correct_data_path, type_of_data):
     start_datetime = datetime.datetime.now()
     response = ollama_api.send_image_request(image_path, model, text_request)
     end_datetime = datetime.datetime.now()
 
-
+    calcute_timediff_and_save(response, start_datetime, end_datetime, model, file_name, type_of_data, correct_data_path)
 
 def test_ocr():
     correct_data_path = "../data_for_control/dataset_correct_data.json"
@@ -63,18 +76,18 @@ def test_ocr():
         image_path = os.path.join(dataset_dir_path, file)
         for model in gemini_models:
             for pattern_en in patternsOcrEn:
-                send_gemini_request(image_path, model, pattern_en, correct_data_path, "ticket")
+                send_gemini_request(image_path, file, model, pattern_en, correct_data_path, "ticket")
             for pattern_cz in patternsOcrCz:
-                send_gemini_request(image_path, model, pattern_cz, correct_data_path, "ticket")
+                send_gemini_request(image_path, file, model, pattern_cz, correct_data_path, "ticket")
         for model in openai_models:
             for pattern_en in patternsOcrEn:
-                send_openai_request(image_path, model, pattern_en, correct_data_path, "ticket")
+                send_openai_request(image_path, file, model, pattern_en, correct_data_path, "ticket")
             for pattern_cz in patternsOcrCz:
-                send_openai_request(image_path, model, pattern_cz, correct_data_path, "ticket")
+                send_openai_request(image_path, file, model, pattern_cz, correct_data_path, "ticket")
         for model in ollama_models:
             for pattern_en in patternsOcrEn:
-                send_ollama_request(image_path, model, pattern_en, correct_data_path, "ticket")
+                send_ollama_request(image_path, file, model, pattern_en, correct_data_path, "ticket")
             for pattern_cz in patternsOcrCz:
-                send_ollama_request(image_path, model, pattern_cz, correct_data_path, "ticket")
+                send_ollama_request(image_path, file, model, pattern_cz, correct_data_path, "ticket")
 if __name__ == "__main__":
     test_ocr()
