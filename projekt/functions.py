@@ -3,6 +3,10 @@ import codecs
 import psutil
 import pynvml
 import time
+import os
+
+pattern_test_dir_output_path = "./output_pattern_test/"
+test_dir_path_output = "./output/"
 
 iou_thresholds = [0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9]
 
@@ -507,8 +511,11 @@ Input: (model name, type of data, charakteristics of data and time of run, incor
         not founded data array, not founded goods)
 Output: None
 """  
-def save_to_file_ocr(model, type_of_data, values, incorrect_data, not_found_data, good_not_found):
-    output_file_path = f"./output/{model}_{type_of_data}.txt"
+def save_to_file_ocr(model, type_of_data, values, incorrect_data, not_found_data, good_not_found, pattern_test):
+    if pattern_test:
+        output_file_path = os.path.join(pattern_test_dir_output_path, f"{model}_{type_of_data}.txt")
+    else:
+        output_file_path = os.path.join(test_dir_path_output, f"{model}_{type_of_data}.txt")
 
     correctness = values[0]
     correct_data_counted = values[1]
