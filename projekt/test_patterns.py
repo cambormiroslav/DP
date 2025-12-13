@@ -58,10 +58,7 @@ ollama_models = ["llava", "bakllava", "minicpm-v", "knoopx/mobile-vlm:3b-fp16", 
 
 number_of_inputs = 2    
 
-def check_ollama_models(response, file_name):
-    metrics_array = functions.get_object_metrics_for_ollama_and_openai_models(response, file_name)
-
-def check_openai_models(response, file_name):
+def check_openai_ollama_models(response, file_name):
     metrics_array = functions.get_object_metrics_for_ollama_and_openai_models(response, file_name)
 
 def check_gemini_models(response, file_name):
@@ -78,9 +75,9 @@ def calcute_timediff_and_save(response, start_datetime, end_datetime, model, pat
                                                          data_tuple[6], data_tuple[7], pattern_key)
     else:
         if model in ollama_models:
-            check_ollama_models()
+            check_openai_ollama_models()
         elif model in openai_models:
-            check_openai_models()
+            check_openai_ollama_models()
         elif model in gemini_models:
             check_gemini_models()
         else:
