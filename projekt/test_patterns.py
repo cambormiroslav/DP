@@ -31,20 +31,67 @@ patternsOcrCz = [pattern1G_OcrCz, pattern2Op_OcrCz, pattern3Ol_OcrCz, pattern4Ol
 patternsObjectEn = [pattern1G_ObjectEn, pattern2Op_ObjectEn, pattern3Ol_ObjectEn]
 patternsObjectCz = [pattern1G_ObjectCz, pattern2Op_ObjectCz, pattern3Ol_ObjectCz]
 
-gemini_models = ["gemini-3-pro-preview", "gemini-2.5-pro", "gemini-2.5-flash", "gemini-2.5-flash-lite", "gemini-2.0-flash", "gemini-2.0-flash-lite"]
+gemini_models = ["gemini-3-pro-preview", "gemini-2.5-pro", "gemini-2.5-flash", "gemini-2.5-flash-lite", 
+                 "gemini-2.0-flash", "gemini-2.0-flash-lite"]
 openai_models = ["gpt-4o-mini", "gpt-4o", "gpt-4.1-mini", "gpt-4.1"]
-ollama_models = ["llava", "bakllava", "minicpm-v", "knoopx/mobile-vlm:3b-fp16", "llava:13b", "llava:34b", "gemma3:27b", "granite3.2-vision", "gemma3:12b", "gemma3:4b", "mistral-small3.1", "mistral-small3.2:24b"]
+ollama_models = ["llava", "bakllava", "minicpm-v", "knoopx/mobile-vlm:3b-fp16", "llava:13b", "llava:34b", 
+                 "gemma3:27b", "granite3.2-vision", "gemma3:12b", "gemma3:4b", "mistral-small3.1", 
+                 "mistral-small3.2:24b"]
 
 number_of_inputs = 2
+
+def check_ollama_and_openai_models(response, file_name):
+    json_response = functions.load_json_response(response)
+            
+    max_iou_detections, good_boxes = functions.get_max_iou_and_good_boxes(file_name, json_response["objects"])
+            
+    for iou_threshold in functions.iou_thresholds:
+        tp, fp, tn, fn, precision, recall = functions.get_tp_fp_tn_fn_precision_recall(max_iou_detections, good_boxes, iou_threshold)
+
+def check_ollama_models(response, file_name):
+    check_ollama_and_openai_models(response, file_name)
+
+def check_openai_models(response, file_name):
+    check_ollama_and_openai_models(response, file_name)
+
+def check_gemini_models(response, file_name):
+    json_response = functions.load_json_response_gemini(response)
+
+    detections = []
+
+    for resp in json_response:
+        box_coord = resp["box_2d"]
+                
+        detections.append({
+            "class_name": resp["label"],
+            "x_min": int(box_coord[0]),
+            "y_min": int(box_coord[1]),
+            "x_max": int(box_coord[2]),
+            "y_max": int(box_coord[3])
+        })
+            
+    max_iou_detections, good_boxes = functions.get_max_iou_and_good_boxes(file_name, detections)
+    for iou_threshold in functions.iou_thresholds:
+        tp, fp, tn, fn, precision, recall = functions.get_tp_fp_tn_fn_precision_recall(max_iou_detections, good_boxes, iou_threshold)
 
 def calcute_timediff_and_save(response, start_datetime, end_datetime, model, file_name, type_of_data, correct_data_path):
     diff_datetime = end_datetime - start_datetime
     diff_datetime_seconds = diff_datetime.total_seconds()
 
-    data_tuple = functions.check_the_data_ocr(response, file_name, correct_data_path, True)
-    functions.save_to_file_ocr(model, type_of_data, [data_tuple[0], data_tuple[1], data_tuple[2], data_tuple[3],
-                                                     data_tuple[4], diff_datetime_seconds], data_tuple[5],
-                                                     data_tuple[6], data_tuple[7], True)
+    if type_of_data == "ticket":
+        data_tuple = functions.check_the_data_ocr(response, file_name, correct_data_path, True)
+        functions.save_to_file_ocr(model, type_of_data, [data_tuple[0], data_tuple[1], data_tuple[2], data_tuple[3],
+                                                         data_tuple[4], diff_datetime_seconds], data_tuple[5],
+                                                         data_tuple[6], data_tuple[7], True)
+    else:
+        if model in ollama_models:
+            check_ollama_models()
+        elif model in openai_models:
+            check_openai_models()
+        elif model in gemini_models:
+            check_gemini_models()
+        else:
+            print("Unknown model for object detection.")
 
 def send_gemini_request(image_path, file_name, model, text_request, correct_data_path, type_of_data):
     start_datetime = datetime.datetime.now()
