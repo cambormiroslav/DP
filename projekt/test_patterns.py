@@ -38,41 +38,16 @@ ollama_models = ["llava", "bakllava", "minicpm-v", "knoopx/mobile-vlm:3b-fp16", 
                  "gemma3:27b", "granite3.2-vision", "gemma3:12b", "gemma3:4b", "mistral-small3.1", 
                  "mistral-small3.2:24b"]
 
-number_of_inputs = 2
-
-def check_ollama_and_openai_models(response, file_name):
-    json_response = functions.load_json_response(response)
-            
-    max_iou_detections, good_boxes = functions.get_max_iou_and_good_boxes(file_name, json_response["objects"])
-            
-    for iou_threshold in functions.iou_thresholds:
-        tp, fp, tn, fn, precision, recall = functions.get_tp_fp_tn_fn_precision_recall(max_iou_detections, good_boxes, iou_threshold)
+number_of_inputs = 2    
 
 def check_ollama_models(response, file_name):
-    check_ollama_and_openai_models(response, file_name)
+    metrics_array = functions.get_object_metrics_for_ollama_and_openai_models(response, file_name)
 
 def check_openai_models(response, file_name):
-    check_ollama_and_openai_models(response, file_name)
+    metrics_array = functions.get_object_metrics_for_ollama_and_openai_models(response, file_name)
 
 def check_gemini_models(response, file_name):
-    json_response = functions.load_json_response_gemini(response)
-
-    detections = []
-
-    for resp in json_response:
-        box_coord = resp["box_2d"]
-                
-        detections.append({
-            "class_name": resp["label"],
-            "x_min": int(box_coord[0]),
-            "y_min": int(box_coord[1]),
-            "x_max": int(box_coord[2]),
-            "y_max": int(box_coord[3])
-        })
-            
-    max_iou_detections, good_boxes = functions.get_max_iou_and_good_boxes(file_name, detections)
-    for iou_threshold in functions.iou_thresholds:
-        tp, fp, tn, fn, precision, recall = functions.get_tp_fp_tn_fn_precision_recall(max_iou_detections, good_boxes, iou_threshold)
+    metrics_array = functions.get_object_metrics_for_gemini_models(response, file_name)
 
 def calcute_timediff_and_save(response, start_datetime, end_datetime, model, file_name, type_of_data, correct_data_path):
     diff_datetime = end_datetime - start_datetime
