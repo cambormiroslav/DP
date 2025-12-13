@@ -26,10 +26,28 @@ pattern4Ol_OcrCz = "Zjisti mi ze snímku seznam zboží. Vrať mi adresu, datum,
 #pattern4Ol_ObjectEn - stejné jako u pattern2Op_ObjectEn
 #pattern4Ol_ObjectCz - stejné jako u pattern2Op_ObjectCz
 
-patternsOcrEn = [pattern1G_OcrEn, pattern2Op_OcrEn, pattern3Ol_OcrEn, pattern4Ol_OcrEn]
-patternsOcrCz = [pattern1G_OcrCz, pattern2Op_OcrCz, pattern3Ol_OcrCz, pattern4Ol_OcrCz]
-patternsObjectEn = [pattern1G_ObjectEn, pattern2Op_ObjectEn, pattern3Ol_ObjectEn]
-patternsObjectCz = [pattern1G_ObjectCz, pattern2Op_ObjectCz, pattern3Ol_ObjectCz]
+patternsOcrEn = {
+    "pattern1_OcrEn": pattern1G_OcrEn,
+    "pattern2_OcrEn": pattern2Op_OcrEn,
+    "pattern3_OcrEn": pattern3Ol_OcrEn,
+    "pattern4_OcrEn": pattern4Ol_OcrEn
+}
+patternsOcrCz = {
+    "pattern1_OcrCz": pattern1G_OcrCz,
+    "pattern2_OcrCz": pattern2Op_OcrCz,
+    "pattern3_OcrCz": pattern3Ol_OcrCz,
+    "pattern4_OcrCz": pattern4Ol_OcrCz
+}
+patternsObjectEn = {
+    "pattern1_ObjectEn": pattern1G_ObjectEn,
+    "pattern2_ObjectEn": pattern2Op_ObjectEn,
+    "pattern3_ObjectEn": pattern3Ol_ObjectEn
+}
+patternsObjectCz = {
+    "pattern1_ObjectCz": pattern1G_ObjectCz,
+    "pattern2_ObjectCz": pattern2Op_ObjectCz,
+    "pattern3_ObjectCz": pattern3Ol_ObjectCz
+}
 
 gemini_models = ["gemini-3-pro-preview", "gemini-2.5-pro", "gemini-2.5-flash", "gemini-2.5-flash-lite", 
                  "gemini-2.0-flash", "gemini-2.0-flash-lite"]
@@ -49,15 +67,15 @@ def check_openai_models(response, file_name):
 def check_gemini_models(response, file_name):
     metrics_array = functions.get_object_metrics_for_gemini_models(response, file_name)
 
-def calcute_timediff_and_save(response, start_datetime, end_datetime, model, file_name, type_of_data, correct_data_path):
+def calcute_timediff_and_save(response, start_datetime, end_datetime, model, pattern_key, file_name, type_of_data, correct_data_path):
     diff_datetime = end_datetime - start_datetime
     diff_datetime_seconds = diff_datetime.total_seconds()
 
     if type_of_data == "ticket":
         data_tuple = functions.check_the_data_ocr(response, file_name, correct_data_path, True)
-        functions.save_to_file_ocr(model, type_of_data, [data_tuple[0], data_tuple[1], data_tuple[2], data_tuple[3],
+        functions.save_to_file_ocr_pattern_test(model, type_of_data, [data_tuple[0], data_tuple[1], data_tuple[2], data_tuple[3],
                                                          data_tuple[4], diff_datetime_seconds], data_tuple[5],
-                                                         data_tuple[6], data_tuple[7], True)
+                                                         data_tuple[6], data_tuple[7], pattern_key)
     else:
         if model in ollama_models:
             check_ollama_models()
@@ -68,26 +86,26 @@ def calcute_timediff_and_save(response, start_datetime, end_datetime, model, fil
         else:
             print("Unknown model for object detection.")
 
-def send_gemini_request(image_path, file_name, model, text_request, correct_data_path, type_of_data):
+def send_gemini_request(image_path, file_name, model, text_request, pattern_key, correct_data_path, type_of_data):
     start_datetime = datetime.datetime.now()
     response = gemini.send_image_request(image_path, model, text_request)
     end_datetime = datetime.datetime.now()
 
-    calcute_timediff_and_save(response, start_datetime, end_datetime, model, file_name, type_of_data, correct_data_path)
+    calcute_timediff_and_save(response, start_datetime, end_datetime, model, pattern_key, file_name, type_of_data, correct_data_path)
 
-def send_openai_request(image_path, file_name, model, text_request, correct_data_path, type_of_data):
+def send_openai_request(image_path, file_name, model, text_request, pattern_key, correct_data_path, type_of_data):
     start_datetime = datetime.datetime.now()
     response = openai.send_image_request(image_path, model, text_request)
     end_datetime = datetime.datetime.now()
 
-    calcute_timediff_and_save(response, start_datetime, end_datetime, model, file_name, type_of_data, correct_data_path)
+    calcute_timediff_and_save(response, start_datetime, end_datetime, model, pattern_key, file_name, type_of_data, correct_data_path)
 
-def send_ollama_request(image_path, file_name, model, text_request, correct_data_path, type_of_data):
+def send_ollama_request(image_path, file_name, model, text_request, pattern_key, correct_data_path, type_of_data):
     start_datetime = datetime.datetime.now()
     response = ollama_api.send_image_request(image_path, model, text_request)
     end_datetime = datetime.datetime.now()
 
-    calcute_timediff_and_save(response, start_datetime, end_datetime, model, file_name, type_of_data, correct_data_path)
+    calcute_timediff_and_save(response, start_datetime, end_datetime, model, pattern_key, file_name, type_of_data, correct_data_path)
 
 def test_ocr():
     correct_data_path = "../data_for_control/dataset_correct_data.json"
@@ -98,19 +116,19 @@ def test_ocr():
         image_path = os.path.join(dataset_dir_path, file)
         for model in gemini_models:
             for pattern_en in patternsOcrEn:
-                send_gemini_request(image_path, file, model, pattern_en, correct_data_path, "ticket")
+                send_gemini_request(image_path, file, model, patternsOcrEn[pattern_en], pattern_en, correct_data_path, "ticket")
             for pattern_cz in patternsOcrCz:
-                send_gemini_request(image_path, file, model, pattern_cz, correct_data_path, "ticket")
+                send_gemini_request(image_path, file, model, patternsOcrCz[pattern_cz], pattern_cz, correct_data_path, "ticket")
         for model in openai_models:
             for pattern_en in patternsOcrEn:
-                send_openai_request(image_path, file, model, pattern_en, correct_data_path, "ticket")
+                send_openai_request(image_path, file, model, patternsOcrEn[pattern_en], pattern_en, correct_data_path, "ticket")
             for pattern_cz in patternsOcrCz:
-                send_openai_request(image_path, file, model, pattern_cz, correct_data_path, "ticket")
+                send_openai_request(image_path, file, model, patternsOcrCz[pattern_cz], pattern_cz, correct_data_path, "ticket")
         for model in ollama_models:
             for pattern_en in patternsOcrEn:
-                send_ollama_request(image_path, file, model, pattern_en, correct_data_path, "ticket")
+                send_ollama_request(image_path, file, model, patternsOcrEn[pattern_en], pattern_en, correct_data_path, "ticket")
             for pattern_cz in patternsOcrCz:
-                send_ollama_request(image_path, file, model, pattern_cz, correct_data_path, "ticket")
+                send_ollama_request(image_path, file, model, patternsOcrCz[pattern_cz], pattern_cz, correct_data_path, "ticket")
 
 def test_object():
     correct_data_path = "../data_for_control/dataset_objects_correct_data.json"
@@ -121,19 +139,19 @@ def test_object():
         image_path = os.path.join(dataset_dir_path, file)
         for model in gemini_models:
             for pattern_en in patternsObjectEn:
-                send_gemini_request(image_path, file, model, pattern_en, correct_data_path, "object")
+                send_gemini_request(image_path, file, model, patternsObjectEn[pattern_en], pattern_en, correct_data_path, "object")
             for pattern_cz in patternsObjectCz:
-                send_gemini_request(image_path, file, model, pattern_cz, correct_data_path, "object")
+                send_gemini_request(image_path, file, model, patternsObjectCz[pattern_cz], pattern_cz, correct_data_path, "object")
         for model in openai_models:
             for pattern_en in patternsObjectEn:
-                send_openai_request(image_path, file, model, pattern_en, correct_data_path, "object")
+                send_openai_request(image_path, file, model, patternsObjectEn[pattern_en], pattern_en, correct_data_path, "object")
             for pattern_cz in patternsObjectCz:
-                send_openai_request(image_path, file, model, pattern_cz, correct_data_path, "object")
+                send_openai_request(image_path, file, model, patternsObjectCz[pattern_cz], pattern_cz, correct_data_path, "object")
         for model in ollama_models:
             for pattern_en in patternsObjectEn:
-                send_ollama_request(image_path, file, model, pattern_en, correct_data_path, "object")
+                send_ollama_request(image_path, file, model, patternsObjectEn[pattern_en], pattern_en, correct_data_path, "object")
             for pattern_cz in patternsObjectCz:
-                send_ollama_request(image_path, file, model, pattern_cz, correct_data_path, "object")
+                send_ollama_request(image_path, file, model, patternsObjectCz[pattern_cz], pattern_cz, correct_data_path, "object")
 
 if __name__ == "__main__":
     test_ocr()

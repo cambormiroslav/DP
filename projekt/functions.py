@@ -556,19 +556,8 @@ def check_the_data_ocr(dict_model, name_of_file, path_to_correct_data, load_json
         correctness = correct_data_counted / count_of_data
 
         return (correctness, correct_data_counted, incorrect_data_counted, not_in_dict_counted, goods_not_counted, dict_incorrect, array_not_found, array_goods_not)
-"""
-* Save the characteristics of model response to the file.
-
-Input: (model name, type of data, charakteristics of data and time of run, incorrect data dict, 
-        not founded data array, not founded goods)
-Output: None
-"""  
-def save_to_file_ocr(model, type_of_data, values, incorrect_data, not_found_data, good_not_found, pattern_test):
-    if pattern_test:
-        output_file_path = os.path.join(pattern_test_dir_output_path, f"{model}_{type_of_data}.txt")
-    else:
-        output_file_path = os.path.join(test_dir_path_output, f"{model}_{type_of_data}.txt")
-
+    
+def save_ocr_values(output_file_path, values, incorrect_data, not_found_data, good_not_found):
     correctness = values[0]
     correct_data_counted = values[1]
     incorrect_data_counted = values[2]
@@ -578,6 +567,21 @@ def save_to_file_ocr(model, type_of_data, values, incorrect_data, not_found_data
     
     with codecs.open(output_file_path, "+a", "utf-8") as file:
         file.write(f"{correctness};{correct_data_counted};{incorrect_data_counted};{not_data_found_counted};{good_not_found_counted};{time_diff};{incorrect_data};{not_found_data};{good_not_found}\n")
+
+"""
+* Save the characteristics of model response to the file.
+
+Input: (model name, type of data, charakteristics of data and time of run, incorrect data dict, 
+        not founded data array, not founded goods)
+Output: None
+"""  
+def save_to_file_ocr(model, type_of_data, values, incorrect_data, not_found_data, good_not_found):
+    output_file_path = os.path.join(test_dir_path_output, f"{model}_{type_of_data}.txt")
+    save_ocr_values(output_file_path, values, incorrect_data, not_found_data, good_not_found)
+
+def save_to_file_ocr_pattern_test(model, type_of_data, values, incorrect_data, not_found_data, good_not_found, pattern_key):
+    output_file_path = os.path.join(pattern_test_dir_output_path, pattern_key, f"{model}_{type_of_data}.txt")
+    save_ocr_values(output_file_path, values, incorrect_data, not_found_data, good_not_found)
 
 def save_to_file_object(model, type_of_data, tp, fp, tn, fn, precision, recall, iou):
     output_file_path = f"./output_objects/{model}_{type_of_data}_{iou}.txt"
