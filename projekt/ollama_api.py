@@ -173,7 +173,7 @@ def load_and_measure(dir_path, model, first_ticket, latest_file):
                                                                                    incorect_data, not_found_data, 
                                                                                    good_not_found, diff_datetime_seconds], 
                                                                                    dict_of_incorect, array_not_found, 
-                                                                                   array_good_not_found, False)
+                                                                                   array_good_not_found)
             else:
                 for output in output_array:
                     functions.save_to_file_object("knoopx-mobile-vlm-3b-fp16", type_of_data, output["TP"], output["FP"], output["TN"],
@@ -188,7 +188,7 @@ def load_and_measure(dir_path, model, first_ticket, latest_file):
                                                                    incorect_data, not_found_data, 
                                                                    good_not_found, diff_datetime_seconds], 
                                                                    dict_of_incorect, array_not_found,
-                                                                   array_good_not_found, False)
+                                                                   array_good_not_found)
             else:
                 for output in output_array:
                     functions.save_to_file_object("llava-13b", type_of_data, output["TP"], output["FP"], output["TN"], 
@@ -203,7 +203,7 @@ def load_and_measure(dir_path, model, first_ticket, latest_file):
                                                                    incorect_data, not_found_data, 
                                                                    good_not_found, diff_datetime_seconds], 
                                                                    dict_of_incorect, array_not_found, 
-                                                                   array_good_not_found, False)
+                                                                   array_good_not_found)
             else:
                 for output in output_array:
                     functions.save_to_file_object("llava-34b", type_of_data, output["TP"], output["FP"], output["TN"],
@@ -218,7 +218,7 @@ def load_and_measure(dir_path, model, first_ticket, latest_file):
                                                                    incorect_data, not_found_data, 
                                                                    good_not_found, diff_datetime_seconds], 
                                                                    dict_of_incorect, array_not_found, 
-                                                                   array_good_not_found, False)
+                                                                   array_good_not_found)
             else:
                 for output in output_array:
                     functions.save_to_file_object("gemma3-27b", type_of_data, output["TP"], output["FP"], output["TN"],
@@ -233,7 +233,7 @@ def load_and_measure(dir_path, model, first_ticket, latest_file):
                                                                    incorect_data, not_found_data, 
                                                                    good_not_found, diff_datetime_seconds], 
                                                                    dict_of_incorect, array_not_found, 
-                                                                   array_good_not_found, False)
+                                                                   array_good_not_found)
             else:
                 for output in output_array:
                     functions.save_to_file_object("gemma3-12b", type_of_data, output["TP"], output["FP"], output["TN"],
@@ -248,7 +248,7 @@ def load_and_measure(dir_path, model, first_ticket, latest_file):
                                                                    incorect_data, not_found_data, 
                                                                    good_not_found, diff_datetime_seconds], 
                                                                    dict_of_incorect, array_not_found, 
-                                                                   array_good_not_found, False)
+                                                                   array_good_not_found)
             else:
                 for output in output_array:
                     functions.save_to_file_object("mistral-small3.2-24b", type_of_data, output["TP"], output["FP"], output["TN"],
@@ -263,7 +263,7 @@ def load_and_measure(dir_path, model, first_ticket, latest_file):
                                                                    incorect_data, not_found_data, 
                                                                    good_not_found, diff_datetime_seconds], 
                                                                    dict_of_incorect, array_not_found, 
-                                                                   array_good_not_found, False)
+                                                                   array_good_not_found)
             else:
                 for output in output_array:
                     functions.save_to_file_object("gemma3-4b", type_of_data, output["TP"], output["FP"], output["TN"],
@@ -278,7 +278,7 @@ def load_and_measure(dir_path, model, first_ticket, latest_file):
                                                              incorect_data, not_found_data, 
                                                              good_not_found, diff_datetime_seconds], 
                                                              dict_of_incorect, array_not_found,
-                                                             array_good_not_found, False)
+                                                             array_good_not_found)
             else:
                 for output in output_array:
                     functions.save_to_file_object(model, type_of_data, output["TP"], output["FP"], output["TN"],

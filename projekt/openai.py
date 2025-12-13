@@ -166,7 +166,7 @@ def load_and_measure(dir_path, model, first_ticket, latest_file):
                                                          incorect_data, not_found_data, 
                                                          good_not_found, diff_datetime_seconds], 
                                                          dict_of_incorect, array_not_found, 
-                                                         array_good_not_found, False)
+                                                         array_good_not_found)
         else:
             for output in output_array:
                 functions.save_to_file_object(model, type_of_data, output["TP"], output["FP"], output["TN"],
