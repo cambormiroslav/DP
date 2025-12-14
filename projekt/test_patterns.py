@@ -1,10 +1,16 @@
 import os
 import datetime
+import shutil
 
 import gemini
 import ollama_api
 import openai
 import functions
+
+if os.path.exists(functions.pattern_test_dir_output_path):
+    shutil.rmtree(functions.pattern_test_dir_output_path)
+if os.path.exists(functions.pattern_test_object_dir_output_path):
+    shutil.rmtree(functions.pattern_test_object_dir_output_path)
 
 pattern1G_OcrEn = "Get me the list of goods from picture. Show the address, date, time and name of company. When you find the phone number show it too. When you find the fax number show it too as fax_number. When you find you find the table number, the information about guest or order number show it too. Show me the output as JSON. The company name put in key company, the address of company in key address, phone number in key phone_number, server name in key server, station number in key station, order number in key order_number, table info in key table, number of guests in key guests, subtotal price to key sub_total, tax in key tax, total cost in key total, date in key date, time in key time. Every good name will be as key of the JSON in key goods and value of the good will be the another JSON with amount of goods in key amount and the cost of the good in key price."
 pattern1G_OcrCz = "Zjisti mi ze snímku seznam zboží. Vrať mi adresu, datum, čas a název společnosti. Když najdeš telefonní číslo, vrať ho také. Když najdeš faxové číslo, vrať ho také jako fax_number. Když najdeš číslo stolu, informace o počtu hostů nebo číslo objednávky, vrať je také. Výstup mi ukaž jako JSON. Název společnosti navrať pod klíčem company, adresu společnosti pod klíčem address, telefonní číslo pod klíčem phone_number, jméno číšníka pod klíčem server, číslo stanice pod klíčem station, číslo objednávky pod klíčem order_number, informace o stole pod klíčem table, počet hostů pod klíčem guests, mezisoučet ceny pod klíčem sub_total, daň pod klíčem tax, celkovou cenu pod klíčem total, datum pod klíčem date, čas pod klíčem time. Každý název zboží bude jako klíč JSON v klíči goods a hodnota zboží bude další JSON s množstvím zboží v klíči amount a cenou zboží v klíči price."
@@ -58,18 +64,6 @@ ollama_models = ["llava", "bakllava", "minicpm-v", "knoopx/mobile-vlm:3b-fp16", 
 
 number_of_inputs = 2    
 
-def check_openai_ollama_models(response, model, file_name, pattern_key):
-    metrics_array = functions.get_object_metrics_for_ollama_and_openai_models(response, file_name)
-    for metrics in metrics_array:
-        functions.save_to_file_object_pattern_test(model, "object", metrics["TP"], metrics["FP"], metrics["TN"], metrics["FN"],
-                                                    metrics["Precision"], metrics["Recall"], metrics["IoU"], pattern_key)
-
-def check_gemini_models(response, model, file_name, pattern_key):
-    metrics_array = functions.get_object_metrics_for_gemini_models(response, file_name)
-    for metrics in metrics_array:
-        functions.save_to_file_object_pattern_test(model, "object", metrics["TP"], metrics["FP"], metrics["TN"], metrics["FN"],
-                                                    metrics["Precision"], metrics["Recall"], metrics["IoU"], pattern_key)
-
 def calcute_timediff_and_save(response, start_datetime, end_datetime, model, pattern_key, file_name, type_of_data, correct_data_path):
     diff_datetime = end_datetime - start_datetime
     diff_datetime_seconds = diff_datetime.total_seconds()
@@ -80,14 +74,10 @@ def calcute_timediff_and_save(response, start_datetime, end_datetime, model, pat
                                                          data_tuple[4], diff_datetime_seconds], data_tuple[5],
                                                          data_tuple[6], data_tuple[7], pattern_key)
     else:
-        if model in ollama_models:
-            check_openai_ollama_models(response, model, file_name, pattern_key)
-        elif model in openai_models:
-            check_openai_ollama_models(response, model, file_name, pattern_key)
-        elif model in gemini_models:
-            check_gemini_models(response, model, file_name, pattern_key)
-        else:
-            print("Unknown model for object detection.")
+        metrics_array = functions.get_object_metrics_for_models(response, file_name)
+        for metrics in metrics_array:
+            functions.save_to_file_object_pattern_test(model, "object", metrics["TP"], metrics["FP"], metrics["TN"], metrics["FN"],
+                                                       metrics["Precision"], metrics["Recall"], metrics["IoU"], pattern_key)
 
 def send_gemini_request(image_path, file_name, model, text_request, pattern_key, correct_data_path, type_of_data):
     start_datetime = datetime.datetime.now()

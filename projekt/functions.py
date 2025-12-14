@@ -159,54 +159,21 @@ def get_tp_fp_tn_fn_precision_recall(detections, good_boxes, iou_threshold):
 
 def load_json_response(response):
     try:
-        return json.loads(response)
+        json_response = json.loads(response)
+        if "objects" in json_response:
+            return json_response
+        else:
+            return {"objects": []}
     except:
         return {"objects": []}
-
-def load_json_response_gemini(response):
-    try:
-        return json.loads(response)
-    except:
-        return []
     
-def get_object_metrics_for_ollama_and_openai_models(response, file_name):
+def get_object_metrics_for_models(response, file_name):
     output_array = []
 
-    json_response = load_json_response(response)        
+    json_response = load_json_response(response)
+    print(json_response)
     max_iou_detections, good_boxes = get_max_iou_and_good_boxes(file_name, json_response["objects"])
             
-    for iou_threshold in iou_thresholds:
-        tp, fp, tn, fn, precision, recall = get_tp_fp_tn_fn_precision_recall(max_iou_detections, good_boxes, iou_threshold)
-        output_array.append({
-            "TP": tp,
-            "FP" : fp,
-            "TN": tn,
-            "FN" : fn,
-            "Precision": precision,
-            "Recall" : recall,
-            "IoU" : iou_threshold
-        })
-    
-    return output_array
-
-def get_object_metrics_for_gemini_models(response, file_name):
-    json_response = load_json_response_gemini(response)
-
-    detections = []
-    output_array = []
-
-    for resp in json_response:
-        box_coord = resp["box_2d"]
-                
-        detections.append({
-            "class_name": resp["label"],
-            "x_min": int(box_coord[0]),
-            "y_min": int(box_coord[1]),
-            "x_max": int(box_coord[2]),
-            "y_max": int(box_coord[3])
-        })
-            
-    max_iou_detections, good_boxes = get_max_iou_and_good_boxes(file_name, detections)
     for iou_threshold in iou_thresholds:
         tp, fp, tn, fn, precision, recall = get_tp_fp_tn_fn_precision_recall(max_iou_detections, good_boxes, iou_threshold)
         output_array.append({

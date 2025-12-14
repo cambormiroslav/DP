@@ -127,20 +127,9 @@ def load_and_measure(dir_path, model, first_ticket, latest_file):
             array_not_found = data_tuple[6]
             array_good_not_found = data_tuple[7]
         else:
-            json_response = functions.load_json_response_gemini(response)
+            json_response = functions.load_json_response(response)
             
-            for resp in json_response:
-                box_coord = resp["box_2d"]
-                
-                detections.append({
-                    "class_name": resp["label"],
-                    "x_min": int(box_coord[0]),
-                    "y_min": int(box_coord[1]),
-                    "x_max": int(box_coord[2]),
-                    "y_max": int(box_coord[3])
-                })
-            
-            max_iou_detections, good_boxes = functions.get_max_iou_and_good_boxes(file, detections)
+            max_iou_detections, good_boxes = functions.get_max_iou_and_good_boxes(file, json_response["objects"])
             for iou_threshold in functions.iou_thresholds:
                 tp, fp, tn, fn, precision, recall = functions.get_tp_fp_tn_fn_precision_recall(max_iou_detections, 
                                                                                                good_boxes, iou_threshold)
@@ -153,8 +142,6 @@ def load_and_measure(dir_path, model, first_ticket, latest_file):
                     "Recall" : recall,
                     "IoU" : iou_threshold
                 })
-
-
         
         diff_datetime = end_datetime - start_datetime
         diff_datetime_seconds = diff_datetime.total_seconds()
@@ -203,16 +190,16 @@ if __name__ == "__main__":
         dir_path = "../dataset/objects/"
 
     model_is_pro = False
-    #load_and_measure(dir_path, "gemini-2.0-flash-lite" 1, 103)
+    #load_and_measure(dir_path, "gemini-2.0-flash-lite", 1, 103)
 
     model_is_pro = False
     #load_and_measure(dir_path, "gemini-2.0-flash", 1, 103)
 
     model_is_pro = False
-    #load_and_measure(dir_path, "gemini-2.5-flash-lite", 1, 103)
+    load_and_measure(dir_path, "gemini-2.5-flash-lite", 1, 103)
 
     model_is_pro = False
     #load_and_measure(dir_path, "gemini-2.5-flash", 1, 103)
 
     model_is_pro = True
-    load_and_measure(dir_path, "gemini-2.5-pro", 93, 103)
+    #load_and_measure(dir_path, "gemini-2.5-pro", 93, 103)
