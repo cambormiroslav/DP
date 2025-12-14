@@ -81,11 +81,11 @@ def calcute_timediff_and_save(response, start_datetime, end_datetime, model, pat
                                                          data_tuple[6], data_tuple[7], pattern_key)
     else:
         if model in ollama_models:
-            check_openai_ollama_models()
+            check_openai_ollama_models(response, model, file_name, pattern_key)
         elif model in openai_models:
-            check_openai_ollama_models()
+            check_openai_ollama_models(response, model, file_name, pattern_key)
         elif model in gemini_models:
-            check_gemini_models()
+            check_gemini_models(response, model, file_name, pattern_key)
         else:
             print("Unknown model for object detection.")
 

@@ -8,6 +8,7 @@ import os
 pattern_test_dir_output_path = "./output_pattern_test/"
 pattern_test_object_dir_output_path = "./output_pattern_test_objects/"
 test_dir_path_output = "./output/"
+test_dir_objects_path_output = "./output_objects/"
 
 iou_thresholds = [0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9]
 
@@ -18,6 +19,10 @@ monitor_data = {
     "peak_gpu_utilization": 0,
     "is_running": True
 }
+
+def create_dir_if_not_exists(path_to_directory):
+    if not os.path.exists(path_to_directory):
+        os.makedirs(path_to_directory)
 
 def monitor_memory_gpu_vram(process, gpu_handle):
     monitor_data["peak_rss_mb"] = 0.0
@@ -581,23 +586,32 @@ Input: (model name, type of data, charakteristics of data and time of run, incor
 Output: None
 """  
 def save_to_file_ocr(model, type_of_data, values, incorrect_data, not_found_data, good_not_found):
+    create_dir_if_not_exists(test_dir_path_output)
     output_file_path = os.path.join(test_dir_path_output, f"{model}_{type_of_data}.txt")
     save_ocr_values(output_file_path, values, incorrect_data, not_found_data, good_not_found)
 
 def save_to_file_ocr_pattern_test(model, type_of_data, values, incorrect_data, not_found_data, good_not_found, pattern_key):
-    output_file_path = os.path.join(pattern_test_dir_output_path, pattern_key, f"{model}_{type_of_data}.txt")
+    create_dir_if_not_exists(pattern_test_dir_output_path)
+    output_dir_path = os.path.join(pattern_test_dir_output_path, pattern_key)
+    create_dir_if_not_exists(output_dir_path)
+    output_file_path = os.path.join(output_dir_path, f"{model}_{type_of_data}.txt")
     save_ocr_values(output_file_path, values, incorrect_data, not_found_data, good_not_found)
 
 def save_to_file_object(model, type_of_data, tp, fp, tn, fn, precision, recall, iou):
-    output_file_path = f"./output_objects/{model}_{type_of_data}_{iou}.txt"
+    create_dir_if_not_exists(test_dir_objects_path_output)
+    output_file_path = os.path.join(test_dir_objects_path_output, f"{model}_{type_of_data}_{iou}.txt")
     save_object_values(output_file_path, tp, fp, tn, fn, precision, recall)
 
 def save_to_file_object_pattern_test(model, type_of_data, tp, fp, tn, fn, precision, recall, iou, pattern_key):
-    output_file_path = os.path.join(pattern_test_object_dir_output_path, pattern_key, f"{model}_{type_of_data}_{iou}.txt")
+    create_dir_if_not_exists(pattern_test_object_dir_output_path)
+    output_dir_path = os.path.join(pattern_test_object_dir_output_path, pattern_key)
+    create_dir_if_not_exists(output_dir_path)
+    output_file_path = os.path.join(output_dir_path, f"{model}_{type_of_data}_{iou}.txt")
     save_object_values(output_file_path, tp, fp, tn, fn, precision, recall)
 
 def save_to_file_object_main(model, type_of_data, time_diff):
-    output_file_path = f"./output_objects/{model}_{type_of_data}_main.txt"
+    create_dir_if_not_exists(test_dir_objects_path_output)
+    output_file_path = os.path.join(test_dir_objects_path_output, f"{model}_{type_of_data}_main.txt")
 
     with open(output_file_path, "+a") as file:
         file.write(f"{time_diff}\n")
