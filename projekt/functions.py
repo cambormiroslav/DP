@@ -4,6 +4,8 @@ import psutil
 import pynvml
 import time
 import os
+import torch
+from torchmetrics.detection.mean_ap import MeanAveragePrecision
 
 pattern_test_dir_output_path = "./output_pattern_test/"
 pattern_test_object_dir_output_path = "./output_pattern_test_objects/"
@@ -166,7 +168,53 @@ def load_json_response(response):
             return {"objects": []}
     except:
         return {"objects": []}
+
+def get_predictions_torch(detections):
+    boxes = []
+    labels = []
+    scores = []
+    for detection in detections:
+        if detection["class_name"] == "person":
+            labels.append(0) #person
+        else:
+            labels.append(1) #not person
+        boxes.append([detection["x_min"], detection["y_min"], detection["x_max"], detection["y_max"]])
+        scores.append(detection["confidence"])
+
+    return[{
+        "boxes": torch.tensor(boxes),
+        "labels": torch.tensor(labels),
+        "scores": torch.tensor(scores)
+    }]
+
+def get_target_torch(good_boxes):
+    boxes = []
+    labels = []
+    for good_box in good_boxes:
+        labels.append(0) #person
+        boxes.append([good_box[0], good_box[1], good_box[2], good_box[3]])
+
+    return[{
+        "boxes": torch.tensor(boxes),
+        "labels": torch.tensor(labels)
+    }]
+
+def get_mAP(iou_detections, good_boxes, iou_threshold):
+    mAP_solver = MeanAveragePrecision(box_format='xyxy', iou_type="bbox")
+
+    iou_detections = []
+    for detected_object in iou_detections:
+        if detected_object["iou"] >= iou_threshold:
+            iou_detections.append(detected_object)
     
+    predicted_torch = get_predictions_torch(iou_detections)
+    target_torch = get_target_torch(good_boxes)
+
+    mAP_solver.update(predicted_torch, target_torch)
+    mAP_result = mAP_solver.compute()
+    
+    return mAP_result
+
 def get_object_metrics_for_models(response, file_name):
     output_array = []
 
@@ -541,9 +589,9 @@ def save_ocr_values(output_file_path, values, incorrect_data, not_found_data, go
     with codecs.open(output_file_path, "+a", "utf-8") as file:
         file.write(f"{correctness};{correct_data_counted};{incorrect_data_counted};{not_data_found_counted};{good_not_found_counted};{time_diff};{incorrect_data};{not_found_data};{good_not_found}\n")
 
-def save_object_values(output_file_path, tp, fp, tn, fn, precision, recall):
+def save_object_values(output_file_path, map, map_50, map_75, map_large, mar_100, mar_large):
     with open(output_file_path, "+a") as file:
-        file.write(f"{tp};{fp};{tn};{fn};{precision};{recall}\n")
+        file.write(f"{map};{map_50};{map_75};{map_large};{mar_100};{mar_large}\n")
 
 """
 * Save the characteristics of model response to the file.
@@ -564,17 +612,17 @@ def save_to_file_ocr_pattern_test(model, type_of_data, values, incorrect_data, n
     output_file_path = os.path.join(output_dir_path, f"{model}_{type_of_data}.txt")
     save_ocr_values(output_file_path, values, incorrect_data, not_found_data, good_not_found)
 
-def save_to_file_object(model, type_of_data, tp, fp, tn, fn, precision, recall, iou):
+def save_to_file_object(model, type_of_data, map, map_50, map_75, map_large, mar_100, mar_large, iou):
     create_dir_if_not_exists(test_dir_objects_path_output)
     output_file_path = os.path.join(test_dir_objects_path_output, f"{model}_{type_of_data}_{iou}.txt")
-    save_object_values(output_file_path, tp, fp, tn, fn, precision, recall)
+    save_object_values(output_file_path, map, map_50, map_75, map_large, mar_100, mar_large)
 
-def save_to_file_object_pattern_test(model, type_of_data, tp, fp, tn, fn, precision, recall, iou, pattern_key):
+def save_to_file_object_pattern_test(model, type_of_data, map, map_50, map_75, map_large, mar_100, mar_large, iou, pattern_key):
     create_dir_if_not_exists(pattern_test_object_dir_output_path)
     output_dir_path = os.path.join(pattern_test_object_dir_output_path, pattern_key)
     create_dir_if_not_exists(output_dir_path)
     output_file_path = os.path.join(output_dir_path, f"{model}_{type_of_data}_{iou}.txt")
-    save_object_values(output_file_path, tp, fp, tn, fn, precision, recall)
+    save_object_values(output_file_path, map, map_50, map_75, map_large, mar_100, mar_large)
 
 def save_to_file_object_main(model, type_of_data, time_diff):
     create_dir_if_not_exists(test_dir_objects_path_output)

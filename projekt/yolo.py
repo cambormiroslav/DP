@@ -61,18 +61,20 @@ def test_img(img_path, model, model_name, file_name):
         #(x_min, y_min, x_max, y_max)
         coords_array = boxes.xyxy.cpu().numpy()
         classes = boxes.cls.cpu().numpy().astype('uint')
-
+        confidences = boxes.conf.cpu()
         
         for index, classId in enumerate(classes):
             class_name = first_result.names[classId]
             box_coord = coords_array[index]
+            confidence = confidences[index]
 
             detections.append({
                 "class_name": class_name,
                 "x_min": box_coord[0],
                 "y_min": box_coord[1],
                 "x_max": box_coord[2],
-                "y_max": box_coord[3]
+                "y_max": box_coord[3],
+                "confidence" : confidence
             })
     finally:
         # stop thread
@@ -105,8 +107,11 @@ def test_img(img_path, model, model_name, file_name):
     max_iou_detections, good_boxes = functions.get_max_iou_and_good_boxes(file_name, detections)
 
     for iou_threshold in functions.iou_thresholds:
-        tp, fp, tn, fn, precision, recall = functions.get_tp_fp_tn_fn_precision_recall(max_iou_detections, good_boxes, iou_threshold)
-        functions.save_to_file_object(model_name, type_of_data, tp, fp, tn, fn, precision, recall, iou_threshold)
+        map_values = functions.get_mAP(max_iou_detections, good_boxes, iou_threshold)
+        functions.save_to_file_object(model_name, type_of_data, map_values["map"],
+                                      map_values["map_50"], map_values["map_75"],
+                                      map_values["map_large"], map_values["mar_100"],
+                                      map_values["mar_large"], iou_threshold)
     functions.save_to_file_object_main(model_name, type_of_data, diff_datetime_seconds)
 
     functions.save_to_file_cpu_gpu(model_name, type_of_data, True, cpu_usage, functions.monitor_data["peak_cpu_percent"],
