@@ -150,19 +150,6 @@ def load_and_measure(dir_path, model, first_ticket, latest_file):
             json_response = functions.load_json_response(response)
             
             max_iou_detections, good_boxes = functions.get_max_iou_and_good_boxes(file, json_response["objects"])
-            
-            for iou_threshold in functions.iou_thresholds:
-                tp, fp, tn, fn, precision, recall = functions.get_tp_fp_tn_fn_precision_recall(max_iou_detections, 
-                                                                                               good_boxes, iou_threshold)
-                output_array.append({
-                    "TP": tp,
-                    "FP" : fp,
-                    "TN": tn,
-                    "FN" : fn,
-                    "Precision": precision,
-                    "Recall" : recall,
-                    "IoU" : iou_threshold
-                })
         
         diff_datetime = end_datetime - start_datetime
         diff_datetime_seconds = diff_datetime.total_seconds()
@@ -175,9 +162,12 @@ def load_and_measure(dir_path, model, first_ticket, latest_file):
                                                                                    dict_of_incorect, array_not_found, 
                                                                                    array_good_not_found)
             else:
-                for output in output_array:
-                    functions.save_to_file_object("knoopx-mobile-vlm-3b-fp16", type_of_data, output["TP"], output["FP"], output["TN"],
-                                                   output["FN"], output["Precision"], output["Recall"], output["IoU"])
+                for iou_threshold in functions.iou_thresholds:
+                    map_values = functions.get_mAP(max_iou_detections, good_boxes, iou_threshold)
+                    functions.save_to_file_object("knoopx-mobile-vlm-3b-fp16", type_of_data, map_values["map"],
+                                                  map_values["map_50"], map_values["map_75"],
+                                                  map_values["map_large"], map_values["mar_100"],
+                                                  map_values["mar_large"], iou_threshold)
                 functions.save_to_file_object_main("knoopx-mobile-vlm-3b-fp16", type_of_data, diff_datetime_seconds)
             functions.save_to_file_cpu_gpu("knoopx-mobile-vlm-3b-fp16", type_of_data, True, cpu_usage, functions.monitor_data["peak_cpu_percent"],
                                        ram_usage, functions.monitor_data["peak_gpu_utilization"], total_vram_mb,
@@ -190,9 +180,12 @@ def load_and_measure(dir_path, model, first_ticket, latest_file):
                                                                    dict_of_incorect, array_not_found,
                                                                    array_good_not_found)
             else:
-                for output in output_array:
-                    functions.save_to_file_object("llava-13b", type_of_data, output["TP"], output["FP"], output["TN"], 
-                                                   output["FN"], output["Precision"], output["Recall"], output["IoU"])
+                for iou_threshold in functions.iou_thresholds:
+                    map_values = functions.get_mAP(max_iou_detections, good_boxes, iou_threshold)
+                    functions.save_to_file_object("llava-13b", type_of_data, map_values["map"],
+                                                  map_values["map_50"], map_values["map_75"],
+                                                  map_values["map_large"], map_values["mar_100"],
+                                                  map_values["mar_large"], iou_threshold)
                 functions.save_to_file_object_main("llava-13b", type_of_data, diff_datetime_seconds)
             functions.save_to_file_cpu_gpu("llava-13b", type_of_data, True, cpu_usage, functions.monitor_data["peak_cpu_percent"],
                                        ram_usage, functions.monitor_data["peak_gpu_utilization"], total_vram_mb,
@@ -205,9 +198,12 @@ def load_and_measure(dir_path, model, first_ticket, latest_file):
                                                                    dict_of_incorect, array_not_found, 
                                                                    array_good_not_found)
             else:
-                for output in output_array:
-                    functions.save_to_file_object("llava-34b", type_of_data, output["TP"], output["FP"], output["TN"],
-                                                   output["FN"], output["Precision"], output["Recall"], output["IoU"])
+                for iou_threshold in functions.iou_thresholds:
+                    map_values = functions.get_mAP(max_iou_detections, good_boxes, iou_threshold)
+                    functions.save_to_file_object("llava-34b", type_of_data, map_values["map"],
+                                                  map_values["map_50"], map_values["map_75"],
+                                                  map_values["map_large"], map_values["mar_100"],
+                                                  map_values["mar_large"], iou_threshold)
                 functions.save_to_file_object_main("llava-34b", type_of_data, diff_datetime_seconds)
             functions.save_to_file_cpu_gpu("llava-34b", type_of_data, True, cpu_usage, functions.monitor_data["peak_cpu_percent"],
                                        ram_usage, functions.monitor_data["peak_gpu_utilization"], total_vram_mb,
@@ -220,9 +216,12 @@ def load_and_measure(dir_path, model, first_ticket, latest_file):
                                                                    dict_of_incorect, array_not_found, 
                                                                    array_good_not_found)
             else:
-                for output in output_array:
-                    functions.save_to_file_object("gemma3-27b", type_of_data, output["TP"], output["FP"], output["TN"],
-                                                   output["FN"], output["Precision"], output["Recall"], output["IoU"])
+                for iou_threshold in functions.iou_thresholds:
+                    map_values = functions.get_mAP(max_iou_detections, good_boxes, iou_threshold)
+                    functions.save_to_file_object("gemma3-27b", type_of_data, map_values["map"],
+                                                  map_values["map_50"], map_values["map_75"],
+                                                  map_values["map_large"], map_values["mar_100"],
+                                                  map_values["mar_large"], iou_threshold)
                 functions.save_to_file_object_main("gemma3-27b", type_of_data, diff_datetime_seconds)
             functions.save_to_file_cpu_gpu("gemma3-27b", type_of_data, True, cpu_usage, functions.monitor_data["peak_cpu_percent"],
                                        ram_usage, functions.monitor_data["peak_gpu_utilization"], total_vram_mb,
@@ -235,9 +234,12 @@ def load_and_measure(dir_path, model, first_ticket, latest_file):
                                                                    dict_of_incorect, array_not_found, 
                                                                    array_good_not_found)
             else:
-                for output in output_array:
-                    functions.save_to_file_object("gemma3-12b", type_of_data, output["TP"], output["FP"], output["TN"],
-                                                   output["FN"], output["Precision"], output["Recall"], output["IoU"])
+                for iou_threshold in functions.iou_thresholds:
+                    map_values = functions.get_mAP(max_iou_detections, good_boxes, iou_threshold)
+                    functions.save_to_file_object("gemma3-12b", type_of_data, map_values["map"],
+                                                  map_values["map_50"], map_values["map_75"],
+                                                  map_values["map_large"], map_values["mar_100"],
+                                                  map_values["mar_large"], iou_threshold)
                 functions.save_to_file_object_main("gemma3-12b", type_of_data, diff_datetime_seconds)
             functions.save_to_file_cpu_gpu("gemma3-12b", type_of_data, True, cpu_usage, functions.monitor_data["peak_cpu_percent"],
                                        ram_usage, functions.monitor_data["peak_gpu_utilization"], total_vram_mb,
@@ -250,9 +252,12 @@ def load_and_measure(dir_path, model, first_ticket, latest_file):
                                                                    dict_of_incorect, array_not_found, 
                                                                    array_good_not_found)
             else:
-                for output in output_array:
-                    functions.save_to_file_object("mistral-small3.2-24b", type_of_data, output["TP"], output["FP"], output["TN"],
-                                                   output["FN"], output["Precision"], output["Recall"], output["IoU"])
+                for iou_threshold in functions.iou_thresholds:
+                    map_values = functions.get_mAP(max_iou_detections, good_boxes, iou_threshold)
+                    functions.save_to_file_object("mistral-small3.2-24b", type_of_data, map_values["map"],
+                                                  map_values["map_50"], map_values["map_75"],
+                                                  map_values["map_large"], map_values["mar_100"],
+                                                  map_values["mar_large"], iou_threshold)
                 functions.save_to_file_object_main("mistral-small3.2-24b", type_of_data, diff_datetime_seconds)
             functions.save_to_file_cpu_gpu("mistral-small3.2-24b", type_of_data, True, cpu_usage, functions.monitor_data["peak_cpu_percent"],
                                        ram_usage, functions.monitor_data["peak_gpu_utilization"], total_vram_mb,
@@ -265,9 +270,12 @@ def load_and_measure(dir_path, model, first_ticket, latest_file):
                                                                    dict_of_incorect, array_not_found, 
                                                                    array_good_not_found)
             else:
-                for output in output_array:
-                    functions.save_to_file_object("gemma3-4b", type_of_data, output["TP"], output["FP"], output["TN"],
-                                                   output["FN"], output["Precision"], output["Recall"], output["IoU"])
+                for iou_threshold in functions.iou_thresholds:
+                    map_values = functions.get_mAP(max_iou_detections, good_boxes, iou_threshold)
+                    functions.save_to_file_object("gemma3-4b", type_of_data, map_values["map"],
+                                                  map_values["map_50"], map_values["map_75"],
+                                                  map_values["map_large"], map_values["mar_100"],
+                                                  map_values["mar_large"], iou_threshold)
                 functions.save_to_file_object_main("gemma3-4b", type_of_data, diff_datetime_seconds)
             functions.save_to_file_cpu_gpu("gemma3-4b", type_of_data, True, cpu_usage, functions.monitor_data["peak_cpu_percent"],
                                        ram_usage, functions.monitor_data["peak_gpu_utilization"], total_vram_mb,
@@ -280,9 +288,12 @@ def load_and_measure(dir_path, model, first_ticket, latest_file):
                                                              dict_of_incorect, array_not_found,
                                                              array_good_not_found)
             else:
-                for output in output_array:
-                    functions.save_to_file_object(model, type_of_data, output["TP"], output["FP"], output["TN"],
-                                                   output["FN"], output["Precision"], output["Recall"], output["IoU"])
+                for iou_threshold in functions.iou_thresholds:
+                    map_values = functions.get_mAP(max_iou_detections, good_boxes, iou_threshold)
+                    functions.save_to_file_object(model, type_of_data, map_values["map"],
+                                                  map_values["map_50"], map_values["map_75"],
+                                                  map_values["map_large"], map_values["mar_100"],
+                                                  map_values["mar_large"], iou_threshold)
                 functions.save_to_file_object_main(model, type_of_data, diff_datetime_seconds)
             functions.save_to_file_cpu_gpu(model, type_of_data, True, cpu_usage, functions.monitor_data["peak_cpu_percent"],
                                        ram_usage, functions.monitor_data["peak_gpu_utilization"], total_vram_mb,

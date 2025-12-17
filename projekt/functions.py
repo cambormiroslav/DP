@@ -174,7 +174,7 @@ def get_predictions_torch(detections):
     labels = []
     scores = []
     for detection in detections:
-        if detection["class_name"] == "person":
+        if detection["class_name"] == "person" or detection["name"] == "person":
             labels.append(0) #person
         else:
             labels.append(1) #not person
