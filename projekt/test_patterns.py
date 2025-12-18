@@ -74,10 +74,14 @@ def calcute_timediff_and_save(response, start_datetime, end_datetime, model, pat
                                                          data_tuple[4], diff_datetime_seconds], data_tuple[5],
                                                          data_tuple[6], data_tuple[7], pattern_key)
     else:
-        metrics_array = functions.get_object_metrics_for_models(response, file_name)
-        for metrics in metrics_array:
-            functions.save_to_file_object_pattern_test(model, "object", metrics["TP"], metrics["FP"], metrics["TN"], metrics["FN"],
-                                                       metrics["Precision"], metrics["Recall"], metrics["IoU"], pattern_key)
+        json_response = functions.load_json_response(response)
+        max_iou_detections, good_boxes = functions.get_max_iou_and_good_boxes(file_name, json_response["objects"])
+        for iou_threshold in functions.iou_thresholds:
+                map_values = functions.get_mAP(max_iou_detections, good_boxes, iou_threshold)
+                functions.save_to_file_object(model, type_of_data, map_values["map"],
+                                              map_values["map_50"], map_values["map_75"],
+                                              map_values["map_large"], map_values["mar_100"],
+                                              map_values["mar_large"], iou_threshold)
 
 def send_gemini_request(image_path, file_name, model, text_request, pattern_key, correct_data_path, type_of_data):
     start_datetime = datetime.datetime.now()
