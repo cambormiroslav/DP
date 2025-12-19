@@ -55,7 +55,8 @@ patternsObjectCz = {
     "pattern3_ObjectCz": pattern3Ol_ObjectCz
 }
 
-gemini_models = ["gemini-3-pro-preview", "gemini-2.5-pro", "gemini-2.5-flash", "gemini-2.5-flash-lite", 
+gemini_models = ["gemini-3-pro-preview", "gemini-3-flash-preview",
+                 "gemini-2.5-pro", "gemini-2.5-flash", "gemini-2.5-flash-lite",
                  "gemini-2.0-flash", "gemini-2.0-flash-lite"]
 openai_models = ["gpt-4o-mini", "gpt-4o", "gpt-4.1-mini", "gpt-4.1"]
 ollama_models = ["llava", "bakllava", "minicpm-v", "knoopx/mobile-vlm:3b-fp16", "llava:13b", "llava:34b", 
