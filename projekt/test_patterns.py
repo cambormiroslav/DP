@@ -142,7 +142,7 @@ def test_object():
             for pattern_en in patternsObjectEn:
                 send_gemini_request(image_path, file, model, patternsObjectEn[pattern_en], pattern_en, correct_data_path, "object")
             for pattern_cz in patternsObjectCz:
-                send_gemini_request(image_path, file, model, patternsObjectCz[pattern_cz], pattern_cz, correct_data_path, "object"))
+                send_gemini_request(image_path, file, model, patternsObjectCz[pattern_cz], pattern_cz, correct_data_path, "object")
         for model in openai_models:
             for pattern_en in patternsObjectEn:
                 send_openai_request(image_path, file, model, patternsObjectEn[pattern_en], pattern_en, correct_data_path, "object")
