@@ -54,10 +54,9 @@ def send_image_request(image_path, model, text_request):
                     }
                 ]
             }
-        ],
-        "max_tokens": 300
+        ]
     }
-    return requests.post("https://api.openai.com/v1/chat/completions", headers=headers, json=payload).json()["choices"][0]["message"]["content"]#.replace("Here's the extracted information in JSON format:\n\n", "").replace("```json\n", "").replace("\n```", "")
+    return requests.post("https://api.openai.com/v1/chat/completions", headers=headers, json=payload).json()["choices"][0]["message"]["content"].replace("Here's the extracted information in JSON format:\n\n", "").replace("```json\n", "").replace("\n```", "")
 
 """
 * Load the specified number of images from directory path.

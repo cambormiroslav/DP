@@ -58,7 +58,10 @@ patternsObjectCz = {
 gemini_models = ["gemini-3-pro-preview", "gemini-3-flash-preview",
                  "gemini-2.5-pro", "gemini-2.5-flash", "gemini-2.5-flash-lite",
                  "gemini-2.0-flash", "gemini-2.0-flash-lite"]
-openai_models = ["gpt-4o-mini", "gpt-4o", "gpt-4.1-mini", "gpt-4.1"]
+openai_models = ["gpt-5.2", "gpt-5.1",
+                 "gpt-5", "gpt-5-mini", "gpt-5-nano", 
+                 "gpt-4.1", "gpt-4.1-mini", 
+                 "gpt-4o", "gpt-4o-mini"]
 ollama_models = ["llava", "bakllava", "minicpm-v", "knoopx/mobile-vlm:3b-fp16", "llava:13b", "llava:34b", 
                  "gemma3:27b", "granite3.2-vision", "gemma3:12b", "gemma3:4b", "mistral-small3.1", 
                  "mistral-small3.2:24b"]
@@ -75,6 +78,7 @@ def calcute_timediff_and_save(response, start_datetime, end_datetime, model, pat
                                                          data_tuple[4], diff_datetime_seconds], data_tuple[5],
                                                          data_tuple[6], data_tuple[7], pattern_key)
     else:
+        print(response)
         json_response = functions.load_json_response(response)
         max_iou_detections, good_boxes = functions.get_max_iou_and_good_boxes(file_name, json_response["objects"])
         for iou_threshold in functions.iou_thresholds:
@@ -135,22 +139,15 @@ def test_object():
     for index in range(number_of_inputs):
         file = sorted_array_of_images[index]
         image_path = os.path.join(dataset_dir_path, file)
-        for model in gemini_models:
-            for pattern_en in patternsObjectEn:
-                send_gemini_request(image_path, file, model, patternsObjectEn[pattern_en], pattern_en, correct_data_path, "object")
-            for pattern_cz in patternsObjectCz:
-                send_gemini_request(image_path, file, model, patternsObjectCz[pattern_cz], pattern_cz, correct_data_path, "object")
+        
         for model in openai_models:
             for pattern_en in patternsObjectEn:
                 send_openai_request(image_path, file, model, patternsObjectEn[pattern_en], pattern_en, correct_data_path, "object")
-            for pattern_cz in patternsObjectCz:
-                send_openai_request(image_path, file, model, patternsObjectCz[pattern_cz], pattern_cz, correct_data_path, "object")
-        for model in ollama_models:
-            for pattern_en in patternsObjectEn:
-                send_ollama_request(image_path, file, model, patternsObjectEn[pattern_en], pattern_en, correct_data_path, "object")
-            for pattern_cz in patternsObjectCz:
-                send_ollama_request(image_path, file, model, patternsObjectCz[pattern_cz], pattern_cz, correct_data_path, "object")
+                break
+            break
+        break
+            
 
 if __name__ == "__main__":
-    test_ocr()
+    #test_ocr()
     test_object()
