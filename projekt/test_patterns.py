@@ -78,10 +78,10 @@ def calcute_timediff_and_save(response, start_datetime, end_datetime, model, pat
         max_iou_detections, good_boxes = functions.get_max_iou_and_good_boxes(file_name, json_response["objects"])
         for iou_threshold in functions.iou_thresholds:
                 map_values = functions.get_mAP(max_iou_detections, good_boxes, iou_threshold)
-                functions.save_to_file_object(model, type_of_data, map_values["map"],
+                functions.save_to_file_object_pattern_test(model, type_of_data, map_values["map"],
                                               map_values["map_50"], map_values["map_75"],
                                               map_values["map_large"], map_values["mar_100"],
-                                              map_values["mar_large"], iou_threshold)
+                                              map_values["mar_large"], iou_threshold, pattern_key)
 
 def send_gemini_request(image_path, file_name, model, text_request, pattern_key, correct_data_path, type_of_data):
     start_datetime = datetime.datetime.now()
