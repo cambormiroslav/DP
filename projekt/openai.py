@@ -141,7 +141,7 @@ def load_and_measure(dir_path, model, first_ticket, latest_file):
             array_not_found = data_tuple[6]
             array_good_not_found = data_tuple[7]
         else:
-            json_response = functions.load_json_response(response)
+            json_response, json_load = functions.load_json_response(response)
             
             max_iou_detections, good_boxes = functions.get_max_iou_and_good_boxes(file, json_response["objects"])
         
@@ -161,7 +161,7 @@ def load_and_measure(dir_path, model, first_ticket, latest_file):
                                               map_values["map_50"], map_values["map_75"],
                                               map_values["map_large"], map_values["mar_100"],
                                               map_values["mar_large"], iou_threshold)
-            functions.save_to_file_object_main(model, type_of_data, diff_datetime_seconds)
+            functions.save_to_file_object_main(model, type_of_data, diff_datetime_seconds, json_load)
         functions.save_to_file_cpu_gpu(model, type_of_data, True, cpu_usage, functions.monitor_data["peak_cpu_percent"],
                                        ram_usage, functions.monitor_data["peak_gpu_utilization"], total_vram_mb,
                                        diff_datetime_seconds)

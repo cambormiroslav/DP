@@ -112,7 +112,7 @@ def test_img(img_path, model, model_name, file_name):
                                       map_values["map_50"], map_values["map_75"],
                                       map_values["map_large"], map_values["mar_100"],
                                       map_values["mar_large"], iou_threshold)
-    functions.save_to_file_object_main(model_name, type_of_data, diff_datetime_seconds)
+    functions.save_to_file_object_main(model_name, type_of_data, diff_datetime_seconds, 0)
 
     functions.save_to_file_cpu_gpu(model_name, type_of_data, True, cpu_usage, functions.monitor_data["peak_cpu_percent"],
                                        ram_usage, functions.monitor_data["peak_gpu_utilization"], total_vram_mb,
