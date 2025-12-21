@@ -55,6 +55,10 @@ patternsObjectCz = {
     "pattern3_ObjectCz": pattern3Ol_ObjectCz
 }
 
+gemini_measurement = True
+openai_measurement = True
+ollama_measurement = True
+
 gemini_models = ["gemini-3-pro-preview", "gemini-3-flash-preview",
                  "gemini-2.5-pro", "gemini-2.5-flash", "gemini-2.5-flash-lite",
                  "gemini-2.0-flash", "gemini-2.0-flash-lite"]
@@ -116,21 +120,27 @@ def test_ocr():
     for index in range(number_of_inputs):
         file = sorted_array_of_images[index]
         image_path = os.path.join(dataset_dir_path, file)
-        for model in gemini_models:
-            for pattern_en in patternsOcrEn:
-                send_gemini_request(image_path, file, model, patternsOcrEn[pattern_en], pattern_en, correct_data_path, "ticket")
-            for pattern_cz in patternsOcrCz:
-                send_gemini_request(image_path, file, model, patternsOcrCz[pattern_cz], pattern_cz, correct_data_path, "ticket")
-        for model in openai_models:
-            for pattern_en in patternsOcrEn:
-                send_openai_request(image_path, file, model, patternsOcrEn[pattern_en], pattern_en, correct_data_path, "ticket")
-            for pattern_cz in patternsOcrCz:
-                send_openai_request(image_path, file, model, patternsOcrCz[pattern_cz], pattern_cz, correct_data_path, "ticket")
-        for model in ollama_models:
-            for pattern_en in patternsOcrEn:
-                send_ollama_request(image_path, file, model, patternsOcrEn[pattern_en], pattern_en, correct_data_path, "ticket")
-            for pattern_cz in patternsOcrCz:
-                send_ollama_request(image_path, file, model, patternsOcrCz[pattern_cz], pattern_cz, correct_data_path, "ticket")
+
+        if gemini_measurement:
+            for model in gemini_models:
+                for pattern_en in patternsOcrEn:
+                    send_gemini_request(image_path, file, model, patternsOcrEn[pattern_en], pattern_en, correct_data_path, "ticket")
+                for pattern_cz in patternsOcrCz:
+                    send_gemini_request(image_path, file, model, patternsOcrCz[pattern_cz], pattern_cz, correct_data_path, "ticket")
+
+        if openai_measurement:           
+            for model in openai_models:
+                for pattern_en in patternsOcrEn:
+                    send_openai_request(image_path, file, model, patternsOcrEn[pattern_en], pattern_en, correct_data_path, "ticket")
+                for pattern_cz in patternsOcrCz:
+                    send_openai_request(image_path, file, model, patternsOcrCz[pattern_cz], pattern_cz, correct_data_path, "ticket")
+
+        if ollama_measurement:            
+            for model in ollama_models:
+                for pattern_en in patternsOcrEn:
+                    send_ollama_request(image_path, file, model, patternsOcrEn[pattern_en], pattern_en, correct_data_path, "ticket")
+                for pattern_cz in patternsOcrCz:
+                    send_ollama_request(image_path, file, model, patternsOcrCz[pattern_cz], pattern_cz, correct_data_path, "ticket")
 
 def test_object():
     correct_data_path = "../data_for_control/dataset_objects_correct_data.json"
@@ -139,21 +149,27 @@ def test_object():
     for index in range(number_of_inputs):
         file = sorted_array_of_images[index]
         image_path = os.path.join(dataset_dir_path, file)
-        for model in gemini_models:
-            for pattern_en in patternsObjectEn:
-                send_gemini_request(image_path, file, model, patternsObjectEn[pattern_en], pattern_en, correct_data_path, "object")
-            for pattern_cz in patternsObjectCz:
-                send_gemini_request(image_path, file, model, patternsObjectCz[pattern_cz], pattern_cz, correct_data_path, "object")
-        for model in openai_models:
-            for pattern_en in patternsObjectEn:
-                send_openai_request(image_path, file, model, patternsObjectEn[pattern_en], pattern_en, correct_data_path, "object")
-            for pattern_cz in patternsObjectCz:
-                send_openai_request(image_path, file, model, patternsObjectCz[pattern_cz], pattern_cz, correct_data_path, "object")
-        for model in ollama_models:
-            for pattern_en in patternsObjectEn:
-                send_ollama_request(image_path, file, model, patternsObjectEn[pattern_en], pattern_en, correct_data_path, "object")
-            for pattern_cz in patternsObjectCz:
-                send_ollama_request(image_path, file, model, patternsObjectCz[pattern_cz], pattern_cz, correct_data_path, "object")
+
+        if gemini_measurement:
+            for model in gemini_models:
+                for pattern_en in patternsObjectEn:
+                    send_gemini_request(image_path, file, model, patternsObjectEn[pattern_en], pattern_en, correct_data_path, "object")
+                for pattern_cz in patternsObjectCz:
+                    send_gemini_request(image_path, file, model, patternsObjectCz[pattern_cz], pattern_cz, correct_data_path, "object")
+        
+        if openai_measurement:
+            for model in openai_models:
+                for pattern_en in patternsObjectEn:
+                    send_openai_request(image_path, file, model, patternsObjectEn[pattern_en], pattern_en, correct_data_path, "object")
+                for pattern_cz in patternsObjectCz:
+                    send_openai_request(image_path, file, model, patternsObjectCz[pattern_cz], pattern_cz, correct_data_path, "object")
+        
+        if ollama_measurement:
+            for model in ollama_models:
+                for pattern_en in patternsObjectEn:
+                    send_ollama_request(image_path, file, model, patternsObjectEn[pattern_en], pattern_en, correct_data_path, "object")
+                for pattern_cz in patternsObjectCz:
+                    send_ollama_request(image_path, file, model, patternsObjectCz[pattern_cz], pattern_cz, correct_data_path, "object")
 
 if __name__ == "__main__":
     test_ocr()
