@@ -130,35 +130,6 @@ def get_boxes(file_name):
             boxes.append(box)
     return boxes
 
-def get_tp_fp_tn_fn_precision_recall(detections, good_boxes, iou_threshold):
-    count_tp = 0 #detected with iou
-    count_fp = 0 #not detected objects but should be detected
-    count_tn = 0 #not detected objects but there no objects in data
-    count_fn = 0 #detected with smaller iou or not correct
-    
-    len_detections = len(detections)
-    len_good_boxes = len(good_boxes)
-
-    for detected_object in detections:
-        if detected_object["iou"] >= iou_threshold:
-            count_tp += 1
-    count_fn = len_detections - count_tp
-    count_fp = len_good_boxes - count_tp
-    if len_detections == len_good_boxes and len_detections == 0:
-        count_tn = 1
-    
-    if len_detections != 0:
-        precision = count_tp / len_detections
-    else:
-        precision = 0
-
-    if len_good_boxes != 0:
-        recall = count_tp /  len_good_boxes
-    else:
-        recall = 0
-
-    return (count_tp, count_fp, count_tn, count_fn, precision, recall)
-
 def load_json_response(response):
     try:
         json_response = json.loads(response)
@@ -214,75 +185,6 @@ def get_mAP(iou_detections, good_boxes, iou_threshold):
     mAP_result = mAP_solver.compute()
     
     return mAP_result
-
-def get_object_metrics_for_models(response, file_name):
-    output_array = []
-
-    json_response = load_json_response(response)
-    print(json_response)
-    max_iou_detections, good_boxes = get_max_iou_and_good_boxes(file_name, json_response["objects"])
-            
-    for iou_threshold in iou_thresholds:
-        tp, fp, tn, fn, precision, recall = get_tp_fp_tn_fn_precision_recall(max_iou_detections, good_boxes, iou_threshold)
-        output_array.append({
-            "TP": tp,
-            "FP" : fp,
-            "TN": tn,
-            "FN" : fn,
-            "Precision": precision,
-            "Recall" : recall,
-            "IoU" : iou_threshold
-        })
-    
-    return output_array
-
-"""
-* Check the response characteristics.
-* Check corectness of data.
-* I not corrected output is: (0, 0, 0, count_of_correct_data, 0, {}, [], []).
-
-Input: (Dictionary model as string, Name of comparing img, Path to correct data file)
-Output: (Correctness, Count of correct data, Count of incorrect data, 
-        Not founded data in response (main keys),
-        Dictionary of incorrect data, Array of not founded data (only keys))
-"""
-def check_the_data_object(dict_model, name_of_file, path_to_correct_data, load_json):
-    correct_data_counted = 0
-    incorrect_data_counted = 0
-    not_in_dict_counted = 0
-
-    dict_incorrect = {}
-    array_not_found = []
-
-    with open(path_to_correct_data, 'r') as file:
-        data = json.load(file)[name_of_file]
-        
-        count_of_data = 1
-
-        if(load_json):
-            try:
-                dict_model = json.loads(dict_model)
-            except:
-                return (0, 0, 0, count_of_data, {}, [], [])
-        
-        try:
-            type_data = dict_model["type"].lower()
-            if type_data in data["type"]:
-                print("type Correct")
-                correct_data_counted += 1
-            else:
-                print("type Incorrect")
-                incorrect_data_counted += 1
-                dict_incorrect["type"] = type_data
-        except:
-            if "type" in data:
-                print("type Not In Dict")
-                not_in_dict_counted += 1
-                array_not_found += ["type"]
-
-        correctness = correct_data_counted / count_of_data
-
-        return (correctness, correct_data_counted, incorrect_data_counted, not_in_dict_counted, dict_incorrect, array_not_found)  
 
 """
 * Check the response characteristics.
