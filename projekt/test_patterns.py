@@ -111,7 +111,7 @@ def send_openai_request(image_path, file_name, model, text_request, pattern_key,
 
 def send_ollama_request(image_path, file_name, model, text_request, pattern_key, correct_data_path, type_of_data):
     start_datetime = datetime.datetime.now()
-    response = ollama_api.send_image_request(image_path, model, text_request)
+    response = ollama_api.send_image_request(ollama_api.get_image_in_base64(image_path), model, text_request)
     end_datetime = datetime.datetime.now()
 
     calcute_timediff_and_save(response, start_datetime, end_datetime, model, pattern_key, file_name, type_of_data, correct_data_path)
