@@ -79,9 +79,11 @@ def calcute_timediff_and_save(response, start_datetime, end_datetime, model, pat
     diff_datetime = end_datetime - start_datetime
     diff_datetime_seconds = diff_datetime.total_seconds()
 
+    renamed_model = functions.rename_model_for_save(model)
+
     if type_of_data == "ticket":
         data_tuple = functions.check_the_data_ocr(response, file_name, correct_data_path, True)
-        functions.save_to_file_ocr_pattern_test(model, type_of_data, [data_tuple[0], data_tuple[1], data_tuple[2], data_tuple[3],
+        functions.save_to_file_ocr_pattern_test(renamed_model, type_of_data, [data_tuple[0], data_tuple[1], data_tuple[2], data_tuple[3],
                                                          data_tuple[4], diff_datetime_seconds], data_tuple[5],
                                                          data_tuple[6], data_tuple[7], pattern_key)
     else:
@@ -89,11 +91,11 @@ def calcute_timediff_and_save(response, start_datetime, end_datetime, model, pat
         max_iou_detections, good_boxes = functions.get_max_iou_and_good_boxes(file_name, json_response["objects"])
         for iou_threshold in functions.iou_thresholds:
             map_values = functions.get_mAP(max_iou_detections, good_boxes, iou_threshold)
-            functions.save_to_file_object_pattern_test(model, type_of_data, map_values["map"],
+            functions.save_to_file_object_pattern_test(renamed_model, type_of_data, map_values["map"],
                                                        map_values["map_50"], map_values["map_75"],
                                                        map_values["map_large"], map_values["mar_100"],
                                                        map_values["mar_large"], iou_threshold, pattern_key)
-        functions.save_to_file_object_main_pattern_test(model, type_of_data, diff_datetime_seconds, json_loaded, pattern_key)
+        functions.save_to_file_object_main_pattern_test(renamed_model, type_of_data, diff_datetime_seconds, json_loaded, pattern_key)
 
 def send_gemini_request(image_path, file_name, model, text_request, pattern_key, correct_data_path, type_of_data):
     start_datetime = datetime.datetime.now()

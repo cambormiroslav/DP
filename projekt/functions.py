@@ -560,3 +560,21 @@ def save_to_file_cpu_gpu(model, type_of_data, is_test, cpu_usage, cpu_percentage
             file.write(f"{cpu_usage};{cpu_percentage};{ram_usage};{gpu_usage};{vram_usage}\n")
         else:
             file.write(f"{cpu_usage};{cpu_percentage};{ram_usage};{gpu_usage};{vram_usage};{datetime_diff}\n")
+
+def rename_model_for_save(model_name):
+    if model_name == "knoopx/mobile-vlm:3b-fp16":
+        return "knoopx-mobile-vlm-3b-fp16"
+    elif model_name == "llava:13b":
+        return "llava-13b"
+    elif model_name == "llava:34b":
+        return "llava-34b"
+    elif model_name == "gemma3:27b":
+        return "gemma3-27b"
+    elif model_name == "gemma3:12b":
+        return "gemma3-12b"
+    elif model_name == "mistral-small3.2:24b":
+        return "mistral-small3.2-24b"
+    elif model_name == "gemma3:4b":
+        return "gemma3-4b"
+    else:
+        return model_name

@@ -154,150 +154,24 @@ def load_and_measure(dir_path, model, first_ticket, latest_file):
         diff_datetime = end_datetime - start_datetime
         diff_datetime_seconds = diff_datetime.total_seconds()
 
-        if model == "knoopx/mobile-vlm:3b-fp16":
-            if ocr_method:
-                functions.save_to_file_ocr("knoopx-mobile-vlm-3b-fp16", type_of_data, [correctness, correct_data, 
-                                                                                   incorect_data, not_found_data, 
-                                                                                   good_not_found, diff_datetime_seconds], 
-                                                                                   dict_of_incorect, array_not_found, 
-                                                                                   array_good_not_found)
-            else:
-                for iou_threshold in functions.iou_thresholds:
-                    map_values = functions.get_mAP(max_iou_detections, good_boxes, iou_threshold)
-                    functions.save_to_file_object("knoopx-mobile-vlm-3b-fp16", type_of_data, map_values["map"],
-                                                  map_values["map_50"], map_values["map_75"],
-                                                  map_values["map_large"], map_values["mar_100"],
-                                                  map_values["mar_large"], iou_threshold)
-                functions.save_to_file_object_main("knoopx-mobile-vlm-3b-fp16", type_of_data, diff_datetime_seconds, json_load)
-            functions.save_to_file_cpu_gpu("knoopx-mobile-vlm-3b-fp16", type_of_data, True, cpu_usage, functions.monitor_data["peak_cpu_percent"],
-                                       ram_usage, functions.monitor_data["peak_gpu_utilization"], total_vram_mb,
-                                       diff_datetime_seconds)
-        elif model == "llava:13b":
-            if ocr_method:
-                functions.save_to_file_ocr("llava-13b", type_of_data, [correctness, correct_data, 
-                                                                   incorect_data, not_found_data, 
-                                                                   good_not_found, diff_datetime_seconds], 
-                                                                   dict_of_incorect, array_not_found,
-                                                                   array_good_not_found)
-            else:
-                for iou_threshold in functions.iou_thresholds:
-                    map_values = functions.get_mAP(max_iou_detections, good_boxes, iou_threshold)
-                    functions.save_to_file_object("llava-13b", type_of_data, map_values["map"],
-                                                  map_values["map_50"], map_values["map_75"],
-                                                  map_values["map_large"], map_values["mar_100"],
-                                                  map_values["mar_large"], iou_threshold)
-                functions.save_to_file_object_main("llava-13b", type_of_data, diff_datetime_seconds, json_load)
-            functions.save_to_file_cpu_gpu("llava-13b", type_of_data, True, cpu_usage, functions.monitor_data["peak_cpu_percent"],
-                                       ram_usage, functions.monitor_data["peak_gpu_utilization"], total_vram_mb,
-                                       diff_datetime_seconds)
-        elif model == "llava:34b":
-            if ocr_method:
-                functions.save_to_file_ocr("llava-34b", type_of_data, [correctness, correct_data, 
-                                                                   incorect_data, not_found_data, 
-                                                                   good_not_found, diff_datetime_seconds], 
-                                                                   dict_of_incorect, array_not_found, 
-                                                                   array_good_not_found)
-            else:
-                for iou_threshold in functions.iou_thresholds:
-                    map_values = functions.get_mAP(max_iou_detections, good_boxes, iou_threshold)
-                    functions.save_to_file_object("llava-34b", type_of_data, map_values["map"],
-                                                  map_values["map_50"], map_values["map_75"],
-                                                  map_values["map_large"], map_values["mar_100"],
-                                                  map_values["mar_large"], iou_threshold)
-                functions.save_to_file_object_main("llava-34b", type_of_data, diff_datetime_seconds, json_load)
-            functions.save_to_file_cpu_gpu("llava-34b", type_of_data, True, cpu_usage, functions.monitor_data["peak_cpu_percent"],
-                                       ram_usage, functions.monitor_data["peak_gpu_utilization"], total_vram_mb,
-                                       diff_datetime_seconds)
-        elif model == "gemma3:27b":
-            if ocr_method:
-                functions.save_to_file_ocr("gemma3-27b", type_of_data, [correctness, correct_data, 
-                                                                   incorect_data, not_found_data, 
-                                                                   good_not_found, diff_datetime_seconds], 
-                                                                   dict_of_incorect, array_not_found, 
-                                                                   array_good_not_found)
-            else:
-                for iou_threshold in functions.iou_thresholds:
-                    map_values = functions.get_mAP(max_iou_detections, good_boxes, iou_threshold)
-                    functions.save_to_file_object("gemma3-27b", type_of_data, map_values["map"],
-                                                  map_values["map_50"], map_values["map_75"],
-                                                  map_values["map_large"], map_values["mar_100"],
-                                                  map_values["mar_large"], iou_threshold)
-                functions.save_to_file_object_main("gemma3-27b", type_of_data, diff_datetime_seconds, json_load)
-            functions.save_to_file_cpu_gpu("gemma3-27b", type_of_data, True, cpu_usage, functions.monitor_data["peak_cpu_percent"],
-                                       ram_usage, functions.monitor_data["peak_gpu_utilization"], total_vram_mb,
-                                       diff_datetime_seconds)
-        elif model == "gemma3:12b":
-            if ocr_method:
-                functions.save_to_file_ocr("gemma3-12b", type_of_data, [correctness, correct_data, 
-                                                                   incorect_data, not_found_data, 
-                                                                   good_not_found, diff_datetime_seconds], 
-                                                                   dict_of_incorect, array_not_found, 
-                                                                   array_good_not_found)
-            else:
-                for iou_threshold in functions.iou_thresholds:
-                    map_values = functions.get_mAP(max_iou_detections, good_boxes, iou_threshold)
-                    functions.save_to_file_object("gemma3-12b", type_of_data, map_values["map"],
-                                                  map_values["map_50"], map_values["map_75"],
-                                                  map_values["map_large"], map_values["mar_100"],
-                                                  map_values["mar_large"], iou_threshold)
-                functions.save_to_file_object_main("gemma3-12b", type_of_data, diff_datetime_seconds, json_load)
-            functions.save_to_file_cpu_gpu("gemma3-12b", type_of_data, True, cpu_usage, functions.monitor_data["peak_cpu_percent"],
-                                       ram_usage, functions.monitor_data["peak_gpu_utilization"], total_vram_mb,
-                                       diff_datetime_seconds)
-        elif model == "mistral-small3.2:24b":
-            if ocr_method:
-                functions.save_to_file_ocr("mistral-small3.2-24b", type_of_data, [correctness, correct_data, 
-                                                                   incorect_data, not_found_data, 
-                                                                   good_not_found, diff_datetime_seconds], 
-                                                                   dict_of_incorect, array_not_found, 
-                                                                   array_good_not_found)
-            else:
-                for iou_threshold in functions.iou_thresholds:
-                    map_values = functions.get_mAP(max_iou_detections, good_boxes, iou_threshold)
-                    functions.save_to_file_object("mistral-small3.2-24b", type_of_data, map_values["map"],
-                                                  map_values["map_50"], map_values["map_75"],
-                                                  map_values["map_large"], map_values["mar_100"],
-                                                  map_values["mar_large"], iou_threshold)
-                functions.save_to_file_object_main("mistral-small3.2-24b", type_of_data, diff_datetime_seconds, json_load)
-            functions.save_to_file_cpu_gpu("mistral-small3.2-24b", type_of_data, True, cpu_usage, functions.monitor_data["peak_cpu_percent"],
-                                       ram_usage, functions.monitor_data["peak_gpu_utilization"], total_vram_mb,
-                                       diff_datetime_seconds)
-        elif model == "gemma3:4b":
-            if ocr_method:
-                functions.save_to_file_ocr("gemma3-4b", type_of_data, [correctness, correct_data, 
-                                                                   incorect_data, not_found_data, 
-                                                                   good_not_found, diff_datetime_seconds], 
-                                                                   dict_of_incorect, array_not_found, 
-                                                                   array_good_not_found)
-            else:
-                for iou_threshold in functions.iou_thresholds:
-                    map_values = functions.get_mAP(max_iou_detections, good_boxes, iou_threshold)
-                    functions.save_to_file_object("gemma3-4b", type_of_data, map_values["map"],
-                                                  map_values["map_50"], map_values["map_75"],
-                                                  map_values["map_large"], map_values["mar_100"],
-                                                  map_values["mar_large"], iou_threshold)
-                functions.save_to_file_object_main("gemma3-4b", type_of_data, diff_datetime_seconds, json_load)
-            functions.save_to_file_cpu_gpu("gemma3-4b", type_of_data, True, cpu_usage, functions.monitor_data["peak_cpu_percent"],
-                                       ram_usage, functions.monitor_data["peak_gpu_utilization"], total_vram_mb,
-                                       diff_datetime_seconds)
+        renamed_model = functions.rename_model_for_save(model)
+
+        if ocr_method:
+            functions.save_to_file_ocr(renamed_model, type_of_data, [correctness, correct_data,
+                                                                     incorect_data, not_found_data,
+                                                                     good_not_found, diff_datetime_seconds],
+                                                                     dict_of_incorect, array_not_found,
+                                                                     array_good_not_found)
         else:
-            if ocr_method:
-                functions.save_to_file_ocr(model, type_of_data, [correctness, correct_data, 
-                                                             incorect_data, not_found_data, 
-                                                             good_not_found, diff_datetime_seconds], 
-                                                             dict_of_incorect, array_not_found,
-                                                             array_good_not_found)
-            else:
-                for iou_threshold in functions.iou_thresholds:
-                    map_values = functions.get_mAP(max_iou_detections, good_boxes, iou_threshold)
-                    functions.save_to_file_object(model, type_of_data, map_values["map"],
-                                                  map_values["map_50"], map_values["map_75"],
-                                                  map_values["map_large"], map_values["mar_100"],
-                                                  map_values["mar_large"], iou_threshold)
-                functions.save_to_file_object_main(model, type_of_data, diff_datetime_seconds, json_load)
-            functions.save_to_file_cpu_gpu(model, type_of_data, True, cpu_usage, functions.monitor_data["peak_cpu_percent"],
-                                       ram_usage, functions.monitor_data["peak_gpu_utilization"], total_vram_mb,
-                                       diff_datetime_seconds)
+            for iou_threshold in functions.iou_thresholds:
+                map_values = functions.get_mAP(max_iou_detections, good_boxes, iou_threshold)
+                functions.save_to_file_object(renamed_model, type_of_data, map_values["map"],
+                                              map_values["map_50"], map_values["map_75"],
+                                              map_values["map_large"], map_values["mar_100"],
+                                              map_values["mar_large"], iou_threshold)
+            functions.save_to_file_object_main(renamed_model, type_of_data, diff_datetime_seconds, json_load)
+        functions.save_to_file_cpu_gpu(renamed_model, type_of_data, True, cpu_usage, functions.monitor_data["peak_cpu_percent"],
+                                       ram_usage, functions.monitor_data["peak_gpu_utilization"], total_vram_mb, diff_datetime_seconds)
 
         if ocr_method:
             print(correctness, correct_data, incorect_data, not_found_data, 
