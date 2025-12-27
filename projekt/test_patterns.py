@@ -58,8 +58,8 @@ patternsObjectCz = {
     "pattern3_ObjectCz": pattern3Ol_ObjectCz
 }
 
-gemini_measurement = True
-openai_measurement = True
+gemini_measurement = False
+openai_measurement = False
 ollama_measurement = True
 
 gemini_models = ["gemini-3-pro-preview", "gemini-3-flash-preview",
@@ -87,6 +87,7 @@ def calcute_timediff_and_save(response, start_datetime, end_datetime, model, pat
                                                          data_tuple[4], diff_datetime_seconds], data_tuple[5],
                                                          data_tuple[6], data_tuple[7], pattern_key)
     else:
+        print(renamed_model)
         json_response, json_loaded = functions.load_json_response(response)
         max_iou_detections, good_boxes = functions.get_max_iou_and_good_boxes(file_name, json_response["objects"])
         for iou_threshold in functions.iou_thresholds:

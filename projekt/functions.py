@@ -109,6 +109,12 @@ def calculate_iou(box_ref, box_test):
 def get_max_iou_and_good_boxes(file_name, detections):
     good_boxes = get_boxes(file_name)
     for detected_object in detections:
+        if not ("x_min" in detected_object or
+                "y_min" in detected_object or
+                "x_max" in detected_object or
+                "y_max" in detected_object):
+            detections = []
+            break
         box_detected = (detected_object["x_min"], detected_object["y_min"],
                         detected_object["x_max"], detected_object["y_max"])
         max_iou = 0.0
