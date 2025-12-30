@@ -51,17 +51,6 @@ tables_dir = "./tables/"
 if not os.path.exists(tables_dir):
     os.makedirs(tables_dir)
 
-if load_cpu_gpu_data:
-    if is_cpu_gpu_data_test:
-        output_dir = "./test_measurement/"
-    else:
-        output_dir = "./train_measurement/"
-else:
-    if type_of_dataset == "ticket":
-        output_dir = "./output/"
-    else:
-        output_dir = "./output_objects/"
-
 correctness_dict = {}
 correct_data_count_dict = {}
 incorrect_data_count_dict = {}
@@ -76,6 +65,19 @@ cpu_gpu_data = {}
 cpu_gpu_data_time_diffs = {}
 
 time_of_run_dict_tmp = {}
+
+def set_output_dir():
+    global output_dir
+    if load_cpu_gpu_data:
+        if is_cpu_gpu_data_test:
+            output_dir = "./test_measurement/"
+        else:
+            output_dir = "./train_measurement/"
+    else:
+        if type_of_dataset == "ticket":
+            output_dir = "./output/"
+        else:
+            output_dir = "./output_objects/"
 
 def get_count_of_all_data(correct_data, incorect_data, not_finded, goods_not_finded):
     count_of_all_data = correct_data + incorect_data + not_finded + 3 * goods_not_finded
@@ -635,17 +637,20 @@ def call_generating_graphs_and_tables():
     global is_cpu_gpu_data_test
 
     #main data
+    set_output_dir()
     generate_all_graphs_and_tables()
 
     #CPU/GPU data test
     load_cpu_gpu_data = True
     is_cpu_gpu_data_test = True
+    set_output_dir()
     generate_all_graphs_and_tables()
 
     #CPU/GPU data train
     if type_of_dataset == "objects":
         load_cpu_gpu_data = True
         is_cpu_gpu_data_test = False
+        set_output_dir()
         generate_all_graphs_and_tables()
 
 if __name__ == "__main__":
