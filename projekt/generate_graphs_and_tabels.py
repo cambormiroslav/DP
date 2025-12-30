@@ -1,8 +1,7 @@
 import os
 import matplotlib.pyplot as plt
 
-#type_of_dataset = "ticket"
-type_of_dataset = "objects"
+type_of_dataset = "ticket"
 
 is_best_data = False
 
@@ -599,9 +598,9 @@ def load_all_data():
                     else:
                         load_output_of_models_objects(file, model, third)
         
-        
+def generate_all_graphs_and_tables():
+    global time_of_run_dict_tmp
 
-if __name__ == "__main__":
     load_all_data()
 
     if type_of_dataset == "ticket" and not load_cpu_gpu_data:
@@ -630,3 +629,30 @@ if __name__ == "__main__":
             generate_graph("time_of_run_cpu_gpu")
             time_of_run_dict_tmp = cpu_gpu_data_time_diffs.copy()
             generate_latex_table_and_save_to_file("time_of_run")
+
+def call_generating_graphs_and_tables():
+    global load_cpu_gpu_data
+    global is_cpu_gpu_data_test
+
+    #main data
+    generate_all_graphs_and_tables()
+
+    #CPU/GPU data test
+    load_cpu_gpu_data = True
+    is_cpu_gpu_data_test = True
+    generate_all_graphs_and_tables()
+
+    #CPU/GPU data train
+    if type_of_dataset == "objects":
+        load_cpu_gpu_data = True
+        is_cpu_gpu_data_test = False
+        generate_all_graphs_and_tables()
+
+if __name__ == "__main__":
+    #ticket data
+    call_generating_graphs_and_tables()
+
+    #objects data
+    type_of_dataset = "objects"
+    call_generating_graphs_and_tables()
+
