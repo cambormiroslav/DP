@@ -117,12 +117,29 @@ def delete_objects_if_something_missing(detections):
 
     return kept
 
+def transform_coordinates_to_int_if_not(detections):
+    output = []
+
+    for detected_object in detections:
+        try:
+            output.append({
+                "x_min" : int(detected_object["x_min"]),
+                "y_min" : int(detected_object["y_min"]),
+                "x_max" : int(detected_object["x_max"]),
+                "y_max" : int(detected_object["y_max"])
+            })
+        except:
+            print("not integer coordinates")
+    
+    return output
+
 def get_max_iou_and_good_boxes(file_name, detections):
     good_boxes = get_boxes(file_name)
 
     correct_format_detections = delete_objects_if_something_missing(detections)
+    transformed_detections = transform_coordinates_to_int_if_not(correct_format_detections)
 
-    for detected_object in correct_format_detections:
+    for detected_object in transformed_detections:
         box_detected = (detected_object["x_min"], detected_object["y_min"],
                         detected_object["x_max"], detected_object["y_max"])
         max_iou = 0.0
@@ -132,7 +149,7 @@ def get_max_iou_and_good_boxes(file_name, detections):
                 max_iou = iou
         detected_object["iou"] = max_iou
 
-    return (correct_format_detections, good_boxes)
+    return (transformed_detections, good_boxes)
 
 def get_boxes(file_name):
     correct_data_path = "../data_for_control/dataset_objects_correct_data.json"
