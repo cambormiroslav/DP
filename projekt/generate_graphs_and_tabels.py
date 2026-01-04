@@ -3,8 +3,6 @@ import matplotlib.pyplot as plt
 
 type_of_dataset = "ticket"
 
-is_best_data = False
-
 add_to_graph = {
     "bakllava" : True,
     "easyocr": True,
@@ -42,6 +40,8 @@ add_to_graph = {
 
 load_cpu_gpu_data = False
 is_cpu_gpu_data_test = False
+is_best_data = False
+is_pattern_data = True
 
 graphs_dir = "./graphs/"
 if not os.path.exists(graphs_dir):
@@ -68,16 +68,22 @@ time_of_run_dict_tmp = {}
 
 def set_output_dir():
     global output_dir
-    if load_cpu_gpu_data:
-        if is_cpu_gpu_data_test:
-            output_dir = "./test_measurement/"
-        else:
-            output_dir = "./train_measurement/"
-    else:
+    if is_pattern_data:
         if type_of_dataset == "ticket":
-            output_dir = "./output/"
+            output_dir = "./output_pattern_test/"
         else:
-            output_dir = "./output_objects/"
+            output_dir = "./output_pattern_test_objects/"
+    else:
+        if load_cpu_gpu_data:
+            if is_cpu_gpu_data_test:
+                output_dir = "./test_measurement/"
+            else:
+                output_dir = "./train_measurement/"
+        else:
+            if type_of_dataset == "ticket":
+                output_dir = "./output/"
+            else:
+                output_dir = "./output_objects/"
 
 def get_count_of_all_data(correct_data, incorect_data, not_finded, goods_not_finded):
     count_of_all_data = correct_data + incorect_data + not_finded + 3 * goods_not_finded
@@ -440,7 +446,7 @@ def generate_bar_graph_from_data(dict_data, type_of_data):
     
     generate_bar(names, values, type_of_data)
 
-def load_output_of_models(file_path, model_name):
+def load_output_of_models_base(file_path):
     path_to_data = output_dir + file_path
 
     correctness_array = []
@@ -449,6 +455,7 @@ def load_output_of_models(file_path, model_name):
     not_finded_main_count_key_array = []
     goods_not_finded_count_array = []
     time_run_array = []
+    not_found_json = 0
     precision_sum = 0.0
     recall_sum = 0.0
 
@@ -485,28 +492,30 @@ def load_output_of_models(file_path, model_name):
 
             if type_of_dataset == "ticket":
                 if correct_data == 0 and incorect_data == 0 and not_finded > 0 and goods_not_finded == 0:
-                    if model_name in not_found_json_dict:
-                        not_found_json_dict[model_name] =  not_found_json_dict[model_name] + 1
-                    else:
-                        not_found_json_dict[model_name] = 1
+                    not_found_json =  not_found_json + 1
             else:
                 if correct_data == 0 and incorect_data == 0 and not_finded > 0 and array_of_values[5] == "{}" and array_of_values[6] == "[]":
-                    if model_name in not_found_json_dict:
-                        not_found_json_dict[model_name] =  not_found_json_dict[model_name] + 1
-                    else:
-                        not_found_json_dict[model_name] = 1
-                        
-        
-    correctness_dict[model_name] = correctness_array
-    correct_data_count_dict[model_name] = correct_data_count_array
-    incorrect_data_count_dict[model_name] = incorrect_data_count_array
-    not_finded_main_count_key_dict[model_name] = not_finded_main_count_key_array
-    goods_not_finded_count_dict[model_name] = goods_not_finded_count_array
-    time_run_dict[model_name] = time_run_array
-    precision_sum_dict[model_name] = precision_sum
-    recall_sum_dict[model_name] = recall_sum
+                    not_found_json =  not_found_json + 1
+    
+    return (correctness_array, correct_data_count_array,
+            incorrect_data_count_array, not_finded_main_count_key_array,
+            goods_not_finded_count_array, time_run_array,
+            not_found_json, precision_sum, recall_sum)
 
-def load_output_of_models_objects(file_path, model_name, iou):
+def load_output_of_models(file_path, model_name):
+    data = load_output_of_models_base(file_path)
+                        
+    correctness_dict[model_name] = data[0]
+    correct_data_count_dict[model_name] = data[1]
+    incorrect_data_count_dict[model_name] = data[2]
+    not_finded_main_count_key_dict[model_name] = data[3]
+    goods_not_finded_count_dict[model_name] = data[4]
+    time_run_dict[model_name] = data[5]
+    not_found_json_dict[model_name] = data[6]
+    precision_sum_dict[model_name] = data[7]
+    recall_sum_dict[model_name] = data[8]
+
+def load_output_of_models_objects_base(file_path):
     path_to_data = output_dir + file_path
 
     precision_sum = 0.0
@@ -523,6 +532,11 @@ def load_output_of_models_objects(file_path, model_name, iou):
             recall_sum += float(array_of_values[5])
             number_of_entries += 1
     
+    return precision_sum, recall_sum, number_of_entries
+
+def load_output_of_models_objects(file_path, model_name, iou):
+    precision_sum, recall_sum, number_of_entries = load_output_of_models_objects_base(file_path)
+    
     if model_name not in precision_sum_dict:
         precision_sum_dict[model_name] = {iou: precision_sum / number_of_entries}
     else:
@@ -533,7 +547,7 @@ def load_output_of_models_objects(file_path, model_name, iou):
     else:
         recall_sum_dict[model_name][iou] = recall_sum / number_of_entries
 
-def load_output_of_models_objects_main(file_path, model_name):
+def load_output_of_models_objects_main_base(file_path):
     path_to_data = output_dir + file_path
 
     array_of_time_of_run = []
@@ -545,7 +559,10 @@ def load_output_of_models_objects_main(file_path, model_name):
             time_of_run = line.replace("\n", "")
             array_of_time_of_run += [float(time_of_run)]
     
-    time_run_dict[model_name] = array_of_time_of_run
+    return array_of_time_of_run
+
+def load_output_of_models_objects_main(file_path, model_name):
+    time_run_dict[model_name] = load_output_of_models_objects_main_base(file_path)
 
 def load_cpu_gpu_data_of_models(file_path, model_name):
     path_to_data = output_dir + file_path
@@ -599,11 +616,65 @@ def load_all_data():
                         load_output_of_models_objects_main(file, model)
                     else:
                         load_output_of_models_objects(file, model, third)
-        
+
+def load_output_of_models_pattern(file_path, model_name, pattern_name):
+    data = load_output_of_models_base(file_path)
+
+    correctness_dict[model_name] = {pattern_name: data[0]}
+    correct_data_count_dict[model_name] = {pattern_name: data[1]}
+    incorrect_data_count_dict[model_name] = {pattern_name: data[2]}
+    not_finded_main_count_key_dict[model_name] = {pattern_name: data[3]}
+    goods_not_finded_count_dict[model_name] = {pattern_name: data[4]}
+    time_run_dict[model_name] = {pattern_name: data[5]}
+    not_found_json_dict[model_name] = {pattern_name: data[6]}
+    precision_sum_dict[model_name] = {pattern_name: data[7]}
+    recall_sum_dict[model_name] = {pattern_name: data[8]}
+
+def load_output_of_models_objects_main_pattern(file_path, model_name, pattern_name):
+    time_run_dict[model_name] = {pattern_name: load_output_of_models_objects_main_base(file_path)}
+
+def load_output_of_models_objects_pattern(file_path, model_name, pattern_name, iou):
+    precision_sum, recall_sum, number_of_entries = load_output_of_models_objects_base(file_path)
+    
+    if model_name not in precision_sum_dict:
+        precision_sum_dict[model_name] = {iou: {pattern_name: precision_sum / number_of_entries}}
+    else:
+        precision_sum_dict[model_name][iou] = {pattern_name: precision_sum / number_of_entries}
+
+    if model_name not in recall_sum_dict:
+        recall_sum_dict[model_name] = {iou: {pattern_name: recall_sum / number_of_entries}}
+    else:
+        recall_sum_dict[model_name][iou] = {pattern_name: recall_sum / number_of_entries}
+
+def load_all_data_pattern():
+    for pattern in os.listdir(output_dir):
+        path_to_pattern_dir = os.path.join(output_dir, pattern)
+        for file in os.listdir(path_to_pattern_dir):
+            model = file.split("_")[0]
+            if model == "llava":
+                model = "llava-7b"
+
+            if not add_to_graph[model]:
+                continue
+
+            if type_of_dataset == "ticket":
+                load_output_of_models_pattern(file, model, pattern)
+            else:
+                file_split = file.split("_")
+                if len(file_split) == 3:
+                    third = file_split[2].replace(".txt", "")
+                    if third == "main":
+                        load_output_of_models_objects_main_pattern(file, model, pattern)
+                    else:
+                        load_output_of_models_objects_pattern(file, model, pattern, third)
+
 def generate_all_graphs_and_tables():
     global time_of_run_dict_tmp
 
-    load_all_data()
+    if not is_pattern_data:
+        load_all_data()
+    else:
+        load_all_data_pattern()
 
     if type_of_dataset == "ticket" and not load_cpu_gpu_data:
         generate_graph("correctness")
@@ -640,18 +711,19 @@ def call_generating_graphs_and_tables():
     set_output_dir()
     generate_all_graphs_and_tables()
 
-    #CPU/GPU data test
-    load_cpu_gpu_data = True
-    is_cpu_gpu_data_test = True
-    set_output_dir()
-    generate_all_graphs_and_tables()
-
-    #CPU/GPU data train
-    if type_of_dataset == "objects":
+    if not is_pattern_data:
+        #CPU/GPU data test
         load_cpu_gpu_data = True
-        is_cpu_gpu_data_test = False
+        is_cpu_gpu_data_test = True
         set_output_dir()
         generate_all_graphs_and_tables()
+
+        #CPU/GPU data train
+        if type_of_dataset == "objects":
+            load_cpu_gpu_data = True
+            is_cpu_gpu_data_test = False
+            set_output_dir()
+            generate_all_graphs_and_tables()
 
 if __name__ == "__main__":
     #ticket data
