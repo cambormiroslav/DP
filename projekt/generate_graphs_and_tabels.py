@@ -58,6 +58,7 @@ not_finded_main_count_key_dict = {}
 goods_not_finded_count_dict = {}
 time_run_dict = {}
 not_found_json_dict = {}
+not_found_json_object_dict = {}
 precision_sum_dict = {}
 recall_sum_dict = {}
 
@@ -515,8 +516,11 @@ def load_output_of_models(file_path, model_name):
     precision_sum_dict[model_name] = data[7]
     recall_sum_dict[model_name] = data[8]
 
-def load_output_of_models_objects_base(file_path):
-    path_to_data = output_dir + file_path
+def load_output_of_models_objects_base(file_path, pattern_directory):
+    if pattern_directory == "":
+        path_to_data = os.path.join(output_dir, file_path)
+    else:
+        path_to_data = os.path.join(output_dir, pattern_directory, file_path)
 
     precision_sum = 0.0
     recall_sum = 0.0
@@ -535,7 +539,7 @@ def load_output_of_models_objects_base(file_path):
     return precision_sum, recall_sum, number_of_entries
 
 def load_output_of_models_objects(file_path, model_name, iou):
-    precision_sum, recall_sum, number_of_entries = load_output_of_models_objects_base(file_path)
+    precision_sum, recall_sum, number_of_entries = load_output_of_models_objects_base(file_path, "")
     
     if model_name not in precision_sum_dict:
         precision_sum_dict[model_name] = {iou: precision_sum / number_of_entries}
@@ -547,22 +551,28 @@ def load_output_of_models_objects(file_path, model_name, iou):
     else:
         recall_sum_dict[model_name][iou] = recall_sum / number_of_entries
 
-def load_output_of_models_objects_main_base(file_path):
-    path_to_data = output_dir + file_path
+def load_output_of_models_objects_main_base(file_path, pattern_directory):
+    if pattern_directory == "":
+        path_to_data = os.path.join(output_dir, file_path)
+    else:
+        path_to_data = os.path.join(output_dir, pattern_directory, file_path)
 
     array_of_time_of_run = []
+    json_loading_array = []
 
     with open(path_to_data, "r") as file:
         lines = file.readlines()
 
         for line in lines:
-            time_of_run = line.replace("\n", "")
-            array_of_time_of_run += [float(time_of_run)]
+            array_of_values = line.replace("\n", "").split(";")
+            array_of_time_of_run += [float(array_of_values[0])]
+            json_loading_array += [float(array_of_values[1])]
+
     
-    return array_of_time_of_run
+    return array_of_time_of_run, json_loading_array
 
 def load_output_of_models_objects_main(file_path, model_name):
-    time_run_dict[model_name] = load_output_of_models_objects_main_base(file_path)
+    time_run_dict[model_name], not_found_json_object_dict[model_name] = load_output_of_models_objects_main_base(file_path, "")
 
 def load_cpu_gpu_data_of_models(file_path, model_name):
     path_to_data = output_dir + file_path
@@ -631,10 +641,12 @@ def load_output_of_models_pattern(file_path, model_name, pattern_name):
     recall_sum_dict[model_name] = {pattern_name: data[8]}
 
 def load_output_of_models_objects_main_pattern(file_path, model_name, pattern_name):
-    time_run_dict[model_name] = {pattern_name: load_output_of_models_objects_main_base(file_path)}
+    time_of_run_dict_array, not_found_json_object_array = load_output_of_models_objects_main_base(file_path, pattern_name)
+    time_run_dict[model_name] = {pattern_name: time_of_run_dict_array}
+    not_found_json_object_dict[model_name] = {pattern_name: not_found_json_object_array}
 
 def load_output_of_models_objects_pattern(file_path, model_name, pattern_name, iou):
-    precision_sum, recall_sum, number_of_entries = load_output_of_models_objects_base(file_path)
+    precision_sum, recall_sum, number_of_entries = load_output_of_models_objects_base(file_path, pattern_name)
     
     if model_name not in precision_sum_dict:
         precision_sum_dict[model_name] = {iou: {pattern_name: precision_sum / number_of_entries}}
