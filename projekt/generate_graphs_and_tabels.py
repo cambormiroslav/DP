@@ -59,6 +59,21 @@ goods_not_finded_count_dict = {}
 time_run_dict = {}
 not_found_json_dict = {}
 not_found_json_object_dict = {}
+
+map_tmp_dict = {}
+map_50_tmp_dict = {}
+map_75_tmp_dict = {}
+map_large_tmp_dict = {}
+mar_100_tmp_dict = {}
+mar_large_tmp_dict = {}
+
+map_dict = {}
+map_50_dict = {}
+map_75_dict = {}
+map_large_dict = {}
+mar_100_dict = {}
+mar_large_dict = {}
+
 precision_sum_dict = {}
 recall_sum_dict = {}
 
@@ -522,8 +537,13 @@ def load_output_of_models_objects_base(file_path, pattern_directory):
     else:
         path_to_data = os.path.join(output_dir, pattern_directory, file_path)
 
-    precision_sum = 0.0
-    recall_sum = 0.0
+    map_sum = 0.0
+    map_50_sum = 0.0
+    map_75_sum = 0.0
+    map_large_sum = 0.0
+    mar_100_sum = 0.0
+    mar_large_sum = 0.0
+    
     number_of_entries = 0
 
     with open(path_to_data, "r") as file:
@@ -532,24 +552,50 @@ def load_output_of_models_objects_base(file_path, pattern_directory):
         for line in lines:
             array_of_values = line.replace("\n", "").split(";")
 
-            precision_sum += float(array_of_values[4])
-            recall_sum += float(array_of_values[5])
+            map_sum += float(array_of_values[0])
+            map_50_sum += float(array_of_values[1])
+            map_75_sum += float(array_of_values[2])
+            map_large_sum += float(array_of_values[3])
+            mar_100_sum += float(array_of_values[4])
+            mar_large_sum += float(array_of_values[5])
+
             number_of_entries += 1
     
-    return precision_sum, recall_sum, number_of_entries
+    return (map_sum, map_50_sum, map_75_sum, map_large_sum,
+            mar_100_sum, mar_large_sum, number_of_entries)
 
 def load_output_of_models_objects(file_path, model_name, iou):
-    precision_sum, recall_sum, number_of_entries = load_output_of_models_objects_base(file_path, "")
+    data = load_output_of_models_objects_base(file_path, "")
     
-    if model_name not in precision_sum_dict:
-        precision_sum_dict[model_name] = {iou: precision_sum / number_of_entries}
+    if model_name not in map_dict:
+        map_dict[model_name] = {iou: data[0] / data[6]}
     else:
-        precision_sum_dict[model_name][iou] = precision_sum / number_of_entries
+        map_dict[model_name][iou] = data[0] / data[6]
     
-    if model_name not in recall_sum_dict:
-        recall_sum_dict[model_name] = {iou: recall_sum / number_of_entries}
+    if model_name not in map_50_dict:
+        map_50_dict[model_name] = {iou: data[1] / data[6]}
     else:
-        recall_sum_dict[model_name][iou] = recall_sum / number_of_entries
+        map_50_dict[model_name][iou] = data[1] / data[6]
+    
+    if model_name not in map_75_dict:
+        map_75_dict[model_name] = {iou: data[2] / data[6]}
+    else:
+        map_75_dict[model_name][iou] = data[2] / data[6]
+    
+    if model_name not in map_large_dict:
+        map_large_dict[model_name] = {iou: data[3] / data[6]}
+    else:
+        map_large_dict[model_name][iou] = data[3] / data[6]
+    
+    if model_name not in mar_100_dict:
+        mar_100_dict[model_name] = {iou: data[4] / data[6]}
+    else:
+        mar_100_dict[model_name][iou] = data[4] / data[6]
+    
+    if model_name not in mar_large_dict:
+        mar_large_dict[model_name] = {iou: data[5] / data[6]}
+    else:
+        mar_large_dict[model_name][iou] = data[5] / data[6]
 
 def load_output_of_models_objects_main_base(file_path, pattern_directory):
     if pattern_directory == "":
@@ -646,17 +692,37 @@ def load_output_of_models_objects_main_pattern(file_path, model_name, pattern_na
     not_found_json_object_dict[model_name] = {pattern_name: not_found_json_object_array}
 
 def load_output_of_models_objects_pattern(file_path, model_name, pattern_name, iou):
-    precision_sum, recall_sum, number_of_entries = load_output_of_models_objects_base(file_path, pattern_name)
-    
-    if model_name not in precision_sum_dict:
-        precision_sum_dict[model_name] = {iou: {pattern_name: precision_sum / number_of_entries}}
-    else:
-        precision_sum_dict[model_name][iou] = {pattern_name: precision_sum / number_of_entries}
+    data = load_output_of_models_objects_base(file_path, pattern_name)
 
-    if model_name not in recall_sum_dict:
-        recall_sum_dict[model_name] = {iou: {pattern_name: recall_sum / number_of_entries}}
+    if model_name not in map_tmp_dict:
+        map_tmp_dict[model_name] = {iou: {pattern_name: data[0] / data[6]}}
     else:
-        recall_sum_dict[model_name][iou] = {pattern_name: recall_sum / number_of_entries}
+        map_tmp_dict[model_name][iou] = {pattern_name: data[0] / data[6]}
+    
+    if model_name not in map_50_tmp_dict:
+        map_50_tmp_dict[model_name] = {iou: {pattern_name: data[1] / data[6]}}
+    else:
+        map_50_tmp_dict[model_name][iou] = {pattern_name: data[1] / data[6]}
+    
+    if model_name not in map_75_tmp_dict:
+        map_75_tmp_dict[model_name] = {iou: {pattern_name: data[2] / data[6]}}
+    else:
+        map_75_tmp_dict[model_name][iou] = {pattern_name: data[2] / data[6]}
+    
+    if model_name not in map_large_tmp_dict:
+        map_large_tmp_dict[model_name] = {iou: {pattern_name: data[3] / data[6]}}
+    else:
+        map_large_tmp_dict[model_name][iou] = {pattern_name: data[3] / data[6]}
+    
+    if model_name not in mar_100_tmp_dict:
+        mar_100_tmp_dict[model_name] = {iou: {pattern_name: data[4] / data[6]}}
+    else:
+        mar_100_tmp_dict[model_name][iou] = {pattern_name: data[4] / data[6]}
+    
+    if model_name not in mar_large_tmp_dict:
+        mar_large_tmp_dict[model_name] = {iou: {pattern_name: data[5] / data[6]}}
+    else:
+        mar_large_tmp_dict[model_name][iou] = {pattern_name: data[5] / data[6]}
 
 def load_all_data_pattern():
     for pattern in os.listdir(output_dir):
