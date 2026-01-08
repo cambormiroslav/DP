@@ -564,38 +564,51 @@ def load_output_of_models_objects_base(file_path, pattern_directory):
     return (map_sum, map_50_sum, map_75_sum, map_large_sum,
             mar_100_sum, mar_large_sum, number_of_entries)
 
+def add_to_map_dict(model_name, iou, value):
+    if model_name not in map_dict:
+        map_dict[model_name] = {iou: value}
+    else:
+        map_dict[model_name][iou] = value
+
+def add_to_map_50_dict(model_name, iou, value):
+    if model_name not in map_50_dict:
+        map_50_dict[model_name] = {iou: value}
+    else:
+        map_50_dict[model_name][iou] = value
+
+def add_to_map_75_dict(model_name, iou, value):
+    if model_name not in map_75_dict:
+        map_75_dict[model_name] = {iou: value}
+    else:
+        map_75_dict[model_name][iou] = value
+
+def add_to_map_large_dict(model_name, iou, value):
+    if model_name not in map_large_dict:
+        map_large_dict[model_name] = {iou: value}
+    else:
+        map_large_dict[model_name][iou] = value
+
+def add_to_mar_100_dict(model_name, iou, value):
+    if model_name not in mar_100_dict:
+        mar_100_dict[model_name] = {iou: value}
+    else:
+        mar_100_dict[model_name][iou] = value
+
+def add_to_mar_large_dict(model_name, iou, value):
+    if model_name not in mar_large_dict:
+        mar_large_dict[model_name] = {iou: value}
+    else:
+        mar_large_dict[model_name][iou] = value
+
 def load_output_of_models_objects(file_path, model_name, iou):
     data = load_output_of_models_objects_base(file_path, "")
     
-    if model_name not in map_dict:
-        map_dict[model_name] = {iou: data[0] / data[6]}
-    else:
-        map_dict[model_name][iou] = data[0] / data[6]
-    
-    if model_name not in map_50_dict:
-        map_50_dict[model_name] = {iou: data[1] / data[6]}
-    else:
-        map_50_dict[model_name][iou] = data[1] / data[6]
-    
-    if model_name not in map_75_dict:
-        map_75_dict[model_name] = {iou: data[2] / data[6]}
-    else:
-        map_75_dict[model_name][iou] = data[2] / data[6]
-    
-    if model_name not in map_large_dict:
-        map_large_dict[model_name] = {iou: data[3] / data[6]}
-    else:
-        map_large_dict[model_name][iou] = data[3] / data[6]
-    
-    if model_name not in mar_100_dict:
-        mar_100_dict[model_name] = {iou: data[4] / data[6]}
-    else:
-        mar_100_dict[model_name][iou] = data[4] / data[6]
-    
-    if model_name not in mar_large_dict:
-        mar_large_dict[model_name] = {iou: data[5] / data[6]}
-    else:
-        mar_large_dict[model_name][iou] = data[5] / data[6]
+    add_to_map_dict(model_name, iou, data[0] / data[6])
+    add_to_map_50_dict(model_name, iou, data[1] / data[6])
+    add_to_map_75_dict(model_name, iou, data[2] / data[6])
+    add_to_map_large_dict(model_name, iou, data[3] / data[6])
+    add_to_mar_100_dict(model_name, iou, data[4] / data[6])
+    add_to_mar_large_dict(model_name, iou, data[5] / data[6])
 
 def load_output_of_models_objects_main_base(file_path, pattern_directory):
     if pattern_directory == "":
@@ -695,34 +708,34 @@ def load_output_of_models_objects_pattern(file_path, model_name, pattern_name, i
     data = load_output_of_models_objects_base(file_path, pattern_name)
 
     if model_name not in map_tmp_dict:
-        map_tmp_dict[model_name] = {iou: {pattern_name: data[0] / data[6]}}
+        map_tmp_dict[model_name] = {pattern_name: {iou: data[0] / data[6]}}
     else:
-        map_tmp_dict[model_name][iou] = {pattern_name: data[0] / data[6]}
+        map_tmp_dict[model_name][pattern_name] = {iou: data[0] / data[6]}
     
     if model_name not in map_50_tmp_dict:
-        map_50_tmp_dict[model_name] = {iou: {pattern_name: data[1] / data[6]}}
+        map_50_tmp_dict[model_name] = {pattern_name: {iou: data[1] / data[6]}}
     else:
-        map_50_tmp_dict[model_name][iou] = {pattern_name: data[1] / data[6]}
+        map_50_tmp_dict[model_name][pattern_name] = {iou: data[1] / data[6]}
     
     if model_name not in map_75_tmp_dict:
-        map_75_tmp_dict[model_name] = {iou: {pattern_name: data[2] / data[6]}}
+        map_75_tmp_dict[model_name] = {pattern_name: {iou: data[2] / data[6]}}
     else:
-        map_75_tmp_dict[model_name][iou] = {pattern_name: data[2] / data[6]}
+        map_75_tmp_dict[model_name][pattern_name] = {iou: data[2] / data[6]}
     
     if model_name not in map_large_tmp_dict:
-        map_large_tmp_dict[model_name] = {iou: {pattern_name: data[3] / data[6]}}
+        map_large_tmp_dict[model_name] = {pattern_name: {iou: data[3] / data[6]}}
     else:
-        map_large_tmp_dict[model_name][iou] = {pattern_name: data[3] / data[6]}
+        map_large_tmp_dict[model_name][pattern_name] = {iou: data[3] / data[6]}
     
     if model_name not in mar_100_tmp_dict:
-        mar_100_tmp_dict[model_name] = {iou: {pattern_name: data[4] / data[6]}}
+        mar_100_tmp_dict[model_name] = {pattern_name: {iou: data[4] / data[6]}}
     else:
-        mar_100_tmp_dict[model_name][iou] = {pattern_name: data[4] / data[6]}
+        mar_100_tmp_dict[model_name][pattern_name] = {iou: data[4] / data[6]}
     
     if model_name not in mar_large_tmp_dict:
-        mar_large_tmp_dict[model_name] = {iou: {pattern_name: data[5] / data[6]}}
+        mar_large_tmp_dict[model_name] = {pattern_name: {iou: data[5] / data[6]}}
     else:
-        mar_large_tmp_dict[model_name][iou] = {pattern_name: data[5] / data[6]}
+        mar_large_tmp_dict[model_name][pattern_name] = {iou: data[5] / data[6]}
 
 def load_all_data_pattern():
     for pattern in os.listdir(output_dir):
@@ -746,13 +759,52 @@ def load_all_data_pattern():
                     else:
                         load_output_of_models_objects_pattern(file, model, pattern, third)
 
-def generate_all_graphs_and_tables():
-    global time_of_run_dict_tmp
+def transform_object_pattern_data_to_normal_and_create_graphs():
+    global map_dict
+    global map_50_dict
+    global map_75_dict
+    global map_large_dict
+    global mar_100_dict
+    global mar_large_dict
 
-    if not is_pattern_data:
-        load_all_data()
-    else:
-        load_all_data_pattern()
+    for model in map_tmp_dict:
+        for pattern in map_tmp_dict[model]:
+            map_dict.clear()
+            for iou in map_tmp_dict[model][pattern]:
+                add_to_map_dict(model, iou, map_tmp_dict[model][pattern][iou])
+    
+    for model in map_50_tmp_dict:
+        for pattern in map_50_tmp_dict[model]:
+            map_50_dict.clear()
+            for iou in map_50_tmp_dict[model][pattern]:
+                add_to_map_50_dict(model, iou, map_50_tmp_dict[model][pattern][iou])
+    
+    for model in map_75_tmp_dict:
+        for pattern in map_75_tmp_dict[model]:
+            map_75_dict.clear()
+            for iou in map_75_tmp_dict[model][pattern]:
+                add_to_map_75_dict(model, iou, map_75_tmp_dict[model][pattern][iou])
+    
+    for model in map_large_tmp_dict:
+        for pattern in map_large_tmp_dict[model]:
+            map_large_dict.clear()
+            for iou in map_large_tmp_dict[model][pattern]:
+                add_to_map_large_dict(model, iou, map_large_tmp_dict[model][pattern][iou])
+    
+    for model in mar_100_tmp_dict:
+        for pattern in mar_100_tmp_dict[model]:
+            mar_100_dict.clear()
+            for iou in mar_100_tmp_dict[model][pattern]:
+                add_to_mar_100_dict(model, iou, mar_100_tmp_dict[model][pattern][iou])
+    
+    for model in mar_large_tmp_dict:
+        for pattern in mar_large_tmp_dict[model]:
+            mar_large_dict.clear()
+            for iou in mar_large_tmp_dict[model][pattern]:
+                add_to_mar_large_dict(model, iou, mar_large_tmp_dict[model][pattern][iou])
+
+def call_generating_graphs_and_tables():
+    global time_of_run_dict_tmp
 
     if type_of_dataset == "ticket" and not load_cpu_gpu_data:
         generate_graph("correctness")
@@ -781,6 +833,14 @@ def generate_all_graphs_and_tables():
             time_of_run_dict_tmp = cpu_gpu_data_time_diffs.copy()
             generate_latex_table_and_save_to_file("time_of_run")
 
+def generate_all_graphs_and_tables():
+    if not is_pattern_data:
+        load_all_data()
+        call_generating_graphs_and_tables()
+    else:
+        load_all_data_pattern()
+        transform_object_pattern_data_to_normal_and_create_graphs()
+
 def call_generating_graphs_and_tables():
     global load_cpu_gpu_data
     global is_cpu_gpu_data_test
@@ -805,7 +865,7 @@ def call_generating_graphs_and_tables():
 
 if __name__ == "__main__":
     #ticket data
-    call_generating_graphs_and_tables()
+    #call_generating_graphs_and_tables()
 
     #objects data
     type_of_dataset = "objects"
