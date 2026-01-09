@@ -866,6 +866,7 @@ def generate_all_graphs_and_tables():
     else:
         load_all_data_pattern()
         transform_object_pattern_data_to_normal_and_create_graphs()
+        transform_object_main_pattern_data_to_normal_and_create_graphs()
 
 def call_generating_graphs_and_tables():
     global load_cpu_gpu_data
