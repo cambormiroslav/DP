@@ -60,6 +60,9 @@ time_run_dict = {}
 not_found_json_dict = {}
 not_found_json_object_dict = {}
 
+time_run_tmp_dict = {}
+not_found_json_object_tmp_dict = {}
+
 map_tmp_dict = {}
 map_50_tmp_dict = {}
 map_75_tmp_dict = {}
@@ -630,8 +633,17 @@ def load_output_of_models_objects_main_base(file_path, pattern_directory):
     
     return array_of_time_of_run, json_loading_array
 
+def add_to_time_of_run_dict(model_name, value):
+    time_run_dict[model_name] = value
+
+def add_to_not_found_json_object_dict(model_name, value):
+    not_found_json_object_dict[model_name] = value
+
 def load_output_of_models_objects_main(file_path, model_name):
-    time_run_dict[model_name], not_found_json_object_dict[model_name] = load_output_of_models_objects_main_base(file_path, "")
+    data = load_output_of_models_objects_main_base(file_path, "")
+
+    add_to_time_of_run_dict(model_name, data[0])
+    add_to_not_found_json_object_dict(model_name, data[1])
 
 def load_cpu_gpu_data_of_models(file_path, model_name):
     path_to_data = output_dir + file_path
@@ -701,8 +713,8 @@ def load_output_of_models_pattern(file_path, model_name, pattern_name):
 
 def load_output_of_models_objects_main_pattern(file_path, model_name, pattern_name):
     time_of_run_dict_array, not_found_json_object_array = load_output_of_models_objects_main_base(file_path, pattern_name)
-    time_run_dict[model_name] = {pattern_name: time_of_run_dict_array}
-    not_found_json_object_dict[model_name] = {pattern_name: not_found_json_object_array}
+    time_run_tmp_dict[model_name] = {pattern_name: time_of_run_dict_array}
+    not_found_json_object_tmp_dict[model_name] = {pattern_name: not_found_json_object_array}
 
 def load_output_of_models_objects_pattern(file_path, model_name, pattern_name, iou):
     data = load_output_of_models_objects_base(file_path, pattern_name)
@@ -802,6 +814,20 @@ def transform_object_pattern_data_to_normal_and_create_graphs():
             mar_large_dict.clear()
             for iou in mar_large_tmp_dict[model][pattern]:
                 add_to_mar_large_dict(f"{model} - {pattern}", iou, mar_large_tmp_dict[model][pattern][iou])
+
+def transform_object_main_pattern_data_to_normal_and_create_graphs():
+    global time_run_dict
+
+    for model in time_run_tmp_dict:
+        time_run_dict.clear()
+        for pattern in time_run_tmp_dict[model]:
+            add_to_time_of_run_dict(f"{model} - {pattern}", time_run_tmp_dict[model][pattern])
+    
+    for model in not_found_json_object_tmp_dict:
+        not_found_json_object_dict.clear()
+        for pattern in not_found_json_object_tmp_dict[model]:
+            add_to_not_found_json_object_dict(f"{model} - {pattern}", not_found_json_object_tmp_dict[model][pattern])
+            
 
 def call_generating_graphs_and_tables():
     global time_of_run_dict_tmp
