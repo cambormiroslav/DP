@@ -780,38 +780,38 @@ def transform_object_pattern_data_to_normal_and_create_graphs():
     global mar_large_dict
 
     for model in map_tmp_dict:
+        map_dict.clear()
         for pattern in map_tmp_dict[model]:
-            map_dict.clear()
             for iou in map_tmp_dict[model][pattern]:
                 add_to_map_dict(f"{model} - {pattern}", iou, map_tmp_dict[model][pattern][iou])
     
     for model in map_50_tmp_dict:
+        map_50_dict.clear()
         for pattern in map_50_tmp_dict[model]:
-            map_50_dict.clear()
             for iou in map_50_tmp_dict[model][pattern]:
                 add_to_map_50_dict(f"{model} - {pattern}", iou, map_50_tmp_dict[model][pattern][iou])
     
     for model in map_75_tmp_dict:
+        map_75_dict.clear()
         for pattern in map_75_tmp_dict[model]:
-            map_75_dict.clear()
             for iou in map_75_tmp_dict[model][pattern]:
                 add_to_map_75_dict(f"{model} - {pattern}", iou, map_75_tmp_dict[model][pattern][iou])
     
     for model in map_large_tmp_dict:
+        map_large_dict.clear()
         for pattern in map_large_tmp_dict[model]:
-            map_large_dict.clear()
             for iou in map_large_tmp_dict[model][pattern]:
                 add_to_map_large_dict(f"{model} - {pattern}", iou, map_large_tmp_dict[model][pattern][iou])
     
     for model in mar_100_tmp_dict:
+        mar_100_dict.clear()
         for pattern in mar_100_tmp_dict[model]:
-            mar_100_dict.clear()
             for iou in mar_100_tmp_dict[model][pattern]:
                 add_to_mar_100_dict(f"{model} - {pattern}", iou, mar_100_tmp_dict[model][pattern][iou])
     
     for model in mar_large_tmp_dict:
+        mar_large_dict.clear()
         for pattern in mar_large_tmp_dict[model]:
-            mar_large_dict.clear()
             for iou in mar_large_tmp_dict[model][pattern]:
                 add_to_mar_large_dict(f"{model} - {pattern}", iou, mar_large_tmp_dict[model][pattern][iou])
 
