@@ -475,8 +475,6 @@ def load_output_of_models_base(file_path):
     goods_not_finded_count_array = []
     time_run_array = []
     not_found_json = 0
-    precision_sum = 0.0
-    recall_sum = 0.0
 
     with open(path_to_data, "r") as file:
         lines = file.readlines()
@@ -498,11 +496,6 @@ def load_output_of_models_base(file_path):
             incorrect_data_count_array += [incorect_data / count_of_all_data]
             not_finded_main_count_key_array += [not_finded / count_of_all_data]
 
-            if (correct_data + incorect_data) != 0:
-                precision_sum += (correct_data / (correct_data + incorect_data))
-            if (correct_data + not_finded) != 0:
-                recall_sum += (correct_data / (correct_data + not_finded))
-
             if type_of_dataset == "ticket":
                 goods_not_finded_count_array += [(goods_not_finded * 3) / count_of_all_data]
                 time_run_array += [float(array_of_values[5])]
@@ -518,8 +511,7 @@ def load_output_of_models_base(file_path):
     
     return (correctness_array, correct_data_count_array,
             incorrect_data_count_array, not_finded_main_count_key_array,
-            goods_not_finded_count_array, time_run_array,
-            not_found_json, precision_sum, recall_sum)
+            goods_not_finded_count_array, time_run_array, not_found_json)
 
 def load_output_of_models(file_path, model_name):
     data = load_output_of_models_base(file_path)
@@ -531,8 +523,6 @@ def load_output_of_models(file_path, model_name):
     goods_not_finded_count_dict[model_name] = data[4]
     time_run_dict[model_name] = data[5]
     not_found_json_dict[model_name] = data[6]
-    precision_sum_dict[model_name] = data[7]
-    recall_sum_dict[model_name] = data[8]
 
 def load_output_of_models_objects_base(file_path, pattern_directory):
     if pattern_directory == "":
@@ -774,8 +764,6 @@ def load_output_of_models_pattern(file_path, model_name, pattern_name):
     goods_not_finded_count_dict[model_name] = {pattern_name: data[4]}
     time_run_dict[model_name] = {pattern_name: data[5]}
     not_found_json_dict[model_name] = {pattern_name: data[6]}
-    precision_sum_dict[model_name] = {pattern_name: data[7]}
-    recall_sum_dict[model_name] = {pattern_name: data[8]}
 
 def load_output_of_models_objects_main_pattern(file_path, model_name, pattern_name):
     time_of_run_dict_array, not_found_json_object_array = load_output_of_models_objects_main_base(file_path, pattern_name)
