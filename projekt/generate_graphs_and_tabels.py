@@ -960,30 +960,38 @@ def call_generating_graphs_and_tables_patterns(data_arrays_objects, data_arrays_
         mar_large_array = data_arrays_objects[5]
 
         for map_dict_tmp in map_array:
-            map_dict = map_dict_tmp.copy()
+            map_dict.clear()
+            map_dict = map_dict_tmp
 
         for map_50_dict_tmp in map_50_array:
+            map_50_dict.clear()
             map_50_dict = map_50_dict_tmp
 
         for map_75_dict_tmp in map_75_array:
+            map_75_dict.clear()
             map_75_dict = map_75_dict_tmp
 
         for map_large_dict_tmp in map_large_array:
+            map_large_dict.clear()
             map_large_dict = map_large_dict_tmp
 
         for mar_100_dict_tmp in mar_100_array:
+            mar_100_dict.clear()
             mar_100_dict = mar_100_dict_tmp
 
         for mar_large_dict_tmp in mar_large_array:
+            mar_large_dict.clear()
             mar_large_dict = mar_large_dict_tmp
         
         time_of_run_array = data_arrays_objects_main[0]
         not_found_json_object_array = data_arrays_objects_main[1]
 
         for time_run_dict_tmp in time_of_run_array:
+            time_run_dict.clear()
             time_run_dict = time_run_dict_tmp
 
         for not_found_json_object_dict_tmp in not_found_json_object_array:
+            not_found_json_object_dict.clear()
             not_found_json_dict = not_found_json_object_dict_tmp
     else:
         print("Not found type of dataset.")
