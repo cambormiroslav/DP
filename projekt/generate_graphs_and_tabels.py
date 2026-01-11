@@ -939,14 +939,66 @@ def call_generating_graphs_and_tables():
             time_of_run_dict_tmp = cpu_gpu_data_time_diffs.copy()
             generate_latex_table_and_save_to_file("time_of_run")
 
+def call_generating_graphs_and_tables_patterns(data_arrays_objects, data_arrays_objects_main):
+    global map_dict
+    global map_50_dict
+    global map_75_dict
+    global map_large_dict
+    global mar_100_dict
+    global mar_large_dict
+    global time_run_dict
+    global not_found_json_dict
+    
+    if type_of_dataset == "ticket":
+        pass
+    elif type_of_dataset == "objects":
+        map_array = data_arrays_objects[0]
+        map_50_array = data_arrays_objects[1]
+        map_75_array = data_arrays_objects[2]
+        map_large_array = data_arrays_objects[3]
+        mar_100_array = data_arrays_objects[4]
+        mar_large_array = data_arrays_objects[5]
+
+        for map_dict_tmp in map_array:
+            map_dict = map_dict_tmp.copy()
+
+        for map_50_dict_tmp in map_50_array:
+            map_50_dict = map_50_dict_tmp
+
+        for map_75_dict_tmp in map_75_array:
+            map_75_dict = map_75_dict_tmp
+
+        for map_large_dict_tmp in map_large_array:
+            map_large_dict = map_large_dict_tmp
+
+        for mar_100_dict_tmp in mar_100_array:
+            mar_100_dict = mar_100_dict_tmp
+
+        for mar_large_dict_tmp in mar_large_array:
+            mar_large_dict = mar_large_dict_tmp
+        
+        time_of_run_array = data_arrays_objects_main[0]
+        not_found_json_object_array = data_arrays_objects_main[1]
+
+        for time_run_dict_tmp in time_of_run_array:
+            time_run_dict = time_run_dict_tmp
+
+        for not_found_json_object_dict_tmp in not_found_json_object_array:
+            not_found_json_dict = not_found_json_object_dict_tmp
+    else:
+        print("Not found type of dataset.")
+        return
+
+
 def generate_all_graphs_and_tables():
     if not is_pattern_data:
         load_all_data()
         call_generating_graphs_and_tables()
     else:
         load_all_data_pattern()
-        data_arrays = transform_object_pattern_data_to_normal_and_create_graphs()
-        data_arrays = transform_object_main_pattern_data_to_normal_and_create_graphs()
+        data_arrays_objects = transform_object_pattern_data_to_normal_and_create_graphs()
+        data_arrays_objects_main = transform_object_main_pattern_data_to_normal_and_create_graphs()
+        call_generating_graphs_and_tables_patterns(data_arrays_objects, data_arrays_objects_main)
 
 def call_generating_graphs_and_tables():
     global load_cpu_gpu_data
