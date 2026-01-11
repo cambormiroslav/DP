@@ -61,7 +61,7 @@ not_found_json_dict = {}
 not_found_json_object_dict = {}
 
 time_run_tmp_dict = {}
-not_found_json_object_tmp_dict = {}
+not_found_json_tmp_dict = {}
 
 map_tmp_dict = {}
 map_50_tmp_dict = {}
@@ -768,7 +768,7 @@ def load_output_of_models_pattern(file_path, model_name, pattern_name):
 def load_output_of_models_objects_main_pattern(file_path, model_name, pattern_name):
     time_of_run_dict_array, not_found_json_object_array = load_output_of_models_objects_main_base(file_path, pattern_name)
     time_run_tmp_dict[model_name] = {pattern_name: time_of_run_dict_array}
-    not_found_json_object_tmp_dict[model_name] = {pattern_name: not_found_json_object_array}
+    not_found_json_tmp_dict[model_name] = {pattern_name: not_found_json_object_array}
 
 def load_output_of_models_objects_pattern(file_path, model_name, pattern_name, iou):
     data = load_output_of_models_objects_base(file_path, pattern_name)
@@ -889,10 +889,10 @@ def transform_object_main_pattern_data_to_normal_and_create_graphs():
         time_of_run_array.append(time_run_dict)
         
     
-    for model in not_found_json_object_tmp_dict:
+    for model in not_found_json_tmp_dict:
         not_found_json_object_dict = {}
-        for pattern in not_found_json_object_tmp_dict[model]:
-            add_to_not_found_json_object_dict_transform(not_found_json_object_dict, model, pattern, not_found_json_object_tmp_dict[model][pattern])
+        for pattern in not_found_json_tmp_dict[model]:
+            add_to_not_found_json_object_dict_transform(not_found_json_object_dict, model, pattern, not_found_json_tmp_dict[model][pattern])
         not_found_json_object_array.append(not_found_json_object_dict)
     
     return time_of_run_array, not_found_json_object_array
