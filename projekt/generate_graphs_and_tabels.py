@@ -573,11 +573,29 @@ def add_to_map_dict(model_name, iou, value):
     else:
         map_dict[model_name][iou] = value
 
+def add_to_map_dict_transform(dictionary, model_name, pattern, iou, value):
+    key = f"{model_name} - {pattern}"
+    if model_name not in dictionary:
+        dictionary[key] = {iou: value}
+    else:
+        dictionary[key][iou] = value
+    
+    return dictionary
+
 def add_to_map_50_dict(model_name, iou, value):
     if model_name not in map_50_dict:
         map_50_dict[model_name] = {iou: value}
     else:
         map_50_dict[model_name][iou] = value
+
+def add_to_map_50_dict_transform(dictionary, model_name, pattern, iou, value):
+    key = f"{model_name} - {pattern}"
+    if model_name not in dictionary:
+        dictionary[key] = {iou: value}
+    else:
+        dictionary[key][iou] = value
+    
+    return dictionary
 
 def add_to_map_75_dict(model_name, iou, value):
     if model_name not in map_75_dict:
@@ -585,11 +603,29 @@ def add_to_map_75_dict(model_name, iou, value):
     else:
         map_75_dict[model_name][iou] = value
 
+def add_to_map_75_dict_transform(dictionary, model_name, pattern, iou, value):
+    key = f"{model_name} - {pattern}"
+    if model_name not in dictionary:
+        dictionary[key] = {iou: value}
+    else:
+        dictionary[key][iou] = value
+
+    return dictionary
+
 def add_to_map_large_dict(model_name, iou, value):
     if model_name not in map_large_dict:
         map_large_dict[model_name] = {iou: value}
     else:
         map_large_dict[model_name][iou] = value
+
+def add_to_map_large_dict_transform(dictionary, model_name, pattern, iou, value):
+    key = f"{model_name} - {pattern}"
+    if model_name not in dictionary:
+        dictionary[key] = {iou: value}
+    else:
+        dictionary[key][iou] = value
+    
+    return dictionary
 
 def add_to_mar_100_dict(model_name, iou, value):
     if model_name not in mar_100_dict:
@@ -597,11 +633,29 @@ def add_to_mar_100_dict(model_name, iou, value):
     else:
         mar_100_dict[model_name][iou] = value
 
+def add_to_mar_100_dict_transform(dictionary, model_name, pattern, iou, value):
+    key = f"{model_name} - {pattern}"
+    if model_name not in dictionary:
+        dictionary[key] = {iou: value}
+    else:
+        dictionary[key][iou] = value
+    
+    return dictionary
+
 def add_to_mar_large_dict(model_name, iou, value):
     if model_name not in mar_large_dict:
         mar_large_dict[model_name] = {iou: value}
     else:
         mar_large_dict[model_name][iou] = value
+
+def add_to_mar_large_dict_transform(dictionary, model_name, pattern, iou, value):
+    key = f"{model_name} - {pattern}"
+    if model_name not in dictionary:
+        dictionary[key] = {iou: value}
+    else:
+        dictionary[key][iou] = value
+    
+    return dictionary
 
 def load_output_of_models_objects(file_path, model_name, iou):
     data = load_output_of_models_objects_base(file_path, "")
@@ -636,8 +690,20 @@ def load_output_of_models_objects_main_base(file_path, pattern_directory):
 def add_to_time_of_run_dict(model_name, value):
     time_run_dict[model_name] = value
 
+def add_to_time_of_run_dict_transform(dictionary, model_name, pattern, value):
+    key = f"{model_name} - {pattern}"
+    dictionary[key] = value
+
+    return dictionary
+
 def add_to_not_found_json_object_dict(model_name, value):
     not_found_json_object_dict[model_name] = value
+
+def add_to_not_found_json_object_dict_transform(dictionary, model_name, pattern, value):
+    key = f"{model_name} - {pattern}"
+    dictionary[key] = value
+
+    return dictionary
 
 def load_output_of_models_objects_main(file_path, model_name):
     data = load_output_of_models_objects_main_base(file_path, "")
@@ -772,62 +838,76 @@ def load_all_data_pattern():
                         load_output_of_models_objects_pattern(file, model, pattern, third)
 
 def transform_object_pattern_data_to_normal_and_create_graphs():
-    global map_dict
-    global map_50_dict
-    global map_75_dict
-    global map_large_dict
-    global mar_100_dict
-    global mar_large_dict
+    map_array = []
+    map_50_array = []
+    map_75_array = []
+    map_large_array = []
+    mar_100_array = []
+    mar_large_array = []
 
     for model in map_tmp_dict:
-        map_dict.clear()
+        map_dict = {}
         for pattern in map_tmp_dict[model]:
             for iou in map_tmp_dict[model][pattern]:
-                add_to_map_dict(f"{model} - {pattern}", iou, map_tmp_dict[model][pattern][iou])
+                add_to_map_dict_transform(map_dict, model, pattern, iou, map_tmp_dict[model][pattern][iou])
+        map_array.append(map_dict)
     
     for model in map_50_tmp_dict:
-        map_50_dict.clear()
+        map_50_dict = {}
         for pattern in map_50_tmp_dict[model]:
             for iou in map_50_tmp_dict[model][pattern]:
-                add_to_map_50_dict(f"{model} - {pattern}", iou, map_50_tmp_dict[model][pattern][iou])
+                add_to_map_50_dict_transform(map_50_dict, model, pattern, iou, map_50_tmp_dict[model][pattern][iou])
+        map_50_array.append(map_50_dict)
     
     for model in map_75_tmp_dict:
-        map_75_dict.clear()
+        map_75_dict = {}
         for pattern in map_75_tmp_dict[model]:
             for iou in map_75_tmp_dict[model][pattern]:
-                add_to_map_75_dict(f"{model} - {pattern}", iou, map_75_tmp_dict[model][pattern][iou])
+                add_to_map_75_dict_transform(map_75_dict, model, pattern, iou, map_75_tmp_dict[model][pattern][iou])
+        map_75_array.append(map_75_dict)
     
     for model in map_large_tmp_dict:
-        map_large_dict.clear()
+        map_large_dict = {}
         for pattern in map_large_tmp_dict[model]:
             for iou in map_large_tmp_dict[model][pattern]:
-                add_to_map_large_dict(f"{model} - {pattern}", iou, map_large_tmp_dict[model][pattern][iou])
+                add_to_map_large_dict_transform(map_large_dict, model, pattern, iou, map_large_tmp_dict[model][pattern][iou])
+        map_large_array.append(map_large_dict)
     
     for model in mar_100_tmp_dict:
         mar_100_dict.clear()
         for pattern in mar_100_tmp_dict[model]:
             for iou in mar_100_tmp_dict[model][pattern]:
-                add_to_mar_100_dict(f"{model} - {pattern}", iou, mar_100_tmp_dict[model][pattern][iou])
+                add_to_mar_100_dict_transform(mar_100_dict, model, pattern, iou, mar_100_tmp_dict[model][pattern][iou])
+        mar_100_array.append(mar_100_dict)
     
     for model in mar_large_tmp_dict:
         mar_large_dict.clear()
         for pattern in mar_large_tmp_dict[model]:
             for iou in mar_large_tmp_dict[model][pattern]:
-                add_to_mar_large_dict(f"{model} - {pattern}", iou, mar_large_tmp_dict[model][pattern][iou])
+                add_to_mar_large_dict_transform(mar_large_dict, model, pattern, iou, mar_large_tmp_dict[model][pattern][iou])
+        mar_large_array.append(mar_large_dict)
+    
+    return (map_array, map_50_array, map_75_array,
+            map_large_array, mar_100_array, mar_large_array)
 
 def transform_object_main_pattern_data_to_normal_and_create_graphs():
-    global time_run_dict
+    time_of_run_array = []
+    not_found_json_object_array = []
 
     for model in time_run_tmp_dict:
-        time_run_dict.clear()
+        time_run_dict = {}
         for pattern in time_run_tmp_dict[model]:
-            add_to_time_of_run_dict(f"{model} - {pattern}", time_run_tmp_dict[model][pattern])
+            add_to_time_of_run_dict_transform(time_run_dict, model, pattern, time_run_tmp_dict[model][pattern])
+        time_of_run_array.append(time_run_dict)
+        
     
     for model in not_found_json_object_tmp_dict:
-        not_found_json_object_dict.clear()
+        not_found_json_object_dict = {}
         for pattern in not_found_json_object_tmp_dict[model]:
-            add_to_not_found_json_object_dict(f"{model} - {pattern}", not_found_json_object_tmp_dict[model][pattern])
-            
+            add_to_not_found_json_object_dict_transform(not_found_json_object_dict, model, pattern, not_found_json_object_tmp_dict[model][pattern])
+        not_found_json_object_array.append(not_found_json_object_dict)
+    
+    return time_of_run_array, not_found_json_object_array
 
 def call_generating_graphs_and_tables():
     global time_of_run_dict_tmp
@@ -865,8 +945,8 @@ def generate_all_graphs_and_tables():
         call_generating_graphs_and_tables()
     else:
         load_all_data_pattern()
-        transform_object_pattern_data_to_normal_and_create_graphs()
-        transform_object_main_pattern_data_to_normal_and_create_graphs()
+        data_arrays = transform_object_pattern_data_to_normal_and_create_graphs()
+        data_arrays = transform_object_main_pattern_data_to_normal_and_create_graphs()
 
 def call_generating_graphs_and_tables():
     global load_cpu_gpu_data
