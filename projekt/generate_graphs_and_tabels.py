@@ -60,6 +60,13 @@ time_run_dict = {}
 not_found_json_dict = {}
 not_found_json_object_dict = {}
 
+correctness_tmp_dict = {}
+correct_data_count_tmp_dict = {}
+incorrect_data_count_tmp_dict = {}
+not_finded_main_count_key_tmp_dict = {}
+goods_not_finded_count_tmp_dict = {}
+not_found_json_object_tmp_dict = {}
+
 time_run_tmp_dict = {}
 not_found_json_tmp_dict = {}
 
@@ -689,7 +696,7 @@ def add_to_time_of_run_dict_transform(dictionary, model_name, pattern, value):
 def add_to_not_found_json_object_dict(model_name, value):
     not_found_json_object_dict[model_name] = value
 
-def add_to_not_found_json_object_dict_transform(dictionary, model_name, pattern, value):
+def add_to_not_found_json_tmp_dict_transform(dictionary, model_name, pattern, value):
     key = f"{model_name} - {pattern}"
     dictionary[key] = value
 
@@ -757,13 +764,13 @@ def load_all_data():
 def load_output_of_models_pattern(file_path, model_name, pattern_name):
     data = load_output_of_models_base(file_path)
 
-    correctness_dict[model_name] = {pattern_name: data[0]}
-    correct_data_count_dict[model_name] = {pattern_name: data[1]}
-    incorrect_data_count_dict[model_name] = {pattern_name: data[2]}
-    not_finded_main_count_key_dict[model_name] = {pattern_name: data[3]}
-    goods_not_finded_count_dict[model_name] = {pattern_name: data[4]}
-    time_run_dict[model_name] = {pattern_name: data[5]}
-    not_found_json_dict[model_name] = {pattern_name: data[6]}
+    correctness_tmp_dict[model_name] = {pattern_name: data[0]}
+    correct_data_count_tmp_dict[model_name] = {pattern_name: data[1]}
+    incorrect_data_count_tmp_dict[model_name] = {pattern_name: data[2]}
+    not_finded_main_count_key_tmp_dict[model_name] = {pattern_name: data[3]}
+    goods_not_finded_count_tmp_dict[model_name] = {pattern_name: data[4]}
+    time_run_tmp_dict[model_name] = {pattern_name: data[5]}
+    not_found_json_tmp_dict[model_name] = {pattern_name: data[6]}
 
 def load_output_of_models_objects_main_pattern(file_path, model_name, pattern_name):
     time_of_run_dict_array, not_found_json_object_array = load_output_of_models_objects_main_base(file_path, pattern_name)
@@ -825,7 +832,7 @@ def load_all_data_pattern():
                     else:
                         load_output_of_models_objects_pattern(file, model, pattern, third)
 
-def transform_object_pattern_data_to_normal_and_create_graphs():
+def transform_object_pattern_data_to_normal():
     map_array = []
     map_50_array = []
     map_75_array = []
@@ -878,7 +885,48 @@ def transform_object_pattern_data_to_normal_and_create_graphs():
     return (map_array, map_50_array, map_75_array,
             map_large_array, mar_100_array, mar_large_array)
 
-def transform_object_main_pattern_data_to_normal_and_create_graphs():
+def transform_ocr_pattern_data_to_normal():
+    correctness_array = []
+    correct_data_count_array = []
+    incorrect_data_count_array = []
+    not_finded_main_count_key_array = []
+    goods_not_finded_count_array = []
+
+    for model in correctness_tmp_dict:
+        correctness_dict = {}
+        for pattern in correctness_tmp_dict[model]:
+            correctness_dict[f"{model} - {pattern}"] = correctness_tmp_dict[model][pattern]
+        correctness_array.append(correctness_dict)
+    
+    for model in correct_data_count_tmp_dict:
+        correct_data_count_dict = {}
+        for pattern in correct_data_count_tmp_dict[model]:
+            correct_data_count_dict[f"{model} - {pattern}"] = correct_data_count_tmp_dict[model][pattern]
+        correct_data_count_array.append(correct_data_count_dict)
+    
+    for model in incorrect_data_count_tmp_dict:
+        incorrect_data_count_dict = {}
+        for pattern in incorrect_data_count_tmp_dict[model]:
+            incorrect_data_count_dict[f"{model} - {pattern}"] = incorrect_data_count_tmp_dict[model][pattern]
+        incorrect_data_count_array.append(incorrect_data_count_dict)
+    
+    for model in not_finded_main_count_key_tmp_dict:
+        not_finded_main_count_key_dict = {}
+        for pattern in not_finded_main_count_key_tmp_dict[model]:
+            not_finded_main_count_key_dict[f"{model} - {pattern}"] = not_finded_main_count_key_tmp_dict[model][pattern]
+        not_finded_main_count_key_array.append(not_finded_main_count_key_dict)
+    
+    for model in goods_not_finded_count_tmp_dict:
+        goods_not_finded_count_dict = {}
+        for pattern in goods_not_finded_count_tmp_dict[model]:
+            goods_not_finded_count_dict[f"{model} - {pattern}"] = goods_not_finded_count_tmp_dict[model][pattern]
+        goods_not_finded_count_array.append(goods_not_finded_count_dict)
+    
+    return (correctness_array, correct_data_count_array,
+            incorrect_data_count_array, not_finded_main_count_key_array,
+            goods_not_finded_count_array)
+
+def transform_time_of_run_and_not_json_pattern_data_to_normal():
     time_of_run_array = []
     not_found_json_object_array = []
 
@@ -892,7 +940,7 @@ def transform_object_main_pattern_data_to_normal_and_create_graphs():
     for model in not_found_json_tmp_dict:
         not_found_json_object_dict = {}
         for pattern in not_found_json_tmp_dict[model]:
-            add_to_not_found_json_object_dict_transform(not_found_json_object_dict, model, pattern, not_found_json_tmp_dict[model][pattern])
+            add_to_not_found_json_tmp_dict_transform(not_found_json_object_dict, model, pattern, not_found_json_tmp_dict[model][pattern])
         not_found_json_object_array.append(not_found_json_object_dict)
     
     return time_of_run_array, not_found_json_object_array
@@ -927,7 +975,7 @@ def call_generating_graphs_and_tables():
             time_of_run_dict_tmp = cpu_gpu_data_time_diffs.copy()
             generate_latex_table_and_save_to_file("time_of_run")
 
-def call_generating_graphs_and_tables_patterns(data_arrays_objects, data_arrays_objects_main):
+def call_generating_graphs_and_tables_patterns(data_arrays_ocr, data_arrays_objects, data_arrays_objects_main):
     global map_dict
     global map_50_dict
     global map_75_dict
@@ -938,7 +986,42 @@ def call_generating_graphs_and_tables_patterns(data_arrays_objects, data_arrays_
     global not_found_json_dict
     
     if type_of_dataset == "ticket":
-        pass
+        correctness_array = data_arrays_ocr[0]
+        correct_data_count_array = data_arrays_ocr[1]
+        incorrect_data_count_array = data_arrays_ocr[2]
+        not_finded_main_count_key_array = data_arrays_ocr[3]
+        goods_not_finded_count_array = data_arrays_ocr[4]
+
+        for correctness_dict_tmp in correctness_array:
+            correctness_dict.clear()
+            correctness_dict = correctness_dict_tmp
+        
+        for correct_data_count_dict_tmp in correct_data_count_array:
+            correct_data_count_dict.clear()
+            correct_data_count_dict = correct_data_count_dict_tmp
+        
+        for incorrect_data_count_dict_tmp in incorrect_data_count_array:
+            incorrect_data_count_dict.clear()
+            incorrect_data_count_dict = incorrect_data_count_dict_tmp
+        
+        for not_finded_main_count_key_dict_tmp in not_finded_main_count_key_array:
+            not_finded_main_count_key_dict.clear()
+            not_finded_main_count_key_dict = not_finded_main_count_key_dict_tmp
+        
+        for goods_not_finded_count_dict_tmp in goods_not_finded_count_array:
+            goods_not_finded_count_dict.clear()
+            goods_not_finded_count_dict = goods_not_finded_count_dict_tmp
+
+        time_of_run_array = data_arrays_objects_main[0]
+        not_found_json_object_array = data_arrays_objects_main[1]
+
+        for time_run_dict_tmp in time_of_run_array:
+            time_run_dict.clear()
+            time_run_dict = time_run_dict_tmp
+
+        for not_found_json_object_dict_tmp in not_found_json_object_array:
+            not_found_json_object_dict.clear()
+            not_found_json_dict = not_found_json_object_dict_tmp
     elif type_of_dataset == "objects":
         map_array = data_arrays_objects[0]
         map_50_array = data_arrays_objects[1]
@@ -992,9 +1075,10 @@ def generate_all_graphs_and_tables():
         call_generating_graphs_and_tables()
     else:
         load_all_data_pattern()
-        data_arrays_objects = transform_object_pattern_data_to_normal_and_create_graphs()
-        data_arrays_objects_main = transform_object_main_pattern_data_to_normal_and_create_graphs()
-        call_generating_graphs_and_tables_patterns(data_arrays_objects, data_arrays_objects_main)
+        data_arrays_ocr = transform_ocr_pattern_data_to_normal()
+        data_arrays_objects = transform_object_pattern_data_to_normal()
+        data_arrays_objects_main = transform_time_of_run_and_not_json_pattern_data_to_normal()
+        call_generating_graphs_and_tables_patterns(data_arrays_ocr, data_arrays_objects, data_arrays_objects_main)
 
 def call_generating_graphs_and_tables():
     global load_cpu_gpu_data
