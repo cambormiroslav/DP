@@ -1,7 +1,11 @@
 import os
 import matplotlib.pyplot as plt
+import numpy as np
 
 type_of_dataset = "ticket"
+colors = ['blue', 'green', 'red', 'purple', 'brown',
+              'pink', 'gray', 'olive', 'cyan', 'maroon',
+              'gold', 'lime']
 
 add_to_graph = {
     "bakllava" : True,
@@ -46,6 +50,14 @@ is_pattern_data = True
 graphs_dir = "./graphs/"
 if not os.path.exists(graphs_dir):
     os.makedirs(graphs_dir)
+
+graphs_dir_patterns = "./graphs_patterns/"
+if not os.path.exists(graphs_dir_patterns):
+    os.makedirs(graphs_dir_patterns)
+
+graphs_dir_patterns_objects = "./graphs_patterns_objects/"
+if not os.path.exists(graphs_dir_patterns_objects):
+    os.makedirs(graphs_dir_patterns_objects)
 
 tables_dir = "./tables/"
 if not os.path.exists(tables_dir):
@@ -116,10 +128,6 @@ def get_count_of_all_data(correct_data, incorect_data, not_finded, goods_not_fin
     return count_of_all_data
 
 def generate_boxplot(tick_labels, values, y_label, type_data):
-    colors = ['blue', 'green', 'red', 'purple', 'brown',
-              'pink', 'gray', 'olive', 'cyan', 'maroon',
-              'gold', 'lime']
-
     fig, ax = plt.subplots()
     ax.set_ylabel(y_label)
     ax.set_xticklabels(tick_labels)
@@ -142,10 +150,6 @@ def generate_boxplot(tick_labels, values, y_label, type_data):
     
 
 def generate_bar(models, values, type_of_data):
-    colors = ['blue', 'green', 'red', 'purple', 'brown',
-              'pink', 'gray', 'olive', 'cyan', 'maroon',
-              'gold', 'lime']
-
     plt.figure()
     plt.bar(models, values, color = colors)
     if type_of_data == "not_json":
@@ -173,6 +177,52 @@ def generate_bar(models, values, type_of_data):
     if os.path.exists(graph_path):
         os.remove(graph_path)
     plt.savefig(graph_path)
+
+def generate_grouped_bar_objects(dict_data, type_of_data):
+    categories = []
+    labels = []
+    values_dict = {}
+
+    x = np.arange(len(categories))
+    width = 0.35
+
+    for category in dict_data:
+        categories.append(category)
+        for label in dict_data[category]:
+            if label not in labels:
+                labels.append(label)
+            if label not in values_dict:
+                values_dict[label] = [dict_data[category][label]]
+            else:
+                values_dict[label].append(dict_data[category][label])
+
+    x = np.arange(len(categories))
+    width = 0.35
+
+    fig, ax = plt.subplots()
+
+    parts_of_graphs = []
+
+    index = 0
+    for label in values_dict:
+        values = values_dict[label]
+        part = ax.bar(x - width/2, values, width, label=label, color=colors[index % len(colors)])
+        index += 1
+        parts_of_graphs.append(part)
+
+
+    ax.set_xlabel('Patterns')
+    ax.set_ylabel(type_of_data)
+    ax.set_title("model")
+    ax.set_xticks(x)
+    ax.set_xticklabels(categories)
+    ax.legend()
+
+    for part in parts_of_graphs:
+        ax.bar_label(part, padding=3)
+
+    plt.tight_layout()
+    plt.savefig(f"{graphs_dir_patterns_objects}/model_{type_of_data}.svg")
 
 def generate_latex_table_and_save_to_file(type_of_data):
     if load_cpu_gpu_data and not is_cpu_gpu_data_test:
