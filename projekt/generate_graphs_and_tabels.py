@@ -139,14 +139,27 @@ def generate_boxplot(tick_labels, values, y_label, type_data):
 
     plt.margins(0.1)
     plt.subplots_adjust(bottom=0.45)
-    if is_best_data:
-        plt.savefig(f"{graphs_dir}{type_data}_{type_of_dataset}_best.svg")
-    elif load_cpu_gpu_data and not is_cpu_gpu_data_test:
-        plt.savefig(f"{graphs_dir}{type_data}_{type_of_dataset}_train.svg")
-    elif load_cpu_gpu_data and is_cpu_gpu_data_test:
-        plt.savefig(f"{graphs_dir}{type_data}_{type_of_dataset}_test.svg")
+
+    if is_pattern_data:
+        if type_of_dataset == "ticket":
+            if is_best_data:
+                plt.savefig(os.path.join(graphs_dir_patterns, f"{type_data}_{type_of_dataset}_best.svg"))
+            else:
+                plt.savefig(os.path.join(graphs_dir_patterns, f"{type_data}_{type_of_dataset}.svg"))
+        else:
+            if is_best_data:
+                plt.savefig(os.path.join(graphs_dir_patterns_objects, f"{type_data}_{type_of_dataset}_best.svg"))
+            else:
+                plt.savefig(os.path.join(graphs_dir_patterns_objects, f"{type_data}_{type_of_dataset}.svg"))
     else:
-        plt.savefig(f"{graphs_dir}{type_data}_{type_of_dataset}.svg")
+        if is_best_data:
+            plt.savefig(f"{graphs_dir}{type_data}_{type_of_dataset}_best.svg")
+        elif load_cpu_gpu_data and not is_cpu_gpu_data_test:
+            plt.savefig(f"{graphs_dir}{type_data}_{type_of_dataset}_train.svg")
+        elif load_cpu_gpu_data and is_cpu_gpu_data_test:
+            plt.savefig(f"{graphs_dir}{type_data}_{type_of_dataset}_test.svg")
+        else:
+            plt.savefig(f"{graphs_dir}{type_data}_{type_of_dataset}.svg")
     
 
 def generate_bar(models, values, type_of_data):
@@ -162,12 +175,18 @@ def generate_bar(models, values, type_of_data):
     plt.margins(0.1)
     plt.subplots_adjust(bottom=0.45)
 
-    if load_cpu_gpu_data and not is_cpu_gpu_data_test:
-        graph_path = f"{graphs_dir}{type_of_data}_{type_of_dataset}_train"
-    elif load_cpu_gpu_data and is_cpu_gpu_data_test:
-        graph_path = f"{graphs_dir}{type_of_data}_{type_of_dataset}_test"
+    if is_pattern_data:
+        if type_of_dataset == "ticket":
+            graph_path = os.path.join(graphs_dir_patterns, f"{type_of_data}_{type_of_dataset}")
+        else:
+            graph_path = os.path.join(graphs_dir_patterns_objects, f"{type_of_data}_{type_of_dataset}")
     else:
-        graph_path = f"{graphs_dir}{type_of_data}_{type_of_dataset}"
+        if load_cpu_gpu_data and not is_cpu_gpu_data_test:
+            graph_path = f"{graphs_dir}{type_of_data}_{type_of_dataset}_train"
+        elif load_cpu_gpu_data and is_cpu_gpu_data_test:
+            graph_path = f"{graphs_dir}{type_of_data}_{type_of_dataset}_test"
+        else:
+            graph_path = f"{graphs_dir}{type_of_data}_{type_of_dataset}"
 
     if is_best_data:
         graph_path = f"{graph_path}_best.svg"
@@ -222,7 +241,19 @@ def generate_grouped_bar_objects(dict_data, model, type_of_data):
         ax.bar_label(part, padding=3)
 
     plt.tight_layout()
-    plt.savefig(f"{graphs_dir_patterns_objects}/{model}_{type_of_data}.svg")
+    if is_pattern_data:
+        graph_path = os.path.join(graphs_dir_patterns_objects, f"{model}_{type_of_data}")
+    else:
+        return
+    
+    if is_best_data:
+        graph_path = f"{graph_path}_best.svg"
+    else:
+        graph_path = f"{graph_path}.svg"
+    
+    if os.path.exists(graph_path):
+        os.remove(graph_path)
+    plt.savefig(graph_path)
 
 def generate_latex_table_and_save_to_file(type_of_data):
     if load_cpu_gpu_data and not is_cpu_gpu_data_test:
