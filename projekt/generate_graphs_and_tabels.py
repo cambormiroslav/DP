@@ -103,6 +103,7 @@ cpu_gpu_data = {}
 cpu_gpu_data_time_diffs = {}
 
 time_of_run_dict_tmp = {}
+model_string_for_pattern = ""
 
 def set_output_dir():
     global output_dir
@@ -127,7 +128,7 @@ def get_count_of_all_data(correct_data, incorect_data, not_finded, goods_not_fin
     count_of_all_data = correct_data + incorect_data + not_finded + 3 * goods_not_finded
     return count_of_all_data
 
-def generate_boxplot(tick_labels, values, y_label, type_data):
+def generate_boxplot(tick_labels, values, y_label, type_data, model_name):
     fig, ax = plt.subplots()
     ax.set_ylabel(y_label)
     ax.set_xticklabels(tick_labels)
@@ -143,14 +144,14 @@ def generate_boxplot(tick_labels, values, y_label, type_data):
     if is_pattern_data:
         if type_of_dataset == "ticket":
             if is_best_data:
-                plt.savefig(os.path.join(graphs_dir_patterns, f"{type_data}_{type_of_dataset}_best.svg"))
+                plt.savefig(os.path.join(graphs_dir_patterns, f"{model_name}_{type_data}_best.svg"))
             else:
-                plt.savefig(os.path.join(graphs_dir_patterns, f"{type_data}_{type_of_dataset}.svg"))
+                plt.savefig(os.path.join(graphs_dir_patterns, f"{model_name}_{type_data}.svg"))
         else:
             if is_best_data:
-                plt.savefig(os.path.join(graphs_dir_patterns_objects, f"{type_data}_{type_of_dataset}_best.svg"))
+                plt.savefig(os.path.join(graphs_dir_patterns_objects, f"{model_name}_{type_data}_best.svg"))
             else:
-                plt.savefig(os.path.join(graphs_dir_patterns_objects, f"{type_data}_{type_of_dataset}.svg"))
+                plt.savefig(os.path.join(graphs_dir_patterns_objects, f"{model_name}_{type_data}.svg"))
     else:
         if is_best_data:
             plt.savefig(f"{graphs_dir}{type_data}_{type_of_dataset}_best.svg")
@@ -160,7 +161,6 @@ def generate_boxplot(tick_labels, values, y_label, type_data):
             plt.savefig(f"{graphs_dir}{type_data}_{type_of_dataset}_test.svg")
         else:
             plt.savefig(f"{graphs_dir}{type_data}_{type_of_dataset}.svg")
-    
 
 def generate_bar(models, values, type_of_data):
     plt.figure()
@@ -541,7 +541,10 @@ def generate_graph(type_of_data):
         print("Not found type of data.")
         return
     
-    generate_boxplot(tick_labels, values, y_label, type_of_data)
+    if is_pattern_data:
+        generate_boxplot(tick_labels, values, y_label, type_of_data, model_string_for_pattern)
+    else:
+        generate_boxplot(tick_labels, values, y_label, type_of_data, "")
 
 def generate_bar_graph_from_data(dict_data, type_of_data):
     names = []
@@ -1091,6 +1094,7 @@ def call_generating_graphs_and_tables_patterns(data_arrays_ocr, data_arrays_obje
     global mar_large_dict
     global time_run_dict
     global not_found_json_dict
+    global model_string_for_pattern
     
     if type_of_dataset == "ticket":
         correctness_array = data_arrays_ocr[0]
@@ -1178,11 +1182,16 @@ def call_generating_graphs_and_tables_patterns(data_arrays_ocr, data_arrays_obje
 
         for time_run_dict_tmp in time_of_run_array:
             time_run_dict.clear()
-            time_run_dict = time_run_dict_tmp
+            model_string_for_pattern = next(iter(time_run_dict_tmp)) 
+            time_run_dict = time_run_dict_tmp[model_string_for_pattern]
+            print(time_run_dict)
+            return
+            generate_graph("time_of_run")
 
         for not_found_json_object_dict_tmp in not_found_json_object_array:
             not_found_json_object_dict.clear()
             not_found_json_dict = not_found_json_object_dict_tmp
+            generate_bar_graph_from_data(not_found_json_dict, "not_json")
     else:
         print("Not found type of dataset.")
         return
