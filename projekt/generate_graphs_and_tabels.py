@@ -773,7 +773,7 @@ def add_to_time_of_run_dict(model_name, value):
 
 def add_to_time_of_run_dict_transform(dictionary, model_name, pattern, value):
     key = f"{model_name} - {pattern}"
-    dictionary[key] = value
+    dictionary[pattern] = value
 
     return dictionary
 
@@ -782,7 +782,7 @@ def add_to_not_found_json_object_dict(model_name, value):
 
 def add_to_not_found_json_tmp_dict_transform(dictionary, model_name, pattern, value):
     key = f"{model_name} - {pattern}"
-    dictionary[key] = value
+    dictionary[pattern] = value
 
     return dictionary
 
@@ -1044,14 +1044,14 @@ def transform_time_of_run_and_not_json_pattern_data_to_normal():
         time_run_dict = {}
         for pattern in time_run_tmp_dict[model]:
             add_to_time_of_run_dict_transform(time_run_dict, model, pattern, time_run_tmp_dict[model][pattern])
-        time_of_run_array.append(time_run_dict)
+        time_of_run_array.append({model: time_run_dict})
         
     
     for model in not_found_json_tmp_dict:
         not_found_json_object_dict = {}
         for pattern in not_found_json_tmp_dict[model]:
             add_to_not_found_json_tmp_dict_transform(not_found_json_object_dict, model, pattern, not_found_json_tmp_dict[model][pattern])
-        not_found_json_object_array.append(not_found_json_object_dict)
+        not_found_json_object_array.append({model: not_found_json_object_dict})
     
     return time_of_run_array, not_found_json_object_array
 
@@ -1184,8 +1184,6 @@ def call_generating_graphs_and_tables_patterns(data_arrays_ocr, data_arrays_obje
             time_run_dict.clear()
             model_string_for_pattern = next(iter(time_run_dict_tmp)) 
             time_run_dict = time_run_dict_tmp[model_string_for_pattern]
-            print(time_run_dict)
-            return
             generate_graph("time_of_run")
 
         for not_found_json_object_dict_tmp in not_found_json_object_array:
