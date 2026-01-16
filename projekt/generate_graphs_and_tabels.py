@@ -1068,7 +1068,7 @@ def transform_time_of_run_and_not_json_pattern_data_to_normal():
     
     return time_of_run_array, not_found_json_object_array
 
-def call_generating_graphs_and_tables():
+def call_generating_graphs_and_tables_main():
     global time_of_run_dict_tmp
 
     if type_of_dataset == "ticket" and not load_cpu_gpu_data:
@@ -1216,7 +1216,7 @@ def call_generating_graphs_and_tables_patterns(data_arrays_ocr, data_arrays_obje
 def generate_all_graphs_and_tables():
     if not is_pattern_data:
         load_all_data()
-        call_generating_graphs_and_tables()
+        call_generating_graphs_and_tables_main()
     else:
         load_all_data_pattern()
         data_arrays_ocr = transform_ocr_pattern_data_to_normal()
