@@ -128,6 +128,27 @@ def get_count_of_all_data(correct_data, incorect_data, not_finded, goods_not_fin
     count_of_all_data = correct_data + incorect_data + not_finded + 3 * goods_not_finded
     return count_of_all_data
 
+def count_number_of_types_jsons(output_array):
+    count_of_zeros = 0
+    count_of_ones = 0
+    count_of_two = 0
+
+    for value in output_array:
+        if value == 0:
+            count_of_zeros += 1
+        elif value == 1:
+            count_of_ones += 1
+        elif value == 2:
+            count_of_two += 1
+        else:
+            print("Incorrect json value.")
+    
+    return {
+        "Korektní data" : count_of_zeros,
+        "Objekty nenalezeny" : count_of_ones,
+        "Špatná data" : count_of_two
+        }
+
 def generate_boxplot(tick_labels, values, y_label, type_data, model_name):
     fig, ax = plt.subplots()
     ax.set_ylabel(y_label)
@@ -1188,8 +1209,13 @@ def call_generating_graphs_and_tables_patterns(data_arrays_ocr, data_arrays_obje
 
         for not_found_json_object_dict_tmp in not_found_json_object_array:
             not_found_json_object_dict.clear()
-            not_found_json_dict = not_found_json_object_dict_tmp
-            generate_bar_graph_from_data(not_found_json_dict, "not_json")
+            model = next(iter(not_found_json_object_dict_tmp))
+            not_found_json_pattern_dict = not_found_json_object_dict_tmp[model]
+            not_found_json_pattern_dict_tmp = {}
+            for pattern in not_found_json_pattern_dict:
+                not_found_json_pattern_dict_tmp[pattern] = count_number_of_types_jsons(not_found_json_pattern_dict[pattern])
+            
+            generate_grouped_bar_objects(not_found_json_pattern_dict_tmp, model, "Kvalita dat")
     else:
         print("Not found type of dataset.")
         return
