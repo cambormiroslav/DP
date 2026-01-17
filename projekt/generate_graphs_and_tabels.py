@@ -629,6 +629,42 @@ def load_output_of_models_base(file_path, pattern_directory):
             incorrect_data_count_array, not_finded_main_count_key_array,
             goods_not_finded_count_array, time_run_array, not_found_json)
 
+def add_to_correctness_dict_pattern(model_name, pattern_name, value):
+    if model_name not in correctness_tmp_dict:
+        correctness_tmp_dict[model_name] = {pattern_name: value}
+    else:
+        correctness_tmp_dict[model_name][pattern_name] = value
+
+def add_to_incorrect_data_dict_pattern(model_name, pattern_name, value):
+    if model_name not in incorrect_data_count_tmp_dict:
+        incorrect_data_count_tmp_dict[model_name] = {pattern_name: value}
+    else:
+        incorrect_data_count_tmp_dict[model_name][pattern_name] = value
+
+def add_to_not_founded_data_dict_pattern(model_name, pattern_name, value):
+    if model_name not in not_finded_main_count_key_tmp_dict:
+        not_finded_main_count_key_tmp_dict[model_name] = {pattern_name: value}
+    else:
+        not_finded_main_count_key_tmp_dict[model_name][pattern_name] = value
+
+def add_to_goods_not_founded_data_dict_pattern(model_name, pattern_name, value):
+    if model_name not in goods_not_finded_count_tmp_dict:
+        goods_not_finded_count_tmp_dict[model_name] = {pattern_name: value}
+    else:
+        goods_not_finded_count_tmp_dict[model_name][pattern_name] = value
+
+def add_to_time_run_dict_pattern(model_name, pattern_name, value):
+    if model_name not in time_run_tmp_dict:
+        time_run_tmp_dict[model_name] = {pattern_name: value}
+    else:
+        time_run_tmp_dict[model_name][pattern_name] = value
+
+def add_not_found_json_dict_pattern(model_name, pattern_name, value):
+    if model_name not in not_found_json_tmp_dict:
+        not_found_json_tmp_dict[model_name] = {pattern_name: value}
+    else:
+        not_found_json_tmp_dict[model_name][pattern_name] = value
+
 def load_output_of_models(file_path, model_name):
     data = load_output_of_models_base(file_path, "")
                         
@@ -865,26 +901,20 @@ def load_all_data():
 def load_output_of_models_pattern(file_path, model_name, pattern_name):
     data = load_output_of_models_base(file_path, pattern_name)
 
-    correctness_tmp_dict[model_name] = {pattern_name: data[0]}
+    add_to_correctness_dict_pattern(model_name, pattern_name, data[0])
     correct_data_count_tmp_dict[model_name] = {pattern_name: data[1]}
-    incorrect_data_count_tmp_dict[model_name] = {pattern_name: data[2]}
-    not_finded_main_count_key_tmp_dict[model_name] = {pattern_name: data[3]}
-    goods_not_finded_count_tmp_dict[model_name] = {pattern_name: data[4]}
-    time_run_tmp_dict[model_name] = {pattern_name: data[5]}
-    not_found_json_tmp_dict[model_name] = {pattern_name: data[6]}
+    add_to_incorrect_data_dict_pattern(model_name, pattern_name, data[2])
+    add_to_not_founded_data_dict_pattern(model_name, pattern_name, data[3])
+    add_to_goods_not_founded_data_dict_pattern(model_name, pattern_name, data[4])
+
+    add_to_time_run_dict_pattern(model_name, pattern_name, data[5])
+    add_not_found_json_dict_pattern(model_name, pattern_name, data[6])
 
 def load_output_of_models_objects_main_pattern(file_path, model_name, pattern_name):
     time_of_run_dict_array, not_found_json_object_array = load_output_of_models_objects_main_base(file_path, pattern_name)
     
-    if model_name not in time_run_tmp_dict:
-        time_run_tmp_dict[model_name] = {pattern_name: time_of_run_dict_array}
-    else:
-        time_run_tmp_dict[model_name][pattern_name] = time_of_run_dict_array
-    
-    if model_name not in not_found_json_tmp_dict:
-        not_found_json_tmp_dict[model_name] = {pattern_name: not_found_json_object_array}
-    else:
-        not_found_json_tmp_dict[model_name][pattern_name] = not_found_json_object_array
+    add_to_time_run_dict_pattern(model_name, pattern_name, time_of_run_dict_array)
+    add_not_found_json_dict_pattern(model_name, pattern_name, not_found_json_object_array)
 
 def load_output_of_models_objects_pattern(file_path, model_name, pattern_name, iou):
     data = load_output_of_models_objects_base(file_path, pattern_name)
@@ -1274,4 +1304,3 @@ if __name__ == "__main__":
     #objects data
     type_of_dataset = "objects"
     #call_generating_graphs_and_tables()
-
