@@ -1158,31 +1158,31 @@ def call_generating_graphs_and_tables_patterns(data_arrays_ocr, data_arrays_obje
 
         for correctness_dict_tmp in correctness_array:
             correctness_dict.clear()
-            model = next(iter(correctness_dict_tmp))
-            correctness_dict = correctness_dict_tmp[model]
+            model_string_for_pattern = next(iter(correctness_dict_tmp))
+            correctness_dict = correctness_dict_tmp[model_string_for_pattern]
             generate_graph("correctness")
         
         for correct_data_count_dict_tmp in correct_data_count_array:
             correct_data_count_dict.clear()
-            model = next(iter(correct_data_count_dict_tmp))
-            correct_data_count_dict = correct_data_count_dict_tmp[model]
+            model_string_for_pattern = next(iter(correct_data_count_dict_tmp))
+            correct_data_count_dict = correct_data_count_dict_tmp[model_string_for_pattern]
         
         for incorrect_data_count_dict_tmp in incorrect_data_count_array:
             incorrect_data_count_dict.clear()
-            model = next(iter(incorrect_data_count_dict_tmp))
-            incorrect_data_count_dict = incorrect_data_count_dict_tmp[model]
+            model_string_for_pattern = next(iter(incorrect_data_count_dict_tmp))
+            incorrect_data_count_dict = incorrect_data_count_dict_tmp[model_string_for_pattern]
             generate_graph("incorrect_data")
         
         for not_finded_main_count_key_dict_tmp in not_finded_main_count_key_array:
             not_finded_main_count_key_dict.clear()
-            model = next(iter(not_finded_main_count_key_dict_tmp))
-            not_finded_main_count_key_dict = not_finded_main_count_key_dict_tmp[model]
+            model_string_for_pattern = next(iter(not_finded_main_count_key_dict_tmp))
+            not_finded_main_count_key_dict = not_finded_main_count_key_dict_tmp[model_string_for_pattern]
             generate_graph("not_found")
         
         for goods_not_finded_count_dict_tmp in goods_not_finded_count_array:
             goods_not_finded_count_dict.clear()
-            model = next(iter(goods_not_finded_count_dict_tmp))
-            goods_not_finded_count_dict = goods_not_finded_count_dict_tmp[model]
+            model_string_for_pattern = next(iter(goods_not_finded_count_dict_tmp))
+            goods_not_finded_count_dict = goods_not_finded_count_dict_tmp[model_string_for_pattern]
             generate_graph("goods_not_found")
 
         time_of_run_array = data_arrays_objects_main[0]
