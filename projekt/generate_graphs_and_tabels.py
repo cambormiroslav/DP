@@ -577,8 +577,12 @@ def generate_bar_graph_from_data(dict_data, type_of_data):
     
     generate_bar(names, values, type_of_data)
 
-def load_output_of_models_base(file_path):
-    path_to_data = output_dir + file_path
+def load_output_of_models_base(file_path, pattern_directory):
+    #path_to_data = output_dir + file_path
+    if pattern_directory == "":
+        path_to_data = os.path.join(output_dir, file_path)
+    else:
+        path_to_data = os.path.join(output_dir, pattern_directory, file_path)
 
     correctness_array = []
     correct_data_count_array = []
@@ -626,7 +630,7 @@ def load_output_of_models_base(file_path):
             goods_not_finded_count_array, time_run_array, not_found_json)
 
 def load_output_of_models(file_path, model_name):
-    data = load_output_of_models_base(file_path)
+    data = load_output_of_models_base(file_path, "")
                         
     correctness_dict[model_name] = data[0]
     correct_data_count_dict[model_name] = data[1]
@@ -859,7 +863,7 @@ def load_all_data():
                         load_output_of_models_objects(file, model, third)
 
 def load_output_of_models_pattern(file_path, model_name, pattern_name):
-    data = load_output_of_models_base(file_path)
+    data = load_output_of_models_base(file_path, pattern_name)
 
     correctness_tmp_dict[model_name] = {pattern_name: data[0]}
     correct_data_count_tmp_dict[model_name] = {pattern_name: data[1]}
@@ -1018,32 +1022,32 @@ def transform_ocr_pattern_data_to_normal():
     for model in correctness_tmp_dict:
         correctness_dict = {}
         for pattern in correctness_tmp_dict[model]:
-            correctness_dict[f"{model} - {pattern}"] = correctness_tmp_dict[model][pattern]
-        correctness_array.append(correctness_dict)
+            correctness_dict[pattern] = correctness_tmp_dict[model][pattern]
+        correctness_array.append({model: correctness_dict})
     
     for model in correct_data_count_tmp_dict:
         correct_data_count_dict = {}
         for pattern in correct_data_count_tmp_dict[model]:
-            correct_data_count_dict[f"{model} - {pattern}"] = correct_data_count_tmp_dict[model][pattern]
-        correct_data_count_array.append(correct_data_count_dict)
+            correct_data_count_dict[pattern] = correct_data_count_tmp_dict[model][pattern]
+        correct_data_count_array.append({model: correct_data_count_dict})
     
     for model in incorrect_data_count_tmp_dict:
         incorrect_data_count_dict = {}
         for pattern in incorrect_data_count_tmp_dict[model]:
-            incorrect_data_count_dict[f"{model} - {pattern}"] = incorrect_data_count_tmp_dict[model][pattern]
-        incorrect_data_count_array.append(incorrect_data_count_dict)
+            incorrect_data_count_dict[pattern] = incorrect_data_count_tmp_dict[model][pattern]
+        incorrect_data_count_array.append({model: incorrect_data_count_dict})
     
     for model in not_finded_main_count_key_tmp_dict:
         not_finded_main_count_key_dict = {}
         for pattern in not_finded_main_count_key_tmp_dict[model]:
-            not_finded_main_count_key_dict[f"{model} - {pattern}"] = not_finded_main_count_key_tmp_dict[model][pattern]
-        not_finded_main_count_key_array.append(not_finded_main_count_key_dict)
+            not_finded_main_count_key_dict[pattern] = not_finded_main_count_key_tmp_dict[model][pattern]
+        not_finded_main_count_key_array.append({model: not_finded_main_count_key_dict})
     
     for model in goods_not_finded_count_tmp_dict:
         goods_not_finded_count_dict = {}
         for pattern in goods_not_finded_count_tmp_dict[model]:
-            goods_not_finded_count_dict[f"{model} - {pattern}"] = goods_not_finded_count_tmp_dict[model][pattern]
-        goods_not_finded_count_array.append(goods_not_finded_count_dict)
+            goods_not_finded_count_dict[pattern] = goods_not_finded_count_tmp_dict[model][pattern]
+        goods_not_finded_count_array.append({model: goods_not_finded_count_dict})
     
     return (correctness_array, correct_data_count_array,
             incorrect_data_count_array, not_finded_main_count_key_array,
@@ -1248,9 +1252,9 @@ def call_generating_graphs_and_tables():
 
 if __name__ == "__main__":
     #ticket data
-    #call_generating_graphs_and_tables()
+    call_generating_graphs_and_tables()
 
     #objects data
     type_of_dataset = "objects"
-    call_generating_graphs_and_tables()
+    #call_generating_graphs_and_tables()
 
