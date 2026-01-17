@@ -198,9 +198,9 @@ def generate_bar(models, values, type_of_data):
 
     if is_pattern_data:
         if type_of_dataset == "ticket":
-            graph_path = os.path.join(graphs_dir_patterns, f"{type_of_data}_{type_of_dataset}")
+            graph_path = os.path.join(graphs_dir_patterns, f"{model_string_for_pattern}_{type_of_data}")
         else:
-            graph_path = os.path.join(graphs_dir_patterns_objects, f"{type_of_data}_{type_of_dataset}")
+            graph_path = os.path.join(graphs_dir_patterns_objects, f"{model_string_for_pattern}_{type_of_data}")
     else:
         if load_cpu_gpu_data and not is_cpu_gpu_data_test:
             graph_path = f"{graphs_dir}{type_of_data}_{type_of_dataset}_train"
@@ -1078,6 +1078,7 @@ def transform_ocr_pattern_data_to_normal():
         for pattern in goods_not_finded_count_tmp_dict[model]:
             goods_not_finded_count_dict[pattern] = goods_not_finded_count_tmp_dict[model][pattern]
         goods_not_finded_count_array.append({model: goods_not_finded_count_dict})
+
     
     return (correctness_array, correct_data_count_array,
             incorrect_data_count_array, not_finded_main_count_key_array,
@@ -1190,13 +1191,15 @@ def call_generating_graphs_and_tables_patterns(data_arrays_ocr, data_arrays_obje
 
         for time_run_dict_tmp in time_of_run_array:
             time_run_dict.clear()
-            model = next(iter(time_run_dict_tmp))
-            time_run_dict = time_run_dict_tmp[model]
+            model_string_for_pattern = next(iter(time_run_dict_tmp))
+            time_run_dict = time_run_dict_tmp[model_string_for_pattern]
+            generate_graph("time_of_run")
 
         for not_found_json_object_dict_tmp in not_found_json_object_array:
             not_found_json_object_dict.clear()
-            model = next(iter(not_found_json_object_dict_tmp))
-            not_found_json_dict = not_found_json_object_dict_tmp[model]
+            model_string_for_pattern = next(iter(not_found_json_object_dict_tmp))
+            not_found_json_dict = not_found_json_object_dict_tmp[model_string_for_pattern]
+            generate_bar_graph_from_data(not_found_json_dict, "not_json")
     elif type_of_dataset == "objects":
         map_array = data_arrays_objects[0]
         map_50_array = data_arrays_objects[1]
