@@ -1103,6 +1103,12 @@ def call_generating_graphs_and_tables_main():
             generate_latex_table_and_save_to_file("time_of_run")
 
 def call_generating_graphs_and_tables_patterns(data_arrays_ocr, data_arrays_objects, data_arrays_objects_main):
+    global correctness_dict
+    global correct_data_count_dict
+    global incorrect_data_count_dict
+    global not_finded_main_count_key_dict
+    global goods_not_finded_count_dict
+
     global map_dict
     global map_50_dict
     global map_75_dict
@@ -1122,34 +1128,45 @@ def call_generating_graphs_and_tables_patterns(data_arrays_ocr, data_arrays_obje
 
         for correctness_dict_tmp in correctness_array:
             correctness_dict.clear()
-            correctness_dict = correctness_dict_tmp
+            model = next(iter(correctness_dict_tmp))
+            correctness_dict = correctness_dict_tmp[model]
+            generate_graph("correctness")
         
         for correct_data_count_dict_tmp in correct_data_count_array:
             correct_data_count_dict.clear()
-            correct_data_count_dict = correct_data_count_dict_tmp
+            model = next(iter(correct_data_count_dict_tmp))
+            correct_data_count_dict = correct_data_count_dict_tmp[model]
         
         for incorrect_data_count_dict_tmp in incorrect_data_count_array:
             incorrect_data_count_dict.clear()
-            incorrect_data_count_dict = incorrect_data_count_dict_tmp
+            model = next(iter(incorrect_data_count_dict_tmp))
+            incorrect_data_count_dict = incorrect_data_count_dict_tmp[model]
+            generate_graph("incorrect_data")
         
         for not_finded_main_count_key_dict_tmp in not_finded_main_count_key_array:
             not_finded_main_count_key_dict.clear()
-            not_finded_main_count_key_dict = not_finded_main_count_key_dict_tmp
+            model = next(iter(not_finded_main_count_key_dict_tmp))
+            not_finded_main_count_key_dict = not_finded_main_count_key_dict_tmp[model]
+            generate_graph("not_found")
         
         for goods_not_finded_count_dict_tmp in goods_not_finded_count_array:
             goods_not_finded_count_dict.clear()
-            goods_not_finded_count_dict = goods_not_finded_count_dict_tmp
+            model = next(iter(goods_not_finded_count_dict_tmp))
+            goods_not_finded_count_dict = goods_not_finded_count_dict_tmp[model]
+            generate_graph("goods_not_found")
 
         time_of_run_array = data_arrays_objects_main[0]
         not_found_json_object_array = data_arrays_objects_main[1]
 
         for time_run_dict_tmp in time_of_run_array:
             time_run_dict.clear()
-            time_run_dict = time_run_dict_tmp
+            model = next(iter(time_run_dict_tmp))
+            time_run_dict = time_run_dict_tmp[model]
 
         for not_found_json_object_dict_tmp in not_found_json_object_array:
             not_found_json_object_dict.clear()
-            not_found_json_dict = not_found_json_object_dict_tmp
+            model = next(iter(not_found_json_object_dict_tmp))
+            not_found_json_dict = not_found_json_object_dict_tmp[model]
     elif type_of_dataset == "objects":
         map_array = data_arrays_objects[0]
         map_50_array = data_arrays_objects[1]
