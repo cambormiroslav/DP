@@ -56,7 +56,11 @@ def send_image_request(image_path, model, text_request):
             }
         ]
     }
-    return requests.post("https://api.openai.com/v1/chat/completions", headers=headers, json=payload).json()["choices"][0]["message"]["content"].replace("Here's the extracted information in JSON format:\n\n", "").replace("```json\n", "").replace("\n```", "")
+
+    try:
+        return requests.post("https://api.openai.com/v1/chat/completions", headers=headers, json=payload).json()["choices"][0]["message"]["content"].replace("Here's the extracted information in JSON format:\n\n", "").replace("```json\n", "").replace("\n```", "")
+    except:
+        return "error: not sended data"
 
 """
 * Load the specified number of images from directory path.

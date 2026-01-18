@@ -58,9 +58,9 @@ patternsObjectCz = {
     "pattern3_ObjectCz": pattern3Ol_ObjectCz
 }
 
-gemini_measurement = False
+gemini_measurement = True
 openai_measurement = False
-ollama_measurement = True
+ollama_measurement = False
 
 gemini_models = ["gemini-3-pro-preview", "gemini-3-flash-preview",
                  "gemini-2.5-pro", "gemini-2.5-flash", "gemini-2.5-flash-lite",
@@ -178,5 +178,5 @@ def test_object():
                     send_ollama_request(image_path, file, model, patternsObjectCz[pattern_cz], pattern_cz, correct_data_path, "object")
 
 if __name__ == "__main__":
-    test_ocr()
+    #test_ocr()
     test_object()
