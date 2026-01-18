@@ -134,6 +134,50 @@ def set_output_dir():
                 count_of_test_data_objects
                 output_dir = "./output_objects/"
 
+def make_initial_structures():
+    global model_string_for_pattern
+    global count_of_data
+
+    correctness_dict.clear()
+    correct_data_count_dict.clear()
+    incorrect_data_count_dict.clear()
+    not_finded_main_count_key_dict.clear()
+    goods_not_finded_count_dict.clear()
+    time_run_dict.clear()
+    not_found_json_dict.clear()
+    not_found_json_object_dict.clear()
+
+    correctness_tmp_dict.clear()
+    correct_data_count_tmp_dict.clear()
+    incorrect_data_count_tmp_dict.clear()
+    not_finded_main_count_key_tmp_dict.clear()
+    goods_not_finded_count_tmp_dict.clear()
+    not_found_json_object_tmp_dict.clear()
+
+    time_run_tmp_dict.clear()
+    not_found_json_tmp_dict.clear()
+
+    map_tmp_dict.clear()
+    map_50_tmp_dict.clear()
+    map_75_tmp_dict.clear()
+    map_large_tmp_dict.clear()
+    mar_100_tmp_dict.clear()
+    mar_large_tmp_dict.clear()
+
+    map_dict.clear()
+    map_50_dict.clear()
+    map_75_dict.clear()
+    map_large_dict.clear()
+    mar_100_dict.clear()
+    mar_large_dict.clear()
+
+    cpu_gpu_data.clear()
+    cpu_gpu_data_time_diffs.clear()
+
+    time_of_run_dict_tmp.clear()
+    model_string_for_pattern = ""
+    count_of_data = 0
+
 def get_count_of_all_data(correct_data, incorect_data, not_finded, goods_not_finded):
     count_of_all_data = correct_data + incorect_data + not_finded + 3 * goods_not_finded
     return count_of_all_data
@@ -1303,6 +1347,7 @@ if __name__ == "__main__":
     #ticket data
     call_generating_graphs_and_tables()
 
+    make_initial_structures()
     #objects data
     type_of_dataset = "objects"
-    #call_generating_graphs_and_tables()
+    call_generating_graphs_and_tables()
