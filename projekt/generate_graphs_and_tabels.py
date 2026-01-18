@@ -578,7 +578,6 @@ def generate_bar_graph_from_data(dict_data, type_of_data):
     generate_bar(names, values, type_of_data)
 
 def load_output_of_models_base(file_path, pattern_directory):
-    #path_to_data = output_dir + file_path
     if pattern_directory == "":
         path_to_data = os.path.join(output_dir, file_path)
     else:
@@ -601,29 +600,19 @@ def load_output_of_models_base(file_path, pattern_directory):
             correct_data = int(array_of_values[1])
             incorect_data = int(array_of_values[2])
             not_finded = int(array_of_values[3])
-            if type_of_dataset == "ticket":
-                goods_not_finded = int(array_of_values[4])
-                count_of_all_data = get_count_of_all_data(correct_data, incorect_data, not_finded, goods_not_finded)
-            else:
-                count_of_all_data = get_count_of_all_data(correct_data, incorect_data, not_finded, 0)
+            goods_not_finded = int(array_of_values[4])
+            count_of_all_data = get_count_of_all_data(correct_data, incorect_data, not_finded, goods_not_finded)
                 
             correctness_array += [float(array_of_values[0])]
             correct_data_count_array += [correct_data]
             incorrect_data_count_array += [incorect_data / count_of_all_data]
             not_finded_main_count_key_array += [not_finded / count_of_all_data]
 
-            if type_of_dataset == "ticket":
-                goods_not_finded_count_array += [(goods_not_finded * 3) / count_of_all_data]
-                time_run_array += [float(array_of_values[5])]
-            else:
-                time_run_array += [float(array_of_values[4])]
+            goods_not_finded_count_array += [(goods_not_finded * 3) / count_of_all_data]
+            time_run_array += [float(array_of_values[5])]
 
-            if type_of_dataset == "ticket":
-                if correct_data == 0 and incorect_data == 0 and not_finded > 0 and goods_not_finded == 0:
-                    not_found_json =  not_found_json + 1
-            else:
-                if correct_data == 0 and incorect_data == 0 and not_finded > 0 and array_of_values[5] == "{}" and array_of_values[6] == "[]":
-                    not_found_json =  not_found_json + 1
+            if correct_data == 0 and incorect_data == 0 and not_finded > 0 and goods_not_finded == 0:
+                not_found_json =  not_found_json + 1
     
     return (correctness_array, correct_data_count_array,
             incorrect_data_count_array, not_finded_main_count_key_array,
