@@ -7,6 +7,9 @@ colors = ['blue', 'green', 'red', 'purple', 'brown',
               'pink', 'gray', 'olive', 'cyan', 'maroon',
               'gold', 'lime']
 
+count_of_test_data_ocr = 103
+count_of_test_data_objects = 100
+
 add_to_graph = {
     "bakllava" : True,
     "easyocr": True,
@@ -104,13 +107,18 @@ cpu_gpu_data_time_diffs = {}
 
 time_of_run_dict_tmp = {}
 model_string_for_pattern = ""
+count_of_data = 0
 
 def set_output_dir():
     global output_dir
+    global count_of_data
+
     if is_pattern_data:
         if type_of_dataset == "ticket":
+            count_of_data = count_of_test_data_ocr
             output_dir = "./output_pattern_test/"
         else:
+            count_of_data = count_of_test_data_objects
             output_dir = "./output_pattern_test_objects/"
     else:
         if load_cpu_gpu_data:
@@ -120,8 +128,10 @@ def set_output_dir():
                 output_dir = "./train_measurement/"
         else:
             if type_of_dataset == "ticket":
+                count_of_data = count_of_test_data_ocr
                 output_dir = "./output/"
             else:
+                count_of_test_data_objects
                 output_dir = "./output_objects/"
 
 def get_count_of_all_data(correct_data, incorect_data, not_finded, goods_not_finded):
@@ -573,7 +583,7 @@ def generate_bar_graph_from_data(dict_data, type_of_data):
 
     for key in dict_data:
         names += [key]
-        values += [float(dict_data[key]) / 103]
+        values += [float(dict_data[key]) / count_of_data]
     
     generate_bar(names, values, type_of_data)
 
