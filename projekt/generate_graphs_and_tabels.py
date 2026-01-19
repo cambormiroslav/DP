@@ -277,41 +277,41 @@ def generate_bar(models, values, type_of_data):
     plt.savefig(graph_path)
 
 def generate_grouped_bar_objects(dict_data, model, type_of_data):
-    categories = []
+    categories = list(dict_data.keys())
     labels = []
-    values_dict = {}
-
-    x = np.arange(len(categories))
-    width = 0.35
-
+    
     for category in dict_data:
-        categories.append(category)
         for label in dict_data[category]:
             if label not in labels:
                 labels.append(label)
-            if label not in values_dict:
-                values_dict[label] = [dict_data[category][label]]
-            else:
-                values_dict[label].append(dict_data[category][label])
+
+    values_dict = {label: [] for label in labels}
+    for category in categories:
+        for label in labels:
+            values_dict[label].append(dict_data[category].get(label, 0))
 
     x = np.arange(len(categories))
-    width = 0.35
+    
+    n_groups = len(labels)
+    total_width = 0.8
+    width = total_width / n_groups
 
     fig, ax = plt.subplots()
-
     parts_of_graphs = []
 
-    index = 0
-    for label in values_dict:
+    for index, label in enumerate(labels):
+        offset = (index - (n_groups - 1) / 2) * width
         values = values_dict[label]
-        part = ax.bar(x - width/2, values, width, label=label, color=colors[index % len(colors)])
-        index += 1
+
+        part = ax.bar(x + offset, values, width, label=label, color=colors[index % len(colors)])
         parts_of_graphs.append(part)
 
+    if type_of_data == "count_of_data":
+        ax.set_ylabel("Počty dat")
+    else:
+        ax.set_ylabel(type_of_data)
 
-    ax.set_xlabel('Patterns')
-    ax.set_ylabel(type_of_data)
-    ax.set_title(model)
+    ax.set_xlabel('Vstupní textové zadání')
     ax.set_xticks(x)
     ax.set_xticklabels(categories)
     plt.setp(ax.get_xticklabels(), rotation=90, ha="right")
@@ -1309,7 +1309,7 @@ def call_generating_graphs_and_tables_patterns(data_arrays_ocr, data_arrays_obje
             for pattern in not_found_json_pattern_dict:
                 not_found_json_pattern_dict_tmp[pattern] = count_number_of_types_jsons(not_found_json_pattern_dict[pattern])
             
-            generate_grouped_bar_objects(not_found_json_pattern_dict_tmp, model, "Kvalita dat")
+            generate_grouped_bar_objects(not_found_json_pattern_dict_tmp, model, "count_of_data")
     else:
         print("Not found type of dataset.")
         return
