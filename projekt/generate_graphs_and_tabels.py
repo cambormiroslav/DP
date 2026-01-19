@@ -186,6 +186,9 @@ def get_count_of_all_data(correct_data, incorect_data, not_finded, goods_not_fin
     count_of_all_data = correct_data + incorect_data + not_finded + 3 * goods_not_finded
     return count_of_all_data
 
+def sort_dict_by_keys(input_dict):
+    return {k: v for k, v in sorted(input_dict.items(), key=lambda item: item[0])}
+
 def count_number_of_types_jsons(output_array):
     count_of_zeros = 0
     count_of_ones = 0
@@ -277,18 +280,22 @@ def generate_bar(models, values, type_of_data):
     plt.savefig(graph_path)
 
 def generate_grouped_bar_objects(dict_data, model, type_of_data):
-    categories = list(dict_data.keys())
+    dict_sorted = sort_dict_by_keys(dict_data).copy()
+    for pattern in dict_sorted:
+        dict_sorted[pattern] = sort_dict_by_keys(dict_sorted[pattern])
+
+    categories = list(dict_sorted.keys())
     labels = []
     
-    for category in dict_data:
-        for label in dict_data[category]:
+    for category in dict_sorted:
+        for label in dict_sorted[category]:
             if label not in labels:
                 labels.append(label)
 
     values_dict = {label: [] for label in labels}
     for category in categories:
         for label in labels:
-            values_dict[label].append(dict_data[category].get(label, 0))
+            values_dict[label].append(dict_sorted[category].get(label, 0))
 
     x = np.arange(len(categories))
     
