@@ -18,6 +18,8 @@ add_to_graph = {
     "gemini-2.5-flash-lite": True,
     "gemini-2.5-flash" : True,
     "gemini-2.5-pro" : True,
+    "gemini-3-flash-preview" : True,
+    "gemini-3-pro-preview" : True,
     "gemma3-4b" : True,
     "gemma3-12b": True,
     "gemma3-27b" : True,
@@ -29,6 +31,8 @@ add_to_graph = {
     "gpt-5-nano" : True,
     "gpt-5-mini" : True,
     "gpt-5" : True,
+    "gpt-5.1": True,
+    "gpt-5.2" : True,
     "granite3.2-vision" : True,
     "knoopx-mobile-vlm-3b-fp16" : True,
     "llava-7b" : True,
@@ -310,6 +314,7 @@ def generate_grouped_bar_objects(dict_data, model, type_of_data):
     ax.set_title(model)
     ax.set_xticks(x)
     ax.set_xticklabels(categories)
+    plt.setp(ax.get_xticklabels(), rotation=90, ha="right")
     ax.legend()
 
     for part in parts_of_graphs:
