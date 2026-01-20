@@ -195,8 +195,6 @@ if __name__ == "__main__":
 
     load_and_measure(dir_path, "gpt-4o", 1, 103)
 
-    load_and_measure(dir_path, "gpt-4.1-nano", 1, 103)
-
     load_and_measure(dir_path, "gpt-4.1-mini", 1, 103)
 
     load_and_measure(dir_path, "gpt-4.1", 1, 103)
@@ -206,3 +204,7 @@ if __name__ == "__main__":
     load_and_measure(dir_path, "gpt-5-mini", 1, 103)
 
     load_and_measure(dir_path, "gpt-5", 1, 103)
+
+    load_and_measure(dir_path, "gpt-5.1", 1, 103)
+
+    load_and_measure(dir_path, "gpt-5.2", 1, 103)
