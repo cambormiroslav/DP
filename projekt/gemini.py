@@ -9,6 +9,7 @@ import threading
 import functions
 
 api_key = os.environ["GEMINI_API_KEY"]
+is_free_version_api = False
 
 ocr_method = False
 
@@ -163,13 +164,14 @@ def load_and_measure(dir_path, model, first_ticket, latest_file):
 
         if i == latest_file:
             break
-
-        if model_is_pro and ocr_method:
-            time.sleep(15.0)
-        if model_is_pro and not ocr_method:
-            time.sleep(30.0)
-        if ocr_method == False and model_is_pro == False:
-            time.sleep(15.0)
+        
+        if is_free_version_api:
+            if model_is_pro and ocr_method:
+                time.sleep(15.0)
+            if model_is_pro and not ocr_method:
+                time.sleep(30.0)
+            if ocr_method == False and model_is_pro == False:
+                time.sleep(15.0)
 
 if __name__ == "__main__":
     if ocr_method:
@@ -187,7 +189,13 @@ if __name__ == "__main__":
     #load_and_measure(dir_path, "gemini-2.5-flash-lite", 1, 103)
 
     model_is_pro = False
-    load_and_measure(dir_path, "gemini-2.5-flash", 1, 103)
+    #load_and_measure(dir_path, "gemini-2.5-flash", 1, 103)
 
     model_is_pro = True
     #load_and_measure(dir_path, "gemini-2.5-pro", 93, 103)
+
+    model_is_pro = False
+    #load_and_measure(dir_path, "gemini-3-flash-preview", 1, 103)
+
+    model_is_pro = True
+    #load_and_measure(dir_path, "gemini-3-pro-preview", 1, 103)
