@@ -1250,10 +1250,10 @@ def call_generating_graphs_and_tables_patterns(data_arrays_ocr, data_arrays_obje
             time_run_dict = time_run_dict_tmp[model_string_for_pattern]
             generate_graph("time_of_run")
 
-        for not_found_json_object_dict_tmp in not_found_json_object_array:
-            not_found_json_object_dict.clear()
-            model_string_for_pattern = next(iter(not_found_json_object_dict_tmp))
-            not_found_json_dict = not_found_json_object_dict_tmp[model_string_for_pattern]
+        for not_found_json_ocr_dict_tmp in not_found_json_object_array:
+            not_found_json_dict.clear()
+            model_string_for_pattern = next(iter(not_found_json_ocr_dict_tmp))
+            not_found_json_dict = not_found_json_ocr_dict_tmp[model_string_for_pattern]
             generate_bar_graph_from_data(not_found_json_dict, "not_json")
     elif type_of_dataset == "objects":
         map_array = data_arrays_objects[0]
@@ -1309,7 +1309,6 @@ def call_generating_graphs_and_tables_patterns(data_arrays_ocr, data_arrays_obje
             generate_graph("time_of_run")
 
         for not_found_json_object_dict_tmp in not_found_json_object_array:
-            not_found_json_object_dict.clear()
             model = next(iter(not_found_json_object_dict_tmp))
             not_found_json_pattern_dict = not_found_json_object_dict_tmp[model]
             not_found_json_pattern_dict_tmp = {}
