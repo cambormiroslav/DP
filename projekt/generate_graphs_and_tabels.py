@@ -77,7 +77,6 @@ not_finded_main_count_key_dict = {}
 goods_not_finded_count_dict = {}
 time_run_dict = {}
 not_found_json_dict = {}
-not_found_json_object_dict = {}
 
 correctness_tmp_dict = {}
 correct_data_count_tmp_dict = {}
@@ -149,7 +148,6 @@ def make_initial_structures():
     goods_not_finded_count_dict.clear()
     time_run_dict.clear()
     not_found_json_dict.clear()
-    not_found_json_object_dict.clear()
 
     correctness_tmp_dict.clear()
     correct_data_count_tmp_dict.clear()
@@ -887,7 +885,7 @@ def add_to_time_of_run_dict_transform(dictionary, pattern, value):
     return dictionary
 
 def add_to_not_found_json_object_dict(model_name, value):
-    not_found_json_object_dict[model_name] = value
+    not_found_json_dict[model_name] = value
 
 def add_to_not_found_json_tmp_dict_transform(dictionary, pattern, value):
     dictionary[pattern] = value
