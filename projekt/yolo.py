@@ -167,7 +167,7 @@ def train_yolo(model_specification, dataset_yaml, count_of_epochs, model_train_d
 
     try:
         #train model
-        model.train(data=dataset_yaml, epochs=count_of_epochs, imgsz=32, project = model_train_dir)
+        model.train(data=dataset_yaml, epochs=count_of_epochs, imgsz=890, project = model_train_dir, batch = -1)
     finally:
             # stop thread
             functions.monitor_data["is_running"] = False
@@ -219,17 +219,14 @@ def load_and_measure(model, model_name):
         test_img(arrays_of_test_files[1][index], model, model_name, arrays_of_test_files[0][index])
 
 if __name__ == "__main__":
-    model = train_yolo("yolo11n.pt", dataset_yaml, 600,"./output_objects/yolo11n/")
+    """model = train_yolo("yolo11n.pt", dataset_yaml, 600,"./output_objects/yolo11n/")
     load_and_measure(model, "yolo11n")
 
-    """model = train_yolo("yolo11s.pt", dataset_yaml, 600,"./output_objects/yolo11s/")
+    model = train_yolo("yolo11s.pt", dataset_yaml, 600,"./output_objects/yolo11s/")
     load_and_measure(model, "yolo11s")
 
     model = train_yolo("yolo11m.pt", dataset_yaml, 600,"./output_objects/yolo11m/")
-    load_and_measure(model, "yolo11m")
+    load_and_measure(model, "yolo11m")"""
 
     model = train_yolo("yolo11l.pt", dataset_yaml, 600,"./output_objects/yolo11l/")
     load_and_measure(model, "yolo11l")
-
-    model = train_yolo("yolo11x.pt", dataset_yaml, 600,"./output_objects/yolo11x/")
-    load_and_measure(model, "yolo11x")"""
