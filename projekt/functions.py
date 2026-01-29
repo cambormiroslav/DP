@@ -122,12 +122,21 @@ def transform_coordinates_to_int_if_not(detections):
 
     for detected_object in detections:
         try:
-            output.append({
+            data_dict = {
                 "x_min" : int(detected_object["x_min"]),
                 "y_min" : int(detected_object["y_min"]),
                 "x_max" : int(detected_object["x_max"]),
-                "y_max" : int(detected_object["y_max"])
-            })
+                "y_max" : int(detected_object["y_max"]),
+                "confidence" : float(detected_object["confidence"])
+            }
+            if "class_name" in detected_object:
+                data_dict["class_name"] = detected_object["class_name"]
+            elif "name" in detected_object:
+                data_dict["class_name"] = detected_object["name"]
+            else:
+                print("class name not found")
+            
+            output.append(data_dict)
         except:
             print("not integer coordinates")
     
@@ -204,12 +213,12 @@ def get_target_torch(good_boxes):
 def get_mAP(iou_detections, good_boxes, iou_threshold):
     mAP_solver = MeanAveragePrecision(box_format='xyxy', iou_type="bbox")
 
-    iou_detections = []
+    iou_detections_tmp = []
     for detected_object in iou_detections:
         if detected_object["iou"] >= iou_threshold:
-            iou_detections.append(detected_object)
+            iou_detections_tmp.append(detected_object)
     
-    predicted_torch = get_predictions_torch(iou_detections)
+    predicted_torch = get_predictions_torch(iou_detections_tmp)
     target_torch = get_target_torch(good_boxes)
 
     mAP_solver.update(predicted_torch, target_torch)

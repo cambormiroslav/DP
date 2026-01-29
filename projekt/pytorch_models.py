@@ -9,7 +9,6 @@ from torchvision.models.detection import RetinaNet_ResNet50_FPN_Weights
 from torchvision.models.detection import MaskRCNN_ResNet50_FPN_Weights
 from torchvision.datasets import CocoDetection
 from torchvision.transforms import functional as F
-import matplotlib.pyplot as plt
 from PIL import Image
 import os
 from functools import partial
@@ -328,6 +327,6 @@ if __name__ == "__main__":
     train_dataset = get_coco_dataset("../dataset/yolo_dataset/train/images", "../dataset/coco_annotations/train/annotations.json")
     train_dataloader = DataLoader(train_dataset, batch_size=4, shuffle=True, collate_fn=lambda x: tuple(zip(*x)))
 
-    load_and_measure("fasterrcnn", train_dataloader, True, False)
-    load_and_measure("retinanet", train_dataloader, True, False)
-    load_and_measure("maskrcnn", train_dataloader, True, False)
+    load_and_measure("fasterrcnn", train_dataloader, False, True)
+    #load_and_measure("retinanet", train_dataloader, True, False)
+    #load_and_measure("maskrcnn", train_dataloader, True, False)
