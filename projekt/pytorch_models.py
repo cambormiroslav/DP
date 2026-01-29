@@ -328,5 +328,5 @@ if __name__ == "__main__":
     train_dataloader = DataLoader(train_dataset, batch_size=4, shuffle=True, collate_fn=lambda x: tuple(zip(*x)))
 
     load_and_measure("fasterrcnn", train_dataloader, False, True)
-    #load_and_measure("retinanet", train_dataloader, True, False)
-    #load_and_measure("maskrcnn", train_dataloader, True, False)
+    load_and_measure("retinanet", train_dataloader, False, True)
+    load_and_measure("maskrcnn", train_dataloader, False, True)
