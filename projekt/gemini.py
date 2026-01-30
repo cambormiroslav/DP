@@ -38,7 +38,11 @@ def send_image_request(image_path, model_text, text_request):
     result = model.generate_content(
         [myfile, "\n\n", text_request]
         )
-    return result.text.replace("```json\n", "").replace("\n```", "")
+    
+    try:
+        return result.text.replace("```json\n", "").replace("\n```", "")
+    except:
+        return "error: not sended data"
 
 """
 * Load the specified number of images from directory path.

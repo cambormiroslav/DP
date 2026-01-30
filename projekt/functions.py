@@ -134,7 +134,7 @@ def transform_coordinates_to_int_if_not(detections):
             elif "name" in detected_object:
                 data_dict["class_name"] = detected_object["name"]
             else:
-                print("class name not found")
+                data_dict["class_name"] = "none"
             
             output.append(data_dict)
         except:
@@ -185,8 +185,16 @@ def get_predictions_torch(detections):
     labels = []
     scores = []
     for detection in detections:
-        if detection["class_name"] == "person" or detection["name"] == "person":
-            labels.append(0) #person
+        if "class_name" in detection:
+            if detection["class_name"] == "person":
+                labels.append(0) #person
+            else:
+                labels.append(1) #not person
+        elif "name" in detection:
+            if detection["name"] == "person":
+                labels.append(0) #person
+            else:
+                labels.append(1) #not person
         else:
             labels.append(1) #not person
         boxes.append([detection["x_min"], detection["y_min"], detection["x_max"], detection["y_max"]])
