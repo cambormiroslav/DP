@@ -58,9 +58,9 @@ patternsObjectCz = {
     "pattern3_ObjectCz": pattern3Ol_ObjectCz
 }
 
-gemini_measurement = True
+gemini_measurement = False
 openai_measurement = False
-ollama_measurement = False
+ollama_measurement = True
 
 gemini_models = ["gemini-3-pro-preview", "gemini-3-flash-preview",
                  "gemini-2.5-pro", "gemini-2.5-flash", "gemini-2.5-flash-lite",
