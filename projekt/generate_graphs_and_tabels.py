@@ -220,6 +220,7 @@ def generate_boxplot(tick_labels, values, y_label, type_data, model_name):
 
     plt.margins(0.1)
     plt.subplots_adjust(bottom=0.45)
+    plt.grid(color = 'gray', linestyle = '--', linewidth = 0.5, axis='y', alpha = 0.7)
 
     if is_pattern_data:
         if type_of_dataset == "ticket":
@@ -254,6 +255,7 @@ def generate_bar(models, values, type_of_data):
     plt.xticks(rotation=90)
     plt.margins(0.1)
     plt.subplots_adjust(bottom=0.45)
+    plt.grid(color = 'gray', linestyle = '--', linewidth = 0.5, axis='y', alpha = 0.7)
 
     if is_pattern_data:
         if type_of_dataset == "ticket":
@@ -322,8 +324,7 @@ def generate_grouped_bar_objects(dict_data, model, type_of_data):
     plt.setp(ax.get_xticklabels(), rotation=90, ha="right")
     ax.legend()
 
-    for part in parts_of_graphs:
-        ax.bar_label(part, padding=3)
+    plt.grid(color = 'gray', linestyle = '--', linewidth = 0.5, axis='y', alpha = 0.7)
 
     plt.tight_layout()
     if is_pattern_data:
