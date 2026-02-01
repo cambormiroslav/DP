@@ -46,7 +46,9 @@ add_to_graph = {
     "yolo11s" : True,
     "yolo11m" : True,
     "yolo11l" : True,
-    "yolo11x" : True
+    "fasterrcnn" : True,
+    "retinanet" : True,
+    "maskrcnn" : True
     }
 
 load_cpu_gpu_data = False
