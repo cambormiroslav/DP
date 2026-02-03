@@ -650,9 +650,11 @@ def generate_bar_graph_from_data(dict_data, type_of_data):
     names = []
     values = []
 
-    for key in dict_data:
+    sorted_dict = sort_dict_by_keys(dict_data.copy())
+
+    for key in sorted_dict:
         names += [key]
-        values += [float(dict_data[key]) / count_of_data]
+        values += [float(sorted_dict[key]) / count_of_data]
     
     generate_bar(names, values, type_of_data)
 
