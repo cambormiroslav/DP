@@ -566,64 +566,76 @@ def generate_graph(type_of_data):
     y_label = ""
 
     if type_of_data == "correctness":
-        for key in correctness_dict:
+        sorted_correctness_dict = sort_dict_by_keys(correctness_dict)
+        for key in sorted_correctness_dict:
             tick_labels += [key]
-            values += [correctness_dict[key]]
+            values += [sorted_correctness_dict[key]]
         y_label = "Správnost výsledku"
     elif type_of_data == "correct_data":
-        for key in correct_data_count_dict:
+        sorted_correct_data_count_dict = sort_dict_by_keys(correct_data_count_dict)
+        for key in sorted_correct_data_count_dict:
             tick_labels += [key]
-            values += [correct_data_count_dict[key]]
+            values += [sorted_correct_data_count_dict[key]]
         y_label = "Počty správných dat"
     elif type_of_data == "incorrect_data":
-        for key in incorrect_data_count_dict:
+        sorted_incorrect_data_count_dict = sort_dict_by_keys(incorrect_data_count_dict)
+        for key in sorted_incorrect_data_count_dict:
             tick_labels += [key]
-            values += [incorrect_data_count_dict[key]]
+            values += [sorted_incorrect_data_count_dict[key]]
         y_label = "Poměr špatnných dat"
     elif type_of_data == "not_found":
-        for key in not_finded_main_count_key_dict:
+        sorted_not_finded_main_count_key_dict = sort_dict_by_keys(not_finded_main_count_key_dict)
+        for key in sorted_not_finded_main_count_key_dict:
             tick_labels += [key]
-            values += [not_finded_main_count_key_dict[key]]
+            values += [sorted_not_finded_main_count_key_dict[key]]
         y_label = "Poměr nenalezených dat"
     elif type_of_data == "goods_not_found":
-        for key in goods_not_finded_count_dict:
+        sorted_goods_not_finded_count_dict = sort_dict_by_keys(goods_not_finded_count_dict)
+        for key in sorted_goods_not_finded_count_dict:
             tick_labels += [key]
-            values += [goods_not_finded_count_dict[key]]
+            values += [sorted_goods_not_finded_count_dict[key]]
         y_label = "Poměr nenalezených zboží"
     elif type_of_data == "time_of_run":
-        for key in time_run_dict:
+        sorted_time_run_dict = sort_dict_by_keys(time_run_dict)
+        for key in sorted_time_run_dict:
             tick_labels += [key]
-            values += [time_run_dict[key]]
+            values += [sorted_time_run_dict[key]]
         y_label = "Délka běhu [s]"
     elif type_of_data == "cpu_usage_main_thread":
-        for key in cpu_gpu_data:
+        sorted_cpu_gpu_data = sort_dict_by_keys(cpu_gpu_data)
+        for key in sorted_cpu_gpu_data:
             tick_labels += [key]
-            values += [cpu_gpu_data[key]["cpu_usage"]]
+            values += [sorted_cpu_gpu_data[key]["cpu_usage"]]
         y_label = "Využití CPU (hlavní vlákno)"
     elif type_of_data == "cpu_usage_peak":
-        for key in cpu_gpu_data:
+        sorted_cpu_gpu_data = sort_dict_by_keys(cpu_gpu_data)
+        for key in sorted_cpu_gpu_data:
             tick_labels += [key]
-            values += [cpu_gpu_data[key]["peak_cpu_percent"]]
+            values += [sorted_cpu_gpu_data[key]["peak_cpu_percent"]]
         y_label = "Využití CPU (nejvyšší zatížení)"
     elif type_of_data == "ram_usage_peak":
-        for key in cpu_gpu_data:
+        sorted_cpu_gpu_data = sort_dict_by_keys(cpu_gpu_data)
+        for key in sorted_cpu_gpu_data:
             tick_labels += [key]
-            values += [cpu_gpu_data[key]["ram_usage"]]
+            values += [sorted_cpu_gpu_data[key]["ram_usage"]]
         y_label = "Využití RAM (nejvyšší spotřeba)"
     elif type_of_data == "gpu_usage":
-        for key in cpu_gpu_data:
+        sorted_cpu_gpu_data = sort_dict_by_keys(cpu_gpu_data)
+        for key in sorted_cpu_gpu_data:
             tick_labels += [key]
-            values += [cpu_gpu_data[key]["peak_gpu_utilization"]]
+            values += [sorted_cpu_gpu_data[key]["peak_gpu_utilization"]]
         y_label = "Využití GPU"
     elif type_of_data == "vram_usage":
-        for key in cpu_gpu_data:
+        sorted_cpu_gpu_data = sort_dict_by_keys(cpu_gpu_data)
+        for key in sorted_cpu_gpu_data:
             tick_labels += [key]
-            values += [cpu_gpu_data[key]["total_vram_mb"]]
+            values += [sorted_cpu_gpu_data[key]["total_vram_mb"]]
         y_label = "Využití VRAM"
     elif type_of_data == "time_of_run_cpu_gpu":
-        for key in cpu_gpu_data_time_diffs:
+        sorted_cpu_gpu_data_time_diffs = sort_dict_by_keys(cpu_gpu_data_time_diffs)
+        for key in sorted_cpu_gpu_data_time_diffs:
             tick_labels += [key]
-            values += [cpu_gpu_data_time_diffs[key]]
+            values += [sorted_cpu_gpu_data_time_diffs[key]]
         y_label = "Délka běhu [s]"
     else:
         print("Not found type of data.")
