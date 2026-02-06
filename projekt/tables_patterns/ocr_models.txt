@@ -1,0 +1,36 @@
+\begin{table}[h!]
+\begin{tabular}{|c|c|}
+\hline
+\textbf{Model}            & \textbf{Správnost} \\ \hline
+bakllava                  & pattern4\_Cz       \\ \hline
+gemini-2.0-flash          & pattern4\_En       \\ \hline
+gemini-2.0-flash-lite     & pattern4\_Cz       \\ \hline
+gemini-2.5-flash          & pattern4\_Cz       \\ \hline
+gemini-2.5-flash-lite     & pattern1\_Cz       \\ \hline
+gemini-2.5-pro            & pattern3\_En       \\ \hline
+gemini-3-flash-preview    & pattern3\_Cz       \\ \hline
+gemini-3-pro-preview      & pattern3\_Cz       \\ \hline
+gemma3:4b                 & pattern2\_En       \\ \hline
+gemma3:12b                & pattern1\_Cz       \\ \hline
+gemma3:27b                & pattern3\_Cz       \\ \hline
+gpt-4.1                   & vyřazeno           \\ \hline
+gpt-4.1-mini              & vyřazeno           \\ \hline
+gpt-4o                    & vyřazeno           \\ \hline
+gpt-4o-mini               & vyřazeno           \\ \hline
+gpt-5                     & vyřazeno           \\ \hline
+gpt-5-mini                & vyřazeno           \\ \hline
+gpt-5-nano                & vyřazeno           \\ \hline
+gpt-5.1                   & vyřazeno           \\ \hline
+gpt-5.2                   & vyřazeno           \\ \hline
+granite3.2-vision         & pattern1\_Cz       \\ \hline
+knoopx/mobile-vlm:3b-fp16 & pattern1\_En       \\ \hline
+llava:7b                  & pattern1\_En       \\ \hline
+llava:13b                 & pattern3\_Cz       \\ \hline
+llava:34b                 & pattern4\_Cz       \\ \hline
+minicpm-v                 & pattern4\_Cz       \\ \hline
+mistral-small3.1          & pattern3\_Cz       \\ \hline
+mistral-small3.2:24b      & pattern2\_Cz       \\ \hline
+\end{tabular}
+\centering
+\caption{Výběr modelů a textových zadání pro ně — OCR}\label{tab: patterns_models_ocr}
+\end{table}
