@@ -113,7 +113,12 @@ def load_and_measure(dir_path, model, first_ticket, latest_file):
 
         try:
             base_64_image = get_image_in_base64(dir_path + file)
-            response = send_image_request(base_64_image, model, pattern)
+            pattern, can_be_done = functions.get_pattern_for_model(type_of_data, model)
+            if can_be_done == 0:
+                response = send_image_request(base_64_image, model, pattern)
+            else:
+                print(f"Model {model} is not in pattern dict.")
+                return
         finally:
             # stop thread
             functions.monitor_data["is_running"] = False

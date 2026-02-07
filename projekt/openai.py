@@ -113,7 +113,12 @@ def load_and_measure(dir_path, model, first_ticket, latest_file):
         start_datetime = datetime.datetime.now()
 
         try:
-            response = send_image_request(dir_path + file, model, pattern)
+            pattern, can_be_done = functions.get_pattern_for_model(type_of_data, model)
+            if can_be_done == 0:
+                response = send_image_request(dir_path + file, model, pattern)
+            else:
+                print(f"Model {model} is not in pattern dict.")
+                return
         finally:
             # stop thread
             functions.monitor_data["is_running"] = False
@@ -152,7 +157,7 @@ def load_and_measure(dir_path, model, first_ticket, latest_file):
         diff_datetime = end_datetime - start_datetime
         diff_datetime_seconds = diff_datetime.total_seconds()
 
-        if ocr_method:
+        """if ocr_method:
             functions.save_to_file_ocr(model, type_of_data, [correctness, correct_data, 
                                                          incorect_data, not_found_data, 
                                                          good_not_found, diff_datetime_seconds], 
@@ -168,7 +173,7 @@ def load_and_measure(dir_path, model, first_ticket, latest_file):
             functions.save_to_file_object_main(model, type_of_data, diff_datetime_seconds, json_load)
         functions.save_to_file_cpu_gpu(model, type_of_data, True, cpu_usage, functions.monitor_data["peak_cpu_percent"],
                                        ram_usage, functions.monitor_data["peak_gpu_utilization"], total_vram_mb,
-                                       diff_datetime_seconds)
+                                       diff_datetime_seconds)"""
 
         if ocr_method:
             print(correctness, correct_data, incorect_data, not_found_data, 

@@ -93,7 +93,12 @@ def load_and_measure(dir_path, model, first_ticket, latest_file):
         start_datetime = datetime.datetime.now()
 
         try:
-            response = send_image_request(dir_path + file, model, pattern)
+            pattern, can_be_done = functions.get_pattern_for_model(type_of_data, model)
+            if can_be_done == 0:
+                response = send_image_request(dir_path + file, model, pattern)
+            else:
+                print(f"Model {model} is not in pattern dict.")
+                return
         finally:
             # stop thread
             functions.monitor_data["is_running"] = False
@@ -184,22 +189,22 @@ if __name__ == "__main__":
         dir_path = "../dataset/objects/"
 
     model_is_pro = False
-    #load_and_measure(dir_path, "gemini-2.0-flash-lite", 1, 103)
+    load_and_measure(dir_path, "gemini-2.0-flash-lite", 1, 103)
 
     model_is_pro = False
-    #load_and_measure(dir_path, "gemini-2.0-flash", 1, 103)
+    load_and_measure(dir_path, "gemini-2.0-flash", 1, 103)
 
     model_is_pro = False
-    #load_and_measure(dir_path, "gemini-2.5-flash-lite", 1, 103)
+    load_and_measure(dir_path, "gemini-2.5-flash-lite", 1, 103)
 
     model_is_pro = False
-    #load_and_measure(dir_path, "gemini-2.5-flash", 1, 103)
+    load_and_measure(dir_path, "gemini-2.5-flash", 1, 103)
 
     model_is_pro = True
-    #load_and_measure(dir_path, "gemini-2.5-pro", 93, 103)
+    load_and_measure(dir_path, "gemini-2.5-pro", 93, 103)
 
     model_is_pro = False
-    #load_and_measure(dir_path, "gemini-3-flash-preview", 1, 103)
+    load_and_measure(dir_path, "gemini-3-flash-preview", 1, 103)
 
     model_is_pro = True
-    #load_and_measure(dir_path, "gemini-3-pro-preview", 1, 103)
+    load_and_measure(dir_path, "gemini-3-pro-preview", 1, 103)
