@@ -14,6 +14,57 @@ test_dir_objects_path_output = "./output_objects/"
 
 iou_thresholds = [0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9]
 
+pattern1_OcrEn = "Get me the list of goods from picture. Show the address, date, time and name of company. When you find the phone number show it too. When you find the fax number show it too as fax_number. When you find you find the table number, the information about guest or order number show it too. Show me the output as JSON. The company name put in key company, the address of company in key address, phone number in key phone_number, server name in key server, station number in key station, order number in key order_number, table info in key table, number of guests in key guests, subtotal price to key sub_total, tax in key tax, total cost in key total, date in key date, time in key time. Every good name will be as key of the JSON in key goods and value of the good will be the another JSON with amount of goods in key amount and the cost of the good in key price."
+pattern2_OcrEn = "Get me the list of goods from picture. Show the address, date, time and name of company. When you find the phone number show it too. When you find you find the table number, the information about guest or order number show it too. Show me the output as JSON. The company name put in key company, the address of company in key address, phone number in key phone_number, server name in key server, station number in key station, order number in key order_number, table info in key table, number of guests in key guests, subtotal price to key sub_total, tax in key tax, total cost in key total, date in key date, time in key time. Every good name will be as key of the JSON in key goods and value of the good will be the another JSON with amount of goods in key amount and the cost of the good in key price."
+pattern3_OcrEn = "Get me the list of goods from picture. Show the address, date, time and name of company. When you find the phone number show it too. When you find you find the table number, the information about guest or order number show it too. Show me the output as JSON. The company name put in key company, the address of company in key address, phone number in key phone_number, fax number in key fax_number, server name in key server, station number in key station, order number in key order_number, table info in key table, number of guests in key guests, subtotal price to key sub_total, tax in key tax, total cost in key total, date in key date, time in key time. Every good name will be as key of the JSON in key goods and value of the good will be the another JSON with amount of goods in key amount and the cost of the good in key price. Return it as only JSON."
+pattern4_OcrEn = "Get me the list of goods from picture. Show the address, date, time and name of company. When you find the phone number show it too. When you find you find the table number, the information about guest or order number show it too. Show me the output as JSON. The company name put in key company, the address of company in key address, phone number in key phone_number, fax number in key fax_number, server name in key server, station number in key station, order number in key order_number, table info in key table, number of guests in key guests, subtotal price to key sub_total, tax in key tax, total cost in key total, date in key date, time in key time. Every good name will be as key of the JSON in key goods and value of the good will be the another JSON with amount of goods in key amount and the cost of the good in key price."
+
+pattern1_OcrCz = "Zjisti mi ze snímku seznam zboží. Vrať mi adresu, datum, čas a název společnosti. Když najdeš telefonní číslo, vrať ho také. Když najdeš faxové číslo, vrať ho také jako fax_number. Když najdeš číslo stolu, informace o počtu hostů nebo číslo objednávky, vrať je také. Výstup mi ukaž jako JSON. Název společnosti navrať pod klíčem company, adresu společnosti pod klíčem address, telefonní číslo pod klíčem phone_number, jméno číšníka pod klíčem server, číslo stanice pod klíčem station, číslo objednávky pod klíčem order_number, informace o stole pod klíčem table, počet hostů pod klíčem guests, mezisoučet ceny pod klíčem sub_total, daň pod klíčem tax, celkovou cenu pod klíčem total, datum pod klíčem date, čas pod klíčem time. Každý název zboží bude jako klíč JSON v klíči goods a hodnota zboží bude další JSON s množstvím zboží v klíči amount a cenou zboží v klíči price."
+pattern2_OcrCz = "Zjisti mi ze snímku seznam zboží. Vrať mi adresu, datum, čas a název společnosti. Když najdeš telefonní číslo, vrať ho také. Když najdeš číslo stolu, informace o počtu hostů nebo číslo objednávky, vrať je také. Výstup mi ukaž jako JSON. Název společnosti navrať pod klíčem company, adresu společnosti pod klíčem address, telefonní číslo pod klíčem phone_number, jméno číšníka pod klíčem server, číslo stanice pod klíčem station, číslo objednávky pod klíčem order_number, informace o stole pod klíčem table, počet hostů pod klíčem guests, mezisoučet ceny pod klíčem sub_total, daň pod klíčem tax, celkovou cenu pod klíčem total, datum pod klíčem date, čas pod klíčem time. Každý název zboží bude jako klíč JSON v klíči goods a hodnota zboží bude další JSON s množstvím zboží v klíči amount a cenou zboží v klíči price."
+pattern3_OcrCz = "Zjisti mi ze snímku seznam zboží. Vrať mi adresu, datum, čas a název společnosti. Když najdeš telefonní číslo, vrať ho také. Když najdeš faxové číslo, vrať ho také jako fax_number. Když najdeš číslo stolu, informace o počtu hostů nebo číslo objednávky, vrať je také. Výstup mi ukaž jako JSON. Název společnosti navrať pod klíčem company, adresu společnosti pod klíčem address, telefonní číslo pod klíčem phone_number, faxové číslo pod klíčem fax_number, jméno číšníka pod klíčem server, číslo stanice pod klíčem station, číslo objednávky pod klíčem order_number, informace o stole pod klíčem table, počet hostů pod klíčem guests, mezisoučet ceny pod klíčem sub_total, daň pod klíčem tax, celkovou cenu pod klíčem total, datum pod klíčem date, čas pod klíčem time. Každý název zboží bude jako klíč JSON v klíči goods a hodnota zboží bude další JSON s množstvím zboží v klíči amount a cenou zboží v klíči price. Vrať to pouze jako JSON."
+pattern4_OcrCz = "Zjisti mi ze snímku seznam zboží. Vrať mi adresu, datum, čas a název společnosti. Když najdeš telefonní číslo, vrať ho také. Když najdeš faxové číslo, vrať ho také jako fax_number. Když najdeš číslo stolu, informace o počtu hostů nebo číslo objednávky, vrať je také. Výstup mi ukaž jako JSON. Název společnosti navrať pod klíčem company, adresu společnosti pod klíčem address, telefonní číslo pod klíčem phone_number, faxové číslo pod klíčem fax_number, jméno číšníka pod klíčem server, číslo stanice pod klíčem station, číslo objednávky pod klíčem order_number, informace o stole pod klíčem table, počet hostů pod klíčem guests, mezisoučet ceny pod klíčem sub_total, daň pod klíčem tax, celkovou cenu pod klíčem total, datum pod klíčem date, čas pod klíčem time. Každý název zboží bude jako klíč JSON v klíči goods a hodnota zboží bude další JSON s množstvím zboží v klíči amount a cenou zboží v klíči price."
+
+pattern1_ObjectEn = "Detect all peaple. Every person is described by one JSON. Every person has the label person and with confidence score in key confidence."
+pattern2_ObjectEn = "Detect all peaple. For every person add the string person to name key, x-min coordinate of person add to x_min key, x-max coordinate of person add to x_max key, y-min coordinate of person add to y_min key, y-max coordinate of person add to y_max key and confidence score in key confidence. All this data are given as JSON and added to JSON array. This JSON array add to key objects."
+pattern3_ObjectEn = "Detect all peaple. For every person add the string person to name key, x-min coordinate of person add to x_min key, x-max coordinate of person add to x_max key, y-min coordinate of person add to y_min key, y-max coordinate of person add to y_max key and confidence score add to confidence key. All this data are given as JSON and added to JSON array. This JSON array add to key objects. Return only JSON output with detections."
+
+pattern1_ObjectCz = "Detekuj všechny osoby. Každá osoba je popsána jedním JSONem. Každá osoba má štítek person a s hodnotou spolehlivosti v klíči confidence."
+pattern2_ObjectCz = "Detekuj všechny osoby. Pro každou osobu přidej řetězec person do klíče name, x-min souřadnici osoby přidej do klíče x_min, x-max souřadnici osoby přidej do klíče x_max, y-min souřadnici osoby přidej do klíče y_min, y-max souřadnici osoby přidej do klíče y_max a hodnotu spolehlivosti v klíči confidence. Všechny tyto údaje jsou uvedeny jako JSON a přidány do JSON pole. Právě vytvořené JSON pole přidej do výsledku s klíčem objects."
+pattern3_ObjectCz = "Detekuj všechny osoby. Pro každou osobu přidej řetězec person do klíče name, x-min souřadnici osoby přidej do klíče x_min, x-max souřadnici osoby přidej do klíče x_max, y-min souřadnici osoby přidej do klíče y_min, y-max souřadnici osoby přidej do klíče y_max a hodnotu spolehlivosti přidej do klíče confidence. Všechny tyto údaje jsou uvedeny jako JSON a přidány do JSON pole. Právě vytvořené JSON pole přidej do výsledku s klíčem objects. Vrať to pouze jako JSON výstup s detekcemi."
+
+ocr_detection_dict_patterns = {
+    "gemini-3-pro-preview" : pattern3_OcrCz,
+    "gemini-3-flash-preview" : pattern3_OcrCz,
+    "gemini-2.5-pro" : pattern3_OcrEn,
+    "gemini-2.5-flash" : pattern4_OcrCz, 
+    "gemini-2.5-flash-lite" : pattern1_OcrCz,
+    "gemini-2.0-flash" : pattern4_OcrEn,
+    "gemini-2.0-flash-lite" : pattern4_OcrCz,
+    "llava" : pattern1_OcrEn,
+    "bakllava" : pattern4_OcrCz,
+    "minicpm-v" : pattern4_OcrCz,
+    "knoopx/mobile-vlm:3b-fp16" : pattern1_OcrEn,
+    "llava:13b" : pattern3_OcrCz,
+    "llava:34b" : pattern4_OcrCz, 
+    "gemma3:27b" : pattern3_OcrCz,
+    "granite3.2-vision" : pattern1_OcrCz,
+    "gemma3:12b" : pattern1_OcrCz,
+    "gemma3:4b" : pattern2_OcrEn,
+    "mistral-small3.1" : pattern3_OcrCz,
+    "mistral-small3.2:24b" : pattern2_OcrCz
+}
+
+object_detection_dict_patterns = {
+    "gemini-3-pro-preview" : pattern3_ObjectEn,
+    "gemini-3-flash-preview" : pattern3_ObjectEn,
+    "gemini-2.5-pro" : pattern3_ObjectCz,
+    "gemini-2.5-flash" : pattern3_ObjectEn, 
+    "gemini-2.5-flash-lite" : pattern3_ObjectEn,
+    "gemini-2.0-flash" : pattern2_ObjectCz,
+    "gemma3:12b" : pattern2_ObjectEn,
+    "gemma3:4b" : pattern2_ObjectEn,
+}
+
 monitor_data = {
     "peak_rss_mb": 0.0,
     "peak_cpu_percent": 0.0,
