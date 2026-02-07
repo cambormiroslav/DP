@@ -73,6 +73,20 @@ monitor_data = {
     "is_running": True
 }
 
+def get_pattern_for_model(type_of_data, model):
+    if type_of_data == "ticket":
+        if model in ocr_detection_dict_patterns:
+            return (ocr_detection_dict_patterns[model], 0)
+        else:
+            return ("", 1)
+    elif type_of_data == "objects":
+        if model in object_detection_dict_patterns:
+            return (object_detection_dict_patterns[model], 0)
+        else:
+            return ("", 1)
+    else:
+        return ("", 2)
+
 def create_dir_if_not_exists(path_to_directory):
     if not os.path.exists(path_to_directory):
         os.makedirs(path_to_directory)
