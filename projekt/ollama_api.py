@@ -13,17 +13,9 @@ ocr_method = False
 is_mistral = False
 
 if ocr_method:
-    if is_mistral:
-        pattern = "Get me the list of goods from picture. Show the address, date, time and name of company. When you find the phone number show it too. When you find you find the table number, the information about guest or order number show it too. Show me the output as JSON. The company name put in key company, the address of company in key address, phone number in key phone_number, fax number in key fax_number, server name in key server, station number in key station, order number in key order_number, table info in key table, number of guests in key guests, subtotal price to key sub_total, tax in key tax, total cost in key total, date in key date, time in key time. Every good name will be as key of the JSON in key goods and value of the good will be the another JSON with amount of goods in key amount and the cost of the good in key price. Return it as only JSON."
-    else:
-        pattern = "Get me the list of goods from picture. Show the address, date, time and name of company. When you find the phone number show it too. When you find you find the table number, the information about guest or order number show it too. Show me the output as JSON. The company name put in key company, the address of company in key address, phone number in key phone_number, fax number in key fax_number, server name in key server, station number in key station, order number in key order_number, table info in key table, number of guests in key guests, subtotal price to key sub_total, tax in key tax, total cost in key total, date in key date, time in key time. Every good name will be as key of the JSON in key goods and value of the good will be the another JSON with amount of goods in key amount and the cost of the good in key price."
     type_of_data = "ticket"
     correct_data_path = "../data_for_control/dataset_correct_data.json"
 else:
-    if is_mistral:
-        pattern = "Detect all peaple. For every person add the string person to name key, x-min coordinate of person add to x_min key, x-max coordinate of person add to x_max key, y-min coordinate of person add to y_min key and y-max coordinate of person add to y_max key. All this data are given as JSON and added to JSON array. This JSON array add to key objects. Return only JSON output with detections."
-    else:
-        pattern = "Detect all peaple. For every person add the string person to name key, x-min coordinate of person add to x_min key, x-max coordinate of person add to x_max key, y-min coordinate of person add to y_min key and y-max coordinate of person add to y_max key. All this data are given as JSON and added to JSON array. This JSON array add to key objects."
     type_of_data = "objects"
     correct_data_path = "../data_for_control/dataset_objects_correct_data.json"
 
