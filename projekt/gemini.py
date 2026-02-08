@@ -13,12 +13,7 @@ is_free_version_api = False
 
 ocr_method = False
 
-if ocr_method:
-    type_of_data = "ticket"
-    correct_data_path = "../data_for_control/dataset_correct_data.json"
-else:
-    type_of_data = "objects"
-    correct_data_path = "../data_for_control/dataset_objects_correct_data.json"
+type_of_data, correct_data_path = functions.get_type_of_data_and_correct_data_path(ocr_method)
 
 model_is_pro = False
 

@@ -12,12 +12,7 @@ import functions
 ocr_method = False
 is_mistral = False
 
-if ocr_method:
-    type_of_data = "ticket"
-    correct_data_path = "../data_for_control/dataset_correct_data.json"
-else:
-    type_of_data = "objects"
-    correct_data_path = "../data_for_control/dataset_objects_correct_data.json"
+type_of_data, correct_data_path = functions.get_type_of_data_and_correct_data_path(ocr_method)
 
 """
 * Transform the input image to base64.

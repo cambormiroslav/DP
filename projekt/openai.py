@@ -12,12 +12,7 @@ api_key = os.environ["OPENAI_API_KEY"]
 
 ocr_method = False
 
-if ocr_method:
-    type_of_data = "ticket"
-    correct_data_path = "../data_for_control/dataset_correct_data.json"
-else:
-    type_of_data = "objects"
-    correct_data_path = "../data_for_control/dataset_objects_correct_data.json"
+type_of_data, correct_data_path = functions.get_type_of_data_and_correct_data_path(ocr_method)
 
 """
 * Send request to the model
@@ -155,7 +150,7 @@ def load_and_measure(dir_path, model, first_ticket, latest_file):
         diff_datetime = end_datetime - start_datetime
         diff_datetime_seconds = diff_datetime.total_seconds()
 
-        """if ocr_method:
+        if ocr_method:
             functions.save_to_file_ocr(model, type_of_data, [correctness, correct_data, 
                                                          incorect_data, not_found_data, 
                                                          good_not_found, diff_datetime_seconds], 
@@ -171,7 +166,7 @@ def load_and_measure(dir_path, model, first_ticket, latest_file):
             functions.save_to_file_object_main(model, type_of_data, diff_datetime_seconds, json_load)
         functions.save_to_file_cpu_gpu(model, type_of_data, True, cpu_usage, functions.monitor_data["peak_cpu_percent"],
                                        ram_usage, functions.monitor_data["peak_gpu_utilization"], total_vram_mb,
-                                       diff_datetime_seconds)"""
+                                       diff_datetime_seconds)
 
         if ocr_method:
             print(correctness, correct_data, incorect_data, not_found_data, 

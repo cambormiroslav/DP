@@ -73,6 +73,12 @@ monitor_data = {
     "is_running": True
 }
 
+def get_type_of_data_and_correct_data_path(ocr_method):
+    if ocr_method:
+        return "ticket", "../data_for_control/dataset_correct_data.json"
+    else:
+        return "objects", "../data_for_control/dataset_objects_correct_data.json"
+
 def get_pattern_for_model(type_of_data, model):
     if type_of_data == "ticket":
         if model in ocr_detection_dict_patterns:
