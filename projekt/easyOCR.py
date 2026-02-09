@@ -187,4 +187,4 @@ def load_and_measure(dir_path, first_ticket, latest_file):
 if __name__ == "__main__":
     dir_path = "../dataset/large-receipt-image-dataset-SRD/"
 
-    load_and_measure(dir_path, 1, 103)
+    load_and_measure(dir_path, 1, functions.get_count_of_data("ticket"))

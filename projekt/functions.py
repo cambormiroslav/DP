@@ -14,6 +14,9 @@ test_dir_objects_path_output = "./output_objects/"
 
 iou_thresholds = [0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9]
 
+count_of_test_data_ocr = 103
+count_of_test_data_objects = 100
+
 pattern1_OcrEn = "Get me the list of goods from picture. Show the address, date, time and name of company. When you find the phone number show it too. When you find the fax number show it too as fax_number. When you find you find the table number, the information about guest or order number show it too. Show me the output as JSON. The company name put in key company, the address of company in key address, phone number in key phone_number, server name in key server, station number in key station, order number in key order_number, table info in key table, number of guests in key guests, subtotal price to key sub_total, tax in key tax, total cost in key total, date in key date, time in key time. Every good name will be as key of the JSON in key goods and value of the good will be the another JSON with amount of goods in key amount and the cost of the good in key price."
 pattern2_OcrEn = "Get me the list of goods from picture. Show the address, date, time and name of company. When you find the phone number show it too. When you find you find the table number, the information about guest or order number show it too. Show me the output as JSON. The company name put in key company, the address of company in key address, phone number in key phone_number, server name in key server, station number in key station, order number in key order_number, table info in key table, number of guests in key guests, subtotal price to key sub_total, tax in key tax, total cost in key total, date in key date, time in key time. Every good name will be as key of the JSON in key goods and value of the good will be the another JSON with amount of goods in key amount and the cost of the good in key price."
 pattern3_OcrEn = "Get me the list of goods from picture. Show the address, date, time and name of company. When you find the phone number show it too. When you find you find the table number, the information about guest or order number show it too. Show me the output as JSON. The company name put in key company, the address of company in key address, phone number in key phone_number, fax number in key fax_number, server name in key server, station number in key station, order number in key order_number, table info in key table, number of guests in key guests, subtotal price to key sub_total, tax in key tax, total cost in key total, date in key date, time in key time. Every good name will be as key of the JSON in key goods and value of the good will be the another JSON with amount of goods in key amount and the cost of the good in key price. Return it as only JSON."
@@ -78,6 +81,14 @@ def get_type_of_data_and_correct_data_path(ocr_method):
         return "ticket", "../data_for_control/dataset_correct_data.json"
     else:
         return "objects", "../data_for_control/dataset_objects_correct_data.json"
+
+def get_count_of_data(type_of_data):
+    if type_of_data == "ticket":
+        return count_of_test_data_ocr
+    elif type_of_data == "objects":
+        return count_of_test_data_objects
+    else:
+        return 0
 
 def get_pattern_for_model(type_of_data, model):
     if type_of_data == "ticket":

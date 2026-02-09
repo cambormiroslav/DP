@@ -315,27 +315,29 @@ if __name__ == "__main__":
     else:
         dir_path = "../dataset/objects/"
 
-    load_and_measure(dir_path, "llava", 1, 103)
+    count_of_data = functions.get_count_of_data(type_of_data)
+
+    load_and_measure(dir_path, "llava", 1, count_of_data)
     
-    load_and_measure(dir_path, "bakllava", 1, 103)
+    load_and_measure(dir_path, "bakllava", 1, count_of_data)
     
-    load_and_measure(dir_path, "minicpm-v", 1, 103)
+    load_and_measure(dir_path, "minicpm-v", 1, count_of_data)
 
-    load_and_measure(dir_path, "knoopx/mobile-vlm:3b-fp16", 1, 103)
+    load_and_measure(dir_path, "knoopx/mobile-vlm:3b-fp16", 1, count_of_data)
 
-    load_and_measure(dir_path, "llava:13b", 1, 103)
+    load_and_measure(dir_path, "llava:13b", 1, count_of_data)
 
-    load_and_measure(dir_path, "llava:34b", 1, 103)
+    load_and_measure(dir_path, "llava:34b", 1, count_of_data)
 
-    load_and_measure(dir_path, "gemma3:27b", 1, 103)
+    load_and_measure(dir_path, "gemma3:27b", 1, count_of_data)
 
-    load_and_measure(dir_path, "granite3.2-vision", 1, 103)
+    load_and_measure(dir_path, "granite3.2-vision", 1, count_of_data)
 
-    load_and_measure(dir_path, "gemma3:12b", 1, 103)
+    load_and_measure(dir_path, "gemma3:12b", 1, count_of_data)
 
-    load_and_measure(dir_path, "gemma3:4b", 1, 103)
+    load_and_measure(dir_path, "gemma3:4b", 1, count_of_data)
 
     is_mistral = True
-    load_and_measure(dir_path, "mistral-small3.1", 1, 103)
+    load_and_measure(dir_path, "mistral-small3.1", 1, count_of_data)
     
-    load_and_measure(dir_path, "mistral-small3.2:24b", 1, 103)
+    load_and_measure(dir_path, "mistral-small3.2:24b", 1, count_of_data)

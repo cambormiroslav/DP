@@ -11,7 +11,7 @@ import functions
 api_key = os.environ["GEMINI_API_KEY"]
 is_free_version_api = False
 
-ocr_method = False
+ocr_method = True
 
 type_of_data, correct_data_path = functions.get_type_of_data_and_correct_data_path(ocr_method)
 
@@ -181,23 +181,25 @@ if __name__ == "__main__":
     else:
         dir_path = "../dataset/objects/"
 
-    model_is_pro = False
-    load_and_measure(dir_path, "gemini-2.0-flash-lite", 1, 103)
+    count_of_data = functions.get_count_of_data(type_of_data)
 
     model_is_pro = False
-    load_and_measure(dir_path, "gemini-2.0-flash", 1, 103)
+    load_and_measure(dir_path, "gemini-2.0-flash-lite", 1, count_of_data)
 
     model_is_pro = False
-    load_and_measure(dir_path, "gemini-2.5-flash-lite", 1, 103)
+    load_and_measure(dir_path, "gemini-2.0-flash", 1, count_of_data)
 
     model_is_pro = False
-    load_and_measure(dir_path, "gemini-2.5-flash", 1, 103)
+    load_and_measure(dir_path, "gemini-2.5-flash-lite", 1, count_of_data)
+
+    model_is_pro = False
+    load_and_measure(dir_path, "gemini-2.5-flash", 1, count_of_data)
 
     model_is_pro = True
-    load_and_measure(dir_path, "gemini-2.5-pro", 93, 103)
+    load_and_measure(dir_path, "gemini-2.5-pro", 1, count_of_data)
 
     model_is_pro = False
-    load_and_measure(dir_path, "gemini-3-flash-preview", 1, 103)
+    load_and_measure(dir_path, "gemini-3-flash-preview", 1, count_of_data)
 
     model_is_pro = True
-    load_and_measure(dir_path, "gemini-3-pro-preview", 1, 103)
+    load_and_measure(dir_path, "gemini-3-pro-preview", 1, count_of_data)

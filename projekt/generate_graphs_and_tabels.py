@@ -1,14 +1,12 @@
 import os
 import matplotlib.pyplot as plt
 import numpy as np
+import functions
 
 type_of_dataset = "ticket"
 colors = ['blue', 'green', 'red', 'purple', 'brown',
               'pink', 'gray', 'olive', 'cyan', 'maroon',
               'gold', 'lime']
-
-count_of_test_data_ocr = 103
-count_of_test_data_objects = 100
 
 add_to_graph = {
     "bakllava" : True,
@@ -120,10 +118,8 @@ def set_output_dir():
 
     if is_pattern_data:
         if type_of_dataset == "ticket":
-            count_of_data = count_of_test_data_ocr
             output_dir = "./output_pattern_test/"
         else:
-            count_of_data = count_of_test_data_objects
             output_dir = "./output_pattern_test_objects/"
     else:
         if load_cpu_gpu_data:
@@ -133,11 +129,11 @@ def set_output_dir():
                 output_dir = "./train_measurement/"
         else:
             if type_of_dataset == "ticket":
-                count_of_data = count_of_test_data_ocr
                 output_dir = "./output/"
             else:
-                count_of_test_data_objects
                 output_dir = "./output_objects/"
+    
+    count_of_data = functions.get_count_of_data(type_of_dataset)
 
 def make_initial_structures():
     global model_string_for_pattern

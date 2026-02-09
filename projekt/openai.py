@@ -188,21 +188,23 @@ if __name__ == "__main__":
         dir_path = "../dataset/large-receipt-image-dataset-SRD/"
     else:
         dir_path = "../dataset/objects/"
+
+    count_of_data = functions.get_count_of_data(type_of_data)
     
-    load_and_measure(dir_path, "gpt-4o-mini", 1, 103)
+    load_and_measure(dir_path, "gpt-4o-mini", 1, count_of_data)
 
-    load_and_measure(dir_path, "gpt-4o", 1, 103)
+    load_and_measure(dir_path, "gpt-4o", 1, count_of_data)
 
-    load_and_measure(dir_path, "gpt-4.1-mini", 1, 103)
+    load_and_measure(dir_path, "gpt-4.1-mini", 1, count_of_data)
 
-    load_and_measure(dir_path, "gpt-4.1", 1, 103)
+    load_and_measure(dir_path, "gpt-4.1", 1, count_of_data)
 
-    load_and_measure(dir_path, "gpt-5-nano", 1, 103)
+    load_and_measure(dir_path, "gpt-5-nano", 1, count_of_data)
 
-    load_and_measure(dir_path, "gpt-5-mini", 1, 103)
+    load_and_measure(dir_path, "gpt-5-mini", 1, count_of_data)
 
-    load_and_measure(dir_path, "gpt-5", 1, 103)
+    load_and_measure(dir_path, "gpt-5", 1, count_of_data)
 
-    load_and_measure(dir_path, "gpt-5.1", 1, 103)
+    load_and_measure(dir_path, "gpt-5.1", 1, count_of_data)
 
-    load_and_measure(dir_path, "gpt-5.2", 1, 103)
+    load_and_measure(dir_path, "gpt-5.2", 1, count_of_data)
