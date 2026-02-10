@@ -9,7 +9,7 @@ import threading
 
 import functions
 
-ocr_method = False
+ocr_method = True
 is_mistral = False
 
 type_of_data, correct_data_path = functions.get_type_of_data_and_correct_data_path(ocr_method)

@@ -11,7 +11,7 @@ import functions
 api_key = os.environ["GEMINI_API_KEY"]
 is_free_version_api = False
 
-ocr_method = True
+ocr_method = False
 
 type_of_data, correct_data_path = functions.get_type_of_data_and_correct_data_path(ocr_method)
 
