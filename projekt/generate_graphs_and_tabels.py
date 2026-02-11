@@ -1338,11 +1338,13 @@ def call_generating_graphs_and_tables():
     global is_cpu_gpu_data_test
 
     #main data
+    make_initial_structures()
     set_output_dir()
     generate_all_graphs_and_tables()
 
     if not is_pattern_data:
         #CPU/GPU data test
+        make_initial_structures()
         load_cpu_gpu_data = True
         is_cpu_gpu_data_test = True
         set_output_dir()
@@ -1350,6 +1352,7 @@ def call_generating_graphs_and_tables():
 
         #CPU/GPU data train
         if type_of_dataset == "objects":
+            make_initial_structures()
             load_cpu_gpu_data = True
             is_cpu_gpu_data_test = False
             set_output_dir()
@@ -1359,7 +1362,6 @@ if __name__ == "__main__":
     #ticket data
     call_generating_graphs_and_tables()
 
-    make_initial_structures()
     #objects data
     type_of_dataset = "objects"
     call_generating_graphs_and_tables()
