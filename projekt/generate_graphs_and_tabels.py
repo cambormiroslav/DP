@@ -339,6 +339,26 @@ def generate_grouped_bar_objects(dict_data, model, type_of_data):
         os.remove(graph_path)
     plt.savefig(graph_path)
 
+def add_rows_to_latex_table(file, dictionary):
+    for model in dictionary:
+        values = dictionary[model]
+        if len(values) != 0:
+            value_min = min(values)
+            value_max = max(values)
+            value_median = sorted(values)[len(values) // 2]
+            value_avg = sum(values) / len(values)
+            file.write(f"{model} & {value_avg:.2f} & {value_min:.2f} & {value_max:.2f} & {value_median:.2f} \\\\ \hline\n")
+
+def add_rows_to_latex_table_subkey(file, dictionary, subkey):
+    for model in dictionary:
+        values = dictionary[model][subkey]
+        if len(values) != 0:
+            value_min = min(values)
+            value_max = max(values)
+            value_median = sorted(values)[len(values) // 2]
+            value_avg = sum(values) / len(values)
+            file.write(f"{model} & {value_avg:.2f} & {value_min:.2f} & {value_max:.2f} & {value_median:.2f} \\\\ \hline\n")
+
 def generate_latex_table_and_save_to_file(type_of_data):
     if load_cpu_gpu_data and not is_cpu_gpu_data_test:
         output_file_path = f"{tables_dir}{type_of_data}_{type_of_dataset}_train"
@@ -362,64 +382,28 @@ def generate_latex_table_and_save_to_file(type_of_data):
 
         if type_of_data == "cpu_usage_main_thread":
             file.write("\\textbf{Model} & \\textbf{CPU [%]} & \\textbf{CPU MIN} & \\textbf{CPU MAX} & \\textbf{CPU Medián} \\\\ \hline\n")
-            for model in cpu_gpu_data:
-                cpu_values = cpu_gpu_data[model]["cpu_usage"]
-                if len(cpu_values) != 0:
-                    cpu_min = min(cpu_values)
-                    cpu_max = max(cpu_values)
-                    cpu_median = sorted(cpu_values)[len(cpu_values) // 2]
-                    cpu_avg = sum(cpu_values) / len(cpu_values)
-                    file.write(f"{model} & {cpu_avg:.2f} & {cpu_min:.2f} & {cpu_max:.2f} & {cpu_median:.2f} \\\\ \hline\n")
+            sorted_dict = sort_dict_by_keys(cpu_gpu_data)
+            add_rows_to_latex_table_subkey(file, sorted_dict, "cpu_usage")
         elif type_of_data == "cpu_usage_peak":
             file.write("\\textbf{Model} & \\textbf{CPU [%]} & \\textbf{CPU MIN} & \\textbf{CPU MAX} & \\textbf{CPU Medián} \\\\ \hline\n")
-            for model in cpu_gpu_data:
-                cpu_values = cpu_gpu_data[model]["peak_cpu_percent"]
-                if len(cpu_values) != 0:
-                    cpu_min = min(cpu_values)
-                    cpu_max = max(cpu_values)
-                    cpu_median = sorted(cpu_values)[len(cpu_values) // 2]
-                    cpu_avg = sum(cpu_values) / len(cpu_values)
-                    file.write(f"{model} & {cpu_avg:.2f} & {cpu_min:.2f} & {cpu_max:.2f} & {cpu_median:.2f} \\\\ \hline\n")
+            sorted_dict = sort_dict_by_keys(cpu_gpu_data)
+            add_rows_to_latex_table_subkey(file, sorted_dict, "peak_cpu_percent")
         elif type_of_data == "ram_usage_peak":
             file.write("\\textbf{Model} & \\textbf{RAM} & \\textbf{RAM MIN} & \\textbf{RAM MAX} & \\textbf{RAM Medián} \\\\ \hline\n")
-            for model in cpu_gpu_data:
-                ram_values = cpu_gpu_data[model]["ram_usage"]
-                if len(ram_values) != 0:
-                    ram_min = min(ram_values)
-                    ram_max = max(ram_values)
-                    ram_median = sorted(ram_values)[len(ram_values) // 2]
-                    ram_avg = sum(ram_values) / len(ram_values)
-                    file.write(f"{model} & {ram_avg:.2f} & {ram_min:.2f} & {ram_max:.2f} & {ram_median:.2f} \\\\ \hline\n")
+            sorted_dict = sort_dict_by_keys(cpu_gpu_data)
+            add_rows_to_latex_table_subkey(file, sorted_dict, "ram_usage")
         elif type_of_data == "gpu_usage":
             file.write("\\textbf{Model} & \\textbf{GPU [%]} & \\textbf{GPU MIN} & \\textbf{GPU MAX} & \\textbf{GPU Medián} \\\\ \hline\n")
-            for model in cpu_gpu_data:
-                gpu_values = cpu_gpu_data[model]["peak_gpu_utilization"]
-                if len(gpu_values) != 0:
-                    gpu_min = min(gpu_values)
-                    gpu_max = max(gpu_values)
-                    gpu_median = sorted(gpu_values)[len(gpu_values) // 2]
-                    gpu_avg = sum(gpu_values) / len(gpu_values)
-                    file.write(f"{model} & {gpu_avg:.2f} & {gpu_min:.2f} & {gpu_max:.2f} & {gpu_median:.2f} \\\\ \hline\n")
+            sorted_dict = sort_dict_by_keys(cpu_gpu_data)
+            add_rows_to_latex_table_subkey(file, sorted_dict, "peak_gpu_utilization")
         elif type_of_data == "vram_usage":
             file.write("\\textbf{Model} & \\textbf{VRAM} & \\textbf{VRAM MIN} & \\textbf{VRAM MAX} & \\textbf{VRAM Medián} \\\\ \hline\n")
-            for model in cpu_gpu_data:
-                vram_values = cpu_gpu_data[model]["total_vram_mb"]
-                if len(vram_values) != 0:
-                    vram_min = min(vram_values)
-                    vram_max = max(vram_values)
-                    vram_median = sorted(vram_values)[len(vram_values) // 2]
-                    vram_avg = sum(vram_values) / len(vram_values)
-                    file.write(f"{model} & {vram_avg:.2f} & {vram_min:.2f} & {vram_max:.2f} & {vram_median:.2f} \\\\ \hline\n")
+            sorted_dict = sort_dict_by_keys(cpu_gpu_data)
+            add_rows_to_latex_table_subkey(file, sorted_dict, "total_vram_mb")
         elif type_of_data == "time_of_run":
             file.write("\\textbf{Model} & \\textbf{Čas [%]} & \\textbf{Čas MIN} & \\textbf{Čas MAX} & \\textbf{Čas Medián} \\\\ \hline\n")
-            for model in time_of_run_dict_tmp:
-                time_values = time_of_run_dict_tmp[model]
-                if len(time_values) != 0:
-                    time_min = min(time_values)
-                    time_max = max(time_values)
-                    time_median = sorted(time_values)[len(time_values) // 2]
-                    time_avg = sum(time_values) / len(time_values)
-                    file.write(f"{model} & {time_avg:.2f} & {time_min:.2f} & {time_max:.2f} & {time_median:.2f} \\\\ \hline\n")
+            sorted_dict = sort_dict_by_keys(time_of_run_dict_tmp)
+            add_rows_to_latex_table(file, sorted_dict)
         else:
             print("Not found type of data.")
             return
