@@ -1,0 +1,23 @@
+\begin{table}[h!]
+\begin{tabular}{|l|l|l|l|l|}
+\hline
+\textbf{Model} & \textbf{Čas [%]} & \textbf{Čas MIN} & \textbf{Čas MAX} & \textbf{Čas Medián} \\ \hline
+fasterrcnn & 0.09 & 0.05 & 0.43 & 0.08 \\ \hline
+gemini-2.0-flash & 14.16 & 6.34 & 52.87 & 12.21 \\ \hline
+gemini-2.5-flash & 14.50 & 5.74 & 44.45 & 11.80 \\ \hline
+gemini-2.5-flash-lite & 7.07 & 4.11 & 98.68 & 5.56 \\ \hline
+gemini-2.5-pro & 45.20 & 15.21 & 129.13 & 40.03 \\ \hline
+gemini-3-flash-preview & 25.09 & 8.96 & 59.80 & 22.73 \\ \hline
+gemini-3-pro-preview & 75.99 & 22.96 & 150.97 & 72.11 \\ \hline
+gemma3-12b & 23.49 & 11.08 & 43.22 & 24.09 \\ \hline
+gemma3-4b & 7.30 & 3.47 & 18.37 & 6.66 \\ \hline
+maskrcnn & 0.09 & 0.05 & 0.15 & 0.08 \\ \hline
+retinanet & 0.08 & 0.05 & 0.15 & 0.08 \\ \hline
+yolo11l & 0.05 & 0.02 & 0.37 & 0.05 \\ \hline
+yolo11m & 0.03 & 0.02 & 0.35 & 0.02 \\ \hline
+yolo11n & 0.03 & 0.02 & 0.24 & 0.02 \\ \hline
+yolo11s & 0.03 & 0.02 & 0.30 & 0.02 \\ \hline
+\end{tabular}
+\centering
+\caption{Délka běhu [s]}\label{tab: time_of_run}
+\end{table}

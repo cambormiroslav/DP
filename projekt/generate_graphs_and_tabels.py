@@ -189,6 +189,9 @@ def get_count_of_all_data(correct_data, incorect_data, not_finded, goods_not_fin
 def sort_dict_by_keys(input_dict):
     return {k: v for k, v in sorted(input_dict.items(), key=lambda item: item[0])}
 
+def transform_not_json_objects_dict_for_graph(dict):
+    return {key: count_number_of_types_jsons(obj) for key, obj in not_found_json_dict.items()}
+
 def count_number_of_types_jsons(output_array):
     count_of_zeros = 0
     count_of_ones = 0
@@ -1211,9 +1214,15 @@ def call_generating_graphs_and_tables_main():
         generate_latex_table_and_save_to_file("time_of_run")
 
     if type_of_dataset == "objects" and not load_cpu_gpu_data:
-        generate_bar_graph_from_data(precision_sum_dict, "precision")
-        generate_bar_graph_from_data(recall_sum_dict, "recall")
-    if not load_cpu_gpu_data:
+        generate_grouped_bar_objects(map_dict, "", "MAP")
+        generate_grouped_bar_objects(map_50_dict, "", "MAP@50")
+        generate_grouped_bar_objects(map_75_dict, "", "MAP@75")
+        generate_grouped_bar_objects(map_large_dict, "", "MAP_Large")
+        generate_grouped_bar_objects(mar_100_dict, "", "MAR@100")
+        generate_grouped_bar_objects(mar_large_dict, "", "MAR_Large")
+        not_found_json_dict_tmp = transform_not_json_objects_dict_for_graph(not_found_json_dict)
+        generate_grouped_bar_objects(not_found_json_dict_tmp, "", "count_of_data")
+    if not load_cpu_gpu_data and type_of_dataset == "ticket":
         generate_bar_graph_from_data(not_found_json_dict, "not_json")
     
     if load_cpu_gpu_data:
@@ -1350,9 +1359,7 @@ def call_generating_graphs_and_tables_patterns(data_arrays_ocr, data_arrays_obje
         for not_found_json_object_dict_tmp in not_found_json_object_array:
             model = next(iter(not_found_json_object_dict_tmp))
             not_found_json_pattern_dict = not_found_json_object_dict_tmp[model]
-            not_found_json_pattern_dict_tmp = {}
-            for pattern in not_found_json_pattern_dict:
-                not_found_json_pattern_dict_tmp[pattern] = count_number_of_types_jsons(not_found_json_pattern_dict[pattern])
+            not_found_json_pattern_dict_tmp = transform_not_json_objects_dict_for_graph(not_found_json_pattern_dict)
             
             generate_grouped_bar_objects(not_found_json_pattern_dict_tmp, model, "count_of_data")
     else:
@@ -1377,6 +1384,8 @@ def call_generating_graphs_and_tables():
 
     #main data
     make_initial_structures()
+    load_cpu_gpu_data = False
+    is_cpu_gpu_data_test = False
     set_output_dir()
     generate_all_graphs_and_tables()
 
