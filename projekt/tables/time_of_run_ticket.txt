@@ -2,31 +2,27 @@
 \begin{tabular}{|l|l|l|l|l|}
 \hline
 \textbf{Model} & \textbf{Čas [%]} & \textbf{Čas MIN} & \textbf{Čas MAX} & \textbf{Čas Medián} \\ \hline
-gemma3-27b & 57.41 & 45.20 & 82.87 & 56.28 \\ \hline
-gpt-4o-mini & 7.13 & 4.32 & 10.77 & 7.17 \\ \hline
-knoopx-mobile-vlm-3b-fp16 & 29.66 & 0.00 & 321.92 & 6.83 \\ \hline
-gemini-2.0-flash-lite & 7.30 & 5.83 & 10.90 & 7.16 \\ \hline
-gemma3-4b & 8.58 & 3.59 & 370.19 & 5.03 \\ \hline
-llava-7b & 6.67 & 2.52 & 11.66 & 6.66 \\ \hline
-granite3.2-vision & 6.35 & 3.46 & 9.87 & 6.31 \\ \hline
+gemma3-27b & 31.96 & 20.38 & 58.19 & 31.28 \\ \hline
+gemini-3-flash-preview & 17.62 & 9.24 & 36.72 & 16.46 \\ \hline
+knoopx-mobile-vlm-3b-fp16 & 11.81 & 2.74 & 322.96 & 5.48 \\ \hline
+gemini-2.0-flash-lite & 6.42 & 5.00 & 13.84 & 6.20 \\ \hline
+gemma3-4b & 4.83 & 3.89 & 6.66 & 4.87 \\ \hline
+llava-7b & 6.23 & 2.48 & 10.85 & 6.15 \\ \hline
+granite3.2-vision & 4.50 & 2.29 & 7.48 & 4.55 \\ \hline
 tesseract-5.3.0 & 0.21 & 0.09 & 0.35 & 0.21 \\ \hline
-gemini-2.5-flash-lite & 5.67 & 4.24 & 11.95 & 5.56 \\ \hline
-bakllava & 7.94 & 2.42 & 539.86 & 2.59 \\ \hline
-gemini-2.0-flash & 7.46 & 5.37 & 14.06 & 6.88 \\ \hline
-minicpm-v & 7.47 & 3.84 & 16.63 & 7.30 \\ \hline
-gpt-4.1 & 10.38 & 6.04 & 16.80 & 10.00 \\ \hline
-mistral-small3.1 & 33.65 & 14.17 & 50.36 & 35.03 \\ \hline
+gemini-2.5-flash-lite & 4.82 & 3.53 & 9.44 & 4.63 \\ \hline
+bakllava & 2.57 & 2.40 & 6.12 & 2.52 \\ \hline
+minicpm-v & 6.22 & 2.52 & 11.95 & 6.10 \\ \hline
+gemini-3-pro-preview & 31.84 & 18.70 & 59.83 & 31.28 \\ \hline
+mistral-small3.1 & 16.48 & 9.17 & 28.81 & 16.59 \\ \hline
 easyocr & 0.51 & 0.20 & 1.09 & 0.49 \\ \hline
-gpt-4.1-nano & 5.43 & 1.47 & 9.18 & 5.33 \\ \hline
-gemini-2.5-pro & 20.84 & 12.43 & 50.73 & 18.23 \\ \hline
-gpt-4o & 10.50 & 4.40 & 33.46 & 9.53 \\ \hline
-gpt-4.1-mini & 5.07 & 2.82 & 23.02 & 4.88 \\ \hline
-gemini-2.5-flash & 13.36 & 5.22 & 24.85 & 12.32 \\ \hline
-llava-13b & 9.27 & 3.46 & 20.30 & 8.99 \\ \hline
-llava-34b & 66.92 & 8.05 & 152.44 & 65.09 \\ \hline
-gemma3-12b & 9.52 & 6.61 & 16.05 & 9.16 \\ \hline
-mistral-small3.2-24b & 34.14 & 12.69 & 53.60 & 35.33 \\ \hline
+gemini-2.5-pro & 18.77 & 10.70 & 64.63 & 16.04 \\ \hline
+gemini-2.5-flash & 9.99 & 5.41 & 48.14 & 9.17 \\ \hline
+llava-13b & 8.98 & 3.82 & 22.60 & 8.75 \\ \hline
+llava-34b & 49.59 & 9.01 & 140.26 & 47.04 \\ \hline
+gemma3-12b & 8.60 & 4.37 & 14.40 & 8.64 \\ \hline
+mistral-small3.2-24b & 17.50 & 10.55 & 30.61 & 17.14 \\ \hline
 \end{tabular}
 \centering
-\caption{Délka běhu [s]\label{tab: time_of_run}
+\caption{Délka běhu [s]}\label{tab: time_of_run}
 \end{table}

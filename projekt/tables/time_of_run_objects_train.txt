@@ -2,11 +2,13 @@
 \begin{tabular}{|l|l|l|l|l|}
 \hline
 \textbf{Model} & \textbf{Čas [%]} & \textbf{Čas MIN} & \textbf{Čas MAX} & \textbf{Čas Medián} \\ \hline
-yolo11m & 2535.93 & 2535.93 & 2535.93 & 2535.93 \\ \hline
-yolo11n & 2384.99 & 2384.99 & 2384.99 & 2384.99 \\ \hline
-yolo11x & 3836.81 & 3836.81 & 3836.81 & 3836.81 \\ \hline
-yolo11s & 2446.69 & 2446.69 & 2446.69 & 2446.69 \\ \hline
-yolo11l & 3690.15 & 3690.15 & 3690.15 & 3690.15 \\ \hline
+yolo11m & 4320.85 & 4320.85 & 4320.85 & 4320.85 \\ \hline
+maskrcnn & 966.47 & 966.47 & 966.47 & 966.47 \\ \hline
+retinanet & 566.17 & 566.17 & 566.17 & 566.17 \\ \hline
+yolo11n & 1509.86 & 1509.86 & 1509.86 & 1509.86 \\ \hline
+fasterrcnn & 758.67 & 758.67 & 758.67 & 758.67 \\ \hline
+yolo11s & 2300.27 & 2300.27 & 2300.27 & 2300.27 \\ \hline
+yolo11l & 5687.70 & 5687.70 & 5687.70 & 5687.70 \\ \hline
 \end{tabular}
 \centering
 \caption{Délka běhu [s] (trénování modelu)}
