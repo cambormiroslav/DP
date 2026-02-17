@@ -1,0 +1,16 @@
+\begin{table}[h!]
+\begin{tabular}{|l|l|l|l|l|}
+\hline
+\textbf{Model} & \textbf{GPU [%]} & \textbf{GPU MIN} & \textbf{GPU MAX} & \textbf{GPU Medián} \\ \hline
+fasterrcnn & 1,00 & 1,00 & 1,00 & 1,00 \\ \hline
+maskrcnn & 1,00 & 1,00 & 1,00 & 1,00 \\ \hline
+retinanet & 1,00 & 1,00 & 1,00 & 1,00 \\ \hline
+yolo11l & 1,00 & 1,00 & 1,00 & 1,00 \\ \hline
+yolo11m & 1,00 & 1,00 & 1,00 & 1,00 \\ \hline
+yolo11n & 0,99 & 0,99 & 0,99 & 0,99 \\ \hline
+yolo11s & 1,00 & 1,00 & 1,00 & 1,00 \\ \hline
+\end{tabular}
+\centering
+\caption{Využití grafické karty (trénování modelu)}
+\label{tab: gpu_usage_train}
+\end{table}

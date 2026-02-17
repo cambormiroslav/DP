@@ -399,10 +399,10 @@ def add_rows_to_latex_table_subkey(file, dictionary, subkey):
     for model in dictionary:
         values = dictionary[model][subkey]
         if len(values) != 0:
-            value_min = str(min(values)).replace(".", ",")
-            value_max = str(max(values)).replace(".", ",")
-            value_median = str(sorted(values)[len(values) // 2]).replace(".", ",")
-            value_avg = str(sum(values) / len(values)).replace(".", ",")
+            value_min = min(values)
+            value_max = max(values)
+            value_median = sorted(values)[len(values) // 2]
+            value_avg = sum(values) / len(values)
             
             value_avg_string = f"{value_avg:.2f}".replace(".", ",")
             value_min_string = f"{value_min:.2f}".replace(".", ",")
@@ -1237,10 +1237,16 @@ def call_generating_graphs_and_tables_main():
     
     if load_cpu_gpu_data:
         generate_graph("cpu_usage_main_thread")
+        generate_latex_table_and_save_to_file("cpu_usage_main_thread")
         generate_graph("cpu_usage_peak")
+        generate_latex_table_and_save_to_file("cpu_usage_peak")
         generate_graph("ram_usage_peak")
+        generate_latex_table_and_save_to_file("ram_usage_peak")
         generate_graph("gpu_usage")
+        generate_latex_table_and_save_to_file("gpu_usage")
         generate_graph("vram_usage")
+        generate_latex_table_and_save_to_file("vram_usage")
+
         if not is_cpu_gpu_data_test:
             generate_graph("time_of_run_cpu_gpu")
             time_of_run_dict_tmp = cpu_gpu_data_time_diffs.copy()

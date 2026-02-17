@@ -1,0 +1,29 @@
+\begin{table}[h!]
+\begin{tabular}{|l|l|l|l|l|}
+\hline
+\textbf{Model} & \textbf{RAM} & \textbf{RAM MIN} & \textbf{RAM MAX} & \textbf{RAM Medián} \\ \hline
+bakllava & 0,00 & 0,00 & 0,00 & 0,00 \\ \hline
+easyocr & 19,91 & 0,00 & 410,88 & 20,16 \\ \hline
+gemini-2.0-flash & 0,01 & 0,00 & 0,55 & 0,00 \\ \hline
+gemini-2.0-flash-lite & 0,22 & 0,00 & 17,36 & 0,00 \\ \hline
+gemini-2.5-flash & 0,02 & 0,00 & 1,05 & 0,00 \\ \hline
+gemini-2.5-flash-lite & 0,00 & 0,00 & 0,02 & 0,00 \\ \hline
+gemini-3-flash-preview & 0,00 & 0,00 & 0,21 & 0,00 \\ \hline
+gemini-3-pro-preview & 0,22 & 0,00 & 18,80 & 0,00 \\ \hline
+gemma3-12b & 0,00 & 0,00 & 0,00 & 0,00 \\ \hline
+gemma3-27b & 0,00 & 0,00 & 0,04 & 0,00 \\ \hline
+gemma3-4b & 0,00 & 0,00 & 0,01 & 0,00 \\ \hline
+granite3.2-vision & 0,00 & 0,00 & 0,00 & 0,00 \\ \hline
+knoopx-mobile-vlm-3b-fp16 & 0,00 & 0,00 & 0,35 & 0,00 \\ \hline
+llava-13b & 0,00 & 0,00 & 0,00 & 0,00 \\ \hline
+llava-34b & 0,00 & 0,00 & 0,00 & 0,00 \\ \hline
+llava-7b & 0,02 & -0,00 & 1,00 & 0,00 \\ \hline
+minicpm-v & 0,00 & 0,00 & 0,00 & 0,00 \\ \hline
+mistral-small3.1 & 0,00 & 0,00 & 0,00 & 0,00 \\ \hline
+mistral-small3.2-24b & 0,00 & 0,00 & 0,00 & 0,00 \\ \hline
+tesseract-5.3.0 & 37,17 & 24,54 & 43,00 & 39,13 \\ \hline
+\end{tabular}
+\centering
+\caption{Využití paměti RAM (testování modelu)}
+\label{tab: ram_usage_peak_test}
+\end{table}

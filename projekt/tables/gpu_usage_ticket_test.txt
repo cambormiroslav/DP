@@ -1,0 +1,29 @@
+\begin{table}[h!]
+\begin{tabular}{|l|l|l|l|l|}
+\hline
+\textbf{Model} & \textbf{GPU [%]} & \textbf{GPU MIN} & \textbf{GPU MAX} & \textbf{GPU Medián} \\ \hline
+bakllava & 0,73 & 0,00 & 0,99 & 0,97 \\ \hline
+easyocr & 0,23 & 0,03 & 0,53 & 0,20 \\ \hline
+gemini-2.0-flash & 0,02 & 0,00 & 0,23 & 0,00 \\ \hline
+gemini-2.0-flash-lite & 0,00 & 0,00 & 0,02 & 0,00 \\ \hline
+gemini-2.5-flash & 0,00 & 0,00 & 0,02 & 0,00 \\ \hline
+gemini-2.5-flash-lite & 0,00 & 0,00 & 0,01 & 0,00 \\ \hline
+gemini-3-flash-preview & 0,01 & 0,00 & 0,23 & 0,00 \\ \hline
+gemini-3-pro-preview & 0,01 & 0,00 & 0,20 & 0,00 \\ \hline
+gemma3-12b & 0,98 & 0,95 & 1,00 & 0,98 \\ \hline
+gemma3-27b & 0,97 & 0,85 & 1,00 & 0,97 \\ \hline
+gemma3-4b & 0,95 & 0,90 & 1,00 & 0,91 \\ \hline
+granite3.2-vision & 0,95 & 0,93 & 0,97 & 0,95 \\ \hline
+knoopx-mobile-vlm-3b-fp16 & 0,98 & 0,72 & 0,99 & 0,98 \\ \hline
+llava-13b & 0,99 & 0,98 & 1,00 & 0,99 \\ \hline
+llava-34b & 1,00 & 0,97 & 1,00 & 1,00 \\ \hline
+llava-7b & 0,97 & 0,97 & 0,99 & 0,97 \\ \hline
+minicpm-v & 0,95 & 0,94 & 0,97 & 0,95 \\ \hline
+mistral-small3.1 & 0,98 & 0,82 & 1,00 & 1,00 \\ \hline
+mistral-small3.2-24b & 0,96 & 0,75 & 1,00 & 1,00 \\ \hline
+tesseract-5.3.0 & 0,01 & 0,00 & 0,02 & 0,01 \\ \hline
+\end{tabular}
+\centering
+\caption{Využití grafické karty (testování modelu)}
+\label{tab: gpu_usage_test}
+\end{table}

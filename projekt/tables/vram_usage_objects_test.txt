@@ -1,0 +1,24 @@
+\begin{table}[h!]
+\begin{tabular}{|l|l|l|l|l|}
+\hline
+\textbf{Model} & \textbf{VRAM} & \textbf{VRAM MIN} & \textbf{VRAM MAX} & \textbf{VRAM Medián} \\ \hline
+fasterrcnn & 7,04 & 0,00 & 620,00 & 0,00 \\ \hline
+gemini-2.0-flash & 0,12 & 0,00 & 11,06 & 0,00 \\ \hline
+gemini-2.5-flash & 0,01 & 0,00 & 0,94 & 0,00 \\ \hline
+gemini-2.5-flash-lite & 0,00 & 0,00 & 0,00 & 0,00 \\ \hline
+gemini-2.5-pro & 0,01 & 0,00 & 0,94 & 0,00 \\ \hline
+gemini-3-flash-preview & 0,01 & 0,00 & 1,20 & 0,00 \\ \hline
+gemini-3-pro-preview & 0,89 & 0,00 & 87,52 & 0,00 \\ \hline
+gemma3-12b & 88,82 & 0,00 & 8845,10 & 0,00 \\ \hline
+gemma3-4b & 38,32 & 0,00 & 3829,10 & 0,00 \\ \hline
+maskrcnn & 9,74 & 0,00 & 324,00 & 0,00 \\ \hline
+retinanet & -0,04 & -7,19 & 2,00 & 0,00 \\ \hline
+yolo11l & 0,70 & 0,00 & 70,46 & 0,00 \\ \hline
+yolo11m & 1,00 & 0,00 & 100,00 & 0,00 \\ \hline
+yolo11n & 0,23 & 0,00 & 11,50 & 0,00 \\ \hline
+yolo11s & 0,27 & 0,00 & 20,00 & 0,00 \\ \hline
+\end{tabular}
+\centering
+\caption{Využití paměti VRAM (testování modelu)}
+\label{tab: vram_usage_test}
+\end{table}

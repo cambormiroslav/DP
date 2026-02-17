@@ -1,0 +1,24 @@
+\begin{table}[h!]
+\begin{tabular}{|l|l|l|l|l|}
+\hline
+\textbf{Model} & \textbf{RAM} & \textbf{RAM MIN} & \textbf{RAM MAX} & \textbf{RAM Medián} \\ \hline
+fasterrcnn & 8,17 & 0,00 & 711,08 & 0,00 \\ \hline
+gemini-2.0-flash & 0,27 & -0,00 & 17,96 & 0,00 \\ \hline
+gemini-2.5-flash & 0,01 & -0,00 & 0,60 & 0,00 \\ \hline
+gemini-2.5-flash-lite & 0,30 & -0,00 & 18,34 & 0,00 \\ \hline
+gemini-2.5-pro & 0,01 & -0,00 & 0,54 & 0,00 \\ \hline
+gemini-3-flash-preview & 0,29 & -0,00 & 19,00 & 0,00 \\ \hline
+gemini-3-pro-preview & 0,02 & -0,00 & 0,48 & 0,00 \\ \hline
+gemma3-12b & 0,03 & 0,00 & 2,00 & 0,00 \\ \hline
+gemma3-4b & 0,01 & 0,00 & 0,27 & 0,00 \\ \hline
+maskrcnn & 0,21 & 0,00 & 12,69 & 0,00 \\ \hline
+retinanet & 2,86 & 0,00 & 190,56 & 0,00 \\ \hline
+yolo11l & 19453,91 & 19448,73 & 19470,29 & 19452,93 \\ \hline
+yolo11m & 20138,85 & 20138,07 & 20156,41 & 20138,07 \\ \hline
+yolo11n & 14419,07 & 14418,21 & 14436,89 & 14418,21 \\ \hline
+yolo11s & 17390,86 & 17389,76 & 17409,55 & 17389,76 \\ \hline
+\end{tabular}
+\centering
+\caption{Využití paměti RAM (testování modelu)}
+\label{tab: ram_usage_peak_test}
+\end{table}

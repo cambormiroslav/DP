@@ -1,0 +1,24 @@
+\begin{table}[h!]
+\begin{tabular}{|l|l|l|l|l|}
+\hline
+\textbf{Model} & \textbf{CPU [%]} & \textbf{CPU MIN} & \textbf{CPU MAX} & \textbf{CPU Medián} \\ \hline
+fasterrcnn & 6,77 & 4,03 & 12,70 & 6,05 \\ \hline
+gemini-2.0-flash & 1,44 & 0,98 & 4,88 & 1,04 \\ \hline
+gemini-2.5-flash & 1,52 & 0,50 & 5,21 & 1,04 \\ \hline
+gemini-2.5-flash-lite & 1,21 & 0,50 & 3,91 & 1,04 \\ \hline
+gemini-2.5-pro & 1,86 & 1,04 & 4,17 & 1,95 \\ \hline
+gemini-3-flash-preview & 1,76 & 1,04 & 4,17 & 1,95 \\ \hline
+gemini-3-pro-preview & 2,26 & 1,04 & 4,17 & 2,08 \\ \hline
+gemma3-12b & 1,04 & 0,98 & 1,04 & 1,04 \\ \hline
+gemma3-4b & 1,03 & 0,50 & 2,08 & 1,04 \\ \hline
+maskrcnn & 7,25 & 5,37 & 13,54 & 6,25 \\ \hline
+retinanet & 7,04 & 5,37 & 13,54 & 6,05 \\ \hline
+yolo11l & 0,95 & 0,00 & 2,08 & 0,98 \\ \hline
+yolo11m & 0,12 & 0,00 & 2,08 & 0,00 \\ \hline
+yolo11n & 0,11 & 0,00 & 2,08 & 0,00 \\ \hline
+yolo11s & 0,12 & 0,00 & 2,08 & 0,00 \\ \hline
+\end{tabular}
+\centering
+\caption{Využití procesoru z hlavního vlákna i vedlejších vláken (testování modelu)}
+\label{tab: cpu_usage_peak_test}
+\end{table}
