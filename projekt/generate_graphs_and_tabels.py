@@ -432,27 +432,27 @@ def generate_latex_table_and_save_to_file(type_of_data):
         file.write("\\hline\n")
 
         if type_of_data == "cpu_usage_main_thread":
-            file.write("\\textbf{Model} & \\textbf{CPU [%]} & \\textbf{CPU MIN} & \\textbf{CPU MAX} & \\textbf{CPU Medián} \\\\ \hline\n")
+            file.write("\\textbf{Model} & \\textbf{CPU [%]} & \\textbf{MIN} & \\textbf{MAX} & \\textbf{Medián} \\\\ \hline\n")
             sorted_dict = sort_dict_by_keys(cpu_gpu_data)
             add_rows_to_latex_table_subkey(file, sorted_dict, "cpu_usage")
         elif type_of_data == "cpu_usage_peak":
-            file.write("\\textbf{Model} & \\textbf{CPU [%]} & \\textbf{CPU MIN} & \\textbf{CPU MAX} & \\textbf{CPU Medián} \\\\ \hline\n")
+            file.write("\\textbf{Model} & \\textbf{CPU [%]} & \\textbf{MIN} & \\textbf{MAX} & \\textbf{Medián} \\\\ \hline\n")
             sorted_dict = sort_dict_by_keys(cpu_gpu_data)
             add_rows_to_latex_table_subkey(file, sorted_dict, "peak_cpu_percent")
         elif type_of_data == "ram_usage_peak":
-            file.write("\\textbf{Model} & \\textbf{RAM} & \\textbf{RAM MIN} & \\textbf{RAM MAX} & \\textbf{RAM Medián} \\\\ \hline\n")
+            file.write("\\textbf{Model} & \\textbf{RAM} & \\textbf{MIN} & \\textbf{MAX} & \\textbf{Medián} \\\\ \hline\n")
             sorted_dict = sort_dict_by_keys(cpu_gpu_data)
             add_rows_to_latex_table_subkey(file, sorted_dict, "ram_usage")
         elif type_of_data == "gpu_usage":
-            file.write("\\textbf{Model} & \\textbf{GPU [%]} & \\textbf{GPU MIN} & \\textbf{GPU MAX} & \\textbf{GPU Medián} \\\\ \hline\n")
+            file.write("\\textbf{Model} & \\textbf{GPU [%]} & \\textbf{MIN} & \\textbf{MAX} & \\textbf{Medián} \\\\ \hline\n")
             sorted_dict = sort_dict_by_keys(cpu_gpu_data)
             add_rows_to_latex_table_subkey(file, sorted_dict, "peak_gpu_utilization")
         elif type_of_data == "vram_usage":
-            file.write("\\textbf{Model} & \\textbf{VRAM} & \\textbf{VRAM MIN} & \\textbf{VRAM MAX} & \\textbf{VRAM Medián} \\\\ \hline\n")
+            file.write("\\textbf{Model} & \\textbf{VRAM} & \\textbf{MIN} & \\textbf{MAX} & \\textbf{Medián} \\\\ \hline\n")
             sorted_dict = sort_dict_by_keys(cpu_gpu_data)
             add_rows_to_latex_table_subkey(file, sorted_dict, "total_vram_mb")
         elif type_of_data == "time_of_run":
-            file.write("\\textbf{Model} & \\textbf{Čas [%]} & \\textbf{Čas MIN} & \\textbf{Čas MAX} & \\textbf{Čas Medián} \\\\ \hline\n")
+            file.write("\\textbf{Model} & \\textbf{Čas [%]} & \\textbf{MIN} & \\textbf{MAX} & \\textbf{Medián} \\\\ \hline\n")
             sorted_dict = sort_dict_by_keys(time_of_run_dict_tmp)
             add_rows_to_latex_table(file, sorted_dict)
         else:

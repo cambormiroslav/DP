@@ -1,7 +1,7 @@
 \begin{table}[h!]
 \begin{tabular}{|l|l|l|l|l|}
 \hline
-\textbf{Model} & \textbf{GPU [%]} & \textbf{GPU MIN} & \textbf{GPU MAX} & \textbf{GPU Medián} \\ \hline
+\textbf{Model} & \textbf{GPU [%]} & \textbf{MIN} & \textbf{MAX} & \textbf{Medián} \\ \hline
 fasterrcnn & 0,31 & 0,03 & 0,45 & 0,34 \\ \hline
 gemini-2.0-flash & 0,03 & 0,00 & 0,30 & 0,01 \\ \hline
 gemini-2.5-flash & 0,01 & 0,00 & 0,20 & 0,00 \\ \hline

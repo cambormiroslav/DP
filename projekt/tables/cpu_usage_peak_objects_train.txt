@@ -1,7 +1,7 @@
 \begin{table}[h!]
 \begin{tabular}{|l|l|l|l|l|}
 \hline
-\textbf{Model} & \textbf{CPU [%]} & \textbf{CPU MIN} & \textbf{CPU MAX} & \textbf{CPU Medián} \\ \hline
+\textbf{Model} & \textbf{CPU [%]} & \textbf{MIN} & \textbf{MAX} & \textbf{Medián} \\ \hline
 fasterrcnn & 13,54 & 13,54 & 13,54 & 13,54 \\ \hline
 maskrcnn & 13,54 & 13,54 & 13,54 & 13,54 \\ \hline
 retinanet & 13,54 & 13,54 & 13,54 & 13,54 \\ \hline

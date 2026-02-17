@@ -1,7 +1,7 @@
 \begin{table}[h!]
 \begin{tabular}{|l|l|l|l|l|}
 \hline
-\textbf{Model} & \textbf{VRAM} & \textbf{VRAM MIN} & \textbf{VRAM MAX} & \textbf{VRAM Medián} \\ \hline
+\textbf{Model} & \textbf{VRAM} & \textbf{MIN} & \textbf{MAX} & \textbf{Medián} \\ \hline
 fasterrcnn & 15153,19 & 15153,19 & 15153,19 & 15153,19 \\ \hline
 maskrcnn & 8874,00 & 8874,00 & 8874,00 & 8874,00 \\ \hline
 retinanet & 5122,00 & 5122,00 & 5122,00 & 5122,00 \\ \hline
