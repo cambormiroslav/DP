@@ -388,17 +388,27 @@ def add_rows_to_latex_table(file, dictionary):
             value_max = max(values)
             value_median = sorted(values)[len(values) // 2]
             value_avg = sum(values) / len(values)
-            file.write(f"{model} & {value_avg:.2f} & {value_min:.2f} & {value_max:.2f} & {value_median:.2f} \\\\ \hline\n")
+
+            value_avg_string = f"{value_avg:.2f}".replace(".", ",")
+            value_min_string = f"{value_min:.2f}".replace(".", ",")
+            value_max_string = f"{value_max:.2f}".replace(".", ",")
+            value_median_string = f"{value_median:.2f}".replace(".", ",")
+            file.write(f"{model} & {value_avg_string} & {value_min_string} & {value_max_string} & {value_median_string} \\\\ \hline\n")
 
 def add_rows_to_latex_table_subkey(file, dictionary, subkey):
     for model in dictionary:
         values = dictionary[model][subkey]
         if len(values) != 0:
-            value_min = min(values)
-            value_max = max(values)
-            value_median = sorted(values)[len(values) // 2]
-            value_avg = sum(values) / len(values)
-            file.write(f"{model} & {value_avg:.2f} & {value_min:.2f} & {value_max:.2f} & {value_median:.2f} \\\\ \hline\n")
+            value_min = str(min(values)).replace(".", ",")
+            value_max = str(max(values)).replace(".", ",")
+            value_median = str(sorted(values)[len(values) // 2]).replace(".", ",")
+            value_avg = str(sum(values) / len(values)).replace(".", ",")
+            
+            value_avg_string = f"{value_avg:.2f}".replace(".", ",")
+            value_min_string = f"{value_min:.2f}".replace(".", ",")
+            value_max_string = f"{value_max:.2f}".replace(".", ",")
+            value_median_string = f"{value_median:.2f}".replace(".", ",")
+            file.write(f"{model} & {value_avg_string} & {value_min_string} & {value_max_string} & {value_median_string} \\\\ \hline\n")
 
 def generate_latex_table_and_save_to_file(type_of_data):
     if load_cpu_gpu_data and not is_cpu_gpu_data_test:
