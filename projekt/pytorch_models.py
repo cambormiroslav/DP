@@ -18,9 +18,12 @@ import threading
 import datetime
 import functions
 
+number_of_epochs = 10
+
 type_of_data = "objects"
 
 COCO_CLASSES = {0: 'background', 1: 'person'}
+used_models = ["fasterrcnn", "retinanet", "maskrcnn"]
 
 model_dir_path = "./models/"
 if not os.path.exists(model_dir_path):
@@ -254,7 +257,6 @@ def eval_img_model(model_text, array_of_image_paths, number_of_epochs):
                                            0) #this information is in other file there
 
 def load_and_measure(model, train_dataloader, train_switch, eval_switch):
-    number_of_epochs = 10
     if train_switch:
         #get process id
         pid = os.getpid()
@@ -321,7 +323,35 @@ def load_and_measure(model, train_dataloader, train_switch, eval_switch):
                                        ram_usage, functions.monitor_data["peak_gpu_utilization"], total_vram_mb, diff_datetime_seconds)
     if eval_switch:
         eval_img_model(model, load_image_paths("../dataset/yolo_dataset/test/images"), number_of_epochs)
-           
+
+def load_and_calculate_model_size(model_text, number_of_epochs):
+    num_classes = 2
+    model = get_model(model_text, num_classes)
+    model.load_state_dict(torch.load(os.path.join(model_dir_path, f"{model_text}_epoch_{number_of_epochs}.pth")))
+
+    # Velikost parametrů (weights)
+    param_size = sum(p.nelement() * p.element_size() for p in model.parameters())
+    # Velikost bufferů (např. v BatchNorm)
+    buffer_size = sum(b.nelement() * b.element_size() for b in model.buffers())
+    
+    total_size_bytes = param_size + buffer_size
+    total_size_mb = total_size_bytes / (1024**2)
+    
+    return total_size_mb
+
+def write_large_of_models_to_file(model_text, data, file_path):
+     with open(file_path, "+a") as file:
+        file.write(f"{model_text};{data}\n")
+
+def call_calculating_large_of_models():
+    output_file_path = f"./large_of_models/data.txt"
+    if os.path.exists(output_file_path):
+        os.remove(output_file_path) 
+
+    for model_text in used_models:
+        write_large_of_models_to_file(model_text,
+                                      load_and_calculate_model_size(model_text, number_of_epochs),
+                                      output_file_path)
 
 if __name__ == "__main__":
     train_dataset = get_coco_dataset("../dataset/yolo_dataset/train/images", "../dataset/coco_annotations/train/annotations.json")
@@ -330,3 +360,5 @@ if __name__ == "__main__":
     load_and_measure("fasterrcnn", train_dataloader, False, True)
     load_and_measure("retinanet", train_dataloader, False, True)
     load_and_measure("maskrcnn", train_dataloader, False, True)
+
+    call_calculating_large_of_models()
