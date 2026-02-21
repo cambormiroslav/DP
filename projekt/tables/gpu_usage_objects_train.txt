@@ -1,5 +1,5 @@
 \begin{table}[h!]
-\begin{tabular}{|l|l|}
+\begin{tabular}{|c|c|}
 \hline
 \textbf{Model} & \textbf{GPU [\%]} \\ \hline
 fasterrcnn & 1.0 \\ \hline

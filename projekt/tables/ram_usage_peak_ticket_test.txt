@@ -1,5 +1,5 @@
 \begin{table}[h!]
-\begin{tabular}{|l|l|l|l|l|}
+\begin{tabular}{|c|c|c|c|c|}
 \hline
 \textbf{Model} & \textbf{RAM} & \textbf{MIN} & \textbf{MAX} & \textbf{Medián} \\ \hline
 bakllava & 0,00 & 0,00 & 0,00 & 0,00 \\ \hline

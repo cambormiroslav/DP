@@ -1,5 +1,5 @@
 \begin{table}[h!]
-\begin{tabular}{|l|l|}
+\begin{tabular}{|c|c|}
 \hline
 \textbf{Model} & \textbf{Čas [s]} \\ \hline
 fasterrcnn & 758.669956 \\ \hline

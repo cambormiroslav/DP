@@ -1,5 +1,5 @@
 \begin{table}[h!]
-\begin{tabular}{|l|l|}
+\begin{tabular}{|c|c|}
 \hline
 \textbf{Model} & \textbf{RAM} \\ \hline
 fasterrcnn & 2770.78515625 \\ \hline

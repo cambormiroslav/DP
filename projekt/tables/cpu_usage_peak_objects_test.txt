@@ -1,5 +1,5 @@
 \begin{table}[h!]
-\begin{tabular}{|l|l|l|l|l|}
+\begin{tabular}{|c|c|c|c|c|}
 \hline
 \textbf{Model} & \textbf{CPU [\%]} & \textbf{MIN} & \textbf{MAX} & \textbf{Medián} \\ \hline
 fasterrcnn & 6,77 & 4,03 & 12,70 & 6,05 \\ \hline

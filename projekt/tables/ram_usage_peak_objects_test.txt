@@ -1,5 +1,5 @@
 \begin{table}[h!]
-\begin{tabular}{|l|l|l|l|l|}
+\begin{tabular}{|c|c|c|c|c|}
 \hline
 \textbf{Model} & \textbf{RAM} & \textbf{MIN} & \textbf{MAX} & \textbf{Medián} \\ \hline
 fasterrcnn & 8,17 & 0,00 & 711,08 & 0,00 \\ \hline

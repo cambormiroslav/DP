@@ -439,9 +439,9 @@ def generate_latex_table_and_save_to_file(type_of_data):
     with open(output_file_path, "+a") as file:
         file.write("\\begin{table}[h!]\n")
         if load_cpu_gpu_data and not is_cpu_gpu_data_test:
-            file.write("\\begin{tabular}{|l|l|}\n")
+            file.write("\\begin{tabular}{|c|c|}\n")
         else:
-            file.write("\\begin{tabular}{|l|l|l|l|l|}\n")
+            file.write("\\begin{tabular}{|c|c|c|c|c|}\n")
         file.write("\\hline\n")
 
         if type_of_data == "cpu_usage_main_thread":

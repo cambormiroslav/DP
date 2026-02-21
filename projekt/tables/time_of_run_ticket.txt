@@ -1,5 +1,5 @@
 \begin{table}[h!]
-\begin{tabular}{|l|l|l|l|l|}
+\begin{tabular}{|c|c|c|c|c|}
 \hline
 \textbf{Model} & \textbf{Čas [s]} & \textbf{MIN} & \textbf{MAX} & \textbf{Medián} \\ \hline
 bakllava & 2,57 & 2,40 & 6,12 & 2,52 \\ \hline

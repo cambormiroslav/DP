@@ -1,5 +1,5 @@
 \begin{table}[h!]
-\begin{tabular}{|l|l|l|l|l|}
+\begin{tabular}{|c|c|c|c|c|}
 \hline
 \textbf{Model} & \textbf{GPU [\%]} & \textbf{MIN} & \textbf{MAX} & \textbf{Medián} \\ \hline
 fasterrcnn & 0,31 & 0,03 & 0,45 & 0,34 \\ \hline

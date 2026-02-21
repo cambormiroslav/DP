@@ -1,5 +1,5 @@
 \begin{table}[h!]
-\begin{tabular}{|l|l|}
+\begin{tabular}{|c|c|}
 \hline
 \textbf{Model} & \textbf{CPU [\%]} \\ \hline
 fasterrcnn & 0.504 \\ \hline
