@@ -1,7 +1,7 @@
 \begin{table}[h!]
 \begin{tabular}{|l|l|}
 \hline
-\textbf{Model} & \textbf{GPU [%]} \\ \hline
+\textbf{Model} & \textbf{GPU [\%]} \\ \hline
 fasterrcnn & 1.0 \\ \hline
 maskrcnn & 1.0 \\ \hline
 retinanet & 1.0 \\ \hline

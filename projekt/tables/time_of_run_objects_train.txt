@@ -1,7 +1,7 @@
 \begin{table}[h!]
 \begin{tabular}{|l|l|}
 \hline
-\textbf{Model} & \textbf{Čas [%]} \\ \hline
+\textbf{Model} & \textbf{Čas [s]} \\ \hline
 fasterrcnn & 758.669956 \\ \hline
 maskrcnn & 966.465972 \\ \hline
 retinanet & 566.167715 \\ \hline

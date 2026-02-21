@@ -1,7 +1,7 @@
 \begin{table}[h!]
 \begin{tabular}{|l|l|}
 \hline
-\textbf{Model} & \textbf{CPU [%]} \\ \hline
+\textbf{Model} & \textbf{CPU [\%]} \\ \hline
 fasterrcnn & 13.542 \\ \hline
 maskrcnn & 13.542 \\ \hline
 retinanet & 13.542 \\ \hline
