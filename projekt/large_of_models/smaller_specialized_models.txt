@@ -1,0 +1,18 @@
+\begin{table}[h!]
+\begin{tabular}{|c|c|c|c|}
+\hline
+\textbf{Model} & \textbf{Verze} & \textbf{CPU/GPU} & \textbf{Velikost} \\ \hline
+easyOCR        & eng            & 0\%/100\%        & 93,74 MB          \\ \hline
+Tesseract      & eng            & 0\%/100\%        & 269,12 MB         \\ \hline
+FasterRCNN     & -              & 0\%/100\%        & 158 MB            \\ \hline
+MaskRCNN       & -              & 0\%/100\%        & 168 MB            \\ \hline
+RetinaNet      & -              & 0\%/100\%        & 123 MB            \\ \hline
+YOLO11         & n              & 0\%/100\%        & 5,28 MB           \\ \hline
+YOLO11         & s              & 0\%/100\%        & 18,3 MB           \\ \hline
+YOLO11         & m              & 0\%/100\%        & 38,6 MB           \\ \hline
+YOLO11         & l              & 0\%/100\%        & 48,8 MB           \\ \hline
+\end{tabular}
+\centering
+\caption{Výpočetní zdroje malých specializovaných modelů}
+\label{tab: small_specialized_local_models}
+\end{table}

@@ -1,0 +1,21 @@
+\begin{table}[h!]
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+\textbf{Model}    & \textbf{Verze} & \textbf{CPU/GPU} & \textbf{Velikost} & \textbf{Kontext} \\ \hline
+bakllava          & 7b             & 0\%/100\%        & 4.9 GB            & 4096             \\ \hline
+gemma3            & 4b             & 0\%/100\%        & 4.3 GB            & 4096             \\ \hline
+gemma3            & 12b            & 0\%/100\%        & 9.9 GB            & 4096             \\ \hline
+gemma3            & 27b            & 25\%/75\%        & 19 GB             & 4096             \\ \hline
+granite3.2-vision & 2b             & 0\%/100\%        & 3.8 GB            & 16384            \\ \hline
+knoopx/mobile-vlm & 3b-fp16        & 0\%/100\%        & 6.1 GB            & 4096             \\ \hline
+llava             & 7b             & 0\%/100\%        & 4.9 GB            & 4096             \\ \hline
+llava             & 13b            & 0\%/100\%        & 11 GB             & 4096             \\ \hline
+llava             & 34b            & 29\%/71\%        & 20 GB             & 4096             \\ \hline
+minicpm-v         & 8b             & 0\%/100\%        & 4.7 GB            & 4096             \\ \hline
+mistral-small3.1  & 24b            & 13\%/87\%        & 17 GB             & 4096             \\ \hline
+mistral-small3.2  & 24b            & 11\%/89\%        & 16 GB             & 4096             \\ \hline
+\end{tabular}
+\centering
+\caption{Výpočetní zdroje velkých multimodálních modelů běžící lokálně}
+\label{tab: large_local_models}
+\end{table}

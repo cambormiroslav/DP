@@ -339,20 +339,6 @@ def load_and_calculate_model_size(model_text, number_of_epochs):
     
     return total_size_mb
 
-def write_large_of_models_to_file(model_text, data, file_path):
-     with open(file_path, "+a") as file:
-        file.write(f"{model_text};{data}\n")
-
-def call_calculating_large_of_models():
-    output_file_path = f"./large_of_models/data.txt"
-    if os.path.exists(output_file_path):
-        os.remove(output_file_path) 
-
-    for model_text in used_models:
-        write_large_of_models_to_file(model_text,
-                                      load_and_calculate_model_size(model_text, number_of_epochs),
-                                      output_file_path)
-
 if __name__ == "__main__":
     train_dataset = get_coco_dataset("../dataset/yolo_dataset/train/images", "../dataset/coco_annotations/train/annotations.json")
     train_dataloader = DataLoader(train_dataset, batch_size=4, shuffle=True, collate_fn=lambda x: tuple(zip(*x)))
@@ -360,5 +346,3 @@ if __name__ == "__main__":
     load_and_measure("fasterrcnn", train_dataloader, False, True)
     load_and_measure("retinanet", train_dataloader, False, True)
     load_and_measure("maskrcnn", train_dataloader, False, True)
-
-    call_calculating_large_of_models()
