@@ -395,6 +395,11 @@ def add_rows_to_latex_table(file, dictionary):
             value_median_string = f"{value_median:.2f}".replace(".", ",")
             file.write(f"{model} & {value_avg_string} & {value_min_string} & {value_max_string} & {value_median_string} \\\\ \hline\n")
 
+def add_rows_to_latex_table_train(file, dictionary):
+    for model in dictionary:
+        value = dictionary[model][0]
+        file.write(f"{model} & {value} \\\\ \hline\n")
+
 def add_rows_to_latex_table_subkey(file, dictionary, subkey):
     for model in dictionary:
         values = dictionary[model][subkey]
@@ -409,6 +414,11 @@ def add_rows_to_latex_table_subkey(file, dictionary, subkey):
             value_max_string = f"{value_max:.2f}".replace(".", ",")
             value_median_string = f"{value_median:.2f}".replace(".", ",")
             file.write(f"{model} & {value_avg_string} & {value_min_string} & {value_max_string} & {value_median_string} \\\\ \hline\n")
+
+def add_rows_to_latex_table_subkey_train(file, dictionary, subkey):
+    for model in dictionary:
+        value = dictionary[model][subkey][0]
+        file.write(f"{model} & {value} \\\\ \hline\n")
 
 def generate_latex_table_and_save_to_file(type_of_data):
     if load_cpu_gpu_data and not is_cpu_gpu_data_test:
@@ -428,33 +438,72 @@ def generate_latex_table_and_save_to_file(type_of_data):
 
     with open(output_file_path, "+a") as file:
         file.write("\\begin{table}[h!]\n")
-        file.write("\\begin{tabular}{|l|l|l|l|l|}\n")
+        if load_cpu_gpu_data and not is_cpu_gpu_data_test:
+            file.write("\\begin{tabular}{|l|l|}\n")
+        else:
+            file.write("\\begin{tabular}{|l|l|l|l|l|}\n")
         file.write("\\hline\n")
 
         if type_of_data == "cpu_usage_main_thread":
-            file.write("\\textbf{Model} & \\textbf{CPU [%]} & \\textbf{MIN} & \\textbf{MAX} & \\textbf{Medián} \\\\ \hline\n")
+            if load_cpu_gpu_data and not is_cpu_gpu_data_test:
+                file.write("\\textbf{Model} & \\textbf{CPU [%]} \\\\ \hline\n")
+            else:
+                file.write("\\textbf{Model} & \\textbf{CPU [%]} & \\textbf{MIN} & \\textbf{MAX} & \\textbf{Medián} \\\\ \hline\n")
             sorted_dict = sort_dict_by_keys(cpu_gpu_data)
-            add_rows_to_latex_table_subkey(file, sorted_dict, "cpu_usage")
+            if load_cpu_gpu_data and not is_cpu_gpu_data_test:
+                add_rows_to_latex_table_subkey_train(file, sorted_dict, "cpu_usage")
+            else:
+                add_rows_to_latex_table_subkey(file, sorted_dict, "cpu_usage")
         elif type_of_data == "cpu_usage_peak":
-            file.write("\\textbf{Model} & \\textbf{CPU [%]} & \\textbf{MIN} & \\textbf{MAX} & \\textbf{Medián} \\\\ \hline\n")
+            if load_cpu_gpu_data and not is_cpu_gpu_data_test:
+                file.write("\\textbf{Model} & \\textbf{CPU [%]} \\\\ \hline\n")
+            else:
+                file.write("\\textbf{Model} & \\textbf{CPU [%]} & \\textbf{MIN} & \\textbf{MAX} & \\textbf{Medián} \\\\ \hline\n")
             sorted_dict = sort_dict_by_keys(cpu_gpu_data)
-            add_rows_to_latex_table_subkey(file, sorted_dict, "peak_cpu_percent")
+            if load_cpu_gpu_data and not is_cpu_gpu_data_test:
+                add_rows_to_latex_table_subkey_train(file, sorted_dict, "peak_cpu_percent")
+            else:
+                add_rows_to_latex_table_subkey(file, sorted_dict, "peak_cpu_percent")
         elif type_of_data == "ram_usage_peak":
-            file.write("\\textbf{Model} & \\textbf{RAM} & \\textbf{MIN} & \\textbf{MAX} & \\textbf{Medián} \\\\ \hline\n")
+            if load_cpu_gpu_data and not is_cpu_gpu_data_test:
+                file.write("\\textbf{Model} & \\textbf{RAM} \\\\ \hline\n")
+            else:
+                file.write("\\textbf{Model} & \\textbf{RAM} & \\textbf{MIN} & \\textbf{MAX} & \\textbf{Medián} \\\\ \hline\n")
             sorted_dict = sort_dict_by_keys(cpu_gpu_data)
-            add_rows_to_latex_table_subkey(file, sorted_dict, "ram_usage")
+            if load_cpu_gpu_data and not is_cpu_gpu_data_test:
+                add_rows_to_latex_table_subkey_train(file, sorted_dict, "ram_usage")
+            else:
+                add_rows_to_latex_table_subkey(file, sorted_dict, "ram_usage")
         elif type_of_data == "gpu_usage":
-            file.write("\\textbf{Model} & \\textbf{GPU [%]} & \\textbf{MIN} & \\textbf{MAX} & \\textbf{Medián} \\\\ \hline\n")
+            if load_cpu_gpu_data and not is_cpu_gpu_data_test:
+                file.write("\\textbf{Model} & \\textbf{GPU [%]} \\\\ \hline\n")
+            else:
+                file.write("\\textbf{Model} & \\textbf{GPU [%]} & \\textbf{MIN} & \\textbf{MAX} & \\textbf{Medián} \\\\ \hline\n")
             sorted_dict = sort_dict_by_keys(cpu_gpu_data)
-            add_rows_to_latex_table_subkey(file, sorted_dict, "peak_gpu_utilization")
+            if load_cpu_gpu_data and not is_cpu_gpu_data_test:
+                add_rows_to_latex_table_subkey_train(file, sorted_dict, "peak_gpu_utilization")
+            else:
+                add_rows_to_latex_table_subkey(file, sorted_dict, "peak_gpu_utilization")
         elif type_of_data == "vram_usage":
-            file.write("\\textbf{Model} & \\textbf{VRAM} & \\textbf{MIN} & \\textbf{MAX} & \\textbf{Medián} \\\\ \hline\n")
+            if load_cpu_gpu_data and not is_cpu_gpu_data_test:
+                file.write("\\textbf{Model} & \\textbf{VRAM} \\\\ \hline\n")
+            else:
+                file.write("\\textbf{Model} & \\textbf{VRAM} & \\textbf{MIN} & \\textbf{MAX} & \\textbf{Medián} \\\\ \hline\n")
             sorted_dict = sort_dict_by_keys(cpu_gpu_data)
-            add_rows_to_latex_table_subkey(file, sorted_dict, "total_vram_mb")
+            if load_cpu_gpu_data and not is_cpu_gpu_data_test:
+                add_rows_to_latex_table_subkey_train(file, sorted_dict, "total_vram_mb")
+            else:
+                add_rows_to_latex_table_subkey(file, sorted_dict, "total_vram_mb")
         elif type_of_data == "time_of_run":
-            file.write("\\textbf{Model} & \\textbf{Čas [%]} & \\textbf{MIN} & \\textbf{MAX} & \\textbf{Medián} \\\\ \hline\n")
+            if load_cpu_gpu_data and not is_cpu_gpu_data_test:
+                file.write("\\textbf{Model} & \\textbf{Čas [%]} \\\\ \hline\n")
+            else:
+                file.write("\\textbf{Model} & \\textbf{Čas [%]} & \\textbf{MIN} & \\textbf{MAX} & \\textbf{Medián} \\\\ \hline\n")
             sorted_dict = sort_dict_by_keys(time_of_run_dict_tmp)
-            add_rows_to_latex_table(file, sorted_dict)
+            if load_cpu_gpu_data and not is_cpu_gpu_data_test:
+                add_rows_to_latex_table_train(file, sorted_dict)
+            else:
+                add_rows_to_latex_table(file, sorted_dict)
         else:
             print("Not found type of data.")
             return

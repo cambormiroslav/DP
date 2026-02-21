@@ -1,14 +1,14 @@
 \begin{table}[h!]
-\begin{tabular}{|l|l|l|l|l|}
+\begin{tabular}{|l|l|}
 \hline
-\textbf{Model} & \textbf{RAM} & \textbf{MIN} & \textbf{MAX} & \textbf{Medián} \\ \hline
-fasterrcnn & 2770,79 & 2770,79 & 2770,79 & 2770,79 \\ \hline
-maskrcnn & 1357,17 & 1357,17 & 1357,17 & 1357,17 \\ \hline
-retinanet & 665,31 & 665,31 & 665,31 & 665,31 \\ \hline
-yolo11l & 24091,73 & 24091,73 & 24091,73 & 24091,73 \\ \hline
-yolo11m & 25478,23 & 25478,23 & 25478,23 & 25478,23 \\ \hline
-yolo11n & 26080,58 & 26080,58 & 26080,58 & 26080,58 \\ \hline
-yolo11s & 27263,59 & 27263,59 & 27263,59 & 27263,59 \\ \hline
+\textbf{Model} & \textbf{RAM} \\ \hline
+fasterrcnn & 2770.78515625 \\ \hline
+maskrcnn & 1357.16796875 \\ \hline
+retinanet & 665.30859375 \\ \hline
+yolo11l & 24091.7265625 \\ \hline
+yolo11m & 25478.23046875 \\ \hline
+yolo11n & 26080.578125 \\ \hline
+yolo11s & 27263.59375 \\ \hline
 \end{tabular}
 \centering
 \caption{Využití paměti RAM (trénování modelu)}

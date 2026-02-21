@@ -1,14 +1,14 @@
 \begin{table}[h!]
-\begin{tabular}{|l|l|l|l|l|}
+\begin{tabular}{|l|l|}
 \hline
-\textbf{Model} & \textbf{CPU [%]} & \textbf{MIN} & \textbf{MAX} & \textbf{Medián} \\ \hline
-fasterrcnn & 0,50 & 0,50 & 0,50 & 0,50 \\ \hline
-maskrcnn & 0,49 & 0,49 & 0,49 & 0,49 \\ \hline
-retinanet & 0,50 & 0,50 & 0,50 & 0,50 \\ \hline
-yolo11l & 0,50 & 0,50 & 0,50 & 0,50 \\ \hline
-yolo11m & 1,47 & 1,47 & 1,47 & 1,47 \\ \hline
-yolo11n & 0,00 & 0,00 & 0,00 & 0,00 \\ \hline
-yolo11s & 0,00 & 0,00 & 0,00 & 0,00 \\ \hline
+\textbf{Model} & \textbf{CPU [%]} \\ \hline
+fasterrcnn & 0.504 \\ \hline
+maskrcnn & 0.488 \\ \hline
+retinanet & 0.504 \\ \hline
+yolo11l & 0.504 \\ \hline
+yolo11m & 1.465 \\ \hline
+yolo11n & 0.0 \\ \hline
+yolo11s & 0.0 \\ \hline
 \end{tabular}
 \centering
 \caption{Využití procesoru z hlavního vlákna (trénování modelu)}
