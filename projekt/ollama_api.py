@@ -14,25 +14,31 @@ is_mistral = False
 
 type_of_data, correct_data_path = functions.get_type_of_data_and_correct_data_path(ocr_method)
 
-"""
-* Transform the input image to base64.
-
-Input: Path to input image
-Output: Base64 image
-"""
 def get_image_in_base64(path_to_image):
+    """
+    Transform the input image to base64.
+
+    Input: 
+        - path_to_image:
+            - path to input image
+    Output: 
+        - base64 image
+    """
     with open(path_to_image, "rb") as image_file:
         image_base64 = base64.b64encode(image_file.read()).decode("utf-8")
     
     return image_base64
 
-"""
-* Send request to the model
-
-Input: (Image in base64, Text pattern for model)
-Output: Response as text
-"""
 def send_image_request(image_base64, model, text_request):
+    """
+    Send request to the model
+
+    Input:
+        - image_base64:
+            - image in base64, Text pattern for model)
+    Output: 
+        - response as text
+    """
     url = "http://localhost:11434/api/generate"
     payload = {
         "model" : model,
@@ -48,18 +54,26 @@ def send_image_request(image_base64, model, text_request):
     except:
         return "error: not sended data"
 
-"""
-* Load the specified number of images from directory path.
-* Measure the time of run between request and response of model is seconds.
-* Call reformat the image as base64.
-* Call method that send request to model.
-* Call check of data got from model as response.
-* Call saving of got data from checking data for future data processing.
-
-Input: (Path to directory with input images, count of input images)
-Output: None (but call save to file)
-"""
 def load_and_measure(dir_path, model, first_ticket, latest_file):
+    """
+    * Load the specified number of images from directory path.
+    * Measure the time of run between request and response of model is seconds.
+    * Measure CPU/GPU and RAM/VRAM usage
+    * Call reformat the image as base64.
+    * Call method that send request to model.
+    * Call check of data got from model as response.
+    * Call saving of got data from checking data for future data processing.
+
+    Input:
+        - dir_path:
+            - path to directory with input images
+        - model:
+            - text description of model
+        - first_ticket:
+            - number of first ticket (start of measurement)
+        - latest_file:
+            - number of last ticket (end of measurement)
+    """
     i = first_ticket - 1
     array_of_images = os.listdir(dir_path)
     while(True):

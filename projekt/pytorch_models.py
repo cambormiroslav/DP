@@ -29,20 +29,54 @@ model_dir_path = "./models/"
 if not os.path.exists(model_dir_path):
     os.makedirs(model_dir_path)
 
+#transform data to COCO format
 class CocoTransform:
     def __call__(self, image, target):
         image = F.to_tensor(image)
         return image, target
 
 def prepare_image(image_path, device):
+    """
+    * Load image in RGB
+    * Transform to tensor
+    * Move image to device
+
+    Input:
+        - image_path:
+            - path to image
+        - device
+            - device instance
+    Output:
+        - Moved image to device
+    """
     image = Image.open(image_path).convert("RGB")
     image_tensor = F.to_tensor(image).unsqueeze(0)
     return image_tensor.to(device)
 
 def get_class_name(class_id):
+    """
+    Getter for class name
+
+    Input:
+        - class_id;
+            - id of object class
+    Output:
+        - name of object class
+    """
     return COCO_CLASSES.get(class_id, "Unknown")
 
 def get_coco_dataset(img_dir, annotation_file):
+    """
+    Load dataset in COCO format
+
+    Input:
+        - img_dir:
+            - path to test image directory
+        - annotation_file
+            - test annotations for imagess
+    Output:
+        - COCO detection dataset
+    """
     return CocoDetection(
         root=img_dir,
         annFile=annotation_file,
@@ -50,6 +84,17 @@ def get_coco_dataset(img_dir, annotation_file):
     )
 
 def get_model(model, num_classes):
+    """
+    Get model instance
+
+    Input:
+        - model:
+            - text represetation of model
+        - num_classes:
+            - count of classes
+    Output:
+        - model instance
+    """
     if model == "fasterrcnn":
         model = torchvision.models.detection.fasterrcnn_resnet50_fpn(weights=FasterRCNN_ResNet50_FPN_Weights.DEFAULT)
         in_features = model.roi_heads.box_predictor.cls_score.in_features
@@ -74,6 +119,23 @@ def get_model(model, num_classes):
     return model
 
 def train_one_epoch(model, optimizer, data_loader, device, epoch, add_mask):
+    """
+    Train model for one epoch
+
+    Input:
+        - model:
+            - model instance
+        - optimizer:
+            - optimizer instance
+        - data_loader:
+            - train image dataset
+        - device:
+            - device instance
+        - epoch:
+            - count of trainning epochs
+        - add_mask:
+            - boolean mask switch
+    """
     model.train()
     for images, targets in data_loader:
         images = [image.to(device) for image in images]
@@ -117,6 +179,17 @@ def train_one_epoch(model, optimizer, data_loader, device, epoch, add_mask):
     print(f"Epoch [{epoch}] loss:{losses.item():.4f}.")
 
 def train_model(model_text, train_dataloader, number_of_epochs):
+    """
+    Train model
+
+    Input:
+        - model_text:
+            - text represetation of model
+        - train_dataloader:
+            - train loaded data
+        - number_of_epochs:
+            - count of epochs
+    """
     num_classes = 2
     model = get_model(model_text, num_classes)
 
@@ -139,6 +212,15 @@ def train_model(model_text, train_dataloader, number_of_epochs):
             torch.save(model.state_dict(), model_path)
 
 def load_image_paths(img_dir_path):
+    """
+    Load image paths
+
+    Input:
+        - img_dir_path:
+            - path to directory with images
+    Output:
+        - array of images paths
+    """
     array_of_paths = []
     array_of_images = os.listdir(img_dir_path)
     for image in array_of_images:
@@ -147,6 +229,19 @@ def load_image_paths(img_dir_path):
     return array_of_paths
 
 def eval_img_model(model_text, array_of_image_paths, number_of_epochs):
+    """
+    * Test model
+    * Measure the time of run between request and response of model is seconds.
+    * Measure CPU/GPU and RAM/VRAM usage
+
+    Input:
+        - model_text
+            - text representation of model
+        - array_of_image_paths
+            - array of test images paths
+        - number_of_epochs
+            - number of trained epochs
+    """
     num_classes = 2
     model = get_model(model_text, num_classes)
     model.load_state_dict(torch.load(os.path.join(model_dir_path, f"{model_text}_epoch_{number_of_epochs}.pth")))
@@ -257,6 +352,22 @@ def eval_img_model(model_text, array_of_image_paths, number_of_epochs):
                                            0) #this information is in other file there
 
 def load_and_measure(model, train_dataloader, train_switch, eval_switch):
+    """
+    * Measure the time of run between request and response of model is seconds.
+    * Measure CPU/GPU and RAM/VRAM usage
+    * Train model
+    * Call test model
+
+    Input:
+        - model
+            - text representation of model
+        - train_dataloader
+            - loaded train data
+        - train_switch
+            - switch for train model
+        - eval_switch
+            - switch for test model
+    """
     if train_switch:
         #get process id
         pid = os.getpid()
@@ -323,21 +434,6 @@ def load_and_measure(model, train_dataloader, train_switch, eval_switch):
                                        ram_usage, functions.monitor_data["peak_gpu_utilization"], total_vram_mb, diff_datetime_seconds)
     if eval_switch:
         eval_img_model(model, load_image_paths("../dataset/yolo_dataset/test/images"), number_of_epochs)
-
-def load_and_calculate_model_size(model_text, number_of_epochs):
-    num_classes = 2
-    model = get_model(model_text, num_classes)
-    model.load_state_dict(torch.load(os.path.join(model_dir_path, f"{model_text}_epoch_{number_of_epochs}.pth")))
-
-    # Velikost parametrů (weights)
-    param_size = sum(p.nelement() * p.element_size() for p in model.parameters())
-    # Velikost bufferů (např. v BatchNorm)
-    buffer_size = sum(b.nelement() * b.element_size() for b in model.buffers())
-    
-    total_size_bytes = param_size + buffer_size
-    total_size_mb = total_size_bytes / (1024**2)
-    
-    return total_size_mb
 
 if __name__ == "__main__":
     train_dataset = get_coco_dataset("../dataset/yolo_dataset/train/images", "../dataset/coco_annotations/train/annotations.json")

@@ -56,6 +56,26 @@ ollama_models = ["llava", "bakllava", "minicpm-v", "knoopx/mobile-vlm:3b-fp16", 
 number_of_inputs = 20
 
 def calcute_timediff_and_save(response, start_datetime, end_datetime, model, pattern_key, file_name, type_of_data, correct_data_path):
+    """
+    * Calculate time of run tests
+    * Call check data
+    * Call saving data
+
+    Input:
+        - response
+            - text representation of response
+        - start_datetime
+            - start of test
+        - end_datetime
+            - end of test
+        - model
+            - model text representation
+        - pattern_key
+            - pattern reprezentation
+        - file_name
+        - type_of_data
+        - correct_data_path
+    """
     diff_datetime = end_datetime - start_datetime
     diff_datetime_seconds = diff_datetime.total_seconds()
 
@@ -79,6 +99,23 @@ def calcute_timediff_and_save(response, start_datetime, end_datetime, model, pat
         functions.save_to_file_object_main_pattern_test(renamed_model, type_of_data, diff_datetime_seconds, json_loaded, pattern_key)
 
 def send_gemini_request(image_path, file_name, model, text_request, pattern_key, correct_data_path, type_of_data):
+    """
+    Call send request to Gemini models
+
+    Input:
+        - image_path
+            - path to test image
+        - file_name
+            - test file name
+        - model
+            - model text representation
+        - text_request
+            - text request sended to model
+        - pattern_key
+            - identificator of text request
+        - correct_data_path
+        - type_of_data
+    """
     start_datetime = datetime.datetime.now()
     response = gemini.send_image_request(image_path, model, text_request)
     end_datetime = datetime.datetime.now()
@@ -86,6 +123,23 @@ def send_gemini_request(image_path, file_name, model, text_request, pattern_key,
     calcute_timediff_and_save(response, start_datetime, end_datetime, model, pattern_key, file_name, type_of_data, correct_data_path)
 
 def send_openai_request(image_path, file_name, model, text_request, pattern_key, correct_data_path, type_of_data):
+    """
+    Call send request to OpenAI models
+
+    Input:
+        - image_path
+            - path to test image
+        - file_name
+            - test file name
+        - model
+            - model text representation
+        - text_request
+            - text request sended to model
+        - pattern_key
+            - identificator of text request
+        - correct_data_path
+        - type_of_data
+    """
     start_datetime = datetime.datetime.now()
     response = openai.send_image_request(image_path, model, text_request)
     end_datetime = datetime.datetime.now()
@@ -93,6 +147,23 @@ def send_openai_request(image_path, file_name, model, text_request, pattern_key,
     calcute_timediff_and_save(response, start_datetime, end_datetime, model, pattern_key, file_name, type_of_data, correct_data_path)
 
 def send_ollama_request(image_path, file_name, model, text_request, pattern_key, correct_data_path, type_of_data):
+    """
+    Call send request to Ollama models
+
+    Input:
+        - image_path
+            - path to test image
+        - file_name
+            - test file name
+        - model
+            - model text representation
+        - text_request
+            - text request sended to model
+        - pattern_key
+            - identificator of text request
+        - correct_data_path
+        - type_of_data
+    """
     start_datetime = datetime.datetime.now()
     response = ollama_api.send_image_request(ollama_api.get_image_in_base64(image_path), model, text_request)
     end_datetime = datetime.datetime.now()
@@ -100,6 +171,9 @@ def send_ollama_request(image_path, file_name, model, text_request, pattern_key,
     calcute_timediff_and_save(response, start_datetime, end_datetime, model, pattern_key, file_name, type_of_data, correct_data_path)
 
 def test_ocr():
+    """
+    Call testing OCR
+    """
     correct_data_path = "../data_for_control/dataset_correct_data.json"
     dataset_dir_path = "../dataset/large-receipt-image-dataset-SRD/"
     sorted_array_of_images = sorted(os.listdir(dataset_dir_path))
@@ -129,6 +203,9 @@ def test_ocr():
                     send_ollama_request(image_path, file, model, patternsOcrCz[pattern_cz], pattern_cz, correct_data_path, "ticket")
 
 def test_object():
+    """
+    Call testing OCR
+    """
     correct_data_path = "../data_for_control/dataset_objects_correct_data.json"
     dataset_dir_path = "../dataset/objects/"
     sorted_array_of_images = sorted(os.listdir(dataset_dir_path))
@@ -158,5 +235,5 @@ def test_object():
                     send_ollama_request(image_path, file, model, patternsObjectCz[pattern_cz], pattern_cz, correct_data_path, "object")
 
 if __name__ == "__main__":
-    #test_ocr()
+    test_ocr()
     test_object()

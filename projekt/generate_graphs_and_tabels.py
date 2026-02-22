@@ -117,6 +117,9 @@ model_string_for_pattern = ""
 count_of_data = 0
 
 def set_output_dir():
+    """
+    Set all output directories
+    """
     global output_dir
     global count_of_data
 
@@ -140,6 +143,9 @@ def set_output_dir():
     count_of_data = functions.get_count_of_data(type_of_dataset)
 
 def make_initial_structures():
+    """
+    Clear all global structures
+    """
     global model_string_for_pattern
     global count_of_data
 
@@ -183,16 +189,56 @@ def make_initial_structures():
     count_of_data = 0
 
 def get_count_of_all_data(correct_data, incorect_data, not_finded, goods_not_finded):
+    """
+    Get count of all OCR data
+
+    Input:
+        - correct_data
+        - incorect_data
+        - not_finded
+            - not found data in response
+        - goods_not_finded
+            - not found goods in response
+    Output:
+        - count_of_all_data
+    """
     count_of_all_data = correct_data + incorect_data + not_finded + 3 * goods_not_finded
     return count_of_all_data
 
 def sort_dict_by_keys(input_dict):
+    """
+    Sort dictionary by keys
+
+    Input:
+        - input_dict:
+            - dictionary to be sorted
+    Output:
+        - sorted dictionary
+    """
     return {k: v for k, v in sorted(input_dict.items(), key=lambda item: item[0])}
 
 def transform_not_json_objects_dict_for_graph(dict):
+    """
+    Transform correct format data for graph
+
+    Input:
+        - dict:
+            - dictionary to be transformed
+    Output:
+        - transformed dictionary
+    """    
     return {key: count_number_of_types_jsons(obj) for key, obj in not_found_json_dict.items()}
 
 def count_number_of_types_jsons(output_array):
+    """
+    Count correctness of format in object detection
+
+    Input:
+        - output_array:
+            - numbers means format correctness
+    Output:
+        - dictionary with transformed correctness data 
+    """
     count_of_zeros = 0
     count_of_ones = 0
     count_of_two = 0
@@ -214,6 +260,19 @@ def count_number_of_types_jsons(output_array):
         }
 
 def generate_boxplot(tick_labels, values, y_label, type_data, model_name):
+    """
+    Generate boxplot graph
+
+    Input: 
+        - tick_labels:
+            - x labels
+        - values
+        - y_label
+        - type_data:
+            - type of metrics data
+        - model_name:
+            - text representation of model
+    """
     fig, ax = plt.subplots()
     ax.set_ylabel(y_label)
     ax.set_xticklabels(tick_labels)
@@ -258,9 +317,18 @@ def generate_boxplot(tick_labels, values, y_label, type_data, model_name):
             else:
                 plt.savefig(os.path.join(graphs_objects_dir, f"{type_data}_{type_of_dataset}.svg"))
 
-def generate_bar(models, values, type_of_data):
+def generate_bar(x_labels, values, type_of_data):
+    """
+    Generate chart graph
+
+    Input:
+        - x_labels
+        - values
+        - type_of_data:
+            - type of metrics data
+    """
     plt.figure()
-    plt.bar(models, values, color = colors)
+    plt.bar(x_labels, values, color = colors)
     if type_of_data == "not_json":
         plt.ylabel("Nenavráceno jako JSON")
     elif type_of_data == "precision":
@@ -303,6 +371,17 @@ def generate_bar(models, values, type_of_data):
     plt.savefig(graph_path)
 
 def generate_grouped_bar_objects(dict_data, model, type_of_data):
+    """
+    Generate grouped chart graph
+
+    Input:
+        - dict_data:
+            - dictionary data for this graph
+        - model:
+            - text representation of model
+        - type_of_data:
+            - type of metrics data
+    """
     dict_sorted = sort_dict_by_keys(dict_data).copy()
     for pattern in dict_sorted:
         dict_sorted[pattern] = sort_dict_by_keys(dict_sorted[pattern])
@@ -381,6 +460,15 @@ def generate_grouped_bar_objects(dict_data, model, type_of_data):
     plt.savefig(graph_path)
 
 def add_rows_to_latex_table(file, dictionary):
+    """
+    Create row in LaTeX table
+
+    Input:
+        - file:
+            - output file path
+        - dictionary:
+            - input data
+    """
     for model in dictionary:
         values = dictionary[model]
         if len(values) != 0:
@@ -396,11 +484,31 @@ def add_rows_to_latex_table(file, dictionary):
             file.write(f"{model} & {value_avg_string} & {value_min_string} & {value_max_string} & {value_median_string} \\\\ \hline\n")
 
 def add_rows_to_latex_table_train(file, dictionary):
+    """
+    Create row in LaTeX table (train data)
+
+    Input:
+        - file:
+            - output file path
+        - dictionary:
+            - input data
+    """
     for model in dictionary:
         value = dictionary[model][0]
         file.write(f"{model} & {value} \\\\ \hline\n")
 
 def add_rows_to_latex_table_subkey(file, dictionary, subkey):
+    """
+    Create row in LaTeX table
+
+    Input:
+        - file:
+            - output file path
+        - dictionary:
+            - input data
+        - subkey:
+            - specify type of data in dictionary in subkey
+    """
     for model in dictionary:
         values = dictionary[model][subkey]
         if len(values) != 0:
@@ -416,11 +524,29 @@ def add_rows_to_latex_table_subkey(file, dictionary, subkey):
             file.write(f"{model} & {value_avg_string} & {value_min_string} & {value_max_string} & {value_median_string} \\\\ \hline\n")
 
 def add_rows_to_latex_table_subkey_train(file, dictionary, subkey):
+    """
+    Create row in LaTeX table (train data)
+
+    Input:
+        - file:
+            - output file path
+        - dictionary:
+            - input data
+        - subkey:
+            - specify type of data in dictionary in subkey
+    """
     for model in dictionary:
         value = dictionary[model][subkey][0]
         file.write(f"{model} & {value} \\\\ \hline\n")
 
 def generate_latex_table_and_save_to_file(type_of_data):
+    """
+    Generate whole LaTeX table to file
+
+    Input:
+        - type_of_data:
+            - generate table for (metrics)
+    """
     if load_cpu_gpu_data and not is_cpu_gpu_data_test:
         output_file_path = f"{tables_dir}{type_of_data}_{type_of_dataset}_train"
     elif load_cpu_gpu_data and is_cpu_gpu_data_test:
@@ -647,6 +773,13 @@ def generate_latex_table_and_save_to_file(type_of_data):
         file.write("\\end{table}\n")
 
 def generate_graph(type_of_data):
+    """
+    Prepare data to generate boxplot graphs
+    
+    Input:
+        - type_of_data:
+            - type of metrics data not method
+    """
     tick_labels = []
     values = []
     y_label = ""
@@ -733,6 +866,15 @@ def generate_graph(type_of_data):
         generate_boxplot(tick_labels, values, y_label, type_of_data, "")
 
 def generate_bar_graph_from_data(dict_data, type_of_data):
+    """
+    Prepare data to generate chart graph
+
+    Input:
+        - dict_data:
+            - dictionary with data
+        - type_of_data:
+            - type of metrics data
+    """
     names = []
     values = []
 
@@ -745,6 +887,27 @@ def generate_bar_graph_from_data(dict_data, type_of_data):
     generate_bar(names, values, type_of_data)
 
 def load_output_of_models_base(file_path, pattern_directory):
+    """
+    Load OCR data (base)
+
+    Input:
+        - file_path:
+            -  file name
+        - pattern_directory:
+            - pattern directory name
+    Output:
+        - correctness_array
+        - correct_data_count_array
+        - incorrect_data_count_array
+        - not_finded_main_count_key_array
+            - data not found
+        - goods_not_finded_count_array
+            - good not found
+        - time_run_array
+            - time of run
+        - not_found_json
+            - correctness of format
+    """
     if pattern_directory == "":
         path_to_data = os.path.join(output_dir, file_path)
     else:
@@ -786,42 +949,98 @@ def load_output_of_models_base(file_path, pattern_directory):
             goods_not_finded_count_array, time_run_array, not_found_json)
 
 def add_to_correctness_dict_pattern(model_name, pattern_name, value):
+    """
+    Add correctness to dictionary for pattern tests
+
+    Input:
+        - model_name
+        - pattern_name
+        - value
+    """
     if model_name not in correctness_tmp_dict:
         correctness_tmp_dict[model_name] = {pattern_name: value}
     else:
         correctness_tmp_dict[model_name][pattern_name] = value
 
 def add_to_incorrect_data_dict_pattern(model_name, pattern_name, value):
+    """
+    Add incorrect data to dictionary for pattern tests
+
+    Input:
+        - model_name
+        - pattern_name
+        - value
+    """
     if model_name not in incorrect_data_count_tmp_dict:
         incorrect_data_count_tmp_dict[model_name] = {pattern_name: value}
     else:
         incorrect_data_count_tmp_dict[model_name][pattern_name] = value
 
 def add_to_not_founded_data_dict_pattern(model_name, pattern_name, value):
+    """
+    Add not found data to dictionary for pattern tests
+
+    Input:
+        - model_name
+        - pattern_name
+        - value
+    """
     if model_name not in not_finded_main_count_key_tmp_dict:
         not_finded_main_count_key_tmp_dict[model_name] = {pattern_name: value}
     else:
         not_finded_main_count_key_tmp_dict[model_name][pattern_name] = value
 
 def add_to_goods_not_founded_data_dict_pattern(model_name, pattern_name, value):
+    """
+    Add goods not found to dictionary for pattern tests
+
+    Input:
+        - model_name
+        - pattern_name
+        - value
+    """
     if model_name not in goods_not_finded_count_tmp_dict:
         goods_not_finded_count_tmp_dict[model_name] = {pattern_name: value}
     else:
         goods_not_finded_count_tmp_dict[model_name][pattern_name] = value
 
 def add_to_time_run_dict_pattern(model_name, pattern_name, value):
+    """
+    Add time of run to dictionary for pattern tests
+
+    Input:
+        - model_name
+        - pattern_name
+        - value
+    """
     if model_name not in time_run_tmp_dict:
         time_run_tmp_dict[model_name] = {pattern_name: value}
     else:
         time_run_tmp_dict[model_name][pattern_name] = value
 
 def add_not_found_json_dict_pattern(model_name, pattern_name, value):
+    """
+    Add correctness of format to dictionary for pattern tests
+
+    Input:
+        - model_name
+        - pattern_name
+        - value
+    """
     if model_name not in not_found_json_tmp_dict:
         not_found_json_tmp_dict[model_name] = {pattern_name: value}
     else:
         not_found_json_tmp_dict[model_name][pattern_name] = value
 
 def load_output_of_models(file_path, model_name):
+    """
+    Add loaded OCR data to dictionaries
+
+    Input:
+        - file_path
+            - file name
+        - model_name
+    """
     data = load_output_of_models_base(file_path, "")
                         
     correctness_dict[model_name] = data[0]
@@ -833,6 +1052,15 @@ def load_output_of_models(file_path, model_name):
     not_found_json_dict[model_name] = data[6]
 
 def load_output_of_models_objects_base(file_path, pattern_directory):
+    """
+    Load object detection data (base)
+
+    Input:
+        - file_path
+            - file name
+        - pattern_directory
+            - pattern directory name
+    """
     if pattern_directory == "":
         path_to_data = os.path.join(output_dir, file_path)
     else:
@@ -866,6 +1094,15 @@ def load_output_of_models_objects_base(file_path, pattern_directory):
             mar_100_sum, mar_large_sum, number_of_entries)
 
 def add_to_map_dict(model_name, iou, value):
+    """
+    Add mAP data to dictionary
+
+    Input:
+        - model_name
+        - iou
+            - IoU
+        - value
+    """
     if model_name not in map_dict:
         map_dict[model_name] = {iou: value}
     else:
@@ -880,12 +1117,30 @@ def add_to_map_dict_transform(dictionary, pattern, iou, value):
     return dictionary
 
 def add_to_map_50_dict(model_name, iou, value):
+    """
+    Add mAP (50 % IoU) data to dictionary
+
+    Input:
+        - model_name
+        - iou
+            - IoU
+        - value
+    """
     if model_name not in map_50_dict:
         map_50_dict[model_name] = {iou: value}
     else:
         map_50_dict[model_name][iou] = value
 
 def add_to_map_50_dict_transform(dictionary, pattern, iou, value):
+    """
+    Add mAP (50 % IoU) data to dictionary for pattern tests
+
+    Input:
+        - model_name
+        - iou
+            - IoU
+        - value
+    """
     if pattern not in dictionary:
         dictionary[pattern] = {iou: value}
     else:
@@ -894,12 +1149,30 @@ def add_to_map_50_dict_transform(dictionary, pattern, iou, value):
     return dictionary
 
 def add_to_map_75_dict(model_name, iou, value):
+    """
+    Add mAP (75 % IoU) data to dictionary
+
+    Input:
+        - model_name
+        - iou
+            - IoU
+        - value
+    """
     if model_name not in map_75_dict:
         map_75_dict[model_name] = {iou: value}
     else:
         map_75_dict[model_name][iou] = value
 
 def add_to_map_75_dict_transform(dictionary, pattern, iou, value):
+    """
+    Add mAP (75 % IoU) data to dictionary for pattern tests
+
+    Input:
+        - model_name
+        - iou
+            - IoU
+        - value
+    """
     if pattern not in dictionary:
         dictionary[pattern] = {iou: value}
     else:
@@ -908,12 +1181,30 @@ def add_to_map_75_dict_transform(dictionary, pattern, iou, value):
     return dictionary
 
 def add_to_map_large_dict(model_name, iou, value):
+    """
+    Add mAP (large data) data to dictionary
+
+    Input:
+        - model_name
+        - iou
+            - IoU
+        - value
+    """
     if model_name not in map_large_dict:
         map_large_dict[model_name] = {iou: value}
     else:
         map_large_dict[model_name][iou] = value
 
 def add_to_map_large_dict_transform(dictionary, pattern, iou, value):
+    """
+    Add mAP (large data) data to dictionary for pattern tests
+
+    Input:
+        - model_name
+        - iou
+            - IoU
+        - value
+    """
     if pattern not in dictionary:
         dictionary[pattern] = {iou: value}
     else:
@@ -922,12 +1213,30 @@ def add_to_map_large_dict_transform(dictionary, pattern, iou, value):
     return dictionary
 
 def add_to_mar_100_dict(model_name, iou, value):
+    """
+    Add recall (for 100 items) data to dictionary
+
+    Input:
+        - model_name
+        - iou
+            - IoU
+        - value
+    """
     if model_name not in mar_100_dict:
         mar_100_dict[model_name] = {iou: value}
     else:
         mar_100_dict[model_name][iou] = value
 
 def add_to_mar_100_dict_transform(dictionary, pattern, iou, value):
+    """
+    Add recall (for 100 items) data to dictionary for pattern tests
+
+    Input:
+        - model_name
+        - iou
+            - IoU
+        - value
+    """
     if pattern not in dictionary:
         dictionary[pattern] = {iou: value}
     else:
@@ -936,12 +1245,30 @@ def add_to_mar_100_dict_transform(dictionary, pattern, iou, value):
     return dictionary
 
 def add_to_mar_large_dict(model_name, iou, value):
+    """
+    Add recall (large dataset) data to dictionary
+
+    Input:
+        - model_name
+        - iou
+            - IoU
+        - value
+    """
     if model_name not in mar_large_dict:
         mar_large_dict[model_name] = {iou: value}
     else:
         mar_large_dict[model_name][iou] = value
 
 def add_to_mar_large_dict_transform(dictionary, pattern, iou, value):
+    """
+    Add recall (large dataset) data to dictionary for pattern tests
+
+    Input:
+        - model_name
+        - iou
+            - IoU
+        - value
+    """
     if pattern not in dictionary:
         dictionary[pattern] = {iou: value}
     else:
@@ -950,6 +1277,15 @@ def add_to_mar_large_dict_transform(dictionary, pattern, iou, value):
     return dictionary
 
 def load_output_of_models_objects(file_path, model_name, iou):
+    """
+    Add object data to dictionary
+
+    Input:
+        - file_path
+            - file name
+        - model_name
+        - iou
+    """
     data = load_output_of_models_objects_base(file_path, "")
     
     add_to_map_dict(model_name, iou, data[0] / data[6])
@@ -960,6 +1296,20 @@ def load_output_of_models_objects(file_path, model_name, iou):
     add_to_mar_large_dict(model_name, iou, data[5] / data[6])
 
 def load_output_of_models_objects_main_base(file_path, pattern_directory):
+    """
+    Load time of run and correctness of format data for object detection
+
+    Input: 
+        - file_path
+            - file name
+        - pattern_directory
+            - pattern directory name
+    Output:
+        - array_of_time_of_run
+            - time of run data in array
+        - json_loading_array
+            - correctness format data in array
+    """
     if pattern_directory == "":
         path_to_data = os.path.join(output_dir, file_path)
     else:
@@ -980,28 +1330,84 @@ def load_output_of_models_objects_main_base(file_path, pattern_directory):
     return array_of_time_of_run, json_loading_array
 
 def add_to_time_of_run_dict(model_name, value):
+    """
+    Add time of run tests to dictionary
+
+    Input:
+        - model_name
+        - value
+    """
     time_run_dict[model_name] = value
 
 def add_to_time_of_run_dict_transform(dictionary, pattern, value):
+    """
+    Add time of run tests to dictionary for pattern tests
+
+    Input:
+        - dictionary:
+            - dictionary with data
+        - pattern:
+            pattern name
+        - value
+    Output:
+        - dictionary:
+            - dictionary with added data
+    """
     dictionary[pattern] = value
 
     return dictionary
 
 def add_to_not_found_json_object_dict(model_name, value):
+    """
+    Add correctness of format data to dictionary
+
+    Input:
+        - model_name
+        - value
+    """
     not_found_json_dict[model_name] = value
 
 def add_to_not_found_json_tmp_dict_transform(dictionary, pattern, value):
+    """
+    Add correctness of format data to dictionary for pattern tests
+
+    Input:
+        - dictionary:
+            - dictionary with data
+        - pattern:
+            pattern name
+        - value
+    Output:
+        - dictionary:
+            - dictionary with added data
+    """
     dictionary[pattern] = value
 
     return dictionary
 
 def load_output_of_models_objects_main(file_path, model_name):
+    """
+    Add time of run data and correctness of format to dictionary
+
+    Input:
+        - file_path:
+            - file name
+        - model_name
+    """
     data = load_output_of_models_objects_main_base(file_path, "")
 
     add_to_time_of_run_dict(model_name, data[0])
     add_to_not_found_json_object_dict(model_name, data[1])
 
 def load_cpu_gpu_data_of_models(file_path, model_name):
+    """
+    Load CPU/GPU and RAM/VRAM usage data and add to dictionary
+
+    Input:
+        - file_path:
+            - file name
+        - model_name
+    """
     path_to_data = output_dir + file_path
 
     with open(path_to_data, "r") as file:
@@ -1031,6 +1437,9 @@ def load_cpu_gpu_data_of_models(file_path, model_name):
 
 
 def load_all_data():
+    """
+    Call load OCR measurement data
+    """
     for file in os.listdir(output_dir):
         model = file.split("_")[0]
         if model == "llava":
@@ -1055,6 +1464,15 @@ def load_all_data():
                         load_output_of_models_objects(file, model, third)
 
 def load_output_of_models_pattern(file_path, model_name, pattern_name):
+    """
+    Add OCR pattern tests data to directory
+
+    Input:
+        - file_path
+            - file name
+        - model_name
+        - pattern_name
+    """
     data = load_output_of_models_base(file_path, pattern_name)
 
     add_to_correctness_dict_pattern(model_name, pattern_name, data[0])
@@ -1067,12 +1485,32 @@ def load_output_of_models_pattern(file_path, model_name, pattern_name):
     add_not_found_json_dict_pattern(model_name, pattern_name, data[6])
 
 def load_output_of_models_objects_main_pattern(file_path, model_name, pattern_name):
+    """
+    Add time of run and correctness format in pattern tests to directory (object detection)
+
+    Input:
+        - file_path
+            - file name
+        - model_name
+        - pattern_name
+    """
     time_of_run_dict_array, not_found_json_object_array = load_output_of_models_objects_main_base(file_path, pattern_name)
     
     add_to_time_run_dict_pattern(model_name, pattern_name, time_of_run_dict_array)
     add_not_found_json_dict_pattern(model_name, pattern_name, not_found_json_object_array)
 
 def load_output_of_models_objects_pattern(file_path, model_name, pattern_name, iou):
+    """
+    Add object data measurement data to dictionary
+
+    Input:
+        - file_path
+            - file name
+        - model_name
+        - pattern_name
+        - iou
+            - IoU
+    """
     data = load_output_of_models_objects_base(file_path, pattern_name)
 
     if model_name not in map_tmp_dict:
@@ -1124,6 +1562,9 @@ def load_output_of_models_objects_pattern(file_path, model_name, pattern_name, i
             mar_large_tmp_dict[model_name][pattern_name][iou] = data[5] / data[6]
 
 def load_all_data_pattern():
+    """
+    Load all pattern data OCR
+    """
     for pattern in os.listdir(output_dir):
         path_to_pattern_dir = os.path.join(output_dir, pattern)
         for file in os.listdir(path_to_pattern_dir):
@@ -1146,6 +1587,10 @@ def load_all_data_pattern():
                         load_output_of_models_objects_pattern(file, model, pattern, third)
 
 def transform_object_pattern_data_to_normal():
+    """
+    Transform object pattern data to normal 
+    structure for graphs and tabulars
+    """
     map_array = []
     map_50_array = []
     map_75_array = []
@@ -1199,6 +1644,10 @@ def transform_object_pattern_data_to_normal():
             map_large_array, mar_100_array, mar_large_array)
 
 def transform_ocr_pattern_data_to_normal():
+    """
+    Transform OCR pattern data to normal 
+    structure for graphs and tabulars
+    """
     correctness_array = []
     correct_data_count_array = []
     incorrect_data_count_array = []
@@ -1241,6 +1690,10 @@ def transform_ocr_pattern_data_to_normal():
             goods_not_finded_count_array)
 
 def transform_time_of_run_and_not_json_pattern_data_to_normal():
+    """
+    Transform time of run and correctness format for object
+    pattern data to normal structure for graphs and tabulars
+    """
     time_of_run_array = []
     not_found_json_object_array = []
 
@@ -1260,6 +1713,9 @@ def transform_time_of_run_and_not_json_pattern_data_to_normal():
     return time_of_run_array, not_found_json_object_array
 
 def call_generating_graphs_and_tables_main():
+    """
+    Call generating all graphs and tabulars
+    """
     global time_of_run_dict_tmp
 
     if type_of_dataset == "ticket" and not load_cpu_gpu_data:
@@ -1302,6 +1758,9 @@ def call_generating_graphs_and_tables_main():
             generate_latex_table_and_save_to_file("time_of_run")
 
 def call_generating_graphs_and_tables_patterns(data_arrays_ocr, data_arrays_objects, data_arrays_objects_main):
+    """
+    Call generating all graphs and tabulars for pattern tests
+    """
     global correctness_dict
     global correct_data_count_dict
     global incorrect_data_count_dict
@@ -1433,6 +1892,10 @@ def call_generating_graphs_and_tables_patterns(data_arrays_ocr, data_arrays_obje
 
 
 def generate_all_graphs_and_tables():
+    """
+    Main funtion to call graphs and tabulars
+    for normal data and pattern test data 
+    """
     if not is_pattern_data:
         load_all_data()
         call_generating_graphs_and_tables_main()
@@ -1444,6 +1907,9 @@ def generate_all_graphs_and_tables():
         call_generating_graphs_and_tables_patterns(data_arrays_ocr, data_arrays_objects, data_arrays_objects_main)
 
 def call_generating_graphs_and_tables():
+    """
+    Automatic generating graphs and tabulars
+    """
     global load_cpu_gpu_data
     global is_cpu_gpu_data_test
 

@@ -77,12 +77,31 @@ monitor_data = {
 }
 
 def get_type_of_data_and_correct_data_path(ocr_method):
+    """
+    Getter for correct data path
+    
+    Input:
+        - ocr_method: if true OCR measurement else object detection
+    Output:
+        - type_of_data:
+            - ticket: OCR data
+            - objects: Object detection data
+        - path_to_correct_data
+    """
     if ocr_method:
         return "ticket", "../data_for_control/dataset_correct_data.json"
     else:
         return "objects", "../data_for_control/dataset_objects_correct_data.json"
 
 def get_count_of_data(type_of_data):
+    """
+    Getter to get count of correct data
+
+    Input:
+        - type_of_data:
+            - ticket for OCR
+            - objects for object detection
+    """
     if type_of_data == "ticket":
         return count_of_test_data_ocr
     elif type_of_data == "objects":
@@ -91,6 +110,23 @@ def get_count_of_data(type_of_data):
         return 0
 
 def get_pattern_for_model(type_of_data, model):
+    """
+    Getter for best pattern for model
+
+    Input:
+        - type_of_data:
+            - ticket for OCR
+            - objects for object detection
+        - model:
+            - model text representation
+    Output:
+        - pattern:
+            - best pattern
+        - found_switch:
+            - 0: model found
+            - 1: model not found
+            - 2: bad type of data
+    """
     if type_of_data == "ticket":
         if model in ocr_detection_dict_patterns:
             return (ocr_detection_dict_patterns[model], 0)
@@ -105,10 +141,26 @@ def get_pattern_for_model(type_of_data, model):
         return ("", 2)
 
 def create_dir_if_not_exists(path_to_directory):
+    """
+    Create directory if not exists
+
+    Input:
+        - path_to_directory:
+            - directory path
+    """
     if not os.path.exists(path_to_directory):
         os.makedirs(path_to_directory)
 
 def monitor_memory_gpu_vram(process, gpu_handle):
+    """
+    Measure peak RAM, CPU, VRAM and GPU usage
+
+    Input:
+        - process:
+            - process measurement for it
+        - gpu_handle:
+            - handle to GPU
+    """
     monitor_data["peak_rss_mb"] = 0.0
     monitor_data["peak_cpu_percent"] = 0.0
     monitor_data["peak_vram_mb"] = 0.0
@@ -170,6 +222,17 @@ def monitor_memory_gpu_vram(process, gpu_handle):
         time.sleep(0.01)
 
 def calculate_iou(box_ref, box_test):
+    """
+    Calculate IoU for every detected box
+
+    Input:
+        - box_ref:
+            - good box
+        - box_test:
+            - detected box
+    Output:
+        - IoU
+    """
     xmin_ref, ymin_ref, xmax_ref, ymax_ref = box_ref
     xmin_test, ymin_test, xmax_test, ymax_test = box_test
     
@@ -189,6 +252,16 @@ def calculate_iou(box_ref, box_test):
     return intersection / union_of_sizes
 
 def delete_objects_if_something_missing(detections):
+    """
+    Delete object if some data missing
+
+    Input:
+        - detections;
+            - detected objects
+    Output:
+        - kept:
+            - only objects with all data
+    """
     required = ("x_min", "y_min", "x_max", "y_max")
     kept = []
 
@@ -200,6 +273,16 @@ def delete_objects_if_something_missing(detections):
     return kept
 
 def transform_coordinates_to_int_if_not(detections):
+    """
+    Transform data to Integer
+
+    Input:
+        - detections:
+            - detected objects
+    Output:
+        - output:
+            - detections with transformed datatypes
+    """
     output = []
 
     for detected_object in detections:
@@ -225,6 +308,20 @@ def transform_coordinates_to_int_if_not(detections):
     return output
 
 def get_max_iou_and_good_boxes(file_name, detections):
+    """
+    Getter for data with maximal IoU and good boxes
+
+    Input:
+        - file_name:
+            - file name of test data to get good boxes
+        - detections:
+            - detected objects
+    Output:
+        - transformed_detections:
+            - detections with maximal IoU for every object
+        - good_boxes:
+            - good data
+    """
     good_boxes = get_boxes(file_name)
 
     correct_format_detections = delete_objects_if_something_missing(detections)
@@ -243,6 +340,16 @@ def get_max_iou_and_good_boxes(file_name, detections):
     return (transformed_detections, good_boxes)
 
 def get_boxes(file_name):
+    """
+    Load good data boxes for objects
+
+    Input:
+        - file_name:
+            - to get good boxes for file name
+    Output:
+        - boxes:
+            - good boxes
+    """
     correct_data_path = "../data_for_control/dataset_objects_correct_data.json"
     with open(correct_data_path, 'r') as file:
         data = json.load(file)
@@ -253,6 +360,19 @@ def get_boxes(file_name):
     return boxes
 
 def load_json_response(response):
+    """
+    Transform string with JSON to dictionary
+
+    Input:
+        - response: response from model
+    Output:
+        - dictionary:
+            - dictionary with data
+        - loaded:
+            - 0: is JSON with correct data
+            - 1: data not have the objects
+            - 2: not JSON
+    """
     try:
         json_response = json.loads(response)
         if "objects" in json_response:
@@ -263,6 +383,15 @@ def load_json_response(response):
         return ({"objects": []}, 2)
 
 def get_predictions_torch(detections):
+    """
+    Transform predictions to torch format
+    to calculate mAP and recall
+
+    Input:
+        - detections: detected objects
+    Output:
+        - predictions in Torch format
+    """
     boxes = []
     labels = []
     scores = []
@@ -289,6 +418,15 @@ def get_predictions_torch(detections):
     }]
 
 def get_target_torch(good_boxes):
+    """
+    Transform target to torch format
+    to calculate mAP and recall
+
+    Input:
+        - good_boxes: good boxes
+    Output:
+        - target in Torch format
+    """
     boxes = []
     labels = []
     for good_box in good_boxes:
@@ -301,6 +439,14 @@ def get_target_torch(good_boxes):
     }]
 
 def get_mAP(iou_detections, good_boxes, iou_threshold):
+    """
+    Calculate mAP and recall
+
+    Input:
+        - iou_detections: detections with IoU data
+        - good_boxes: good boxes
+        - iou_threshold: threshold for what IoU calculate mAP and. recall
+    """
     mAP_solver = MeanAveragePrecision(box_format='xyxy', iou_type="bbox")
 
     iou_detections_tmp = []
@@ -316,18 +462,26 @@ def get_mAP(iou_detections, good_boxes, iou_threshold):
     
     return mAP_result
 
-"""
-* Check the response characteristics.
-* Check corectness of data.
-* I not corrected output is: (0, 0, 0, count_of_correct_data, 0, {}, [], []).
-
-Input: (Dictionary model as string, Name of comparing img, Path to correct data file)
-Output: (Correctness, Count of correct data, Count of incorrect data, 
-        Not founded data in response (main keys), Not founded number of goods,
-        Dictionary of incorrect data, Array of not founded data (only keys),
-        Array of not founded names goods)
-"""
 def check_the_data_ocr(dict_model, name_of_file, path_to_correct_data, load_json):
+    """
+    Check the response characteristics and corectness of data.
+        - if not corrected output is: (0, 0, 0, count_of_correct_data, 0, {}, [], []).
+
+    Input: 
+        - dict_model: dictionary model as string
+        - name_of_file: name of comparing img
+        - path_to_correct_data: path to correct data file
+        - load_json: boolean if json must be loaded
+    Output: 
+        - correctness
+        - count of correct data
+        - count of incorrect data
+        - not founded data in response (main keys)
+        - not founded number of goods
+        - dictionary of incorrect data
+        - array of not founded data (only keys)
+        - array of not founded names goods
+    """
     correct_data_counted = 0
     incorrect_data_counted = 0
     not_in_dict_counted = 0
@@ -611,6 +765,17 @@ def check_the_data_ocr(dict_model, name_of_file, path_to_correct_data, load_json
         return (correctness, correct_data_counted, incorrect_data_counted, not_in_dict_counted, goods_not_counted, dict_incorrect, array_not_found, array_goods_not)
     
 def save_ocr_values(output_file_path, values, incorrect_data, not_found_data, good_not_found):
+    """
+    Save OCR measurement data to file
+
+    Input:
+        - output_file_path: path to file to save data
+        - values
+            - [correctness, correct_data_counted, incorrect_data_counted, not_data_found_counted, good_not_found_counted, time_diff]
+        - incorrect_data
+        - not_found_data
+        - good_not_found
+    """
     correctness = values[0]
     correct_data_counted = values[1]
     incorrect_data_counted = values[2]
@@ -622,26 +787,65 @@ def save_ocr_values(output_file_path, values, incorrect_data, not_found_data, go
         file.write(f"{correctness};{correct_data_counted};{incorrect_data_counted};{not_data_found_counted};{good_not_found_counted};{time_diff};{incorrect_data};{not_found_data};{good_not_found}\n")
 
 def save_object_values(output_file_path, map, map_50, map_75, map_large, mar_100, mar_large):
+    """
+    Save object mAP and recall data to file
+
+    Input:
+        - output_file_path: path to file to save data
+        - map: mAP
+        - map_50: mAP with 50 % IoU
+        - map_75: mAP with 70 % IoU
+        - map_large: mAP for large data
+        - mar_100: recall for hundred data
+        - mar_large: recall for large data
+    """
     with open(output_file_path, "+a") as file:
         file.write(f"{map};{map_50};{map_75};{map_large};{mar_100};{mar_large}\n")
 
 def save_object_main_values(output_file_path, time_diff, json_loaded):
+    """
+    Save time of run and JSON loaded data
+
+    Input:
+        - time_diff: time of run
+        - json_loaded: JSON loaded information
+    """
     with open(output_file_path, "+a") as file:
         file.write(f"{time_diff};{json_loaded}\n")
 
-"""
-* Save the characteristics of model response to the file.
-
-Input: (model name, type of data, charakteristics of data and time of run, incorrect data dict, 
-        not founded data array, not founded goods)
-Output: None
-"""  
 def save_to_file_ocr(model, type_of_data, values, incorrect_data, not_found_data, good_not_found):
+    """
+    * Create test directory
+    * Prepare output file path for OCR
+
+    Input:
+        - model: text representation of model
+        - type_of_data: type of data
+        - values
+            - [correctness, correct_data_counted, incorrect_data_counted, not_data_found_counted, good_not_found_counted, time_diff]
+        - incorrect_data
+        - not_found_data
+        - good_not_found
+    """
     create_dir_if_not_exists(test_dir_path_output)
     output_file_path = os.path.join(test_dir_path_output, f"{model}_{type_of_data}.txt")
     save_ocr_values(output_file_path, values, incorrect_data, not_found_data, good_not_found)
 
 def save_to_file_ocr_pattern_test(model, type_of_data, values, incorrect_data, not_found_data, good_not_found, pattern_key):
+    """
+    * Create test directory
+    * Prepare output file path for OCR (pattern tests)
+
+    Input:
+        - model: text representation of model
+        - type_of_data: type of data
+        - values
+            - [correctness, correct_data_counted, incorrect_data_counted, not_data_found_counted, good_not_found_counted, time_diff]
+        - incorrect_data
+        - not_found_data
+        - good_not_found
+        - pattern_key: pattern name
+    """
     create_dir_if_not_exists(pattern_test_dir_output_path)
     output_dir_path = os.path.join(pattern_test_dir_output_path, pattern_key)
     create_dir_if_not_exists(output_dir_path)
@@ -649,11 +853,42 @@ def save_to_file_ocr_pattern_test(model, type_of_data, values, incorrect_data, n
     save_ocr_values(output_file_path, values, incorrect_data, not_found_data, good_not_found)
 
 def save_to_file_object(model, type_of_data, map, map_50, map_75, map_large, mar_100, mar_large, iou):
+    """
+    * Create test directory
+    * Prepare output file path for object detection
+
+    Input:
+        - model: text representation of model
+        - type_of_data: type of data
+        - map: mAP
+        - map_50: mAP with 50 % IoU
+        - map_75: mAP with 70 % IoU
+        - map_large: mAP for large data
+        - mar_100: recall for hundred data
+        - mar_large: recall for large data
+        - iou: for which IoU save data
+    """
     create_dir_if_not_exists(test_dir_objects_path_output)
     output_file_path = os.path.join(test_dir_objects_path_output, f"{model}_{type_of_data}_{iou}.txt")
     save_object_values(output_file_path, map, map_50, map_75, map_large, mar_100, mar_large)
 
 def save_to_file_object_pattern_test(model, type_of_data, map, map_50, map_75, map_large, mar_100, mar_large, iou, pattern_key):
+    """
+    * Create test directory
+    * Prepare output file path for object detection (pattern tests)
+
+    Input:
+        - model: text representation of model
+        - type_of_data: type of data
+        - map: mAP
+        - map_50: mAP with 50 % IoU
+        - map_75: mAP with 70 % IoU
+        - map_large: mAP for large data
+        - mar_100: recall for hundred data
+        - mar_large: recall for large data
+        - iou: for which IoU save data
+        - pattern_key: pattern name
+    """
     create_dir_if_not_exists(pattern_test_object_dir_output_path)
     output_dir_path = os.path.join(pattern_test_object_dir_output_path, pattern_key)
     create_dir_if_not_exists(output_dir_path)
@@ -661,25 +896,47 @@ def save_to_file_object_pattern_test(model, type_of_data, map, map_50, map_75, m
     save_object_values(output_file_path, map, map_50, map_75, map_large, mar_100, mar_large)
 
 def save_to_file_object_main(model, type_of_data, time_diff, json_loaded):
+    """
+    * Create test directory
+    * Prepare output file path for time of run a and JSON loaded data
+
+    Input:
+        - model: text representation of model
+        - type_of_data: type of data
+        - time_diff: time of run
+        - json_loaded: JSON loaded information
+    """
     create_dir_if_not_exists(test_dir_objects_path_output)
     output_file_path = os.path.join(test_dir_objects_path_output, f"{model}_{type_of_data}_main.txt")
 
     save_object_main_values(output_file_path, time_diff, json_loaded)
 
 def save_to_file_object_main_pattern_test(model, type_of_data, time_diff, json_loaded, pattern_key):
+    """
+    * Create test directory
+    * Prepare output file path (pattern tests) for time of run a and JSON loaded data
+
+    Input:
+        - model: text representation of model
+        - type_of_data: type of data
+        - time_diff: time of run
+        - json_loaded: JSON loaded information
+        - pattern_key: pattern name
+    """
     create_dir_if_not_exists(pattern_test_object_dir_output_path)
     output_dir_path = os.path.join(pattern_test_object_dir_output_path, pattern_key)
     create_dir_if_not_exists(output_dir_path)
     output_file_path = os.path.join(output_dir_path, f"{model}_{type_of_data}_main.txt")
 
     save_object_main_values(output_file_path, time_diff, json_loaded)
-"""
-* Save the CPU and GPU measurement to the file.
 
-Input: (model name, are test or train data, CPU usage, RAM usage, GPU usage, VRAM usage)
-Output: None
-"""  
 def save_to_file_cpu_gpu(model, type_of_data, is_test, cpu_usage, cpu_percentage, ram_usage, gpu_usage, vram_usage, datetime_diff):
+    """
+    Save the CPU and GPU measurement data to file.
+
+    Input: (model name, are test or train data, CPU usage, RAM usage, GPU usage, VRAM usage)
+    Output: None
+    """  
     if is_test:
         output_file_path = f"./test_measurement/{model}_{type_of_data}.txt"
     else:
@@ -692,6 +949,15 @@ def save_to_file_cpu_gpu(model, type_of_data, is_test, cpu_usage, cpu_percentage
             file.write(f"{cpu_usage};{cpu_percentage};{ram_usage};{gpu_usage};{vram_usage};{datetime_diff}\n")
 
 def rename_model_for_save(model_name):
+    """
+    Rename model
+
+    Input:
+        - model_name
+            - model text description
+    Output:
+        - model_name: name for save data
+    """
     if model_name == "knoopx/mobile-vlm:3b-fp16":
         return "knoopx-mobile-vlm-3b-fp16"
     elif model_name == "llava:13b":

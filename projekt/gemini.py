@@ -17,13 +17,19 @@ type_of_data, correct_data_path = functions.get_type_of_data_and_correct_data_pa
 
 model_is_pro = False
 
-"""
-* Send request to the model
-
-Input: (Image in base64, Text pattern for model)
-Output: Response as text
-"""
 def send_image_request(image_path, model_text, text_request):
+    """
+    Send request to the model
+
+    Input: 
+        - image_path:
+            - path to image
+        - model_text:
+            - text description of model
+        - text_request:
+            - pattern, input text
+    Output: Response as text
+    """
     myfile = genai.upload_file(image_path)
     genai.configure(api_key=api_key)
 
@@ -37,17 +43,25 @@ def send_image_request(image_path, model_text, text_request):
     except:
         return "error: not sended data"
 
-"""
-* Load the specified number of images from directory path.
-* Measure the time of run between request and response of model is seconds.
-* Call method that send request to model.
-* Call check of data got from model as response.
-* Call saving of got data from checking data for future data processing.
-
-Input: (Path to directory with input images, count of input images)
-Output: None (but call save to file)
-"""
 def load_and_measure(dir_path, model, first_ticket, latest_file):
+    """
+    * Load the specified number of images from directory path.
+    * Measure the time of run between request and response of model is seconds.
+    * Measure CPU/GPU and RAM/VRAM usage
+    * Call method that send request to model.
+    * Call check of data got from model as response.
+    * Call saving of got data from checking data for future data processing.
+
+    Input:
+        - dir_path:
+            - path to directory with input images
+        - model:
+            - text description of model
+        - first_ticket:
+            - number of first ticket (start of measurement)
+        - latest_file:
+            - number of last ticket (end of measurement)
+    """
     i = first_ticket - 1
     array_of_images = os.listdir(dir_path)
     while(True):

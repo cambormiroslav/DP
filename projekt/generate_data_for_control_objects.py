@@ -6,6 +6,13 @@ xml_annotations_files_dir = "../data_for_control/pascal_annotations/"
 output_json_path = "../data_for_control/dataset_objects_correct_data.json"
 
 def generate_data_for_control_file():
+    """
+    Load XML PascalVOC annotations and transform
+
+    Output:
+        - dict_for_control_file:
+            - annotation file
+    """
     dict_for_control_file = {}
     sorted_annotation_files = sorted(os.listdir(xml_annotations_files_dir))
     for annotation_file in sorted_annotation_files:
@@ -44,6 +51,13 @@ def generate_data_for_control_file():
     return dict_for_control_file
 
 def save_data_for_control_file(data):
+    """
+    Save transformed data
+
+    Input:
+        - data:
+            - transformed data
+    """
     with open(output_json_path, 'w') as file:
         json.dump(data, file, indent=4)
 

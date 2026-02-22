@@ -13,6 +13,16 @@ import functions
 correct_data_path = "../data_for_control/dataset_correct_data.json"
 
 def extract_receipt_data(image_path):
+    """
+    Extract all examined data
+    
+    Imput:
+        - image_path:
+            - path to image with receipt
+    Output:
+        - receipt_data:
+            - data from receipt
+    """
     try:
         text = pytesseract.image_to_string(Image.open(image_path), lang='eng')
         lines = [line.strip() for line in text.split('\n') if line.strip()]
@@ -83,12 +93,18 @@ def extract_receipt_data(image_path):
     except Exception as e:
         return {"source_file": os.path.basename(image_path), "error": str(e)}
 
-def test_ocr(path):
-    json_output = extract_receipt_data(path)
-    
-    print(json.dumps(json_output, indent=4))
-
 def load_and_measure(dir_path, first_ticket, latest_file):
+    """
+    Load data, measure CPU usage, call loading data from receipt
+
+    Input:
+        - dir_path:
+            - directory path where are the test data
+        - first_ticket:
+            - number of first ticket (start of measurement)
+        - latest_file:
+            - number of last ticket (end of measurement)
+    """
     i = first_ticket - 1
     array_of_images = os.listdir(dir_path)
     while(True):
