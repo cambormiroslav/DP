@@ -246,6 +246,9 @@ def eval_img_model(model_text, array_of_image_paths, number_of_epochs):
     model = get_model(model_text, num_classes)
     model.load_state_dict(torch.load(os.path.join(model_dir_path, f"{model_text}_epoch_{number_of_epochs}.pth")))
 
+    array_of_detections = []
+    array_of_good_boxes = []
+
     device = torch.device("cuda") if torch.cuda.is_available() else torch.device("cpu")
     model.to(device)
 
@@ -337,19 +340,21 @@ def eval_img_model(model_text, array_of_image_paths, number_of_epochs):
 
             file_name = os.path.basename(image)
 
-            max_iou_detections, good_boxes = functions.get_max_iou_and_good_boxes(file_name, detections)
+            transformed_detections, good_boxes = functions.get_transformed_data_and_good_boxes(file_name, detections)
+            array_of_detections.append(transformed_detections)
+            array_of_good_boxes.append(good_boxes)
 
-            for iou_threshold in functions.iou_thresholds:
-                map_values = functions.get_mAP(max_iou_detections, good_boxes, iou_threshold)
-                functions.save_to_file_object(model_text, type_of_data, map_values["map"],
-                                              map_values["map_50"], map_values["map_75"],
-                                              map_values["map_large"], map_values["mar_100"],
-                                              map_values["mar_large"], iou_threshold)
             functions.save_to_file_object_main(model_text, type_of_data, diff_datetime_seconds, 0)
 
             functions.save_to_file_cpu_gpu(model_text, type_of_data, True, cpu_usage, functions.monitor_data["peak_cpu_percent"],
                                            ram_usage, functions.monitor_data["peak_gpu_utilization"], total_vram_mb,
                                            0) #this information is in other file there
+
+    map_values = functions.get_mAP(array_of_detections, array_of_good_boxes)
+    functions.save_to_file_object(model_text, type_of_data, map_values["map"],
+                                              map_values["map_50"], map_values["map_75"],
+                                              map_values["map_large"], map_values["mar_100"],
+                                              map_values["mar_large"])
 
 def load_and_measure(model, train_dataloader, train_switch, eval_switch):
     """

@@ -221,36 +221,6 @@ def monitor_memory_gpu_vram(process, gpu_handle):
         
         time.sleep(0.01)
 
-def calculate_iou(box_ref, box_test):
-    """
-    Calculate IoU for every detected box
-
-    Input:
-        - box_ref:
-            - good box
-        - box_test:
-            - detected box
-    Output:
-        - IoU
-    """
-    xmin_ref, ymin_ref, xmax_ref, ymax_ref = box_ref
-    xmin_test, ymin_test, xmax_test, ymax_test = box_test
-    
-    max_of_xmin = max(xmin_ref, xmin_test)
-    max_of_ymin = max(ymin_ref, ymin_test)
-    min_of_xmax = min(xmax_ref, xmax_test)
-    min_of_ymax = min(ymax_ref, ymax_test)
-
-    if min_of_xmax < max_of_xmin or min_of_ymax < max_of_ymin:
-        return 0
-    
-    intersection = (min_of_xmax - max_of_xmin) * (min_of_ymax - max_of_ymin)
-    size_of_ref = (xmax_ref - xmin_ref) * (ymax_ref - ymin_ref)
-    size_of_test = (xmax_test - xmin_test) * (ymax_test - ymin_test)
-    union_of_sizes = size_of_ref + size_of_test - intersection
-
-    return intersection / union_of_sizes
-
 def delete_objects_if_something_missing(detections):
     """
     Delete object if some data missing
@@ -307,7 +277,7 @@ def transform_coordinates_to_int_if_not(detections):
     
     return output
 
-def get_max_iou_and_good_boxes(file_name, detections):
+def get_transformed_data_and_good_boxes(file_name, detections):
     """
     Getter for data with maximal IoU and good boxes
 
@@ -318,7 +288,7 @@ def get_max_iou_and_good_boxes(file_name, detections):
             - detected objects
     Output:
         - transformed_detections:
-            - detections with maximal IoU for every object
+            - only detections with correct data format
         - good_boxes:
             - good data
     """
@@ -326,16 +296,6 @@ def get_max_iou_and_good_boxes(file_name, detections):
 
     correct_format_detections = delete_objects_if_something_missing(detections)
     transformed_detections = transform_coordinates_to_int_if_not(correct_format_detections)
-
-    for detected_object in transformed_detections:
-        box_detected = (detected_object["x_min"], detected_object["y_min"],
-                        detected_object["x_max"], detected_object["y_max"])
-        max_iou = 0.0
-        for good_box in good_boxes:
-            iou = calculate_iou(good_box, box_detected)
-            if iou > max_iou:
-                max_iou = iou
-        detected_object["iou"] = max_iou
 
     return (transformed_detections, good_boxes)
 
@@ -438,26 +398,21 @@ def get_target_torch(good_boxes):
         "labels": torch.tensor(labels)
     }]
 
-def get_mAP(iou_detections, good_boxes, iou_threshold):
+def get_mAP(array_of_detections, array_of_good_boxes):
     """
     Calculate mAP and recall
 
     Input:
-        - iou_detections: detections with IoU data
-        - good_boxes: good boxes
-        - iou_threshold: threshold for what IoU calculate mAP and. recall
+        - array_of_detections: array with data of detected objects
+        - array_of_good_boxes: array of good boxes for detected boxes
     """
     mAP_solver = MeanAveragePrecision(box_format='xyxy', iou_type="bbox")
 
-    iou_detections_tmp = []
-    for detected_object in iou_detections:
-        if detected_object["iou"] >= iou_threshold:
-            iou_detections_tmp.append(detected_object)
-    
-    predicted_torch = get_predictions_torch(iou_detections_tmp)
-    target_torch = get_target_torch(good_boxes)
+    for index in range(0, len(array_of_detections)):
+        predicted_torch = get_predictions_torch(array_of_detections[index])
+        target_torch = get_target_torch(array_of_good_boxes[index])
+        mAP_solver.update(predicted_torch, target_torch)
 
-    mAP_solver.update(predicted_torch, target_torch)
     mAP_result = mAP_solver.compute()
     
     return mAP_result
@@ -852,7 +807,7 @@ def save_to_file_ocr_pattern_test(model, type_of_data, values, incorrect_data, n
     output_file_path = os.path.join(output_dir_path, f"{model}_{type_of_data}.txt")
     save_ocr_values(output_file_path, values, incorrect_data, not_found_data, good_not_found)
 
-def save_to_file_object(model, type_of_data, map, map_50, map_75, map_large, mar_100, mar_large, iou):
+def save_to_file_object(model, type_of_data, map, map_50, map_75, map_large, mar_100, mar_large):
     """
     * Create test directory
     * Prepare output file path for object detection
@@ -869,7 +824,7 @@ def save_to_file_object(model, type_of_data, map, map_50, map_75, map_large, mar
         - iou: for which IoU save data
     """
     create_dir_if_not_exists(test_dir_objects_path_output)
-    output_file_path = os.path.join(test_dir_objects_path_output, f"{model}_{type_of_data}_{iou}.txt")
+    output_file_path = os.path.join(test_dir_objects_path_output, f"{model}_{type_of_data}_map-recall.txt")
     save_object_values(output_file_path, map, map_50, map_75, map_large, mar_100, mar_large)
 
 def save_to_file_object_pattern_test(model, type_of_data, map, map_50, map_75, map_large, mar_100, mar_large, iou, pattern_key):
