@@ -821,13 +821,12 @@ def save_to_file_object(model, type_of_data, map, map_50, map_75, map_large, mar
         - map_large: mAP for large data
         - mar_100: recall for hundred data
         - mar_large: recall for large data
-        - iou: for which IoU save data
     """
     create_dir_if_not_exists(test_dir_objects_path_output)
     output_file_path = os.path.join(test_dir_objects_path_output, f"{model}_{type_of_data}_map-recall.txt")
     save_object_values(output_file_path, map, map_50, map_75, map_large, mar_100, mar_large)
 
-def save_to_file_object_pattern_test(model, type_of_data, map, map_50, map_75, map_large, mar_100, mar_large, iou, pattern_key):
+def save_to_file_object_pattern_test(model, type_of_data, map, map_50, map_75, map_large, mar_100, mar_large, pattern_key):
     """
     * Create test directory
     * Prepare output file path for object detection (pattern tests)
@@ -841,13 +840,12 @@ def save_to_file_object_pattern_test(model, type_of_data, map, map_50, map_75, m
         - map_large: mAP for large data
         - mar_100: recall for hundred data
         - mar_large: recall for large data
-        - iou: for which IoU save data
         - pattern_key: pattern name
     """
     create_dir_if_not_exists(pattern_test_object_dir_output_path)
     output_dir_path = os.path.join(pattern_test_object_dir_output_path, pattern_key)
     create_dir_if_not_exists(output_dir_path)
-    output_file_path = os.path.join(output_dir_path, f"{model}_{type_of_data}_{iou}.txt")
+    output_file_path = os.path.join(output_dir_path, f"{model}_{type_of_data}_map-recall.txt")
     save_object_values(output_file_path, map, map_50, map_75, map_large, mar_100, mar_large)
 
 def save_to_file_object_main(model, type_of_data, time_diff, json_loaded):

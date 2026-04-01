@@ -39,21 +39,24 @@ patternsObjectCz = {
 }
 
 gemini_measurement = False
-openai_measurement = False
-ollama_measurement = True
+openai_measurement = True
+ollama_measurement = False
 
 gemini_models = ["gemini-3-pro-preview", "gemini-3-flash-preview",
                  "gemini-2.5-pro", "gemini-2.5-flash", "gemini-2.5-flash-lite",
                  "gemini-2.0-flash", "gemini-2.0-flash-lite"]
 openai_models = ["gpt-5.2", "gpt-5.1",
-                 "gpt-5", "gpt-5-mini", "gpt-5-nano", 
-                 "gpt-4.1", "gpt-4.1-mini", 
+                 "gpt-5", "gpt-5-mini", "gpt-5-nano",
+                 "gpt-4.1", "gpt-4.1-mini",
                  "gpt-4o", "gpt-4o-mini"]
-ollama_models = ["llava", "bakllava", "minicpm-v", "knoopx/mobile-vlm:3b-fp16", "llava:13b", "llava:34b", 
-                 "gemma3:27b", "granite3.2-vision", "gemma3:12b", "gemma3:4b", "mistral-small3.1", 
+ollama_models = ["llava", "bakllava", "minicpm-v", "knoopx/mobile-vlm:3b-fp16", "llava:13b", "llava:34b",
+                 "gemma3:27b", "granite3.2-vision", "gemma3:12b", "gemma3:4b", "mistral-small3.1",
                  "mistral-small3.2:24b"]
 
 number_of_inputs = 20
+
+dict_detections = {}
+dict_good_boxes = {}
 
 def calcute_timediff_and_save(response, start_datetime, end_datetime, model, pattern_key, file_name, type_of_data, correct_data_path):
     """
@@ -89,14 +92,28 @@ def calcute_timediff_and_save(response, start_datetime, end_datetime, model, pat
     else:
         print(renamed_model)
         json_response, json_loaded = functions.load_json_response(response)
-        max_iou_detections, good_boxes = functions.get_max_iou_and_good_boxes(file_name, json_response["objects"])
-        for iou_threshold in functions.iou_thresholds:
-            map_values = functions.get_mAP(max_iou_detections, good_boxes, iou_threshold)
-            functions.save_to_file_object_pattern_test(renamed_model, type_of_data, map_values["map"],
+        transformed_detections, good_boxes = functions.get_transformed_data_and_good_boxes(file_name, json_response["objects"])
+
+        key = (renamed_model, pattern_key)
+        if key in dict_detections:
+            dict_detections[key].append(transformed_detections)
+            dict_good_boxes[key].append(good_boxes)
+        else:
+            dict_detections[key] = [transformed_detections]
+            dict_good_boxes[key] = [good_boxes]
+
+        functions.save_to_file_object_main_pattern_test(renamed_model, type_of_data, diff_datetime_seconds, json_loaded, pattern_key)
+
+def save_to_file():
+    """
+    Save mAP and Recall metrics to file
+    """
+    for key in dict_detections:
+        map_values = functions.get_mAP(dict_detections[key], dict_good_boxes[key])
+        functions.save_to_file_object_pattern_test(key[0], "objects", map_values["map"],
                                                        map_values["map_50"], map_values["map_75"],
                                                        map_values["map_large"], map_values["mar_100"],
-                                                       map_values["mar_large"], iou_threshold, pattern_key)
-        functions.save_to_file_object_main_pattern_test(renamed_model, type_of_data, diff_datetime_seconds, json_loaded, pattern_key)
+                                                       map_values["mar_large"], key[1])
 
 def send_gemini_request(image_path, file_name, model, text_request, pattern_key, correct_data_path, type_of_data):
     """
@@ -233,7 +250,9 @@ def test_object():
                     send_ollama_request(image_path, file, model, patternsObjectEn[pattern_en], pattern_en, correct_data_path, "object")
                 for pattern_cz in patternsObjectCz:
                     send_ollama_request(image_path, file, model, patternsObjectCz[pattern_cz], pattern_cz, correct_data_path, "object")
+    
+    save_to_file()
 
 if __name__ == "__main__":
-    test_ocr()
+    #test_ocr()
     test_object()
