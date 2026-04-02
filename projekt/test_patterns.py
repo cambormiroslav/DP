@@ -38,8 +38,8 @@ patternsObjectCz = {
     "pattern3_ObjectCz": functions.pattern3_ObjectCz
 }
 
-gemini_measurement = False
-openai_measurement = True
+gemini_measurement = True
+openai_measurement = False
 ollama_measurement = False
 
 gemini_models = ["gemini-3-pro-preview", "gemini-3-flash-preview",
