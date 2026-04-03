@@ -38,9 +38,13 @@ patternsObjectCz = {
     "pattern3_ObjectCz": functions.pattern3_ObjectCz
 }
 
-gemini_measurement = True
+gemini_measurement = False
 openai_measurement = False
-ollama_measurement = False
+ollama_measurement = True
+
+#"llava", "bakllava", "minicpm-v", "knoopx/mobile-vlm:3b-fp16", "llava:13b", "llava:34b",
+#                 "gemma3:27b", "granite3.2-vision", "gemma3:12b", "gemma3:4b", "mistral-small3.1",
+#                 "mistral-small3.2:24b"
 
 gemini_models = ["gemini-3-pro-preview", "gemini-3-flash-preview",
                  "gemini-2.5-pro", "gemini-2.5-flash", "gemini-2.5-flash-lite",
@@ -49,7 +53,7 @@ openai_models = ["gpt-5.2", "gpt-5.1",
                  "gpt-5", "gpt-5-mini", "gpt-5-nano",
                  "gpt-4.1", "gpt-4.1-mini",
                  "gpt-4o", "gpt-4o-mini"]
-ollama_models = ["llava", "bakllava", "minicpm-v", "knoopx/mobile-vlm:3b-fp16", "llava:13b", "llava:34b",
+ollama_models = ["llava:13b", "llava:34b",
                  "gemma3:27b", "granite3.2-vision", "gemma3:12b", "gemma3:4b", "mistral-small3.1",
                  "mistral-small3.2:24b"]
 
