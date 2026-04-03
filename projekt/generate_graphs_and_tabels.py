@@ -52,7 +52,7 @@ add_to_graph = {
 load_cpu_gpu_data = False
 is_cpu_gpu_data_test = False
 is_best_data = False
-is_pattern_data = False
+is_pattern_data = True
 
 graphs_dir = "./graphs/"
 if not os.path.exists(graphs_dir):
@@ -1066,32 +1066,15 @@ def load_output_of_models_objects_base(file_path, pattern_directory):
     else:
         path_to_data = os.path.join(output_dir, pattern_directory, file_path)
 
-    map_sum = 0.0
-    map_50_sum = 0.0
-    map_75_sum = 0.0
-    map_large_sum = 0.0
-    mar_100_sum = 0.0
-    mar_large_sum = 0.0
-    
-    number_of_entries = 0
-
     with open(path_to_data, "r") as file:
         lines = file.readlines()
 
         for line in lines:
             array_of_values = line.replace("\n", "").split(";")
 
-            map_sum += float(array_of_values[0])
-            map_50_sum += float(array_of_values[1])
-            map_75_sum += float(array_of_values[2])
-            map_large_sum += float(array_of_values[3])
-            mar_100_sum += float(array_of_values[4])
-            mar_large_sum += float(array_of_values[5])
-
-            number_of_entries += 1
-    
-    return (map_sum, map_50_sum, map_75_sum, map_large_sum,
-            mar_100_sum, mar_large_sum, number_of_entries)
+            return (float(array_of_values[0]), float(array_of_values[1]),
+                    float(array_of_values[2]), float(array_of_values[3]),
+                    float(array_of_values[4]), float(array_of_values[5]))
 
 def add_to_map_dict(model_name, iou, value):
     """
@@ -1108,11 +1091,21 @@ def add_to_map_dict(model_name, iou, value):
     else:
         map_dict[model_name][iou] = value
 
-def add_to_map_dict_transform(dictionary, pattern, iou, value):
+def add_to_map_dict_transform(dictionary, pattern, type_metric, value):
+    """
+    Add mAP data to dictionary
+
+    Input:
+        - dictionary
+            - dictionary to save data
+        - pattern
+        - type_metric
+        - value
+    """
     if pattern not in dictionary:
-        dictionary[pattern] = {iou: value}
+        dictionary[pattern] = {type_metric: value}
     else:
-        dictionary[pattern][iou] = value
+        dictionary[pattern][type_metric] = value
     
     return dictionary
 
@@ -1131,20 +1124,21 @@ def add_to_map_50_dict(model_name, iou, value):
     else:
         map_50_dict[model_name][iou] = value
 
-def add_to_map_50_dict_transform(dictionary, pattern, iou, value):
+def add_to_map_50_dict_transform(dictionary, pattern, type_metric, value):
     """
     Add mAP (50 % IoU) data to dictionary for pattern tests
 
     Input:
-        - model_name
-        - iou
-            - IoU
+        - dictionary
+            - dictionary to save data
+        - pattern
+        - type_metric
         - value
     """
     if pattern not in dictionary:
-        dictionary[pattern] = {iou: value}
+        dictionary[pattern] = {type_metric: value}
     else:
-        dictionary[pattern][iou] = value
+        dictionary[pattern][type_metric] = value
     
     return dictionary
 
@@ -1163,20 +1157,21 @@ def add_to_map_75_dict(model_name, iou, value):
     else:
         map_75_dict[model_name][iou] = value
 
-def add_to_map_75_dict_transform(dictionary, pattern, iou, value):
+def add_to_map_75_dict_transform(dictionary, pattern, type_metric, value):
     """
     Add mAP (75 % IoU) data to dictionary for pattern tests
 
     Input:
-        - model_name
-        - iou
-            - IoU
+        - dictionary
+            - dictionary to save data
+        - pattern
+        - type_metric
         - value
     """
     if pattern not in dictionary:
-        dictionary[pattern] = {iou: value}
+        dictionary[pattern] = {type_metric: value}
     else:
-        dictionary[pattern][iou] = value
+        dictionary[pattern][type_metric] = value
 
     return dictionary
 
@@ -1195,20 +1190,21 @@ def add_to_map_large_dict(model_name, iou, value):
     else:
         map_large_dict[model_name][iou] = value
 
-def add_to_map_large_dict_transform(dictionary, pattern, iou, value):
+def add_to_map_large_dict_transform(dictionary, pattern, type_metric, value):
     """
     Add mAP (large data) data to dictionary for pattern tests
 
     Input:
-        - model_name
-        - iou
-            - IoU
+        - dictionary
+            - dictionary to save data
+        - pattern
+        - type_metric
         - value
     """
     if pattern not in dictionary:
-        dictionary[pattern] = {iou: value}
+        dictionary[pattern] = {type_metric: value}
     else:
-        dictionary[pattern][iou] = value
+        dictionary[pattern][type_metric] = value
     
     return dictionary
 
@@ -1227,20 +1223,21 @@ def add_to_mar_100_dict(model_name, iou, value):
     else:
         mar_100_dict[model_name][iou] = value
 
-def add_to_mar_100_dict_transform(dictionary, pattern, iou, value):
+def add_to_mar_100_dict_transform(dictionary, pattern, type_metric, value):
     """
     Add recall (for 100 items) data to dictionary for pattern tests
 
     Input:
-        - model_name
-        - iou
-            - IoU
+        - dictionary
+            - dictionary to save data
+        - pattern
+        - type_metric
         - value
     """
     if pattern not in dictionary:
-        dictionary[pattern] = {iou: value}
+        dictionary[pattern] = {type_metric: value}
     else:
-        dictionary[pattern][iou] = value
+        dictionary[pattern][type_metric] = value
     
     return dictionary
 
@@ -1259,20 +1256,21 @@ def add_to_mar_large_dict(model_name, iou, value):
     else:
         mar_large_dict[model_name][iou] = value
 
-def add_to_mar_large_dict_transform(dictionary, pattern, iou, value):
+def add_to_mar_large_dict_transform(dictionary, pattern, type_metric, value):
     """
     Add recall (large dataset) data to dictionary for pattern tests
 
     Input:
-        - model_name
-        - iou
-            - IoU
+        - dictionary
+            - dictionary to save data
+        - pattern
+        - type_metric
         - value
     """
     if pattern not in dictionary:
-        dictionary[pattern] = {iou: value}
+        dictionary[pattern] = {type_metric: value}
     else:
-        dictionary[pattern][iou] = value
+        dictionary[pattern][type_metric] = value
     
     return dictionary
 
@@ -1499,7 +1497,7 @@ def load_output_of_models_objects_main_pattern(file_path, model_name, pattern_na
     add_to_time_run_dict_pattern(model_name, pattern_name, time_of_run_dict_array)
     add_not_found_json_dict_pattern(model_name, pattern_name, not_found_json_object_array)
 
-def load_output_of_models_objects_pattern(file_path, model_name, pattern_name, iou):
+def load_output_of_models_objects_pattern(file_path, model_name, pattern_name):
     """
     Add object data measurement data to dictionary
 
@@ -1508,58 +1506,38 @@ def load_output_of_models_objects_pattern(file_path, model_name, pattern_name, i
             - file name
         - model_name
         - pattern_name
-        - iou
-            - IoU
     """
     data = load_output_of_models_objects_base(file_path, pattern_name)
 
     if model_name not in map_tmp_dict:
-        map_tmp_dict[model_name] = {pattern_name: {iou: data[0] / data[6]}}
+        map_tmp_dict[model_name] = {pattern_name: data[0]}
     else:
-        if pattern_name not in map_tmp_dict[model_name]:
-            map_tmp_dict[model_name][pattern_name] = {iou: data[0] / data[6]}
-        else:
-            map_tmp_dict[model_name][pattern_name][iou] = data[0] / data[6]
+        map_tmp_dict[model_name][pattern_name] = data[0]
     
     if model_name not in map_50_tmp_dict:
-        map_50_tmp_dict[model_name] = {pattern_name: {iou: data[1] / data[6]}}
+        map_50_tmp_dict[model_name] = {pattern_name: data[1]}
     else:
-        if pattern_name not in map_50_tmp_dict[model_name]:
-            map_50_tmp_dict[model_name][pattern_name] = {iou: data[1] / data[6]}
-        else:
-            map_50_tmp_dict[model_name][pattern_name][iou] = data[1] / data[6]
+        map_50_tmp_dict[model_name][pattern_name] = data[1]
 
     if model_name not in map_75_tmp_dict:
-        map_75_tmp_dict[model_name] = {pattern_name: {iou: data[2] / data[6]}}
+        map_75_tmp_dict[model_name] = {pattern_name: data[2]}
     else:
-        if pattern_name not in map_75_tmp_dict[model_name]:
-            map_75_tmp_dict[model_name][pattern_name] = {iou: data[2] / data[6]}
-        else:
-            map_75_tmp_dict[model_name][pattern_name][iou] = data[2] / data[6]
+        map_75_tmp_dict[model_name][pattern_name] = data[2]
 
     if model_name not in map_large_tmp_dict:
-        map_large_tmp_dict[model_name] = {pattern_name: {iou: data[3] / data[6]}}
+        map_large_tmp_dict[model_name] = {pattern_name: data[3]}
     else:
-        if pattern_name not in map_large_tmp_dict[model_name]:
-            map_large_tmp_dict[model_name][pattern_name] = {iou: data[3] / data[6]}
-        else:
-            map_large_tmp_dict[model_name][pattern_name][iou] = data[3] / data[6]
+        map_large_tmp_dict[model_name][pattern_name] = data[3]
 
     if model_name not in mar_100_tmp_dict:
-        mar_100_tmp_dict[model_name] = {pattern_name: {iou: data[4] / data[6]}}
+        mar_100_tmp_dict[model_name] = {pattern_name: data[4]}
     else:
-        if pattern_name not in mar_100_tmp_dict[model_name]:
-            mar_100_tmp_dict[model_name][pattern_name] = {iou: data[4] / data[6]}
-        else:
-            mar_100_tmp_dict[model_name][pattern_name][iou] = data[4] / data[6]
+        mar_100_tmp_dict[model_name][pattern_name] = data[4]
 
     if model_name not in mar_large_tmp_dict:
-        mar_large_tmp_dict[model_name] = {pattern_name: {iou: data[5] / data[6]}}
+        mar_large_tmp_dict[model_name] = {pattern_name: data[5]}
     else:
-        if pattern_name not in mar_large_tmp_dict[model_name]:
-            mar_large_tmp_dict[model_name][pattern_name] = {iou: data[5] / data[6]}
-        else:
-            mar_large_tmp_dict[model_name][pattern_name][iou] = data[5] / data[6]
+        mar_large_tmp_dict[model_name][pattern_name] = data[5]
 
 def load_all_data_pattern():
     """
@@ -1582,9 +1560,10 @@ def load_all_data_pattern():
                 if len(file_split) == 3:
                     third = file_split[2].replace(".txt", "")
                     if third == "main":
-                        load_output_of_models_objects_main_pattern(file, model, pattern)
+                        pass
+                        #load_output_of_models_objects_main_pattern(file, model, pattern)
                     else:
-                        load_output_of_models_objects_pattern(file, model, pattern, third)
+                        load_output_of_models_objects_pattern(file, model, pattern)
 
 def transform_object_pattern_data_to_normal():
     """
@@ -1601,47 +1580,20 @@ def transform_object_pattern_data_to_normal():
     for model in map_tmp_dict:
         map_dict = {}
         for pattern in map_tmp_dict[model]:
-            for iou in map_tmp_dict[model][pattern]:
-                add_to_map_dict_transform(map_dict, pattern, iou, map_tmp_dict[model][pattern][iou])
+            add_to_map_dict_transform(map_dict, pattern, "mAP", map_tmp_dict[model][pattern])
+            add_to_map_dict_transform(map_dict, pattern, "mAP_large", map_large_tmp_dict[model][pattern])
+            add_to_map_dict_transform(map_dict, pattern, "mAP:50", map_50_tmp_dict[model][pattern])
+            add_to_map_dict_transform(map_dict, pattern, "mAP:75", map_75_tmp_dict[model][pattern])
         map_array.append({model: map_dict})
-    
-    for model in map_50_tmp_dict:
-        map_50_dict = {}
-        for pattern in map_50_tmp_dict[model]:
-            for iou in map_50_tmp_dict[model][pattern]:
-                add_to_map_50_dict_transform(map_50_dict, pattern, iou, map_50_tmp_dict[model][pattern][iou])
-        map_50_array.append({model: map_50_dict})
-    
-    for model in map_75_tmp_dict:
-        map_75_dict = {}
-        for pattern in map_75_tmp_dict[model]:
-            for iou in map_75_tmp_dict[model][pattern]:
-                add_to_map_75_dict_transform(map_75_dict, pattern, iou, map_75_tmp_dict[model][pattern][iou])
-        map_75_array.append({model: map_75_dict})
-    
-    for model in map_large_tmp_dict:
-        map_large_dict = {}
-        for pattern in map_large_tmp_dict[model]:
-            for iou in map_large_tmp_dict[model][pattern]:
-                add_to_map_large_dict_transform(map_large_dict, pattern, iou, map_large_tmp_dict[model][pattern][iou])
-        map_large_array.append({model: map_large_dict})
     
     for model in mar_100_tmp_dict:
         mar_100_dict = {}
         for pattern in mar_100_tmp_dict[model]:
-            for iou in mar_100_tmp_dict[model][pattern]:
-                add_to_mar_100_dict_transform(mar_100_dict, pattern, iou, mar_100_tmp_dict[model][pattern][iou])
+            add_to_mar_100_dict_transform(mar_100_dict, pattern, "recall_100", mar_100_tmp_dict[model][pattern])
+            add_to_mar_100_dict_transform(mar_100_dict, pattern, "recall_large", mar_large_tmp_dict[model][pattern])
         mar_100_array.append({model: mar_100_dict})
     
-    for model in mar_large_tmp_dict:
-        mar_large_dict = {}
-        for pattern in mar_large_tmp_dict[model]:
-            for iou in mar_large_tmp_dict[model][pattern]:
-                add_to_mar_large_dict_transform(mar_large_dict, pattern, iou, mar_large_tmp_dict[model][pattern][iou])
-        mar_large_array.append({model: mar_large_dict})
-    
-    return (map_array, map_50_array, map_75_array,
-            map_large_array, mar_100_array, mar_large_array)
+    return (map_array, mar_100_array)
 
 def transform_ocr_pattern_data_to_normal():
     """
@@ -1829,47 +1781,19 @@ def call_generating_graphs_and_tables_patterns(data_arrays_ocr, data_arrays_obje
             generate_bar_graph_from_data(not_found_json_dict, "not_json")
     elif type_of_dataset == "objects":
         map_array = data_arrays_objects[0]
-        map_50_array = data_arrays_objects[1]
-        map_75_array = data_arrays_objects[2]
-        map_large_array = data_arrays_objects[3]
         mar_100_array = data_arrays_objects[4]
-        mar_large_array = data_arrays_objects[5]
 
         for map_dict_tmp in map_array:
             map_dict.clear()
             model = next(iter(map_dict_tmp))
             map_dict = map_dict_tmp[model]
-            generate_grouped_bar_objects(map_dict, model, "MAP")
-
-        for map_50_dict_tmp in map_50_array:
-            map_50_dict.clear()
-            model = next(iter(map_50_dict_tmp))
-            map_50_dict = map_50_dict_tmp[model]
-            generate_grouped_bar_objects(map_50_dict, model, "MAP@50")
-
-        for map_75_dict_tmp in map_75_array:
-            map_75_dict.clear()
-            model = next(iter(map_75_dict_tmp))
-            map_75_dict = map_75_dict_tmp[model]
-            generate_grouped_bar_objects(map_75_dict, model, "MAP@75")
-
-        for map_large_dict_tmp in map_large_array:
-            map_large_dict.clear()
-            model = next(iter(map_large_dict_tmp))
-            map_large_dict = map_large_dict_tmp[model]
-            generate_grouped_bar_objects(map_large_dict, model, "MAP_Large")
+            generate_grouped_bar_objects(map_dict, model, "mAP")
 
         for mar_100_dict_tmp in mar_100_array:
             mar_100_dict.clear()
             model = next(iter(mar_100_dict_tmp))
             mar_100_dict = mar_100_dict_tmp[model]
-            generate_grouped_bar_objects(mar_100_dict, model, "MAR@100")
-
-        for mar_large_dict_tmp in mar_large_array:
-            mar_large_dict.clear()
-            model = next(iter(mar_large_dict_tmp))
-            mar_large_dict = mar_large_dict_tmp[model]
-            generate_grouped_bar_objects(mar_large_dict, model, "MAR_Large")
+            generate_grouped_bar_objects(mar_100_dict, model, "recall")
 
         time_of_run_array = data_arrays_objects_main[0]
         not_found_json_object_array = data_arrays_objects_main[1]
@@ -1938,7 +1862,7 @@ def call_generating_graphs_and_tables():
 
 if __name__ == "__main__":
     #ticket data
-    call_generating_graphs_and_tables()
+    #call_generating_graphs_and_tables()
 
     #objects data
     type_of_dataset = "objects"

@@ -81,6 +81,9 @@ def load_and_measure(dir_path, model, first_ticket, latest_file):
         - latest_file:
             - number of last ticket (end of measurement)
     """
+    array_of_detections = []
+    array_of_good_boxes = []
+
     i = first_ticket - 1
     array_of_images = os.listdir(dir_path)
     while(True):
@@ -160,7 +163,9 @@ def load_and_measure(dir_path, model, first_ticket, latest_file):
         else:
             json_response, json_load = functions.load_json_response(response)
             
-            max_iou_detections, good_boxes = functions.get_max_iou_and_good_boxes(file, json_response["objects"])
+            transformed_detections, good_boxes = functions.get_transformed_data_and_good_boxes(file, json_response["objects"])
+            array_of_detections.append(transformed_detections)
+            array_of_good_boxes.append(good_boxes)
         
         diff_datetime = end_datetime - start_datetime
         diff_datetime_seconds = diff_datetime.total_seconds()
@@ -172,12 +177,6 @@ def load_and_measure(dir_path, model, first_ticket, latest_file):
                                                          dict_of_incorect, array_not_found, 
                                                          array_good_not_found)
         else:
-            for iou_threshold in functions.iou_thresholds:
-                map_values = functions.get_mAP(max_iou_detections, good_boxes, iou_threshold)
-                functions.save_to_file_object(model, type_of_data, map_values["map"],
-                                              map_values["map_50"], map_values["map_75"],
-                                              map_values["map_large"], map_values["mar_100"],
-                                              map_values["mar_large"], iou_threshold)
             functions.save_to_file_object_main(model, type_of_data, diff_datetime_seconds, json_load)
         functions.save_to_file_cpu_gpu(model, type_of_data, True, cpu_usage, functions.monitor_data["peak_cpu_percent"],
                                        ram_usage, functions.monitor_data["peak_gpu_utilization"], total_vram_mb,
@@ -197,6 +196,12 @@ def load_and_measure(dir_path, model, first_ticket, latest_file):
 
         if i == latest_file:
             break
+    
+    map_values = functions.get_mAP(array_of_detections, array_of_good_boxes)
+    functions.save_to_file_object(model, type_of_data, map_values["map"],
+                                  map_values["map_50"], map_values["map_75"],
+                                  map_values["map_large"], map_values["mar_100"],
+                                  map_values["mar_large"])
 
 if __name__ == "__main__":
     if ocr_method:

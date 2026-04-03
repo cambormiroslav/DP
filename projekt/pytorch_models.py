@@ -228,7 +228,7 @@ def load_image_paths(img_dir_path):
     
     return array_of_paths
 
-def eval_img_model(model_text, array_of_image_paths, number_of_epochs):
+def eval_img_model(model_text, array_of_image_paths, number_of_epochs, load_train_states):
     """
     * Test model
     * Measure the time of run between request and response of model is seconds.
@@ -244,7 +244,8 @@ def eval_img_model(model_text, array_of_image_paths, number_of_epochs):
     """
     num_classes = 2
     model = get_model(model_text, num_classes)
-    model.load_state_dict(torch.load(os.path.join(model_dir_path, f"{model_text}_epoch_{number_of_epochs}.pth")))
+    if load_train_states:
+        model.load_state_dict(torch.load(os.path.join(model_dir_path, f"{model_text}_epoch_{number_of_epochs}.pth")))
 
     array_of_detections = []
     array_of_good_boxes = []
@@ -352,11 +353,11 @@ def eval_img_model(model_text, array_of_image_paths, number_of_epochs):
 
     map_values = functions.get_mAP(array_of_detections, array_of_good_boxes)
     functions.save_to_file_object(model_text, type_of_data, map_values["map"],
-                                              map_values["map_50"], map_values["map_75"],
-                                              map_values["map_large"], map_values["mar_100"],
-                                              map_values["mar_large"])
+                                  map_values["map_50"], map_values["map_75"],
+                                  map_values["map_large"], map_values["mar_100"],
+                                  map_values["mar_large"])
 
-def load_and_measure(model, train_dataloader, train_switch, eval_switch):
+def load_and_measure(model, train_dataloader, train_switch, eval_switch, load_train_states):
     """
     * Measure the time of run between request and response of model is seconds.
     * Measure CPU/GPU and RAM/VRAM usage
@@ -438,12 +439,12 @@ def load_and_measure(model, train_dataloader, train_switch, eval_switch):
         functions.save_to_file_cpu_gpu(model, type_of_data, False, cpu_usage, functions.monitor_data["peak_cpu_percent"],
                                        ram_usage, functions.monitor_data["peak_gpu_utilization"], total_vram_mb, diff_datetime_seconds)
     if eval_switch:
-        eval_img_model(model, load_image_paths("../dataset/yolo_dataset/test/images"), number_of_epochs)
+        eval_img_model(model, load_image_paths("../dataset/yolo_dataset/test/images"), number_of_epochs, load_train_states)
 
 if __name__ == "__main__":
     train_dataset = get_coco_dataset("../dataset/yolo_dataset/train/images", "../dataset/coco_annotations/train/annotations.json")
     train_dataloader = DataLoader(train_dataset, batch_size=4, shuffle=True, collate_fn=lambda x: tuple(zip(*x)))
 
-    load_and_measure("fasterrcnn", train_dataloader, False, True)
-    load_and_measure("retinanet", train_dataloader, False, True)
-    load_and_measure("maskrcnn", train_dataloader, False, True)
+    load_and_measure("fasterrcnn", train_dataloader, False, True, True)
+    load_and_measure("retinanet", train_dataloader, False, True, True)
+    load_and_measure("maskrcnn", train_dataloader, False, True, True)

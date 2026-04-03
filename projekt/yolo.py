@@ -13,6 +13,9 @@ type_of_data = "objects"
 test_images_dir_path = "../dataset/yolo_dataset/test/images/"
 dataset_yaml = "../dataset/yolo_dataset/data.yaml"
 
+train_model = False
+load_pretrained_ultralitics = False
+
 def test_img(img_path, model, model_name, file_name):
     """
     * Test model
@@ -47,6 +50,8 @@ def test_img(img_path, model, model_name, file_name):
         gpu_is_available = False
 
     detections = []
+    array_of_detections = []
+    array_of_good_boxes = []
 
     #init of thread
     functions.monitor_data["is_running"] = True
@@ -119,14 +124,10 @@ def test_img(img_path, model, model_name, file_name):
     diff_datetime = end_datetime - start_datetime
     diff_datetime_seconds = diff_datetime.total_seconds()
 
-    max_iou_detections, good_boxes = functions.get_max_iou_and_good_boxes(file_name, detections)
+    transformed_detections, good_boxes = functions.get_transformed_data_and_good_boxes(file_name, detections)
+    array_of_detections.append(transformed_detections)
+    array_of_good_boxes.append(good_boxes)
 
-    for iou_threshold in functions.iou_thresholds:
-        map_values = functions.get_mAP(max_iou_detections, good_boxes, iou_threshold)
-        functions.save_to_file_object(model_name, type_of_data, map_values["map"],
-                                      map_values["map_50"], map_values["map_75"],
-                                      map_values["map_large"], map_values["mar_100"],
-                                      map_values["mar_large"], iou_threshold)
     functions.save_to_file_object_main(model_name, type_of_data, diff_datetime_seconds, 0)
 
     functions.save_to_file_cpu_gpu(model_name, type_of_data, True, cpu_usage, functions.monitor_data["peak_cpu_percent"],
@@ -240,6 +241,11 @@ def train_yolo(model_specification, dataset_yaml, count_of_epochs, model_train_d
 
     return model
 
+def load_yolo_model(path_to_model):
+    """
+    Load model (local or pretrained from ultralitics)
+    """
+    return YOLO(path_to_model)
 
 def load_and_measure(model, model_name):
     """
@@ -254,16 +260,46 @@ def load_and_measure(model, model_name):
     arrays_of_test_files = get_array_of_test_names_and_paths()
     for index in range(len(arrays_of_test_files[0])):
         test_img(arrays_of_test_files[1][index], model, model_name, arrays_of_test_files[0][index])
+    
+    map_values = functions.get_mAP(array_of_detections, array_of_good_boxes)
+    functions.save_to_file_object(model_name, type_of_data, map_values["map"],
+                                              map_values["map_50"], map_values["map_75"],
+                                              map_values["map_large"], map_values["mar_100"],
+                                              map_values["mar_large"])
 
 if __name__ == "__main__":
-    model = train_yolo("yolo11n.pt", dataset_yaml, 600,"./output_objects/yolo11n/")
+    if train_model:
+        model = train_yolo("yolo11n.pt", dataset_yaml, 600,"./output_objects/yolo11n/")
+    else:
+        if load_pretrained_ultralitics:
+            model = load_yolo_model("yolo11n.pt")
+        else:
+            model = load_yolo_model("./models/yolo11n_best.pt")
     load_and_measure(model, "yolo11n")
 
-    model = train_yolo("yolo11s.pt", dataset_yaml, 600,"./output_objects/yolo11s/")
+    if train_model:
+        model = train_yolo("yolo11s.pt", dataset_yaml, 600,"./output_objects/yolo11s/")
+    else:
+        if load_pretrained_ultralitics:
+            model = load_yolo_model("yolo11s.pt")
+        else:
+            model = load_yolo_model("./models/yolo11s_best.pt")
     load_and_measure(model, "yolo11s")
 
-    model = train_yolo("yolo11m.pt", dataset_yaml, 600,"./output_objects/yolo11m/")
+    if train_model:
+        model = train_yolo("yolo11m.pt", dataset_yaml, 600,"./output_objects/yolo11m/")
+    else:
+        if load_pretrained_ultralitics:
+            model = load_yolo_model("yolo11m.pt")
+        else:
+            model = load_yolo_model("./models/yolo11m_best.pt")
     load_and_measure(model, "yolo11m")
 
-    model = train_yolo("yolo11l.pt", dataset_yaml, 600,"./output_objects/yolo11l/")
+    if train_model:
+        model = train_yolo("yolo11l.pt", dataset_yaml, 600,"./output_objects/yolo11l/")
+    else:
+        if load_pretrained_ultralitics:
+            model = load_yolo_model("yolo11l.pt")
+        else:
+            model = load_yolo_model("./models/yolo11l_best.pt")
     load_and_measure(model, "yolo11l")
