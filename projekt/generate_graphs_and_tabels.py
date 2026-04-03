@@ -1781,7 +1781,7 @@ def call_generating_graphs_and_tables_patterns(data_arrays_ocr, data_arrays_obje
             generate_bar_graph_from_data(not_found_json_dict, "not_json")
     elif type_of_dataset == "objects":
         map_array = data_arrays_objects[0]
-        mar_100_array = data_arrays_objects[4]
+        mar_100_array = data_arrays_objects[1]
 
         for map_dict_tmp in map_array:
             map_dict.clear()
