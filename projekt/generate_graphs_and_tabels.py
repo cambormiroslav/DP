@@ -44,15 +44,22 @@ add_to_graph = {
     "yolo11s" : True,
     "yolo11m" : True,
     "yolo11l" : True,
+    "yolo11n-pretrained" : True,
+    "yolo11s-pretrained" : True,
+    "yolo11m-pretrained" : True,
+    "yolo11l-pretrained" : True,
     "fasterrcnn" : True,
     "retinanet" : True,
-    "maskrcnn" : True
+    "maskrcnn" : True,
+    "fasterrcnn-pretrained" : True,
+    "retinanet-pretrained" : True,
+    "maskrcnn-pretrained" : True
     }
 
 load_cpu_gpu_data = False
 is_cpu_gpu_data_test = False
 is_best_data = False
-is_pattern_data = True
+is_pattern_data = False
 
 graphs_dir = "./graphs/"
 if not os.path.exists(graphs_dir):
@@ -1076,20 +1083,19 @@ def load_output_of_models_objects_base(file_path, pattern_directory):
                     float(array_of_values[2]), float(array_of_values[3]),
                     float(array_of_values[4]), float(array_of_values[5]))
 
-def add_to_map_dict(model_name, iou, value):
+def add_to_map_dict(model_name, type_metric, value):
     """
     Add mAP data to dictionary
 
     Input:
         - model_name
-        - iou
-            - IoU
+        - type_metric
         - value
     """
     if model_name not in map_dict:
-        map_dict[model_name] = {iou: value}
+        map_dict[model_name] = {type_metric: value}
     else:
-        map_dict[model_name][iou] = value
+        map_dict[model_name][type_metric] = value
 
 def add_to_map_dict_transform(dictionary, pattern, type_metric, value):
     """
@@ -1109,20 +1115,19 @@ def add_to_map_dict_transform(dictionary, pattern, type_metric, value):
     
     return dictionary
 
-def add_to_map_50_dict(model_name, iou, value):
+def add_to_map_50_dict(model_name, type_metric, value):
     """
     Add mAP (50 % IoU) data to dictionary
 
     Input:
         - model_name
-        - iou
-            - IoU
+        - type_metric
         - value
     """
     if model_name not in map_50_dict:
-        map_50_dict[model_name] = {iou: value}
+        map_50_dict[model_name] = {type_metric: value}
     else:
-        map_50_dict[model_name][iou] = value
+        map_50_dict[model_name][type_metric] = value
 
 def add_to_map_50_dict_transform(dictionary, pattern, type_metric, value):
     """
@@ -1142,20 +1147,19 @@ def add_to_map_50_dict_transform(dictionary, pattern, type_metric, value):
     
     return dictionary
 
-def add_to_map_75_dict(model_name, iou, value):
+def add_to_map_75_dict(model_name, type_metric, value):
     """
     Add mAP (75 % IoU) data to dictionary
 
     Input:
         - model_name
-        - iou
-            - IoU
+        - type_metric
         - value
     """
     if model_name not in map_75_dict:
-        map_75_dict[model_name] = {iou: value}
+        map_75_dict[model_name] = {type_metric: value}
     else:
-        map_75_dict[model_name][iou] = value
+        map_75_dict[model_name][type_metric] = value
 
 def add_to_map_75_dict_transform(dictionary, pattern, type_metric, value):
     """
@@ -1175,20 +1179,19 @@ def add_to_map_75_dict_transform(dictionary, pattern, type_metric, value):
 
     return dictionary
 
-def add_to_map_large_dict(model_name, iou, value):
+def add_to_map_large_dict(model_name, type_metric, value):
     """
     Add mAP (large data) data to dictionary
 
     Input:
         - model_name
-        - iou
-            - IoU
+        - type_metric
         - value
     """
     if model_name not in map_large_dict:
-        map_large_dict[model_name] = {iou: value}
+        map_large_dict[model_name] = {type_metric: value}
     else:
-        map_large_dict[model_name][iou] = value
+        map_large_dict[model_name][type_metric] = value
 
 def add_to_map_large_dict_transform(dictionary, pattern, type_metric, value):
     """
@@ -1208,20 +1211,19 @@ def add_to_map_large_dict_transform(dictionary, pattern, type_metric, value):
     
     return dictionary
 
-def add_to_mar_100_dict(model_name, iou, value):
+def add_to_mar_100_dict(model_name, type_metric, value):
     """
     Add recall (for 100 items) data to dictionary
 
     Input:
         - model_name
-        - iou
-            - IoU
+        - type_metric
         - value
     """
     if model_name not in mar_100_dict:
-        mar_100_dict[model_name] = {iou: value}
+        mar_100_dict[model_name] = {type_metric: value}
     else:
-        mar_100_dict[model_name][iou] = value
+        mar_100_dict[model_name][type_metric] = value
 
 def add_to_mar_100_dict_transform(dictionary, pattern, type_metric, value):
     """
@@ -1241,20 +1243,19 @@ def add_to_mar_100_dict_transform(dictionary, pattern, type_metric, value):
     
     return dictionary
 
-def add_to_mar_large_dict(model_name, iou, value):
+def add_to_mar_large_dict(model_name, type_metric, value):
     """
     Add recall (large dataset) data to dictionary
 
     Input:
         - model_name
-        - iou
-            - IoU
+        - type_metric
         - value
     """
     if model_name not in mar_large_dict:
-        mar_large_dict[model_name] = {iou: value}
+        mar_large_dict[model_name] = {type_metric: value}
     else:
-        mar_large_dict[model_name][iou] = value
+        mar_large_dict[model_name][type_metric] = value
 
 def add_to_mar_large_dict_transform(dictionary, pattern, type_metric, value):
     """
@@ -1285,13 +1286,14 @@ def load_output_of_models_objects(file_path, model_name, iou):
         - iou
     """
     data = load_output_of_models_objects_base(file_path, "")
-    
-    add_to_map_dict(model_name, iou, data[0] / data[6])
-    add_to_map_50_dict(model_name, iou, data[1] / data[6])
-    add_to_map_75_dict(model_name, iou, data[2] / data[6])
-    add_to_map_large_dict(model_name, iou, data[3] / data[6])
-    add_to_mar_100_dict(model_name, iou, data[4] / data[6])
-    add_to_mar_large_dict(model_name, iou, data[5] / data[6])
+
+    add_to_map_dict(model_name, "mAP", data[0])
+    add_to_map_dict(model_name, "mAP:50", data[1])
+    add_to_map_dict(model_name, "mAP:75", data[2])
+    add_to_map_dict(model_name, "mAP_large", data[3])
+
+    add_to_mar_100_dict(model_name, "recall_100", data[4])
+    add_to_mar_100_dict(model_name, "recall_large", data[5])
 
 def load_output_of_models_objects_main_base(file_path, pattern_directory):
     """
@@ -1680,12 +1682,8 @@ def call_generating_graphs_and_tables_main():
         generate_latex_table_and_save_to_file("time_of_run")
 
     if type_of_dataset == "objects" and not load_cpu_gpu_data:
-        generate_grouped_bar_objects(map_dict, "", "MAP")
-        generate_grouped_bar_objects(map_50_dict, "", "MAP@50")
-        generate_grouped_bar_objects(map_75_dict, "", "MAP@75")
-        generate_grouped_bar_objects(map_large_dict, "", "MAP_Large")
-        generate_grouped_bar_objects(mar_100_dict, "", "MAR@100")
-        generate_grouped_bar_objects(mar_large_dict, "", "MAR_Large")
+        generate_grouped_bar_objects(map_dict, "", "mAP")
+        generate_grouped_bar_objects(mar_100_dict, "", "recall")
         not_found_json_dict_tmp = transform_not_json_objects_dict_for_graph(not_found_json_dict)
         generate_grouped_bar_objects(not_found_json_dict_tmp, "", "count_of_data")
     if not load_cpu_gpu_data and type_of_dataset == "ticket":
@@ -1719,11 +1717,7 @@ def call_generating_graphs_and_tables_patterns(data_arrays_ocr, data_arrays_obje
     global goods_not_finded_count_dict
 
     global map_dict
-    global map_50_dict
-    global map_75_dict
-    global map_large_dict
     global mar_100_dict
-    global mar_large_dict
     global time_run_dict
     global not_found_json_dict
     global model_string_for_pattern

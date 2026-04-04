@@ -2,21 +2,25 @@
 \begin{tabular}{|c|c|c|c|c|}
 \hline
 \textbf{Model} & \textbf{RAM} & \textbf{MIN} & \textbf{MAX} & \textbf{Medián} \\ \hline
-fasterrcnn & 8,17 & 0,00 & 711,08 & 0,00 \\ \hline
-gemini-2.0-flash & 0,27 & -0,00 & 17,96 & 0,00 \\ \hline
-gemini-2.5-flash & 0,01 & -0,00 & 0,60 & 0,00 \\ \hline
-gemini-2.5-flash-lite & 0,30 & -0,00 & 18,34 & 0,00 \\ \hline
-gemini-2.5-pro & 0,01 & -0,00 & 0,54 & 0,00 \\ \hline
-gemini-3-flash-preview & 0,29 & -0,00 & 19,00 & 0,00 \\ \hline
-gemini-3-pro-preview & 0,02 & -0,00 & 0,48 & 0,00 \\ \hline
-gemma3-12b & 0,03 & 0,00 & 2,00 & 0,00 \\ \hline
-gemma3-4b & 0,01 & 0,00 & 0,27 & 0,00 \\ \hline
-maskrcnn & 0,21 & 0,00 & 12,69 & 0,00 \\ \hline
-retinanet & 2,86 & 0,00 & 190,56 & 0,00 \\ \hline
-yolo11l & 19453,91 & 19448,73 & 19470,29 & 19452,93 \\ \hline
-yolo11m & 20138,85 & 20138,07 & 20156,41 & 20138,07 \\ \hline
-yolo11n & 14419,07 & 14418,21 & 14436,89 & 14418,21 \\ \hline
-yolo11s & 17390,86 & 17389,76 & 17409,55 & 17389,76 \\ \hline
+fasterrcnn & 8,59 & 0,00 & 711,41 & 0,00 \\ \hline
+fasterrcnn-pretrained & 8,20 & 0,00 & 738,57 & 0,00 \\ \hline
+gemini-2.0-flash & 0,30 & -0,00 & 20,56 & 0,01 \\ \hline
+gemini-2.5-flash & 0,02 & 0,00 & 0,80 & 0,00 \\ \hline
+gemini-2.5-pro & 0,00 & 0,00 & 0,02 & 0,00 \\ \hline
+gemini-3-flash-preview & 0,00 & 0,00 & 0,02 & 0,00 \\ \hline
+gemini-3-pro-preview & 0,00 & 0,00 & 0,02 & 0,00 \\ \hline
+maskrcnn & 0,92 & 0,00 & 23,71 & 0,00 \\ \hline
+maskrcnn-pretrained & 0,03 & 0,00 & 1,29 & 0,00 \\ \hline
+retinanet & 3,66 & 0,00 & 190,29 & 0,00 \\ \hline
+retinanet-pretrained & 2,10 & 0,00 & 145,32 & 0,00 \\ \hline
+yolo11l & 5,28 & 0,00 & 20,20 & 4,19 \\ \hline
+yolo11l-pretrained & 4,59 & -0,00 & 27,70 & 4,17 \\ \hline
+yolo11m & 4,74 & -0,00 & 22,80 & 4,16 \\ \hline
+yolo11m-pretrained & 4,49 & -0,00 & 23,96 & 4,16 \\ \hline
+yolo11n & 12,49 & -0,00 & 827,75 & 4,16 \\ \hline
+yolo11n-pretrained & 12,42 & -0,00 & 823,98 & 4,16 \\ \hline
+yolo11s & 4,56 & -0,00 & 31,46 & 4,16 \\ \hline
+yolo11s-pretrained & 4,50 & -0,00 & 20,51 & 4,16 \\ \hline
 \end{tabular}
 \centering
 \caption{Využití paměti RAM (testování modelu)}

@@ -2,21 +2,25 @@
 \begin{tabular}{|c|c|c|c|c|}
 \hline
 \textbf{Model} & \textbf{Čas [s]} & \textbf{MIN} & \textbf{MAX} & \textbf{Medián} \\ \hline
-fasterrcnn & 0,09 & 0,05 & 0,43 & 0,08 \\ \hline
-gemini-2.0-flash & 14,16 & 6,34 & 52,87 & 12,21 \\ \hline
-gemini-2.5-flash & 14,50 & 5,74 & 44,45 & 11,80 \\ \hline
-gemini-2.5-flash-lite & 7,07 & 4,11 & 98,68 & 5,56 \\ \hline
-gemini-2.5-pro & 45,20 & 15,21 & 129,13 & 40,03 \\ \hline
-gemini-3-flash-preview & 25,09 & 8,96 & 59,80 & 22,73 \\ \hline
-gemini-3-pro-preview & 75,99 & 22,96 & 150,97 & 72,11 \\ \hline
-gemma3-12b & 23,49 & 11,08 & 43,22 & 24,09 \\ \hline
-gemma3-4b & 7,30 & 3,47 & 18,37 & 6,66 \\ \hline
-maskrcnn & 0,09 & 0,05 & 0,15 & 0,08 \\ \hline
-retinanet & 0,08 & 0,05 & 0,15 & 0,08 \\ \hline
-yolo11l & 0,05 & 0,02 & 0,37 & 0,05 \\ \hline
-yolo11m & 0,03 & 0,02 & 0,35 & 0,02 \\ \hline
-yolo11n & 0,03 & 0,02 & 0,24 & 0,02 \\ \hline
-yolo11s & 0,03 & 0,02 & 0,30 & 0,02 \\ \hline
+fasterrcnn & 0,09 & 0,05 & 0,55 & 0,08 \\ \hline
+fasterrcnn-pretrained & 0,09 & 0,05 & 0,39 & 0,08 \\ \hline
+gemini-2.0-flash & 13,71 & 6,09 & 51,30 & 11,88 \\ \hline
+gemini-2.5-flash & 17,71 & 6,08 & 56,20 & 13,82 \\ \hline
+gemini-2.5-pro & 47,29 & 17,42 & 130,43 & 44,19 \\ \hline
+gemini-3-flash-preview & 18,84 & 7,70 & 41,52 & 18,18 \\ \hline
+gemini-3-pro-preview & 22,74 & 6,84 & 70,06 & 20,73 \\ \hline
+maskrcnn & 0,10 & 0,05 & 0,18 & 0,11 \\ \hline
+maskrcnn-pretrained & 0,15 & 0,09 & 0,21 & 0,15 \\ \hline
+retinanet & 0,08 & 0,05 & 0,18 & 0,08 \\ \hline
+retinanet-pretrained & 0,08 & 0,05 & 0,15 & 0,08 \\ \hline
+yolo11l & 0,06 & 0,02 & 0,33 & 0,06 \\ \hline
+yolo11l-pretrained & 0,04 & 0,02 & 0,46 & 0,02 \\ \hline
+yolo11m & 0,03 & 0,02 & 0,27 & 0,02 \\ \hline
+yolo11m-pretrained & 0,03 & 0,02 & 0,46 & 0,02 \\ \hline
+yolo11n & 0,03 & 0,02 & 0,58 & 0,02 \\ \hline
+yolo11n-pretrained & 0,03 & 0,02 & 0,67 & 0,02 \\ \hline
+yolo11s & 0,03 & 0,02 & 0,18 & 0,02 \\ \hline
+yolo11s-pretrained & 0,03 & 0,02 & 0,24 & 0,02 \\ \hline
 \end{tabular}
 \centering
 \caption{Délka běhu [s]}\label{tab: time_of_run}
