@@ -247,6 +247,9 @@ def eval_img_model(model_text, array_of_image_paths, number_of_epochs, load_trai
     if load_train_states:
         model.load_state_dict(torch.load(os.path.join(model_dir_path, f"{model_text}_epoch_{number_of_epochs}.pth")))
 
+    if not load_train_states:
+        model_text = f"{model_text}:pretrained"
+
     array_of_detections = []
     array_of_good_boxes = []
 
