@@ -160,12 +160,6 @@ def load_and_measure(dir_path, model, first_ticket, latest_file):
                                                                   dict_of_incorect, array_not_found, 
                                                                   array_good_not_found)
         else:
-            for iou_threshold in functions.iou_thresholds:
-                map_values = functions.get_mAP(max_iou_detections, good_boxes, iou_threshold)
-                functions.save_to_file_object(model, type_of_data, map_values["map"],
-                                              map_values["map_50"], map_values["map_75"],
-                                              map_values["map_large"], map_values["mar_100"],
-                                              map_values["mar_large"], iou_threshold)
             functions.save_to_file_object_main(model, type_of_data, diff_datetime_seconds, json_load)
         functions.save_to_file_cpu_gpu(model, type_of_data, True, cpu_usage, functions.monitor_data["peak_cpu_percent"],
                                        ram_usage, functions.monitor_data["peak_gpu_utilization"], total_vram_mb,
@@ -195,7 +189,7 @@ def load_and_measure(dir_path, model, first_ticket, latest_file):
                 time.sleep(15.0)
     
     map_values = functions.get_mAP(array_of_detections, array_of_good_boxes)
-    functions.save_to_file_object(model_text, type_of_data, map_values["map"],
+    functions.save_to_file_object(model, type_of_data, map_values["map"],
                                   map_values["map_50"], map_values["map_75"],
                                   map_values["map_large"], map_values["mar_100"],
                                   map_values["mar_large"])
