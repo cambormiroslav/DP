@@ -59,13 +59,10 @@ ocr_detection_dict_patterns = {
 
 object_detection_dict_patterns = {
     "gemini-3-pro-preview" : pattern3_ObjectEn,
-    "gemini-3-flash-preview" : pattern3_ObjectEn,
-    "gemini-2.5-pro" : pattern3_ObjectCz,
-    "gemini-2.5-flash" : pattern3_ObjectEn, 
-    "gemini-2.5-flash-lite" : pattern3_ObjectEn,
-    "gemini-2.0-flash" : pattern2_ObjectCz,
-    "gemma3:12b" : pattern2_ObjectEn,
-    "gemma3:4b" : pattern2_ObjectEn,
+    "gemini-3-flash-preview" : pattern3_ObjectCz,
+    "gemini-2.5-pro" : pattern2_ObjectCz,
+    "gemini-2.5-flash" : pattern2_ObjectCz, 
+    "gemini-2.0-flash" : pattern3_ObjectCz
 }
 
 monitor_data = {
