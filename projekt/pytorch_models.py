@@ -118,6 +118,26 @@ def get_model(model, num_classes):
     
     return model
 
+def get_pretrained_model(model):
+    """
+    Get pretrained model instance
+
+    Input:
+        - model:
+            - text represetation of model
+        - num_classes:
+            - count of classes
+    Output:
+        - model instance
+    """
+    if model == "fasterrcnn":
+        return torchvision.models.detection.fasterrcnn_resnet50_fpn(weights=FasterRCNN_ResNet50_FPN_Weights.DEFAULT)
+    elif model == "retinanet":
+        return torchvision.models.detection.retinanet_resnet50_fpn(weights=RetinaNet_ResNet50_FPN_Weights.DEFAULT)
+    elif model == "maskrcnn":
+        return torchvision.models.detection.maskrcnn_resnet50_fpn(weights=MaskRCNN_ResNet50_FPN_Weights.DEFAULT)
+    return None
+
 def train_one_epoch(model, optimizer, data_loader, device, epoch, add_mask):
     """
     Train model for one epoch
@@ -242,13 +262,13 @@ def eval_img_model(model_text, array_of_image_paths, number_of_epochs, load_trai
         - number_of_epochs
             - number of trained epochs
     """
-    num_classes = 2
-    model = get_model(model_text, num_classes)
     if load_train_states:
+        num_classes = 2
+        model = get_model(model_text, num_classes)
         model.load_state_dict(torch.load(os.path.join(model_dir_path, f"{model_text}_epoch_{number_of_epochs}.pth")))
-
-    if not load_train_states:
-        model_text = f"{model_text}:pretrained"
+    else:
+        model = get_pretrained_model(model_text)
+        model_text = f"{model_text}-pretrained"
 
     array_of_detections = []
     array_of_good_boxes = []
@@ -448,6 +468,6 @@ if __name__ == "__main__":
     train_dataset = get_coco_dataset("../dataset/yolo_dataset/train/images", "../dataset/coco_annotations/train/annotations.json")
     train_dataloader = DataLoader(train_dataset, batch_size=4, shuffle=True, collate_fn=lambda x: tuple(zip(*x)))
 
-    load_and_measure("fasterrcnn", train_dataloader, False, True, True)
-    load_and_measure("retinanet", train_dataloader, False, True, True)
-    load_and_measure("maskrcnn", train_dataloader, False, True, True)
+    load_and_measure("fasterrcnn", train_dataloader, False, True, False)
+    load_and_measure("retinanet", train_dataloader, False, True, False)
+    load_and_measure("maskrcnn", train_dataloader, False, True, False)
