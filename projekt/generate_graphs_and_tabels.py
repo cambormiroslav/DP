@@ -217,7 +217,7 @@ def sort_dict_by_keys(input_dict):
     """
     return {k: v for k, v in sorted(input_dict.items(), key=lambda item: item[0])}
 
-def transform_not_json_objects_dict_for_graph(dict):
+def transform_not_json_objects_dict_for_graph(dictionary):
     """
     Transform correct format data for graph
 
@@ -227,7 +227,7 @@ def transform_not_json_objects_dict_for_graph(dict):
     Output:
         - transformed dictionary
     """    
-    return {key: count_number_of_types_jsons(obj) for key, obj in not_found_json_dict.items()}
+    return {key: count_number_of_types_jsons(obj) for key, obj in dictionary.items()}
 
 def count_number_of_types_jsons(output_array):
     """
@@ -1560,8 +1560,7 @@ def load_all_data_pattern():
                 if len(file_split) == 3:
                     third = file_split[2].replace(".txt", "")
                     if third == "main":
-                        pass
-                        #load_output_of_models_objects_main_pattern(file, model, pattern)
+                        load_output_of_models_objects_main_pattern(file, model, pattern)
                     else:
                         load_output_of_models_objects_pattern(file, model, pattern)
 
