@@ -1,35 +1,36 @@
 \begin{table}[h!]
+\small
 \begin{tabular}{|c|c|c|}
 \hline
-\textbf{Model}            & \textbf{MAR100}                 & \textbf{MAR\_Large}                \\ \hline
-bakllava                  & vyřazeno                        & vyřazeno                           \\ \hline
-gemini-2.0-flash          & pattern3\_Cz                    & pattern3\_Cz                       \\ \hline
-gemini-2.0-flash-lite     & vyřazeno                        & vyřazeno                           \\ \hline
-gemini-2.5-flash          & pattern3\_Cz                    & pattern3\_Cz                       \\ \hline
-gemini-2.5-flash-lite     & vyřazeno                        & vyřazeno                           \\ \hline
-gemini-2.5-pro            & pattern2\_Cz / pattern3\_Cz     & pattern2\_Cz / pattern3\_Cz        \\ \hline
-gemini-3-flash-preview    & pattern3\_Cz                    & pattern3\_Cz                       \\ \hline
-gemini-3-pro-preview      & pattern2\_Cz                    & pattern2\_Cz                       \\ \hline
-gemma3:4b                 & vyřazeno                        & vyřazeno                           \\ \hline
-gemma3:12b                & vyřazeno                        & vyřazeno                           \\ \hline
-gemma3:27b                & vyřazeno                        & vyřazeno                           \\ \hline
-gpt-4.1                   & vyřazeno                        & vyřazeno                           \\ \hline
-gpt-4.1-mini              & vyřazeno                        & vyřazeno                           \\ \hline
-gpt-4o                    & vyřazeno                        & vyřazeno                           \\ \hline
-gpt-4o-mini               & vyřazeno                        & vyřazeno                           \\ \hline
-gpt-5                     & vyřazeno                        & vyřazeno                           \\ \hline
-gpt-5-mini                & vyřazeno                        & vyřazeno                           \\ \hline
-gpt-5-nano                & vyřazeno                        & vyřazeno                           \\ \hline
-gpt-5.1                   & vyřazeno                        & vyřazeno                           \\ \hline
-gpt-5.2                   & vyřazeno                        & vyřazeno                           \\ \hline
-granite3.2-vision         & vyřazeno                        & vyřazeno                           \\ \hline
-knoopx/mobile-vlm:3b-fp16 & vyřazeno                        & vyřazeno                           \\ \hline
-llava:7b                  & vyřazeno                        & vyřazeno                           \\ \hline
-llava:13b                 & vyřazeno                        & vyřazeno                           \\ \hline
-llava:34b                 & vyřazeno                        & vyřazeno                           \\ \hline
-minicpm-v                 & vyřazeno                        & vyřazeno                           \\ \hline
-mistral-small3.1          & vyřazeno                        & vyřazeno                           \\ \hline
-mistral-small3.2:24b      & vyřazeno                        & vyřazeno                           \\ \hline
+\textbf{Model}            & \textbf{MAR100}                      & \textbf{MAR\_Large}                     \\ \hline
+bakllava                  & vyřazeno                             & vyřazeno                                \\ \hline
+gemini-2.0-flash          & pattern3\_Cz                         & pattern3\_Cz                            \\ \hline
+gemini-2.0-flash-lite     & vyřazeno                             & vyřazeno                                \\ \hline
+gemini-2.5-flash          & pattern3\_Cz                         & pattern3\_Cz                            \\ \hline
+gemini-2.5-flash-lite     & vyřazeno                             & vyřazeno                                \\ \hline
+gemini-2.5-pro            & pattern2\_Cz $\mid$ pattern3\_Cz     & pattern2\_Cz $\mid$ pattern3\_Cz        \\ \hline
+gemini-3-flash-preview    & pattern3\_Cz                         & pattern3\_Cz                            \\ \hline
+gemini-3-pro-preview      & pattern2\_Cz                         & pattern2\_Cz                            \\ \hline
+gemma3:4b                 & vyřazeno                             & vyřazeno                                \\ \hline
+gemma3:12b                & vyřazeno                             & vyřazeno                                \\ \hline
+gemma3:27b                & vyřazeno                             & vyřazeno                                \\ \hline
+gpt-4.1                   & vyřazeno                             & vyřazeno                                \\ \hline
+gpt-4.1-mini              & vyřazeno                             & vyřazeno                                \\ \hline
+gpt-4o                    & vyřazeno                             & vyřazeno                                \\ \hline
+gpt-4o-mini               & vyřazeno                             & vyřazeno                                \\ \hline
+gpt-5                     & vyřazeno                             & vyřazeno                                \\ \hline
+gpt-5-mini                & vyřazeno                             & vyřazeno                                \\ \hline
+gpt-5-nano                & vyřazeno                             & vyřazeno                                \\ \hline
+gpt-5.1                   & vyřazeno                             & vyřazeno                                \\ \hline
+gpt-5.2                   & vyřazeno                             & vyřazeno                                \\ \hline
+granite3.2-vision         & vyřazeno                             & vyřazeno                                \\ \hline
+knoopx/mobile-vlm:3b-fp16 & vyřazeno                             & vyřazeno                                \\ \hline
+llava:7b                  & vyřazeno                             & vyřazeno                                \\ \hline
+llava:13b                 & vyřazeno                             & vyřazeno                                \\ \hline
+llava:34b                 & vyřazeno                             & vyřazeno                                \\ \hline
+minicpm-v                 & vyřazeno                             & vyřazeno                                \\ \hline
+mistral-small3.1          & vyřazeno                             & vyřazeno                                \\ \hline
+mistral-small3.2:24b      & vyřazeno                             & vyřazeno                                \\ \hline
 \end{tabular}
 \centering
 \caption{Výběr modelů a textových zadání pro ně — MAR, Detekce objektů}\label{tab: patterns_models_objects_MAR}
