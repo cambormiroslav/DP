@@ -281,7 +281,7 @@ if __name__ == "__main__":
     else:
         if load_pretrained_ultralitics:
             model = load_yolo_model("yolo11n.pt")
-            load_and_measure(model, "yolo11n:pretrained")
+            load_and_measure(model, "yolo11n-pretrained")
         else:
             model = load_yolo_model("./models/yolo11n_best.pt")
             load_and_measure(model, "yolo11n")
@@ -292,7 +292,7 @@ if __name__ == "__main__":
     else:
         if load_pretrained_ultralitics:
             model = load_yolo_model("yolo11s.pt")
-            load_and_measure(model, "yolo11s:pretrained")
+            load_and_measure(model, "yolo11s-pretrained")
         else:
             model = load_yolo_model("./models/yolo11s_best.pt")
             load_and_measure(model, "yolo11s")
@@ -303,7 +303,7 @@ if __name__ == "__main__":
     else:
         if load_pretrained_ultralitics:
             model = load_yolo_model("yolo11m.pt")
-            load_and_measure(model, "yolo11m:pretrained")
+            load_and_measure(model, "yolo11m-pretrained")
         else:
             model = load_yolo_model("./models/yolo11m_best.pt")
             load_and_measure(model, "yolo11m")
@@ -314,7 +314,7 @@ if __name__ == "__main__":
     else:
         if load_pretrained_ultralitics:
             model = load_yolo_model("yolo11l.pt")
-            load_and_measure(model, "yolo11l:pretrained")
+            load_and_measure(model, "yolo11l-pretrained")
         else:
             model = load_yolo_model("./models/yolo11l_best.pt")
             load_and_measure(model, "yolo11l")
