@@ -268,6 +268,8 @@ def eval_img_model(model_text, array_of_image_paths, number_of_epochs, load_trai
         model.load_state_dict(torch.load(os.path.join(model_dir_path, f"{model_text}_epoch_{number_of_epochs}.pth")))
     else:
         model = get_pretrained_model(model_text)
+        model_path = os.path.join(model_dir_path, f"{model_text}_pretrained.pth")
+        torch.save(model.state_dict(), model_path)
         model_text = f"{model_text}-pretrained"
 
     array_of_detections = []

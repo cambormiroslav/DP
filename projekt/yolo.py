@@ -14,7 +14,7 @@ test_images_dir_path = "../dataset/yolo_dataset/test/images/"
 dataset_yaml = "../dataset/yolo_dataset/data.yaml"
 
 train_model = False
-load_pretrained_ultralitics = False
+load_pretrained_ultralitics = True
 
 array_of_detections = []
 array_of_good_boxes = []
