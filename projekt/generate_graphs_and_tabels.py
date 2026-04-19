@@ -427,7 +427,8 @@ def generate_grouped_bar_objects(dict_data, model, type_of_data):
     else:
         ax.set_ylabel(type_of_data)
 
-    ax.set_xlabel('Vstupní textové zadání')
+    if is_pattern_data:
+        ax.set_xlabel('Vstupní textové zadání')
     ax.set_xticks(x)
     ax.set_xticklabels(categories)
     plt.setp(ax.get_xticklabels(), rotation=90, ha="right")
@@ -1855,7 +1856,7 @@ def call_generating_graphs_and_tables():
 
 if __name__ == "__main__":
     #ticket data
-    #call_generating_graphs_and_tables()
+    call_generating_graphs_and_tables()
 
     #objects data
     type_of_dataset = "objects"
